@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asociación Uruguaya de Age of Empires II</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/calendario.css">
+    <link rel="stylesheet" href="css/divisiones.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navegación Principal -->
+    <header>
+        <div class="container">
+            <h1 class="logo">Asociación Uruguaya de AoE II</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#mapas">Mapas</a></li>
+                    <li><a href="#cronograma">Cronograma</a></li>
+                    <li><a href="#drafts">Drafts</a></li>
+                    <li><a href="#divisiones">Divisiones</a></li>
+                    <li><a href="#reglas">Reglas</a></li>
+                    <li><a href="#premios">Premios</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="banner" id="inicio">
+        <h2>Bienvenidos a la Asociación Uruguaya de Age of Empires II</h2>
+        <p>Explora los mejores campeonatos y eventos del juego.</p>
+        <a href="#mapas" class="btn">Mas Info</a>
+    </section>
+  
+    <section id="cronograma" class="section">
+        <h2>Cronograma</h2>
+    <div id="calendar-wrapper">
+        <div class="line"></div>
+        <div class="scroll-container">
+            <ul id="event-list">
+                <!-- Los eventos se cargarán aquí dinámicamente -->
+            </ul>
+        </div>
+    </div>
+</section>
+     <!-- Sección de Mapas -->
+    <section id="mapas" class="section">
+        <h2>Mapas</h2>
+        <div class="contenedor-mapas">
+            <!-- Aquí se llenarán los mapas dinámicamente desde el JSON -->
+        </div>
+    </section>
+
+    <!-- Sección de Drafts -->
+    <section id="drafts" class="section">
+        <h2>Drafts</h2>
+        <div class="contenido-drafts">
+            <p>Drafts de mapas y civis</p>
+            <a href="#mapas" class="btn">Mapas Bo3</a>
+            <a href="#mapas" class="btn">Civs Bo3</a>
+            <a href="#mapas" class="btn">Mapas Bo5</a>
+            <a href="#mapas" class="btn">Civs Bo5</a>
+        </div>
+    </section>
+
+    <!-- Sección de Divisiones -->
+    <section id="divisiones" class="section">
+        <h2>Divisiones</h2>
+        <div class="contenedor-divisiones">
+            
+        <ul id="division-list" class="division-list">
+            <!-- Las divisiones se cargarán aquí dinámicamente -->
+        </ul>
+    </div>
+    </section>
+
+    <!-- Sección de Reglas -->
+    <section id="reglas" class="section">
+        <h2>Reglas</h2>
+        <div class="contenido-reglas">
+            <p>Reglas Principales</p>
+            <p>Si vas a intentar hacer trampas o ser poco deportivo, mejor no te apuntes. Aquí venimos a pasarlo bien y disfrutar de nuestro amado AoE2.
+
+                Aún así siempre habrá alguno que se apunte igualmente y que la líe, así que desde la Organización y con la ayuda de los Admin, intentaremos estar atentos a todo aquel que haga trampas o cometa cualquier tipo de falta de respeto, para expulsarlo tanto de la temporada actual, como de las posteriores.
+                
+                Desde la organización esperamos que disfrutes la temporada, lo pases bien y conozcas a los maravillosos seres humanos que formamos parte de esta nuestra comunidad.
+                
+                Estamos poniendo nuestro máximo esfuerzo en intentar que todos los jugadores lo paséis bien.
+                
+                (en serio, estaría fantástico que te leyeras el Handbook)</p>
+                <a href="#mapas" class="btn">Handbook</a>
+        </div>
+    </section>
+
+    <!-- Sección de Premios -->
+    <section id="premios" class="section">
+        <h2>Premios</h2>
+        <div class="contenido-premios">
+            <p>Descripción de los premios para los ganadores.</p>
+        <p>Como sabéis, la intención es que la Comunidad siga creciendo y la competitividad (sana) también. Por ello es bueno que haya premios y para ello este año las donaciones las utilizaremos de la siguiente manera (los % de los premios aún están por determinar):
+<br>
+            Paladines: Recibirán premio económico los 2 primeros clasificados.<br>
+            Campeones: Recibirá premio económico el campeón.<br>
+            Mandobles: Recibirá premio económico el campeón.<br>
+            Para el resto de divisiones en lugar de recibir un premio económico, creemos que es un mejor premio el tener 1h de coaching con un jugador de más nivel de la comunidad.<br>
+            
+            Todos los campeones además, se llevarán de premio una taza personalizada con su logo y su división. Esta fue la taza de la pasada temporada, aunque el diseño de esta aún está por determinar:</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Asociación Uruguaya de Age of Empires II</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/mapas.js"></script>
+    <script src="js/calendario.js"></script>
+    <script src="js/divisiones.js"></script>
+</body>
+</html>

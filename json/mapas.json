@@ -1,0 +1,16 @@
+{
+    "mapas": [
+        {
+            "nombre": "Arabia",
+            "imagen": "https://alexocampos.github.io/liga-espanhola-aoe2-static/maps/LEA_golden_lakes.png"
+        },
+        {
+            "nombre": "Arena",
+            "imagen": "https://alexocampos.github.io/liga-espanhola-aoe2-static/maps/LEA_rocky_forest.png"
+        },
+        {
+            "nombre": "Islas",
+            "imagen": "https://alexocampos.github.io/liga-espanhola-aoe2-static/maps/LEA_border_dispute.png"
+        }
+    ]
+}

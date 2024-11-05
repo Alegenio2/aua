@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asociación Uruguaya de AOE II</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/divisiones.css">
+    <link rel="stylesheet" href="css/rondas.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navegación Principal -->
+    <header>
+        <div class="container">
+           
+            <h1 class="logo">Asociación Uruguaya de AoE II</h1>
+            <a href="#"><img src="img/aua.jpeg" style="width: 50px;"></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#campeonatos">Campeonatos</a></li>
+                    <li><a href="#noticias">Noticias</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+ <!-- Sección de Divisiones -->
+ <section id="divisiones" class="section">
+    <h2>Divisiones</h2>
+    <div class="contenedor-divisiones">
+        
+    <ul id="division-list" class="division-list">
+        <!-- Las divisiones se cargarán aquí dinámicamente -->
+    </ul>
+</div>
+</section>
+<section class="categorias">
+    <h2>Categorías del Campeonato Uruguayo</h2>
+    <div class="categoria-lista">
+        <button class="btn categoria-btn" data-categoria="categoria1">Categoria 1</button>
+        <button class="btn categoria-btn" data-categoria="categoria2">Categoria 2</button>
+        <button class="btn categoria-btn" data-categoria="categoria3">Categoria 3</button>
+        <button class="btn categoria-btn" data-categoria="categoria4">Categoria 4</button>
+        <button class="btn categoria-btn" data-categoria="categoria5">Categoria 5</button>
+        <!-- Añade más categorías según sea necesario -->
+    </div>
+</section>
+
+<section id="info-categoria" class="info-categoria">
+    <div id="partidas" class="contenido"></div>
+    <div id="tabla-posiciones" class="contenido"></div>
+</section>
+<section id="sponsor">
+    <h2>Patrocinadores</h2>
+    <div class="contenedor-sponsor">
+    <div class="sponsor">
+     <h3>Fumage</h3>
+     <a href="#"><img src="img/Fumage.png" alt=""></a>
+    </div>
+    <div class="sponsor">
+     <h3>Fumage</h3>
+     <a href="#"><img src="img/Fumage.png" alt=""></a>
+    </div>
+    <div class="sponsor">
+     <h3>Fumage</h3>
+     <a href="#"><img src="img/Fumage.png" alt=""></a>
+    </div>
+    <div class="sponsor">
+     <h3>Fumage</h3>
+     <a href="#"><img src="img/Fumage.png" alt=""></a>
+    </div>
+ </div>
+     </section>
+    <footer>
+        <p>&copy; 2024 Asociación Uruguaya de Age of Empires II</p>
+    </footer>
+    <script src="js/rondas.js"></script>
+    <script src="js/divisiones.js"></script>
+    <script src="js/campeonatos.js"></script>
+</body>
+</html>

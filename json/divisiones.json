@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "División 1",
+        "image": "https://alexocampos.github.io/liga-espanhola-aoe2-static/divisions/paladines.png",
+        "link": "Primeradivisio.html"
+    },
+    {
+        "id": 2,
+        "name": "División 2",
+        "image": "https://alexocampos.github.io/liga-espanhola-aoe2-static/divisions/paladines.png",
+        "link": "https://alexocampos.github.io/liga-espanhola-aoe2-static/divisions/campeones.png"
+    },
+    {
+        "id": 3,
+        "name": "División 3",
+        "image": "https://alexocampos.github.io/liga-espanhola-aoe2-static/divisions/paladines.png",
+        "link": "url_a_la_pagina_division_3"
+    },
+    {
+        "id": 4,
+        "name": "División 4",
+        "image": "https://alexocampos.github.io/liga-espanhola-aoe2-static/divisions/paladines.png",
+        "link": "url_a_la_pagina_division_4"
+    },
+    {
+        "id": 5,
+        "name": "División 5",
+        "image": "https://alexocampos.github.io/liga-espanhola-aoe2-static/divisions/paladines.png",
+        "link": "url_a_la_pagina_division_5"
+    }
+]

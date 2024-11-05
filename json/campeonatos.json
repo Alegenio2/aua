@@ -1,0 +1,26 @@
+{
+    "campeonatos": [
+      {
+        "id": "campeonato_uruguayo",
+        "nombre": "Campeonato Uruguayo AoE II",
+        "descripcion": "El torneo nacional donde los mejores jugadores compiten por la gloria.",
+        "imagen": "img/CopaUy.png",
+        "url":"campeonato_uruguayo.html"
+      },
+      {
+        "id": "uruguay_open_cup",
+        "nombre": "Uruguay Open Cup 2vs2",
+        "descripcion": "Un evento de equipos abierto para la comunidad y el mundo.",
+        "imagen": "img/OpenCUP2v2.png",
+        "url":"campeonato_uruguayo.html"
+      },
+      {
+        "id": "copa_uruguaya",
+        "nombre": "Copa Uruguaya",
+        "descripcion": "Una competencia que celebra lo mejor de Age of Empires en Uruguay.",
+        "imagen": "img/CopaUy.png",
+        "url":"campeonato_uruguayo.html"
+      }
+    ]
+  }
+  

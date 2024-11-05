@@ -1,0 +1,60 @@
+*{
+    justify-content: center;
+}
+.round-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.match-box {
+    width: 200px;
+    padding: 10px;
+    background-color: #000000;
+    border: 1px solid #ddd;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.player {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.score {
+    font-weight: bold;
+}
+
+h4 {
+    margin-top: 20px;
+    color: #0c74f5;
+}
+.tabla-posiciones {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tabla-posiciones th, .tabla-posiciones td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.tabla-posiciones th {
+    background-color: #0480f4;
+    font-weight: bold;
+}
+
+.tabla-posiciones tr:nth-child(even) {
+    background-color: #3e3e3e;
+}
+
+.tabla-posiciones tr:hover {
+    background-color: #00172b;
+}
+
+

@@ -1,0 +1,37 @@
+
+.division-list {
+    display: flex; /* Muestra las divisiones en línea */
+    flex-wrap: wrap; /* Permite que las divisiones se ajusten a la siguiente línea si no hay espacio */
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.division-list li {
+    list-style-type: none;
+    margin: 10px; /* Espacio entre divisiones */
+    transition: transform 0.3s ease; /* Animación suave al interactuar */
+}
+
+.division-list li:hover {
+    transform: scale(1.05); /* Aumenta el tamaño al pasar el mouse */
+}
+
+.division-image {
+    width: 100px; /* Ajusta el tamaño según necesites */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 8px; /* Añade bordes redondeados si lo deseas */
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px); /* Mueve un poco hacia abajo al cargar */
+    animation: fadeIn 0.5s forwards; /* Añade la animación */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Regresa a la posición original */
+    }
+}
