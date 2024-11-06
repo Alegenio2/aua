@@ -1,0 +1,9 @@
+{
+  "name": "age-of-empires-feed",
+  "version": "1.0.0",
+  "description": "Fetches and converts Age of Empires feed to JSON",
+  "main": "fetch-feed.js",
+  "dependencies": {
+    "xml2js": "^0.4.23"  // Verifica la última versión disponible
+  }
+}
