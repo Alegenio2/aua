@@ -1,0 +1,64 @@
+#contacto-container {
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #000000;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(85, 85, 85, 0.1);
+    margin-top: 40px;
+}
+
+a.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #0c74f5;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: background-color 0.3s ease;
+}
+
+a.btn:hover {
+    background-color: #0b5bb1;
+}
+
+/* Estilos de las redes sociales */
+#redes-sociales {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#redes-sociales ul {
+    list-style: none;
+    padding: 0;
+}
+
+#redes-sociales ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+#redes-sociales a {
+    font-size: 24px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+#redes-sociales a:hover {
+    color: #0c74f5;
+}
+
+#redes-sociales i {
+    margin-right: 10px;
+}
+
+/* Estilo del iframe del video */
+#ultimo-video {
+    text-align: center;
+    margin-top: 40px;
+}
