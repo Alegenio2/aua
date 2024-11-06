@@ -5,18 +5,19 @@ fetch('json/divisiones.json')
         
         data.forEach(division => {
             const divisionItem = document.createElement('li');
+            
+            const link = document.createElement('a');
+            // Agrega el parámetro de categoría en el enlace usando el ID de la división
+            link.href = `${division.link}?categoria=categoria${division.id}`;
+            
             const img = document.createElement('img');
             img.src = division.image;
             img.alt = division.name;
             img.classList.add('division-image'); // Clase para estilos, si es necesario
             
-            const link = document.createElement('a');
-            link.href = division.link;
-           
-
-            divisionItem.appendChild(img);
-            divisionItem.appendChild(link);
-            divisionList.appendChild(divisionItem);
+            link.appendChild(img); // Coloca la imagen dentro del enlace
+            divisionItem.appendChild(link); // Coloca el enlace dentro del elemento de lista
+            divisionList.appendChild(divisionItem); // Agrega el elemento de lista al contenedor
             
             // Añadir una clase para animación al cargar
             divisionItem.classList.add('fade-in'); 
