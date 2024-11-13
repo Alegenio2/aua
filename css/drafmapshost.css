@@ -1,0 +1,73 @@
+.map-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end; /* Alinea los elementos de izquierda a derecha */
+    align-items: flex-end;/* Alinea los elementos al principio (arriba) */
+    flex-direction: column; 
+    align-content: center;
+}
+
+.pick-container {
+    display: flex;
+    flex-direction: row; /* Coloca los picks en columna (uno debajo de otro) */
+    gap: 10px; /* Espacio entre los elementos */
+    margin-bottom: 20px; /* Separación de los picks respecto a los bans */
+    flex-wrap: wrap;
+}
+
+.ban-container {
+    display: flex;
+    flex-direction: row; /* Coloca los bans en columna */
+    gap: 10px;
+    margin-left: auto; /* Alinea los bans hacia la derecha */
+}
+
+.map-card {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    border-radius: 50%; /* Borde redondeado para el círculo */
+    border: 2px solid #8b4513; /* borde dorado oscuro */
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.map-ban {
+    background-color: #ffcccb; /* rojo para bans */
+}
+
+.map-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%; /* Borde redondeado para la imagen */
+    z-index: 0; /* Asegura que la imagen esté al fondo */
+}
+
+.map-name {
+    margin-top: 5px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 5px; /* Coloca el texto en la parte inferior */
+    left: 50%;
+    transform: translateX(-50%); /* Centra el nombre */
+    z-index: 1; /* Coloca el nombre por encima de la imagen */
+}
+
+.status-image {
+    width: 50px;
+    position: absolute;
+    top: 5px; /* Coloca la imagen de estado en la parte superior */
+    left: 50%;
+    transform: translateX(-50%); /* Centra la imagen */
+    z-index: 1; /* Coloca la imagen de estado por encima de la imagen */
+}
