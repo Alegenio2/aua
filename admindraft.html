@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Drafts</title>
+    <link rel="stylesheet" href="css/draftmapas.css">
+    <link rel="stylesheet" href="css/draftcivs.css">
+   
+</head>
+
+<body>
+    <h1>Administrador de Drafts</h1>
+
+    <div class="input-container">
+        <label for="draftCode">Código de Draft:</label>
+        <input type="text" id="draftCode" placeholder="Ingresa el código del draft">
+        <button onclick="fetchAndSaveDraftData()">Cargar Draft</button>
+    </div>
+    <div class="input-container">
+        <label for="mapDraftCode">Código de Draft de Mapas:</label>
+        <input type="text" id="mapDraftCode" placeholder="Ingresa el código del draft de mapas">
+        <button onclick="fetchAndSaveMapData()">Cargar Mapas</button>
+    </div>
+    <div class="map-container" id="mapContainer">
+        <h3>Host Maps</h3>
+        <div id="hostMaps" class="map-section"></div>
+        
+        <h3>Guest Maps</h3>
+        <div id="guestMaps" class="map-section"></div>
+        
+        <h3>Neutral Maps</h3>
+        <div id="neutralMaps" class="map-section"></div>
+    </div>
+    
+    
+
+    <h2>Host Picks</h2>
+    <div id="hostPicksColumn" class="column"></div>
+
+    <h2>Guest Picks</h2>
+    <div id="guestPicksColumn" class="column"></div>
+
+    <h2>Host Bans</h2>
+    <div id="hostBansColumn" class="column"></div>
+
+    <h2>Guest Bans</h2>
+    <div id="guestBansColumn" class="column"></div>
+
+ 
+    <button class="btn-update" id="btnActualizar">Actualizar</button>
+
+    <script>
+        document.getElementById("btnActualizar").addEventListener("click", function () {
+            localStorage.setItem('civsData', JSON.stringify(updatedCivsData));
+            localStorage.setItem('mapasData', JSON.stringify(updatedMapsData));
+            location.reload();
+        });
+    
+    </script>
+    
+
+    <script src="js/admindraftcivs.js"></script>
+    <script src="js/admindraftmapas.js"></script>
+</body>
+
+</html>

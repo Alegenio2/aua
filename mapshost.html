@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapas del Host</title>
+    <style>
+        .map-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .map-card {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            text-align: center;
+            border-radius: 50%;
+            border: 2px solid #8B4513; /* borde dorado oscuro */
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .map-ban { background-color: #ffcccb; } /* rojo para bans */
+        
+        .map-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .map-name {
+            margin-top: 5px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .status-image {
+            width: 50px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="loadingIndicator">Cargando mapas del host...</div>
+    <div class="map-container" id="hostMapsContainer"></div>
+
+    <script>
+        async function displayHostMaps() {
+            const hostMapsContainer = document.getElementById('hostMapsContainer');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            loadingIndicator.style.display = 'none'; // Ocultar el indicador de carga
+
+            const mapsData = JSON.parse(localStorage.getItem('mapasData')) || [];
+            const hostMaps = mapsData.filter(map => map.player === 'HOST');
+
+            hostMaps.forEach(map => {
+                const mapElement = document.createElement('div');
+                mapElement.className = `map-card ${map.actionType === 'ban' ? 'map-ban' : ''}`;
+                mapElement.setAttribute('data-map-id', map.name);
+
+                const imgElement = document.createElement('img');
+                imgElement.className = 'map-img';
+                imgElement.src = `https://aoe2cm.net/${map.imageUrl}`;
+                imgElement.alt = map.name;
+
+                const nameElement = document.createElement('div');
+                nameElement.className = 'map-name';
+                nameElement.textContent = map.name;
+
+                const wonCheckbox = document.createElement('label');
+                wonCheckbox.innerHTML = `
+                    <input type="checkbox" ${map.won ? 'checked' : ''} onchange="markMapAsWinner('${map.name}', this.checked)">
+                    Ganador
+                `;
+
+                const lostCheckbox = document.createElement('label');
+                lostCheckbox.innerHTML = `
+                    <input type="checkbox" ${map.lost ? 'checked' : ''} onchange="markMapAsLoser('${map.name}', this.checked)">
+                    Perdedor
+                `;
+
+                mapElement.appendChild(imgElement);
+                mapElement.appendChild(nameElement);
+                mapElement.appendChild(wonCheckbox);
+                mapElement.appendChild(lostCheckbox);
+
+                hostMapsContainer.appendChild(mapElement);
+            });
+        }
+
+        function markMapAsWinner(mapName, isWinner) {
+            const mapsData = JSON.parse(localStorage.getItem('mapasData'));
+            const map = mapsData.find(m => m.name === mapName && m.player === 'HOST');
+            if (map) map.won = isWinner;
+            localStorage.setItem('mapasData', JSON.stringify(mapsData));
+            renderUpdatedHostMaps();
+        }
+
+        function markMapAsLoser(mapName, isLoser) {
+            const mapsData = JSON.parse(localStorage.getItem('mapasData'));
+            const map = mapsData.find(m => m.name === mapName && m.player === 'HOST');
+            if (map) map.lost = isLoser;
+            localStorage.setItem('mapasData', JSON.stringify(mapsData));
+            renderUpdatedHostMaps();
+        }
+
+        function renderUpdatedHostMaps() {
+            const hostMapsContainer = document.getElementById('hostMapsContainer');
+            hostMapsContainer.innerHTML = '';
+            displayHostMaps();
+        }
+
+        document.addEventListener("DOMContentLoaded", displayHostMaps);
+    </script>
+</body>
+</html>
