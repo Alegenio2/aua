@@ -55,14 +55,14 @@
         // Agregar imagen de estado si es ganador o perdedor
         if (map.won) {
             const wonImage = document.createElement("img");
-            wonImage.src = "img/gano.svg"; // Ruta de la imagen de ganador
+            wonImage.src = "img/gano1.svg"; // Ruta de la imagen de ganador
             wonImage.alt = "Ganador";
             wonImage.classList.add("status-image");
             mapElement.appendChild(wonImage);
         }
         if (map.lost) {
             const lostImage = document.createElement("img");
-            lostImage.src = "img/perdio.svg"; // Ruta de la imagen de perdedor
+            lostImage.src = "img/gano2.svg"; // Ruta de la imagen de perdedor
             lostImage.alt = "Perdedor";
             lostImage.classList.add("status-image");
             mapElement.appendChild(lostImage);
