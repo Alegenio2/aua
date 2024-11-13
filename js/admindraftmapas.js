@@ -55,8 +55,8 @@ function renderMaps() {
             <img src="https://aoe2cm.net${map.imageUrl}" alt="${map.name}" class="map-img">
             <span class="map-name">${map.name}</span>
             <div class="map-buttons">
-                <button onclick="markWin('${map.name}')">🏆</button>
-                <button onclick="markLoss('${map.name}')">❌</button>
+                <button onclick="markWin('${map.name}')">Ⓐ</button>
+                <button onclick="markLoss('${map.name}')">Ⓑ</button>
             </div>
         `;
 
