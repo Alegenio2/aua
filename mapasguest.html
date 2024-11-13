@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mapas del Host</title>
-    <link rel="stylesheet" href="css/drafmapshost.css">
+    <link rel="stylesheet" href="css/draftmapsguest.css">
   </head>
   <body>
     <div id="loadingIndicator">Cargando mapas del host...</div>
@@ -29,7 +29,7 @@
     hostMapsContainer.innerHTML = "";
 
     const mapsData = JSON.parse(localStorage.getItem("mapasData")) || [];
-    const hostMaps = mapsData.filter((map) => map.player === "HOST");
+    const hostMaps = mapsData.filter((map) => map.player === "GUEST");
 
     // Crear contenedores para picks y bans
     const pickContainer = document.createElement("div");
@@ -82,7 +82,6 @@
     hostMapsContainer.appendChild(pickContainer);
     hostMapsContainer.appendChild(banContainer);
 }
-
   
       document.addEventListener("DOMContentLoaded", displayHostMaps);
     </script>
