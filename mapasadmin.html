@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapas del Host</title>
+    <link rel="stylesheet" href="css/draftmapsguest.css">
+  </head>
+  <body>
+    <div id="loadingIndicator">Cargando mapas del host...</div>
+    <div class="map-container" id="hostMapsContainer"></div>
+  
+    <script>
+      window.addEventListener("storage", (event) => {
+        console.log(event);
+        if (event.key === "mapasData") {
+          // Solo actualiza si la clave `mapasData` ha cambiado
+          console.log("Cargando mapas del host desde storage");
+          displayHostMaps();
+        }
+      });
+  
+      async function displayHostMaps() {
+    const hostMapsContainer = document.getElementById("hostMapsContainer");
+    const loadingIndicator = document.getElementById("loadingIndicator");
+    loadingIndicator.style.display = "none"; // Ocultar el indicador de carga
+
+    // Limpiar el contenedor para evitar duplicaciones
+    hostMapsContainer.innerHTML = "";
+
+    const mapsData = JSON.parse(localStorage.getItem("mapasData")) || [];
+    const hostMaps = mapsData.filter((map) => map.player === "NONE");
+
+    // Crear contenedores para picks y bans
+    const pickContainer = document.createElement("div");
+    pickContainer.className = "pick-container";
+
+    const banContainer = document.createElement("div");
+    banContainer.className = "ban-container";
+
+    hostMaps.forEach((map) => {
+        const mapElement = document.createElement("div");
+        mapElement.className = `map-card ${map.actionType === "ban" ? "map-ban" : ""}`;
+        mapElement.setAttribute("data-map-id", map.name);
+
+        const imgElement = document.createElement("img");
+        imgElement.className = "map-img";
+        imgElement.src = `https://aoe2cm.net/${map.imageUrl}`;
+        imgElement.alt = map.name;
+
+        const nameElement = document.createElement("div");
+        nameElement.className = "map-name";
+        nameElement.textContent = map.name;
+
+        // Agregar imagen de estado si es ganador o perdedor
+        if (map.won) {
+            const wonImage = document.createElement("img");
+            wonImage.src = "img/gano.svg"; // Ruta de la imagen de ganador
+            wonImage.alt = "Ganador";
+            wonImage.classList.add("status-image");
+            mapElement.appendChild(wonImage);
+        }
+        if (map.lost) {
+            const lostImage = document.createElement("img");
+            lostImage.src = "img/perdio.svg"; // Ruta de la imagen de perdedor
+            lostImage.alt = "Perdedor";
+            lostImage.classList.add("status-image");
+            mapElement.appendChild(lostImage);
+        }
+
+        mapElement.appendChild(imgElement);
+        mapElement.appendChild(nameElement);
+
+        if (map.actionType === "pick") {
+            pickContainer.appendChild(mapElement); // Agregar a los picks
+        } else if (map.actionType === "ban") {
+            banContainer.appendChild(mapElement); // Agregar a los bans
+        }
+    });
+
+    // Agregar los contenedores a la página
+    hostMapsContainer.appendChild(pickContainer);
+    hostMapsContainer.appendChild(banContainer);
+}
+  
+      document.addEventListener("DOMContentLoaded", displayHostMaps);
+    </script>
+  </body>
+  
+</html>
