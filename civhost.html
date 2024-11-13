@@ -42,23 +42,27 @@
         border-radius: 50%;
     }
     
-           /* Nombre de la civilización sobre el círculo */
-    .civ-name {
-        position: absolute;
-        top: 88px; /* Mueve el nombre hacia arriba */
-        font-weight: bold;
-        font-size: 14px;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
+/* Nombre de la civilización en la parte inferior del círculo */
+.civ-name {
+    position: absolute;
+    bottom: 5px; /* Ajusta la posición hacia la parte inferior */
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo semitransparente para mejor legibilidad */
+    padding: 2px 5px;
+    border-radius: 5px;
+}
 
-    
-        /* Imagen de estado (ganador o perdedor) */
-        .status-image {
-            position: absolute;
-            top: 5px; /* Espacio desde la parte superior */
-            width: 40px;
-            height: auto;
-        }
+/* Imagen de estado (ganador o perdedor) en la parte superior del círculo */
+.status-image {
+    width: 50px;
+    position: absolute;
+    top: 5px; /* Coloca la imagen de estado en la parte superior */
+    left: 50%;
+    transform: translateX(-50%); /* Centra la imagen */
+    z-index: 1; /* Coloca la imagen de estado por encima de la imagen */
+}
     
         /* Indicador de carga */
         #loadingIndicator {
