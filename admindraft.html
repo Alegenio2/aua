@@ -59,7 +59,39 @@
         });
     
     </script>
+    <script>
+  // Crear una conexión WebSocket
+  const socket = new WebSocket('ws://localhost:8080');
+
+  // Evento cuando la conexión es abierta
+  socket.onopen = function(event) {
+    console.log('Conexión WebSocket abierta');
     
+    // Enviar datos al servidor WebSocket
+    socket.send(JSON.stringify({
+      message: 'Datos desde la web'
+    }));
+  };
+
+  // Evento cuando se recibe un mensaje desde el servidor
+  socket.onmessage = function(event) {
+    const data = JSON.parse(event.data);
+    console.log('Datos recibidos: ', data);
+    
+    // Aquí puedes usar los datos para actualizar la UI de tu página web
+  };
+
+  // Evento cuando hay un error en la conexión
+  socket.onerror = function(error) {
+    console.log('Error WebSocket: ', error);
+  };
+
+  // Evento cuando la conexión se cierra
+  socket.onclose = function(event) {
+    console.log('Conexión WebSocket cerrada');
+  };
+</script>
+
 
     <script src="js/admindraftcivs.js"></script>
     <script src="js/admindraftmapas.js"></script>
