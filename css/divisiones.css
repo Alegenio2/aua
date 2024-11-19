@@ -1,15 +1,15 @@
-
 .division-list {
     display: flex; /* Muestra las divisiones en línea */
     flex-wrap: wrap; /* Permite que las divisiones se ajusten a la siguiente línea si no hay espacio */
+    justify-content: center; /* Centra los elementos en el contenedor */
     padding: 0;
     margin: 0;
     text-align: center;
+    gap: 1rem; /* Espaciado uniforme entre divisiones */
 }
 
 .division-list li {
     list-style-type: none;
-    margin: 10px; /* Espacio entre divisiones */
     transition: transform 0.3s ease; /* Animación suave al interactuar */
 }
 
@@ -17,10 +17,11 @@
     transform: scale(1.05); /* Aumenta el tamaño al pasar el mouse */
 }
 
-.division-image {
-    width: 100px; /* Ajusta el tamaño según necesites */
+.division-image{
+    width: 120px; /* Tamaño inicial para pantallas grandes */
     height: auto; /* Mantiene la proporción de la imagen */
-    border-radius: 8px; /* Añade bordes redondeados si lo deseas */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para mejor estética */
 }
 
 .fade-in {
@@ -35,3 +36,25 @@
         transform: translateY(0); /* Regresa a la posición original */
     }
 }
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .division-image {
+        width: 100px; /* Ajusta el tamaño de la imagen para tablets */
+    }
+
+    .division-list {
+        gap: 0.5rem; /* Reduce el espacio entre divisiones */
+    }
+}
+
+@media (max-width: 480px) {
+    .division-image {
+        width: 80px; /* Tamaño más pequeño para móviles */
+    }
+
+    .division-list {
+        gap: 0.3rem; /* Reduce aún más el espaciado */
+    }
+}
+

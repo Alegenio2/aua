@@ -1,13 +1,17 @@
-*{
+* {
     justify-content: center;
 }
+
+/* Contenedor de las rondas */
 .round-container {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin: 10px 0;
+    justify-content: center; /* Centra las rondas en el contenedor */
 }
 
+/* Caja de cada partida */
 .match-box {
     width: 200px;
     padding: 10px;
@@ -16,29 +20,42 @@
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    transition: transform 0.3s ease; /* Animación suave al interactuar */
 }
 
+.match-box:hover {
+    transform: scale(1.05); /* Aumenta ligeramente al pasar el mouse */
+}
+
+/* Estilo para jugadores */
 .player {
     display: flex;
     justify-content: space-between;
     padding: 5px 0;
+    color: #f0f0f0;
 }
 
 .score {
     font-weight: bold;
 }
 
+/* Títulos de rondas */
 h4 {
     margin-top: 20px;
     color: #0c74f5;
+    font-size: 1.5rem; /* Tamaño del texto */
+    text-align: center;
 }
+
+/* Tabla de posiciones */
 .tabla-posiciones {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
 }
 
-.tabla-posiciones th, .tabla-posiciones td {
+.tabla-posiciones th,
+.tabla-posiciones td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
@@ -47,6 +64,7 @@ h4 {
 .tabla-posiciones th {
     background-color: #0480f4;
     font-weight: bold;
+    color: white;
 }
 
 .tabla-posiciones tr:nth-child(even) {
@@ -57,4 +75,44 @@ h4 {
     background-color: #00172b;
 }
 
+/* Responsivo */
+@media (max-width: 768px) {
+    .match-box {
+        width: 150px; /* Reduce el tamaño de las cajas */
+        padding: 8px;
+    }
 
+    .player {
+        flex-direction: column; /* Alinea jugadores en columnas */
+        align-items: center;
+    }
+
+    h4 {
+        font-size: 1.2rem; /* Reduce el tamaño del texto */
+    }
+
+    .tabla-posiciones th,
+    .tabla-posiciones td {
+        padding: 6px; /* Reduce el padding en tablas */
+        font-size: 0.9rem; /* Reduce el tamaño de texto */
+    }
+}
+
+@media (max-width: 480px) {
+    .match-box {
+        width: 120px; /* Tamaño más pequeño para móviles */
+    }
+
+    .player {
+        font-size: 0.9rem; /* Reduce el texto de jugadores */
+    }
+
+    .tabla-posiciones th,
+    .tabla-posiciones td {
+        font-size: 0.8rem; /* Ajusta el texto de la tabla */
+    }
+
+    h4 {
+        font-size: 1rem; /* Ajusta el tamaño del título */
+    }
+}

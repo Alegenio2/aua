@@ -1,82 +1,103 @@
-/* Wrapper para el calendario */
+/* Contenedor principal */
 #calendar-wrapper {
-    color: rgb(255, 255, 255);
+    color: white;
     width: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    position: relative; /* Para la posición de la línea */
+    position: relative;
     padding-top: 1rem;
+    background-color: #222; /* Fondo oscuro para contraste */
 }
+
+/* Línea de tiempo */
 .line {
     position: absolute;
-    width: 180vw;
-    border-top: 1px solid #ccc;
+    width: 200%; /* Se asegura de cubrir todo */
+    border-top: 1px solid #444;
     margin-top: 1rem;
-    
 }
 
-.scroll-container ul{
-display: flex;
-flex-direction: row;
-padding-top: 1rem;
-}
-
+/* Contenedor de desplazamiento */
 .scroll-container {
-    overflow-x: auto; /* Permitir desplazamiento horizontal */
-    white-space: nowrap; /* Mantener los elementos en una sola línea */
-    display: flex; /* Para centrar el contenido */
-    justify-content: center; /* Centra el contenido dentro del contenedor */
-    margin-bottom: 1rem; /* Espaciado inferior para la línea de tiempo */
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    justify-content: flex-start; /* Alinea al inicio */
+    padding: 1rem;
+    scroll-behavior: smooth; /* Desplazamiento suave */
 }
 
+/* Lista de eventos */
 #event-list {
-    display: inline-flex; /* Permite que los elementos hijos estén en una línea */
+    display: inline-flex;
     list-style-type: none;
     padding: 0;
-    margin-left: 10rem;
-    
+    margin: 0;
 }
 
+/* Estilo de los eventos */
 .event {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra horizontalmente */
-    justify-content: flex-start; /* Mantiene la alineación en la parte superior */
+    align-items: center;
+    justify-content: flex-start;
     width: 8rem;
-    
-    height: 10rem; /* Cambia la altura a auto para permitir que se ajuste */
-    padding: 0.5rem; /* Espaciado interno para mayor claridad */
-    text-align: center; /* Centra el texto horizontalmente */
+    height: auto;
+    margin: 0 0.5rem; /* Espaciado entre eventos */
+    text-align: center;
 }
 
-
 .event span {
-    display: block; /* Permite que cada parte del texto se comporte como un bloque */
-    line-height: 1.2; /* Mejora la legibilidad al espaciar las líneas */
-    overflow-wrap: break-word; /* Permite que el texto se divida en la palabra si es necesario */
-    max-width: 100%; /* Asegura que el texto no exceda el ancho del contenedor */
+    display: block;
+    line-height: 1.2;
+    word-wrap: break-word;
 }
 
 .event span.name {
-    white-space: normal; /* Permite que el texto se ajuste normalmente */
-    font-size: 1rem; /* Ajusta el tamaño de fuente si es necesario */
+    font-size: 0.9rem;
+    color: #ddd;
 }
 
+/* Punto de hoy */
 .dot-today {
-    height: 18px;
-    width: 18px;
-    background-color: #00bfff; /* Color celeste para hoy */
+    height: 16px;
+    width: 16px;
+    background-color: #00bfff;
     border-radius: 50%;
-    border: solid 1px #ccc;
+    border: 2px solid #444;
 }
 
+/* Puntos normales */
 .dot {
-    height: 18px;
-    width: 18px;
-    background-color: #ccc;
+    height: 14px;
+    width: 14px;
+    background-color: #777;
     border-radius: 50%;
 }
 
+/* Responsivo */
+@media (max-width: 768px) {
+    .event {
+        width: 6rem;
+    }
 
+    .event span.name {
+        font-size: 0.8rem;
+    }
 
+    .dot, .dot-today {
+        height: 12px;
+        width: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .event {
+        width: 5rem;
+    }
+
+    .event span.name {
+        font-size: 0.7rem;
+    }
+}
