@@ -1,5 +1,3 @@
-// calendar.js
-
 document.addEventListener("DOMContentLoaded", function () {
     const events = [
         { date: "2025-03-01T00:00:00", name: "Registro" },
@@ -13,24 +11,22 @@ document.addEventListener("DOMContentLoaded", function () {
         { date: "2025-04-23T00:00:00", name: "Inicio Jornada 4" },
         { date: "2025-04-29T00:00:00", name: "Final Jornada 4" },
         { date: "2025-04-30T00:00:00", name: "Inicio Jornada 5" },
-        { date: "2025-04-06T00:00:00", name: "Final Jornada 5" },
-        { date: "2025-04-06T00:00:00", name: "Final Jornada 5" },
+        { date: "2025-05-06T00:00:00", name: "Final Jornada 5" },
         { date: "2025-05-31T00:00:00", name: "Final del Torneo" },
     ];
 
     const now = new Date(new Date().setHours(0, 0, 0, 0));
-
-    // Ordenamos todos los eventos por fecha
     const sortedEvents = events.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    // Obtenemos el elemento de la lista de eventos
     const eventList = document.getElementById("event-list");
-    
-    // Limpia la lista antes de añadir nuevos elementos
-    eventList.innerHTML = '';
+    const scrollContainer = document.querySelector(".scroll-container");
 
-    // Añadimos los eventos ordenados a la lista
-    sortedEvents.forEach((event, index) => {
+    // Limpia la lista antes de añadir nuevos elementos
+    eventList.innerHTML = "";
+
+    let todayElement = null;
+
+    // Crea los elementos de la lista
+    sortedEvents.forEach(event => {
         const eventDate = new Date(event.date);
         const isToday = now.getTime() === eventDate.getTime();
 
@@ -44,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         dateText.innerHTML = `<b>${isToday ? "HOY" : `${eventDate.getDate()}/${eventDate.toLocaleString("default", { month: "short" })}`}</b>`;
 
         const nameText = document.createElement("span");
-        nameText.classList.add("name"); // Agrega la clase 'name'
+        nameText.classList.add("name");
         nameText.textContent = event.name;
 
         eventItem.appendChild(dot);
@@ -52,6 +48,29 @@ document.addEventListener("DOMContentLoaded", function () {
         eventItem.appendChild(nameText);
 
         eventList.appendChild(eventItem);
+
+        if (isToday) {
+            todayElement = eventItem;
+        }
+    });
+
+    // Ajusta el desplazamiento inicial
+    if (scrollContainer) {
+        if (todayElement) {
+            // Centra el evento actual en el contenedor
+            const containerWidth = scrollContainer.offsetWidth;
+            const elementPosition = todayElement.offsetLeft;
+            const elementWidth = todayElement.offsetWidth;
+
+            scrollContainer.scrollLeft = elementPosition - containerWidth / 2 + elementWidth / 2;
+        } else {
+            // Desplázate al inicio si no hay evento actual
+            scrollContainer.scrollLeft = 0;
+        }
+    }
+
+    // Habilita el desplazamiento suave
+    scrollContainer.addEventListener("scroll", () => {
+        scrollContainer.style.scrollBehavior = "smooth";
     });
 });
-
