@@ -213,6 +213,26 @@ header .logo {
     border-radius: 8px;
 }
 
+.categoria-info {
+    background-color: #000000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #f0f0f0;
+    text-align: center;
+}
+
+.categoria-info h4 {
+    font-size: 1 rem;
+    color: #0c74f5;
+    margin-bottom: 2px;
+}
+
+.categoria-info p {
+    font-size: 1rem;
+    margin: 2px 0;
+}
+
+
+
 /* Footer */
 footer {
     text-align: center;
