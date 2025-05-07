@@ -9,18 +9,35 @@ async function fetchAndSaveDraftData() {
         const response = await fetch(`https://aoe2cm.net/api/draft/${draftCode}`);
         const data = await response.json();
 
-        const civsData = data.events.map(event => ({
-            name: event.chosenOptionId,
-            player: event.player,
-            actionType: event.actionType,
-            won: false,
-            lost: false
-        }));
+        const civsData = [];
+        const neutralCivs = [];
+
+        data.events.forEach(event => {
+            // Validar que no esté vacío 'chosenOptionId' y que 'actionType' sea relevante
+            if (!event.chosenOptionId || (event.player === 'NONE' && !event.actionType)) {
+                return; // Ignorar civilizaciones sin nombre o con 'NONE' sin actionType
+            }
+
+            const civ = {
+                name: event.chosenOptionId,
+                player: event.player,
+                actionType: event.actionType,
+                won: false,
+                lost: false
+            };
+            if (event.player === 'NONE' || (event.player === 'NONE' && !event.actionType) ) {                            
+                neutralCivs.push(civ); // Guardar civilizaciones neutrales por separado
+                       } else {
+                civsData.push(civ); // Guardar civilizaciones de jugadores
+            }
+        });
 
         localStorage.setItem('civsData', JSON.stringify(civsData));
+        localStorage.setItem('neutralCivs', JSON.stringify(neutralCivs));
+console.log(neutralCivs);
         alert("Datos cargados y guardados en localStorage.");
-
         renderCivs();
+        renderNeutralCivs();
 
     } catch (error) {
         console.error("Error al obtener los datos del draft:", error);
@@ -42,7 +59,6 @@ function renderCivs() {
     const civsData = JSON.parse(localStorage.getItem('civsData'));
 
     civsData.forEach(civ => {
-          // Filtra las civilizaciones que tienen el jugador como "NONE"
         if (civ.player === 'NONE') return;
         const column = civ.player === 'HOST'
             ? (civ.actionType === 'ban' ? hostBansColumn : hostPicksColumn)
@@ -51,27 +67,25 @@ function renderCivs() {
         const civElement = document.createElement('div');
         civElement.classList.add('civ');
         if (civ.actionType === 'ban') civElement.classList.add('civ-ban');
-        console.log();
-        // Si la civilización ganó, se agrega la imagen de 'gano.svg'
+
+        // Añadir imagen si ganó o perdió
         if (civ.won) {
-            console.log(civ.won);
             const wonImage = document.createElement('img');
-            wonImage.src = 'img/gano.svg';  // Asegúrate de que esta ruta sea correcta
-            
+            wonImage.src = 'img/gano.svg';
             wonImage.alt = 'Ganador';
             wonImage.classList.add('status-image');
-
-            civElement.appendChild(wonImage); // Agregar la imagen encima de la civilización
+            civElement.appendChild(wonImage);
         }
+
         if (civ.lost) {
             const lostImage = document.createElement('img');
-            lostImage.src = 'img/perdio.svg';  // Asegúrate de que esta ruta sea correcta
-            lostImage.alt = 'Perdio';
+            lostImage.src = 'img/perdio.svg';
+            lostImage.alt = 'Perdedor';
             lostImage.classList.add('status-image');
-            civElement.appendChild(lostImage); // Agregar la imagen encima de la civilización
+            civElement.appendChild(lostImage);
         }
 
-        civElement.innerHTML = `
+        civElement.innerHTML += `
             <span>${civ.name}</span>
             ${civ.actionType !== 'ban' ? `
                 <label><input type="checkbox" ${civ.won ? 'checked' : ''} onchange="markAsWinner('${civ.name}', this.checked)"> Ganador</label>
@@ -82,40 +96,51 @@ function renderCivs() {
     });
 }
 
-// Función para marcar como ganador y actualizar en localStorage
+function renderNeutralCivs() {
+    const neutralColumn = document.getElementById('neutralCivsColumn');
+    neutralColumn.innerHTML = '';
+
+    const neutralCivs = JSON.parse(localStorage.getItem('neutralCivs')) || [];
+
+    // Filtrar civilizaciones neutrales que tienen un actionType válido
+    const filteredNeutralCivs = neutralCivs.filter(civ => civ.actionType);
+
+    filteredNeutralCivs.forEach(civ => {
+        const civElement = document.createElement('div');
+        civElement.classList.add('civ', 'neutral-civ');
+        civElement.innerHTML = `<span>${civ.name}</span>`;
+        neutralColumn.appendChild(civElement);
+
+          });
+}
+
 function markAsWinner(civName, isWinner) {
     const civsData = JSON.parse(localStorage.getItem('civsData'));
     const civ = civsData.find(c => c.name === civName);
     if (civ) civ.won = isWinner;
     localStorage.setItem('civsData', JSON.stringify(civsData));
-
-    // Actualizar la visualización en la interfaz sin recargar la página
     renderCivs();
 }
 
-// Función para marcar como perdedor y actualizar en localStorage
 function markAsLoser(civName, isLoser) {
     const civsData = JSON.parse(localStorage.getItem('civsData'));
     const civ = civsData.find(c => c.name === civName);
     if (civ) civ.lost = isLoser;
     localStorage.setItem('civsData', JSON.stringify(civsData));
-
-    // Actualizar la visualización en la interfaz sin recargar la página
     renderCivs();
 }
 
-// Actualiza los datos y notifica a las otras pestañas o ventanas
 function actualizarDatos() {
-const nuevosDatos = obtenerDatosActualizados(); // Obtén los datos actualizados
-localStorage.setItem('civsData', JSON.stringify(nuevosDatos));
-
-// Forzar la actualización en la misma pestaña, si es necesario
-displayHostCivs(); // Actualiza el DOM en la misma página sin recargar
+    const nuevosDatos = obtenerDatosActualizados(); // Esta función debe estar definida en otro lugar
+    localStorage.setItem('civsData', JSON.stringify(nuevosDatos));
+    displayHostCivs(); // Esta función también debe estar definida en otro lugar
 }
 
-
-
-// Ejemplo de uso del botón
+// Botón de actualizar
 document.getElementById('btnActualizar').addEventListener('click', actualizarDatos);
 
-document.addEventListener("DOMContentLoaded", renderCivs);
+// Al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    renderCivs();
+    renderNeutralCivs();
+});
