@@ -115,7 +115,8 @@
         const detail = civDetails.find(d => d.id === civ.name);
         if (detail) {
           const civElement = document.createElement('div');
-          civElement.className = 'civ-card';
+          civElement.className = `civ-card ${civ.actionType === 'pick' ? 'civ-pick' : 'civ-ban'}`;
+          civElement.setAttribute('data-civ-id', civ.name);
 
           const img = document.createElement('img');
           img.className = 'civ-img';
