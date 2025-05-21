@@ -93,9 +93,9 @@
       // Detectar cambios en localStorage y actualizar el DOM cuando ocurran
       window.addEventListener("storage", (event) => {
         console.log(event);
-        if (event.key === "civsData") {
-          // Solo actualiza si la clave `civsData` ha cambiado
-          renderNeutralCivs(); // o llama a la función que renderiza en civguest.html
+        if (event.key === "neutralCivs") {
+          // Solo actualiza si la clave `neutralCivs` ha cambiado
+          renderNeutralCivs(); // o llama a la función que renderiza en civadmin.html
         }
       });
       async function fetchCivilizationDetails() {
