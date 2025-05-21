@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nombre del Host</title>
+    <!-- Google Fonts: Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: transparent;
+      color: rgb(0, 0, 0);
+      font-size: 36px;
+     font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      text-shadow: 2px 2px 4px #000; /* sombra para destacar */
+    }
+  </style>
+</head>
+<body>
+  <div id="guestName">GUEST</div>
+
+  <script>
+    function updateHostName() {
+      const name = localStorage.getItem("guestName") || "GUEST";
+      console.log("guestName obtenido desde localStorage:", name);
+      document.getElementById("guestName").textContent = name;
+    }
+
+    document.addEventListener("DOMContentLoaded", updateHostName);
+
+    window.addEventListener("storage", (event) => {
+      if (event.key === "guestName") {
+        updateHostName();
+      }
+    });
+  </script>
+</body>
+</html>
