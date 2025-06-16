@@ -67,6 +67,22 @@
         {
             "nombre": "Nomada",
             "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_nomad.png"
+        },
+        {
+            "nombre": "Stranded",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/CU_Stranded.png"
+        },
+        {
+            "nombre": "Border Dispute",
+            "imagen": "https://github.com/Alegenio2/civs/blob/main/Mapas_2025/CU_Border%20Dispute.png"
+        },
+        {
+            "nombre": "Skukuza",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/CU_Skukuza.png"
+        },
+        {
+            "nombre": "African Waters",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/CU_African%20Waters.png"
         }
     ]
 }
