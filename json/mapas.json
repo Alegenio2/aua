@@ -2,7 +2,7 @@
     "mapas": [
         {
             "nombre": "Arabia",
-            "imagen": "https://alexocampos.github.io/liga-espanhola-aoe2-static/maps/LEA_golden_lakes.png"
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_arabia.png"
         },
         {
             "nombre": "Arena",
