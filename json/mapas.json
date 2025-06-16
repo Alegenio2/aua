@@ -1,6 +1,18 @@
 {
     "mapas": [
         {
+            "nombre": "Land Madness",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_arabia.png"
+        },
+        {
+            "nombre": "Morass",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_morass.png"
+        },
+        {
+            "nombre": "Low Tide",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/CU_Low%20Tide.png"
+        },
+        {
             "nombre": "Arabia",
             "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_arabia.png"
         },
