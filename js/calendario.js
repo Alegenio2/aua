@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
     const events = [
-        { date: "2025-03-01T00:00:00", name: "Registro" },
-        { date: "2025-03-30T00:00:00", name: "Fin de Registro" },
-        { date: "2025-04-03T00:00:00", name: "Inicio Jornada 1" },
-        { date: "2025-04-08T00:00:00", name: "Final Jornada 1" },
-        { date: "2025-04-09T00:00:00", name: "Inicio Jornada 2" },
-        { date: "2025-04-15T00:00:00", name: "Final Jornada 2" },
-        { date: "2025-04-16T00:00:00", name: "Inicio Jornada 3" },
-        { date: "2025-04-22T00:00:00", name: "Final Jornada 3" },
-        { date: "2025-04-23T00:00:00", name: "Inicio Jornada 4" },
-        { date: "2025-04-29T00:00:00", name: "Final Jornada 4" },
-        { date: "2025-04-30T00:00:00", name: "Inicio Jornada 5" },
-        { date: "2025-05-06T00:00:00", name: "Final Jornada 5" },
-        { date: "2025-05-31T00:00:00", name: "Final del Torneo" },
+        { date: "2025-06-15T00:00:00", name: "Registro" },
+        { date: "2025-07-06T00:00:00", name: "Fin de Registro" },
+        { date: "2025-07-14T00:00:00", name: "Inicio Jornada 1" },
+        { date: "2025-07-20T00:00:00", name: "Final Jornada 1" },
+        { date: "2025-07-21T00:00:00", name: "Inicio Jornada 2" },
+        { date: "2025-07-27T00:00:00", name: "Final Jornada 2" },
+        { date: "2025-07-28T00:00:00", name: "Inicio Jornada 3" },
+        { date: "2025-08-03T00:00:00", name: "Final Jornada 3" },
+        { date: "2025-08-04T00:00:00", name: "Inicio Jornada 4" },
+        { date: "2025-08-10T00:00:00", name: "Final Jornada 4" },
+        { date: "2025-08-11T00:00:00", name: "Inicio Jornada 5" },
+        { date: "2025-08-17T00:00:00", name: "Final Jornada 5" },
+        { date: "2025-09-31T00:00:00", name: "Final del Torneo" },
     ];
 
     const now = new Date(new Date().setHours(0, 0, 0, 0));
