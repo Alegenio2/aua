@@ -55,6 +55,18 @@
         {
             "nombre": "Islas del Pasifico",
             "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_pacific-islands.png"
+        },
+        {
+            "nombre": "Shorelines",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/CU_Shorelines.png"
+        },
+        {
+            "nombre": "Claro Africano",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_african_clearing.png"
+        },
+        {
+            "nombre": "Nomada",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_nomad.png"
         }
     ]
 }
