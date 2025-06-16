@@ -13,16 +13,48 @@
             "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/CU_Low%20Tide.png"
         },
         {
+            "nombre": "Enclosed",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_enclosed.png"
+        },
+        {
             "nombre": "Arabia",
             "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_arabia.png"
+        },
+        {
+            "nombre": "Brookside Battleground",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/CU_Brookside%20Battleground.png"
         },
         {
             "nombre": "Arena",
             "imagen": "https://alexocampos.github.io/liga-espanhola-aoe2-static/maps/LEA_rocky_forest.png"
         },
         {
-            "nombre": "Islas",
-            "imagen": "https://alexocampos.github.io/liga-espanhola-aoe2-static/maps/LEA_border_dispute.png"
+            "nombre": "Selva Negra",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_black-forest.png"
+        },
+        {
+            "nombre": "ByPass",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/CU_Bypass.png"
+        },
+        {
+            "nombre": "Immersion",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/CU_Immersion.png"
+        },
+        {
+            "nombre": "Kelimutu Lakes",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/CU_Kelimutu%20Lakes.png"
+        },
+        {
+            "nombre": "Kawasan",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_kawasan.png"
+        },
+        {
+            "nombre": "Migracion",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_migration.png"
+        },
+        {
+            "nombre": "Islas del Pasifico",
+            "imagen": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/rm_pacific-islands.png"
         }
     ]
 }
