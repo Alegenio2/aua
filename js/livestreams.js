@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     canales.forEach(canal => {
       const iframe = document.createElement("iframe");
-      iframe.src = `https://player.twitch.tv/?channel=${canal}&parent=aldeanooscar.onrender.com&autoplay=false&muted=true`;
+      iframe.src = `https://player.twitch.tv/?channel=${canal}&parent=aua.netlify.app&autoplay=false&muted=true`;
       iframe.allowFullscreen = true;
       iframe.classList.add("twitch-embed");
       track.appendChild(iframe);
