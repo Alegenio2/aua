@@ -9,13 +9,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     const inicio = new Date(torneo.start).toLocaleDateString();
     const fin = new Date(torneo.end).toLocaleDateString();
 
-    const imagen = torneo.league?.image || "img/default-tournament.png";
+    const imagen = torneo.league?.image || "";
     const premio = torneo.prizePool ? `${torneo.prizePool.amount} ${torneo.prizePool.code}` : "No informado";
     const ubicacion = torneo.location?.name || "Desconocida";
 
     content.innerHTML = `
       <div class="torneo-internacional-box">
-        <img src="${imagen}" alt="${torneo.name}" class="torneo-img" />
+        <img src="${imagen}" alt="${torneo.name}" class="torneo-img"
+             onerror="this.onerror=null; this.src='img/default-tournament.png';" />
         <div class="torneo-datos">
           <h4>${torneo.name}</h4>
           <p><strong>Inicio:</strong> ${inicio}</p>
