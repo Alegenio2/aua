@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const events = [
-        { date: "2025-07-01T00:00:00", name: "Registro" },
-        { date: "2025-07-15T00:00:00", name: "Fin de Registro" },
+        { date: "2025-06-06T00:00:00", name: "Registro" },
+        { date: "2025-07-14T00:00:00", name: "Fin de Registro" },
         { date: "2025-07-21T00:00:00", name: "Inicio Jornada 1" },
         { date: "2025-07-27T00:00:00", name: "Final Jornada 1" },
         { date: "2025-07-28T00:00:00", name: "Inicio Jornada 2" },
