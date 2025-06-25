@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const canales = ["fumage_", "jabsuy", "rxon_"];
+    const canales = ["fumage_", "jabsuy", "rxxon_"];
     const track = document.getElementById("twitch-carousel-track");
   
     canales.forEach(canal => {
