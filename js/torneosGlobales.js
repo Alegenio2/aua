@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!res.ok) throw new Error("No se pudo obtener la lista de torneos");
 
     const torneos = await res.json();
-
+    console.log(torneos);
     if (!torneos || torneos.length === 0) {
       container.innerHTML = "<p>No hay torneos anunciados por ahora.</p>";
       return;
