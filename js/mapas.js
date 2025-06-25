@@ -1,16 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("json/mapas.json")  // Archivo JSON local con datos de mapas
-        .then(response => response.json())
-        .then(data => {
-            const mapasContainer = document.querySelector(".contenedor-mapas");
-            data.mapas.forEach(mapa => {
-                mapasContainer.innerHTML += `
-                    <div class="mapa">
-                        <img src="${mapa.imagen}" alt="${mapa.nombre}">
-                        <p>${mapa.nombre}</p>
-                    </div>
-                `;
-            });
-        })
-        .catch(error => console.error("Error al cargar los mapas:", error));
-});
+    fetch("json/mapas.json")
+      .then(response => response.json())
+      .then(data => {
+        const mapasContainer = document.querySelector(".contenedor-mapas");
+        data.mapas.forEach(mapa => {
+          const divMapa = document.createElement("div");
+          divMapa.classList.add("mapa");
+  
+          const img = document.createElement("img");
+          img.src = mapa.imagen;
+          img.alt = mapa.nombre;
+  
+          const p = document.createElement("p");
+          p.textContent = mapa.nombre;
+  
+          divMapa.appendChild(img);
+          divMapa.appendChild(p);
+  
+          mapasContainer.appendChild(divMapa);
+        });
+      })
+      .catch(error => console.error("Error al cargar los mapas:", error));
+  });
+  

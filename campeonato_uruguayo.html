@@ -1,88 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asociación Uruguaya de AOE II</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/divisiones.css">
-    <link rel="stylesheet" href="css/rondas.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campeonato Uruguayo - AUA</title>
+  <link rel="stylesheet" href="css/style.css" />     
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <!-- Navegación Principal -->
-    <header>
-        <div class="container">
-           
-            <h1 class="logo">Asociación Uruguaya de AoE II</h1>
-            <a href="#"><img src="img/aua.png" style="width: 50px;"></a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="noticias.html">Noticias</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
-            </nav>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <h1>Asociación Uruguaya de Age</h1>
+    </div>
+    <div class="header-center">
+      <img src="img/aua.png" alt="Logo AUA" class="logo-header" />
+    </div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <nav class="header-right" id="main-nav">
+      <a href="index.html">Inicio</a>
+      <a href="#">Eventos</a>
+    </nav>
+  </header>
+
+  <!-- CATEGORÍAS -->
+  <section id="divisiones" class="section">
+    <div class="info-box">
+      <div class="box-header">🏆 Categorías</div>
+      <div class="contenedor-divisiones">
+        <ul id="division-list" class="division-list">
+          <!-- Se carga dinámicamente -->
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTONES DE CATEGORÍAS -->
+  <section class="section">
+    <div class="info-box">
+      <div class="box-header">📊 Rondas y Posiciones</div>
+      <div class="categoria-lista" style="text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+        <button class="btn categoria-btn" data-categoria="a">Categoría A</button>
+        <button class="btn categoria-btn" data-categoria="b">Categoría B</button>
+        <button class="btn categoria-btn" data-categoria="c">Categoría C</button>
+        <button class="btn categoria-btn" data-categoria="d">Categoría D</button>
+        <button class="btn categoria-btn" data-categoria="e">Categoría E</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO DE LA CATEGORÍA -->
+  <section id="info-categoria" class="section" style="display:none;">
+    <div class="info-box">
+      <div id="partidas" class="contenido"></div>
+      <div id="tabla-posiciones" class="contenido"></div>
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+  <section id="sponsor" class="section">
+    <div class="info-box">
+      <div class="box-header">🎖️ Patrocinadores</div>
+      <div class="contenedor-sponsor" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+        <div class="sponsor">
+          <h3>Fumage</h3>
+          <a href="#"><img src="img/Fumage.png" alt="Fumage" style="width: 100px;" /></a>
         </div>
-    </header>
+        <div class="sponsor">
+          <h3>Emis Boutique</h3>
+          <a href="#"><img src="img/emis.png" alt="Emis Boutique" style="width: 100px;" /></a>
+        </div>
+        <div class="sponsor">
+          <h3>KBM Tienda</h3>
+          <a href="#"><img src="img/kbm.png" alt="KBM Tienda" style="width: 100px;" /></a>
+        </div>
+        <div class="sponsor">
+          <h3>JabsUY</h3>
+          <a href="#"><img src="img/LogoJabs.png" alt="JabsUY" style="width: 100px;" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
- <!-- Sección de Divisiones -->
- <section id="divisiones" class="section">
-    <h2>Categorías</h2>
-    <div class="contenedor-divisiones">
-        
-    <ul id="division-list" class="division-list">
-        <!-- Las divisiones se cargarán aquí dinámicamente -->
-    </ul>
-</div>
-</section>
-<section class="categorias">
-    <h2>Rondas y Posiciones</h2>
-    <div class="categoria-lista">
-        <button class="btn categoria-btn" data-categoria="categoria1">Categoria 1</button>
-        <button class="btn categoria-btn" data-categoria="categoria2">Categoria 2</button>
-        <button class="btn categoria-btn" data-categoria="categoria3">Categoria 3</button>
-        <button class="btn categoria-btn" data-categoria="categoria4">Categoria 4</button>
-        <button class="btn categoria-btn" data-categoria="categoria5">Categoria 5</button>
-        <!-- Añade más categorías según sea necesario -->
-    </div>
-</section>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Asociación Uruguaya de Age of Empires II</p>
+  </footer>
 
-<section id="info-categoria" class="info-categoria">
-    <div id="partidas" class="contenido"></div>
-    <div id="tabla-posiciones" class="contenido"></div>
-</section>
-    
-<section id="sponsor">
-    <h2>Patrocinadores</h2>
-    <div class="contenedor-sponsor">
-    <div class="sponsor">
-     <h3>Fumage</h3>
-     <a href="#"><img src="img/Fumage.png" alt="" style="width: 100px;"></a>
-    </div>
-    <div class="sponsor">
-     <h3>Emis Boutique</h3>
-     <a href="#"><img src="img/emis.png" alt="" style="width: 100px;"></a>
-    </div>
-    <div class="sponsor">
-     <h3>KBM Tienda</h3>
-     <a href="#"><img src="img/kbm.png" alt="" style="width: 100px;"></a>
-    </div>
-    <div class="sponsor">
-     <h3>JabsUY</h3>
-     <a href="#"><img src="img/LogoJabs.png" alt="" style="width: 100px;"></a>
-    </div>
- </div>
-     </section>
-    <footer>
-        <p>&copy; 2024 Asociación Uruguaya de Age of Empires II</p>
-    </footer>
-    <script src="js/rondas.js"></script>
-    <script src="js/divisiones.js"></script>
-    <script src="js/campeonatos.js"></script>
+  <!-- JS -->
+  <script src="js/rondas.js"></script>
+  <script src="js/divisiones.js"></script>
 </body>
 </html>

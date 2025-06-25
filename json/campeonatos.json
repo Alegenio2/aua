@@ -18,7 +18,7 @@
         "id": "copa_uruguaya",
         "nombre": "Copa Uruguaya",
         "descripcion": "Una competencia que celebra lo mejor de Age of Empires en Uruguay.",
-        "imagen": "img/4.webp",
+        "imagen": "img/CopaUruguay.png",
         "url":"campeonato_uruguayo.html"
       }
     ]
