@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const premio = torneo.prizePool ? `${torneo.prizePool.amount} ${torneo.prizePool.code}` : "No informado";
     const ubicacion = torneo.location?.name || "Desconocida";
     const imagen = torneo.league?.image || "img/default-tournament.png";
-
+    console.log(imagen);
     // Crear contenedor principal
     const box = document.createElement("div");
     box.className = "torneo-internacional-box";
