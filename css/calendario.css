@@ -1,103 +1,107 @@
-/* Contenedor principal */
 #calendar-wrapper {
-    color: white;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
     position: relative;
-    padding-top: 1rem;
-    background-color: #222; /* Fondo oscuro para contraste */
-}
-
-/* Línea de tiempo */
-.line {
+    padding-top: 40px; /* más espacio para el .box-header */
+    padding-bottom: 20px;
+    overflow-x: auto;
+  }
+  
+  
+  .line {
     position: absolute;
-    width: 200%; /* Se asegura de cubrir todo */
-    border-top: 1px solid #444;
-    margin-top: 1rem;
-}
-
-/* Contenedor de desplazamiento */
-.scroll-container {
+    top: 25px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary);
+    opacity: 0.3;
+    z-index: 1;
+  }
+  
+  .scroll-container {
     overflow-x: auto;
     white-space: nowrap;
-    display: flex;
-    justify-content: flex-start; /* Alinea al inicio */
-    padding: 1rem;
-    scroll-behavior: smooth; /* Desplazamiento suave */
-}
-
-/* Lista de eventos */
-#event-list {
-    display: inline-flex;
-    list-style-type: none;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    z-index: 2;
+  }
+  
+  #event-list {
+    list-style: none;
     padding: 0;
     margin: 0;
-}
-
-/* Estilo de los eventos */
-.event {
+    display: flex;
+    gap: 20px;
+  }
+  
+  #event-list li.event {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    width: 8rem;
-    height: auto;
-    margin: 0 0.5rem; /* Espaciado entre eventos */
-    text-align: center;
-}
-
-.event span {
-    display: block;
-    line-height: 1.2;
-    word-wrap: break-word;
-}
-
-.event span.name {
-    font-size: 0.9rem;
-    color: #ddd;
-}
-
-/* Punto de hoy */
-.dot-today {
-    height: 16px;
-    width: 16px;
-    background-color: #00bfff;
-    border-radius: 50%;
-    border: 2px solid #444;
-}
-
-/* Puntos normales */
-.dot {
-    height: 14px;
+    gap: 6px;
+    min-width: 130px;
+    background: var(--dark);
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(245, 222, 12, 0.3);
+    font-family: 'Kode Mono', monospace;
+    color: var(--text);
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+  }
+  
+  #event-list li.event:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--accent);
+  }
+  
+  .dot, .dot-today {
     width: 14px;
-    background-color: #777;
+    height: 14px;
     border-radius: 50%;
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-    .event {
-        width: 6rem;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  
+  .dot {
+    background-color: var(--primary);
+  }
+  
+  .dot-today {
+    background-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+  }
+  
+  #event-list span.name {
+    font-size: 0.9rem;
+    color: var(--text);
+    text-align: center;
+  }
+  
+  #event-list span b {
+    color: var(--primary);
+    font-size: 0.8rem;
+  }
+  
+  /* 📱 Responsive para móviles */
+  @media (max-width: 768px) {
+    #event-list li.event {
+      min-width: 100px;
+      padding: 8px;
+      font-size: 0.8rem;
     }
-
-    .event span.name {
-        font-size: 0.8rem;
-    }
-
+  
     .dot, .dot-today {
-        height: 12px;
-        width: 12px;
+      width: 12px;
+      height: 12px;
     }
-}
-
-@media (max-width: 480px) {
-    .event {
-        width: 5rem;
+  
+    #event-list span.name {
+      font-size: 0.75rem;
     }
-
-    .event span.name {
-        font-size: 0.7rem;
+  
+    #event-list span b {
+      font-size: 0.7rem;
     }
-}
+  }
+  
