@@ -99,7 +99,72 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
 
-    function mostrarTablaPosiciones(data) {
+function mostrarTablaPosiciones(data) {
+    tablaPosiciones.innerHTML = "<h3>Tabla de Posiciones</h3>";
+
+    // Si hay grupos definidos, mostramos una tabla por grupo
+    if (data.grupos) {
+        Object.entries(data.grupos).forEach(([grupoNombre, jugadoresGrupo]) => {
+            const idsGrupo = jugadoresGrupo.map(j => j.id);
+
+            // Inicializamos datos por jugador del grupo
+            const puntos = {};
+            idsGrupo.forEach(id => {
+                const jugador = data.participantes.find(p => p.id === id);
+                puntos[id] = {
+                    nombre: jugador ? jugador.nombre : "Desconocido",
+                    puntos: 0,
+                    jugadas: 0,
+                    ganadas: 0
+                };
+            });
+
+            // Recorremos las jornadas y sumamos puntos SOLO si ambos jugadores están en el grupo
+            data.jornadas.forEach(jornada => {
+                jornada.partidos.forEach(p => {
+                    if (!p.resultado) return;
+
+                    const id1 = p.jugador1Id;
+                    const id2 = p.jugador2Id;
+                    if (!idsGrupo.includes(id1) || !idsGrupo.includes(id2)) return; // Saltar partidos entre grupos
+
+                    const s1 = p.resultado[id1] ?? 0;
+                    const s2 = p.resultado[id2] ?? 0;
+
+                    puntos[id1].puntos += s1;
+                    puntos[id2].puntos += s2;
+                    puntos[id1].jugadas += 1;
+                    puntos[id2].jugadas += 1;
+
+                    if (s1 > s2) puntos[id1].ganadas += 1;
+                    else if (s2 > s1) puntos[id2].ganadas += 1;
+                });
+            });
+
+            const lista = Object.values(puntos).sort((a, b) => b.puntos - a.puntos);
+
+            const titulo = document.createElement("h4");
+            titulo.textContent = `Grupo ${grupoNombre}`;
+            tablaPosiciones.appendChild(titulo);
+
+            const tabla = document.createElement("table");
+            tabla.classList.add("tabla-posiciones");
+            tabla.innerHTML = `
+                <tr><th>Pos</th><th>Jugador</th><th>Puntos</th><th>Jugadas</th><th>Ganadas</th></tr>
+                ${lista.map((p, i) => `
+                    <tr>
+                        <td>${i + 1}</td>
+                        <td>${p.nombre}</td>
+                        <td>${p.puntos}</td>
+                        <td>${p.jugadas}</td>
+                        <td>${p.ganadas}</td>
+                    </tr>
+                `).join("")}
+            `;
+            tablaPosiciones.appendChild(tabla);
+        });
+    } else {
+        // Modo clásico (todos contra todos)
         const puntos = {};
 
         data.participantes.forEach(p => {
@@ -132,10 +197,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const lista = Object.values(puntos).sort((a, b) => b.puntos - a.puntos);
 
-        tablaPosiciones.innerHTML = "<h3>Tabla de Posiciones</h3>";
         const tabla = document.createElement("table");
         tabla.classList.add("tabla-posiciones");
-
         tabla.innerHTML = `
             <tr><th>Posición</th><th>Jugador</th><th>Puntos</th><th>Jugadas</th><th>Ganadas</th></tr>
             ${lista.map((p, i) => `
@@ -151,4 +214,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tablaPosiciones.appendChild(tabla);
     }
+}
 });
