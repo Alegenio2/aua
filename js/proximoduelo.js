@@ -13,21 +13,27 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    function obtenerFechaPartido(partido) {
-        if (!partido.fecha || !partido.horario) return null;
-    
-        const [dia, mes, anio] = partido.fecha.split("-");
-        let hora = parseInt(partido.horario);
-        if (isNaN(hora)) return null;
-    
-        // Usamos la hora como local sin tocar por GMT
-        const fechaStr = `${anio}-${mes}-${dia}T${hora.toString().padStart(2, "0")}:00:00`;
-    
-        // Esto ya lo interpreta como hora local (ej: 2025-07-25T21:00:00)
-        return new Date(fechaStr);
-    }
-    
+function obtenerFechaPartido(partido) {
+    if (!partido.fecha || !partido.horario) return null;
 
+    const [dia, mes, anio] = partido.fecha.split("-");
+    if (!dia || !mes || !anio) return null;
+
+    const horarioRegex = /^(\d{1,2})[:.](\d{2})$/;
+    const match = partido.horario.match(horarioRegex);
+    if (!match) return null;
+
+    const horas = parseInt(match[1], 10);
+    const minutos = parseInt(match[2], 10);
+
+    if (isNaN(horas) || isNaN(minutos)) return null;
+
+    // Construir string compatible con Date
+    const fechaStr = `${anio}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}T${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:00`;
+
+    return new Date(fechaStr);
+}
+   
     try {
         const ahora = new Date();
         const duelosFuturos = [];
