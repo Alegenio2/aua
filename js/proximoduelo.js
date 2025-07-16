@@ -13,35 +13,32 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-function obtenerFechaPartido(partido) {
-    if (!partido.fecha || !partido.horario) return null;
+    function obtenerFechaPartido(partido) {
+        if (!partido.fecha || !partido.horario) return null;
 
-    const [dia, mes, anio] = partido.fecha.split("-");
-    if (!dia || !mes || !anio) return null;
+        const [dia, mes, anio] = partido.fecha.split("-");
+        if (!dia || !mes || !anio) return null;
 
-    // Soportar "HH:mm", "HH.mm", o solo "HH"
-    let horas = 0;
-    let minutos = 0;
+        let horas = 0;
+        let minutos = 0;
+        const horario = partido.horario.trim();
 
-    const horario = partido.horario.trim();
+        if (/^\d{1,2}$/.test(horario)) {
+            horas = parseInt(horario, 10);
+        } else if (/^\d{1,2}[:.]\d{2}$/.test(horario)) {
+            const partes = horario.split(/[:.]/);
+            horas = parseInt(partes[0], 10);
+            minutos = parseInt(partes[1], 10);
+        } else {
+            return null; // formato inválido
+        }
 
-    if (/^\d{1,2}$/.test(horario)) {
-        // Solo hora, ej: "21"
-        horas = parseInt(horario, 10);
-    } else if (/^\d{1,2}[:.]\d{2}$/.test(horario)) {
-        const partes = horario.split(/[:.]/);
-        horas = parseInt(partes[0], 10);
-        minutos = parseInt(partes[1], 10);
-    } else {
-        return null; // formato inválido
+        if (isNaN(horas) || isNaN(minutos)) return null;
+
+        const fechaStr = `${anio}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}T${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:00`;
+        return new Date(fechaStr);
     }
 
-    if (isNaN(horas) || isNaN(minutos)) return null;
-
-    const fechaStr = `${anio}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}T${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:00`;
-
-    return new Date(fechaStr);
-}
     try {
         const ahora = new Date();
         const duelosFuturos = [];
@@ -54,7 +51,6 @@ function obtenerFechaPartido(partido) {
             if (!data.jornadas || !Array.isArray(data.jornadas)) continue;
 
             const partidos = data.jornadas.flatMap(j => j.partidos || []);
-
             for (const partido of partidos) {
                 const fechaReal = obtenerFechaPartido(partido);
                 if (fechaReal && fechaReal > ahora) {
@@ -68,27 +64,30 @@ function obtenerFechaPartido(partido) {
             }
         }
 
-        // Ordenar todos los partidos futuros por fecha
+        // Ordenar por fecha
         duelosFuturos.sort((a, b) => a.fechaReal - b.fechaReal);
 
-        // Tomar los 2 más cercanos
+        // Mostrar los 2 más próximos
         const proximos = duelosFuturos.slice(0, 2);
-        console.log(proximos);
+
         if (proximos.length === 0) {
             container.innerHTML = `<p>⏳ Todavía no hay partidos coordinados.</p>`;
             return;
         }
-       
 
         for (const duelo of proximos) {
             const { partido, fechaReal, participantes, categoria } = duelo;
-
             const jugador1 = participantes.find(p => p.id === partido.jugador1Id);
             const jugador2 = participantes.find(p => p.id === partido.jugador2Id);
-
             const nombre1 = jugador1 ? jugador1.nombre : "A definir";
             const nombre2 = jugador2 ? jugador2.nombre : "A definir";
-            const fechaFormateada = fechaReal.toLocaleString();
+            const fechaFormateada = fechaReal.toLocaleString("es-UY", {
+                weekday: "long",
+                day: "2-digit",
+                month: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit"
+            });
 
             const dueloHTML = `
                 <div class="categoria-info">
@@ -99,7 +98,10 @@ function obtenerFechaPartido(partido) {
             `;
             container.innerHTML += dueloHTML;
         }
+
     } catch (error) {
         console.error("Error al cargar los datos:", error);
+        container.innerHTML = `<p>❌ Error al cargar los duelos.</p>`;
     }
 });
+
