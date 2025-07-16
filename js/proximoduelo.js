@@ -33,7 +33,6 @@ function obtenerFechaPartido(partido) {
 
     return new Date(fechaStr);
 }
-   
     try {
         const ahora = new Date();
         const duelosFuturos = [];
@@ -65,7 +64,7 @@ function obtenerFechaPartido(partido) {
 
         // Tomar los 2 más cercanos
         const proximos = duelosFuturos.slice(0, 2);
-
+        console.log(proximos);
         if (proximos.length === 0) {
             container.innerHTML = `<p>⏳ Todavía no hay partidos coordinados.</p>`;
             return;
