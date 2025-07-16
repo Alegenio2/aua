@@ -43,10 +43,11 @@
         mapElement.className = `map-card ${map.actionType === "ban" ? "map-ban" : ""}`;
         mapElement.setAttribute("data-map-id", map.name);
 
-        const imgElement = document.createElement("img");
-        imgElement.className = "map-img";
-        imgElement.src = `https://aoe2cm.net/${map.imageUrl}`;
-        imgElement.alt = map.name;
+    const imgElement = document.createElement("img");
+imgElement.className = "map-img";
+imgElement.src = map.imageUrl;  // ✅ CORREGIDO
+imgElement.alt = map.name;
+
 
         const nameElement = document.createElement("div");
         nameElement.className = "map-name";
