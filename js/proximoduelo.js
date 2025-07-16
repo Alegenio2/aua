@@ -19,16 +19,25 @@ function obtenerFechaPartido(partido) {
     const [dia, mes, anio] = partido.fecha.split("-");
     if (!dia || !mes || !anio) return null;
 
-    const horarioRegex = /^(\d{1,2})[:.](\d{2})$/;
-    const match = partido.horario.match(horarioRegex);
-    if (!match) return null;
+    // Soportar "HH:mm", "HH.mm", o solo "HH"
+    let horas = 0;
+    let minutos = 0;
 
-    const horas = parseInt(match[1], 10);
-    const minutos = parseInt(match[2], 10);
+    const horario = partido.horario.trim();
+
+    if (/^\d{1,2}$/.test(horario)) {
+        // Solo hora, ej: "21"
+        horas = parseInt(horario, 10);
+    } else if (/^\d{1,2}[:.]\d{2}$/.test(horario)) {
+        const partes = horario.split(/[:.]/);
+        horas = parseInt(partes[0], 10);
+        minutos = parseInt(partes[1], 10);
+    } else {
+        return null; // formato inválido
+    }
 
     if (isNaN(horas) || isNaN(minutos)) return null;
 
-    // Construir string compatible con Date
     const fechaStr = `${anio}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}T${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:00`;
 
     return new Date(fechaStr);
