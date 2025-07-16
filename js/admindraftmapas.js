@@ -10,12 +10,17 @@ async function fetchAndSaveMapData() {
         const response = await fetch(`https://aoe2cm.net/api/draft/${mapDraftCode}`);
         const mapdata = await response.json();
 
-        // Obtener la información de los mapas desde `events` y buscar la imagen en `preset.draftOptions`
         const mapasData = mapdata.events.map(event => {
             const mapOption = mapdata.preset.draftOptions.find(option => option.id === event.chosenOptionId);
+
+            const rawImageUrl = mapOption?.imageUrls?.emblem || '';
+            const finalImageUrl = rawImageUrl.startsWith('http')
+                ? rawImageUrl
+                : `https://aoe2cm.net${rawImageUrl}`;
+
             return {
-                name: mapOption ? mapOption.name : event.chosenOptionId, // Nombre del mapa
-                imageUrl: mapOption ? mapOption.imageUrls.emblem : '',    // URL de la imagen si está disponible
+                name: mapOption ? mapOption.name : event.chosenOptionId,
+                imageUrl: finalImageUrl,
                 player: event.player,
                 actionType: event.actionType,
                 won: false,
@@ -23,10 +28,8 @@ async function fetchAndSaveMapData() {
             };
         });
 
-        // Guardar los mapas en localStorage
         localStorage.setItem('mapasData', JSON.stringify(mapasData));
         alert("Datos de mapas cargados y guardados en localStorage.");
-        
         renderMaps();
 
     } catch (error) {
@@ -34,6 +37,7 @@ async function fetchAndSaveMapData() {
         alert("Error al obtener los datos del draft. Verifica el código e intenta nuevamente.");
     }
 }
+
 
 function renderMaps() {
     const hostMaps = document.getElementById('hostMaps');
