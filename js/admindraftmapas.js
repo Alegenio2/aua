@@ -50,7 +50,7 @@ function renderMaps() {
     neutralMaps.innerHTML = '';
 
     const mapasData = JSON.parse(localStorage.getItem('mapasData')) || [];
-    
+    console.log(mapasData);
     mapasData.forEach(map => {
         const mapElement = document.createElement('div');
         mapElement.className = `map-card ${map.actionType === 'ban' ? 'map-ban' : ''}`;
