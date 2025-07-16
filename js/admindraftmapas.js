@@ -56,7 +56,7 @@ function renderMaps() {
         mapElement.className = `map-card ${map.actionType === 'ban' ? 'map-ban' : ''}`;
 
         mapElement.innerHTML = `
-            <img src="https://aoe2cm.net${map.imageUrl}" alt="${map.name}" class="map-img">
+            <img src="${map.imageUrl}" alt="${map.name}" class="map-img">
             <span class="map-name">${map.name}</span>
             <div class="map-buttons">
                 <button onclick="markWin('${map.name}')">Ⓐ</button>
