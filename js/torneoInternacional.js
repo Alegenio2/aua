@@ -6,8 +6,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!res.ok) throw new Error("No se pudo obtener el torneo actual");
 
     const torneo = await res.json();
-    const inicio = new Date(torneo.start).toLocaleDateString();
-    const fin = new Date(torneo.end).toLocaleDateString();
+
+    const ahora = new Date();
+    const fechaInicio = new Date(torneo.start);
+    const fechaFin = new Date(torneo.end);
+
+    // Verificar si el torneo está en curso
+    if (ahora < fechaInicio || ahora > fechaFin) {
+      content.innerHTML = `<p>No hay torneos internacionales en curso.</p>`;
+      return;
+    }
+
+    const inicio = fechaInicio.toLocaleDateString();
+    const fin = fechaFin.toLocaleDateString();
     const premio = torneo.prizePool ? `${torneo.prizePool.amount} ${torneo.prizePool.code}` : "No informado";
     const ubicacion = torneo.location?.name || "Desconocida";
 
