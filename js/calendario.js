@@ -11,8 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
         { date: "2025-08-04T00:00:00", name: "Inicio Jornada 4" },
         { date: "2025-08-10T00:00:00", name: "Final Jornada 4" },
         { date: "2025-08-11T00:00:00", name: "Inicio Jornada 5" },
-        { date: "2025-08-18T00:00:00", name: "Final Jornada 5" },
-        { date: "2025-08-24T22:00:00", name: "Final del Torneo" },
+        { date: "2025-08-17T00:00:00", name: "Final Jornada 5" },
+        { date: "2025-08-18T00:00:00", name: "Inicio Jornada 6" },
+        { date: "2025-08-24T00:00:00", name: "Final Jornada 6" },
+        { date: "2025-08-25T00:00:00", name: "Inicio Jornada 7" },
+        { date: "2025-08-31T00:00:00", name: "Final Jornada 7" },
+        { date: "2025-09-01T00:00:00", name: "Inicio Jornada 8" },
+        { date: "2025-09-07T00:00:00", name: "Final Jornada 8" },
+        { date: "2025-09-14T22:00:00", name: "Final del Torneo" },
     ];
 
     const now = new Date(new Date().setHours(0, 0, 0, 0));
@@ -74,3 +80,4 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollContainer.style.scrollBehavior = "smooth";
     });
 });
+
