@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("torneos-globales-content");
 
   try {
-    const res = await fetch("https://aldeanooscar.onrender.com/api/tournaments");
+    const res = await fetch("https://aldeanooscar.onrender.com/api/torneos");
     if (!res.ok) throw new Error("No se pudo obtener la lista de torneos");
 
     const torneos = await res.json();
@@ -53,4 +53,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     container.innerHTML = "<p>No se pudieron cargar los torneos.</p>";
   }
 });
+
 
