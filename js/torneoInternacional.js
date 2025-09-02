@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const content = document.getElementById("torneo-internacional-content");
 
   try {
-    const res = await fetch("https://aldeanooscar.onrender.com/api/torneo-actual");
+    const res = await fetch("https://aldeanooscar.onrender.com/api/torneos");
     if (!res.ok) throw new Error("No se pudo obtener el torneo actual");
 
     const torneo = await res.json();
@@ -54,4 +54,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     content.innerHTML = `<p>No hay torneos internacionales en curso.</p>`;
   }
 });
+
 
