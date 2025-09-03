@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", async () => {
   const content = document.getElementById("torneo-internacional-content");
 
@@ -6,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const res = await fetch("https://aldeanooscar.onrender.com/api/torneos");
     if (!res.ok) throw new Error("No se pudo obtener el torneo actual");
 
-    const torneos = await res.json(); // ahora sabemos que es un array
+    const torneos = await res.json(); // el endpoint devuelve un array
     console.log(torneos);
 
     const ahora = new Date();
@@ -33,9 +32,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const ubicacion = torneo.location?.name || "Desconocida";
 
+    // Usamos proxy de imágenes del backend
+    const imagenOriginal = torneo.league?.image || "";
+    const imagenFinal = imagenOriginal
+      ? `https://aldeanooscar.onrender.com/proxy-image?url=${encodeURIComponent(imagenOriginal)}`
+      : "img/default-tournament.png";
+
     content.innerHTML = `
       <div class="torneo-internacional-box">
-        <img src="${torneo.league?.image || "img/default-tournament.png"}"
+        <img src="${imagenFinal}"
              alt="${torneo.name}"
              class="torneo-img"
              onerror="this.src='img/default-tournament.png'" />
@@ -54,3 +59,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     content.innerHTML = `<p>No hay torneos internacionales en curso.</p>`;
   }
 });
+
