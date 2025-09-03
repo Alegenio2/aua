@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", async () => {
   const content = document.getElementById("torneo-internacional-content");
 
@@ -5,40 +6,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     const res = await fetch("https://aldeanooscar.onrender.com/api/torneos");
     if (!res.ok) throw new Error("No se pudo obtener el torneo actual");
 
-    const torneo = await res.json();
+    const torneos = await res.json(); // ahora sabemos que es un array
+    console.log(torneos);
 
     const ahora = new Date();
-    const fechaInicio = new Date(torneo.start);
-    const fechaFin = new Date(torneo.end);
 
-    // Verificar si el torneo está en curso
-    if (ahora < fechaInicio || ahora > fechaFin) {
+    // Buscar el primer torneo en curso
+    const torneo = torneos.find(t => {
+      const inicio = new Date(t.start);
+      const fin = new Date(t.end);
+      return ahora >= inicio && ahora <= fin;
+    });
+
+    if (!torneo) {
       content.innerHTML = `<p>No hay torneos internacionales en curso.</p>`;
       return;
     }
 
-    const inicio = fechaInicio.toLocaleDateString();
-    const fin = fechaFin.toLocaleDateString();
-    const premio = torneo.prizePool ? `${torneo.prizePool.amount} ${torneo.prizePool.code}` : "No informado";
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    const inicio = new Date(torneo.start).toLocaleDateString("es-ES", options);
+    const fin = new Date(torneo.end).toLocaleDateString("es-ES", options);
+
+    const premio = torneo.prizePool
+      ? `${torneo.prizePool.amount} ${torneo.prizePool.code}`
+      : "No informado";
+
     const ubicacion = torneo.location?.name || "Desconocida";
-
-    // Verificación de imagen
-    const testImage = (url) => {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = url;
-      });
-    };
-
-    const imagenUrl = torneo.league?.image || "";
-    const imagenOK = await testImage(imagenUrl);
-    const imagenFinal = imagenOK ? imagenUrl : "img/default-tournament.png";
 
     content.innerHTML = `
       <div class="torneo-internacional-box">
-        <img src="${imagenFinal}" alt="${torneo.name}" class="torneo-img" />
+        <img src="${torneo.league?.image || "img/default-tournament.png"}"
+             alt="${torneo.name}"
+             class="torneo-img"
+             onerror="this.src='img/default-tournament.png'" />
         <div class="torneo-datos">
           <h4>${torneo.name}</h4>
           <p><strong>Inicio:</strong> ${inicio}</p>
@@ -54,5 +54,3 @@ document.addEventListener("DOMContentLoaded", async () => {
     content.innerHTML = `<p>No hay torneos internacionales en curso.</p>`;
   }
 });
-
-
