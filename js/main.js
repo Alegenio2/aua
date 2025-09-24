@@ -1,29 +1,21 @@
-// Inicializar SwiperJS
+// Slider principal
 const swiper = new Swiper('.swiper', {
-    loop: true,
-    autoplay: { delay: 5000 },
-    pagination: { el: '.swiper-pagination', clickable: true },
-  });
-  
- 
-  // Toggle menú hamburguesa
-  const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('main-nav');
-  
-  hamburger.addEventListener('click', () => {
-    nav.classList.toggle('active');
-  });
+  loop: true,
+  autoplay: { delay: 5000 },
+  pagination: { el: '.swiper-pagination', clickable: true },
+});
 
-  const campeonesSwiper = new Swiper('.campeones-swiper', {
+// Slider campeones
+const campeonesSwiper = new Swiper('.campeones-swiper', {
   slidesPerView: 1,
   spaceBetween: 15,
   loop: true,
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.campeones-next',
+    prevEl: '.campeones-prev',
   },
   pagination: {
-    el: '.swiper-pagination',
+    el: '.campeones-pagination',
     clickable: true,
   },
   breakpoints: {
@@ -31,3 +23,4 @@ const swiper = new Swiper('.swiper', {
     768: { slidesPerView: 3 },
   },
 });
+
