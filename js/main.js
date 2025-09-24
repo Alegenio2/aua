@@ -5,7 +5,6 @@ const swiper = new Swiper('.swiper', {
   pagination: { el: '.swiper-pagination', clickable: true },
 });
 
-// Slider campeones
 const campeonesSwiper = new Swiper('.campeones-swiper', {
   slidesPerView: 1,
   spaceBetween: 15,
@@ -23,4 +22,5 @@ const campeonesSwiper = new Swiper('.campeones-swiper', {
     768: { slidesPerView: 3 },
   },
 });
+
 
