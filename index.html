@@ -1,270 +1,237 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Asociación Uruguaya de Age of Empires II</title>
-  <!-- SwiperJS CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <!-- Estilo personalizado -->
-  <link rel="stylesheet" href="css/style.css" />
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Open+Sans&display=swap" rel="stylesheet" />
-  <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32" />
-</head>
-<body>
-  <!-- NAVBAR FIJO -->
-  <header>
-    <div class="header-left">
-      <h1>Asociación Uruguaya de Age</h1>
-    </div>
-    <div class="header-center">
-      <img src="img/aua.png" alt="Logo AUA" class="logo-header" />
-    </div>
-    <div class="hamburger" id="hamburger">&#9776;</div>
-    <nav class="header-right" id="main-nav">
-      <a href="index.html">Home</a>
-      <a href="campeonato_info.html">Eventos</a>
-    </nav>
-  </header>
-
-  <!-- SECCIÓN PRINCIPAL: SLIDER + INFO -->
-  <div class="hero">
-    <!-- Slider principal -->
-    <div class="swiper hero-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background-image: url('img/campeonatouruguayo.webp')">
-          <div class="slide-overlay">
-            <h2>Campeonato Uruguayo</h2>
-            <a href="campeonato_info.html">Ver detalles</a>
-          </div>
-        </div>
-        <div class="swiper-slide" style="background-image: url('img/uruguay_open_cup.webp')">
-          <div class="slide-overlay">
-            <h2>Uruguay Open Cup</h2>
-          </div>
-        </div>
-        <div class="swiper-slide" style="background-image: url('img/copauruguay.webp')">
-          <div class="slide-overlay">
-            <h2>Copa Uruguay</h2>
-          </div>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asociación Uruguaya de Age of Empires II</title>
+    <!-- SwiperJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <!-- Estilo personalizado -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32" />
+  </head>
+  <body>
+    <!-- NAVBAR FIJO -->
+    <header>
+      <div class="header-left">
+        <h1>Asociación Uruguaya de Age</h1>
       </div>
-      <div class="swiper-pagination hero-pagination"></div>
-    </div>
 
-    <!-- Cuadro lateral -->
-    <div>
-      <div class="info-box" id="proximo-campeonato">
-        <div class="box-header">🎯 Próximo campeonato</div>
-        <div class="box-content">
-          <p>Campeonato Uruguayo 2025 - Inicio 14 de julio</p>
-          <p>Inscripciones Abiertas 15 de junio al 6 de julio</p>
-          <a href="https://discord.gg/3xeSRaQxDE" class="btn">Discord</a>
-        </div>
+      <div class="header-center">
+        <img src="img/aua.png" alt="Logo AUA" class="logo-header" />
       </div>
-      <div class="info-box torneo-info">
-        <div class="box-header">🕒 Próximas partidas programadas</div>
-        <div class="box-content">
-          <!-- Partidas dinámicas -->
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- SECCIÓN NOTICIAS + CUADROS -->
-  <div class="main-section">
-    <!-- Noticias -->
-    <div class="noticias">
-      <div class="card">
-        <div class="box-header">📰 Noticias de Age</div>
-        <div class="box-content" id="feed-news">
-          <p>Cargando noticias...</p>
-        </div>
-      </div>
-    </div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
 
-    <!-- Cuadros laterales -->
-    <div class="cuadros">
-      <!-- Campeones -->
-      <div class="card" id="campeones">
-        <div class="box-header">🏆 Campeones por categoría</div>
-        <div class="box-content">
-          <div class="swiper campeones-swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="campeon">
-                  <img src="img/campeones/campeon_categoriaB.png" alt="Campeón Categoría B">
-                  <p>Categoría B</p>
-                  <p>Jugador: RXONETA</p>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="campeon">
-                  <img src="img/campeones/campeon_categoriaD.png" alt="Campeón Categoría D">
-                  <p>Categoría D</p>
-                  <p>Jugador: Matixxx</p>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="campeon">
-                  <img src="img/campeones/campeon_categoriaE.png" alt="Campeón Categoría E">
-                  <p>Categoría E</p>
-                  <p>Jugador: Tascon</p>
-                </div>
-              </div>
+      <nav class="header-right" id="main-nav">
+        <a href="index.html">Home</a>
+        <a href="campeonato_info.html">Eventos</a>
+      </nav>
+    </header>
+
+    <!-- SECCIÓN PRINCIPAL: SLIDER + INFO -->
+    <div class="hero">
+      <!-- Slider -->
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="background-image: url('img/campeonatouruguayo.webp')">
+            <div class="slide-overlay">
+              <h2>Campeonato Uruguayo</h2>
+              <a href="campeonato_info.html">Ver detalles</a>
             </div>
-
-            <!-- Navegación -->
-            <div class="swiper-button-next campeones-next"></div>
-            <div class="swiper-button-prev campeones-prev"></div>
-
-            <!-- Paginación -->
-            <div class="swiper-pagination campeones-pagination"></div>
+          </div>
+          <div class="swiper-slide" style="background-image: url('img/uruguay_open_cup.webp')">
+            <div class="slide-overlay">
+              <h2>Uruguay Open Cup</h2>
+            </div>
+          </div>
+          <div class="swiper-slide" style="background-image: url('img/copauruguay.webp')">
+            <div class="slide-overlay">
+              <h2>Copa Uruguay</h2>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Otros cuadros -->
-      <div class="card" id="torneo-internacional">
-        <div class="box-header">🌍 Torneo internacional</div>
-        <div class="box-content" id="torneo-internacional-content"></div>
-      </div>
-
-      <div class="card" id="proximos-torneos">
-        <div class="box-header">📅 Próximos torneos globales</div>
-        <div class="box-content" id="torneos-globales-content">
-          <p>Cargando torneos...</p>
+      <!-- Cuadro lateral -->
+      <div>
+        <div class="info-box" id="proximo-campeonato">
+          <div class="box-header">🎯 Próximo campeonato</div>
+          <div class="box-content">
+            <p>Campeonato Uruguayo 2025 - Inicio 14 de julio</p>
+            <p>Inscripciones Abiertas 15 de junio al 6 de julio</p>
+            <a href="https://discord.gg/3xeSRaQxDE" class="btn">Discord</a>
+          </div>
         </div>
-      </div>
 
-      <div class="card" id="livestreams">
-        <div class="box-header">📺 Livestreams</div>
-        <div class="box-content">
-          <div class="twitch-carousel">
-            <div class="carousel-track" id="twitch-carousel-track"></div>
+        <div class="info-box torneo-info">
+          <div class="box-header">🕒 Próximas partidas programadas</div>
+          <div class="box-content" id="proximas-partidas">
+            <!-- Las partidas se cargarán dinámicamente -->
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Organización -->
-  <section id="organizacion" class="section">
-    <div class="info-box">
-      <div class="box-header">🏆 Organizan</div>
-      <div class="organizadores-grid">
-        <div class="organizador">
-          <img src="img/fumage.png" alt="Fumage" />
-          <p>Clan Fumage</p>
+    <!-- SECCIÓN NOTICIAS + CUADROS -->
+    <div class="main-section">
+      <div class="noticias">
+        <div class="card">
+          <div class="box-header">📰 Noticias de Age</div>
+          <div class="box-content" id="feed-news">
+            <p>Cargando noticias...</p>
+          </div>
         </div>
-        <div class="organizador">
-          <img src="img/jabs2.png" alt="JabsUY" />
-          <p>JabsUY</p>
+      </div>
+
+      <div class="cuadros">
+        <div class="card" id="campeones">
+          <div class="box-header">🏆 Campeones por categoría</div>
+          <div class="box-content">
+            <div class="swiper campeones-swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="campeon">
+                    <img src="img/campeones/campeon_categoriaB.png" alt="Campeón Categoría B">
+                    <p>Categoría B</p>
+                    <p>Jugador: RXONETA</p>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="campeon">
+                    <img src="img/campeones/campeon_categoriaD.png" alt="Campeón Categoría D">
+                    <p>Categoría D</p>
+                    <p>Jugador: Matixxx</p>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="campeon">
+                    <img src="img/campeones/campeon_categoriaE.png" alt="Campeón Categoría E">
+                    <p>Categoría E</p>
+                    <p>Jugador: Tascon</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-button-next campeones-next"></div>
+              <div class="swiper-button-prev campeones-prev"></div>
+              <div class="swiper-pagination campeones-pagination"></div>
+            </div>
+          </div>
         </div>
-        <div class="organizador">
-          <img src="img/aua.png" alt="AUA" />
-          <p>Asociación Uruguaya de AOE II</p>
+
+        <div class="card" id="torneo-internacional">
+          <div class="box-header">🌍 Torneo internacional</div>
+          <div class="box-content" id="torneo-internacional-content"></div>
+        </div>
+
+        <div class="card" id="proximos-torneos">
+          <div class="box-header">📅 Próximos torneos globales</div>
+          <div class="box-content" id="torneos-globales-content">
+            <p>Cargando torneos...</p>
+          </div>
+        </div>
+
+        <div class="card" id="livestreams">
+          <div class="box-header">📺 Livestreams</div>
+          <div class="box-content">
+            <div class="twitch-carousel">
+              <div class="carousel-track" id="twitch-carousel-track"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Sponsors -->
-  <section id="sponsors" class="section">
-    <div class="info-box">
-      <div class="box-header">🤝 Sponsors</div>
-      <div class="contenedor-sponsors">
-        <div class="sponsor">
-          <img src="img/sponsors/abstract.png" alt="Abstract Gaming" />
-          <p>Abstract Gaming</p>
-          <a href="https://www.instagram.com/abstractlatam/" target="_blank">📷 Instagram</a>
-        </div>
-        <div class="sponsor">
-          <img src="img/sponsors/banifox.png" alt="Banifox Uruguay" />
-          <p>Banifox Uruguay</p>
-          <a href="https://www.instagram.com/banifox.uruguay/" target="_blank">📷 Instagram</a>
-        </div>
-        <div class="sponsor">
-          <img src="img/sponsors/jbl.png" alt="JBL Uruguay" />
-          <p>JBL Uruguay</p>
-          <a href="https://www.instagram.com/jbluruguayoficial/" target="_blank">📷 Instagram</a>
-        </div>
-        <div class="sponsor">
-          <img src="img/sponsors/sharkoon.png" alt="Sharkoon LATAM" />
-          <p>Sharkoon LATAM</p>
-          <a href="https://www.instagram.com/sharkoonlatam/" target="_blank">📷 Instagram</a>
-        </div>
-        <div class="sponsor">
-          <img src="img/sponsors/netac.jpg" alt="Netac" />
-          <p>Netac</p>
-          <a href="https://www.instagram.com/netac_official/" target="_blank">📷 Instagram</a>
-        </div>
-        <div class="sponsor">
-          <img src="img/sponsors/estampame_esta.png" alt="EstampameEsta" />
-          <p>Estampame Esta</p>
-          <a href="https://www.instagram.com/estampameestauy" target="_blank">📷 Instagram</a>
+    <section id="organizacion" class="section">
+      <div class="info-box">
+        <div class="box-header">🏆 Organizan</div>
+        <div class="organizadores-grid">
+          <div class="organizador">
+            <img src="img/fumage.png" alt="Fumage" />
+            <p>Clan Fumage</p>
+          </div>
+          <div class="organizador">
+            <img src="img/jabs2.png" alt="JabsUY" />
+            <p>JabsUY</p>
+          </div>
+          <div class="organizador">
+            <img src="img/aua.png" alt="AUA" />
+            <p>Asociación Uruguaya de AOE II</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 Asociación Uruguaya de Age of Empires II</p>
-    <div class="social-links">
-      <a href="https://www.twitch.tv/jabsuy" target="_blank" aria-label="Twitch"><i class="fab fa-twitch"></i></a>
-      <a href="https://www.youtube.com/@jabsuy" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.instagram.com/fumage_" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://discord.gg/tu-invitacion" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-    </div>
-  </footer>
+    <section id="sponsors" class="section">
+      <div class="info-box">
+        <div class="box-header">🤝 Sponsors</div>
+        <div class="contenedor-sponsors">
+          <div class="sponsor">
+            <img src="img/sponsors/abstract.png" alt="Abstract Gaming" />
+            <p>Abstract Gaming</p>
+            <a href="https://www.instagram.com/abstractlatam/" target="_blank">📷 Instagram</a>
+          </div>
+          <div class="sponsor">
+            <img src="img/sponsors/banifox.png" alt="Banifox Uruguay" />
+            <p>Banifox Uruguay</p>
+            <a href="https://www.instagram.com/banifox.uruguay/" target="_blank">📷 Instagram</a>
+          </div>
+          <div class="sponsor">
+            <img src="img/sponsors/jbl.png" alt="JBL Uruguay" />
+            <p>JBL Uruguay</p>
+            <a href="https://www.instagram.com/jbluruguayoficial/" target="_blank">📷 Instagram</a>
+          </div>
+          <div class="sponsor">
+            <img src="img/sponsors/sharkoon.png" alt="Sharkoon LATAM" />
+            <p>Sharkoon LATAM</p>
+            <a href="https://www.instagram.com/sharkoonlatam/" target="_blank">📷 Instagram</a>
+          </div>
+          <div class="sponsor">
+            <img src="img/sponsors/netac.jpg" alt="Netac" />
+            <p>Netac</p>
+            <a href="https://www.instagram.com/netac_official/" target="_blank">📷 Instagram</a>
+          </div>
+          <div class="sponsor">
+            <img src="img/sponsors/estampame_esta.png" alt="EstampameEsta" />
+            <p>Estampame Esta</p>
+            <a href="https://www.instagram.com/estampameestauy" target="_blank">📷 Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script>
-    // Hero slider
-    const heroSwiper = new Swiper('.hero-swiper', {
-      loop: true,
-      autoplay: { delay: 5000 },
-      pagination: { el: '.hero-pagination', clickable: true },
-    });
+    <footer>
+      <p>&copy; 2025 Asociación Uruguaya de Age of Empires II</p>
+      <div class="social-links">
+        <a href="https://www.twitch.tv/jabsuy" target="_blank" aria-label="Twitch"><i class="fab fa-twitch"></i></a>
+        <a href="https://www.youtube.com/@jabsuy" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/fumage_" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://discord.gg/tu-invitacion" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      </div>
+    </footer>
 
-    // Campeones slider
-    const campeonesSwiper = new Swiper('.campeones-swiper', {
-      slidesPerView: 1,
-      spaceBetween: 15,
-      loop: true,
-      navigation: {
-        nextEl: '.campeones-next',
-        prevEl: '.campeones-prev',
-      },
-      pagination: {
-        el: '.campeones-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        480: { slidesPerView: 2 },
-        768: { slidesPerView: 3 },
-      },
-    });
-
-    // Menú hamburguesa
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('main-nav');
-    hamburger.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
-  </script>
-
-  <script src="js/noticias.js"></script>
-  <script src="js/proximoduelo.js"></script>
-  <script src="js/torneosGlobales.js"></script>
-  <script src="js/torneoInternacional.js"></script>
-  <script src="js/livestreams.js"></script>
-</body>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/noticias.js"></script>
+    <script src="js/proximoduelo.js"></script>
+    <script src="js/torneosGlobales.js"></script>
+    <script src="js/torneoInternacional.js"></script>
+    <script src="js/livestreams.js"></script>
+  </body>
 </html>
-
-
 
 
