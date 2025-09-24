@@ -192,7 +192,37 @@
     text-align: center;
     padding: 30px;
   }
-  
+
+.campeones-swiper {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.campeon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.campeon img {
+  width: 120px; /* Ajusta según quieras */
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #f5de0c;
+  margin-bottom: 5px;
+}
+
+.campeon p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+}
+
+
+
+
+
   @media (max-width: 768px) {
     .hero, .main-section {
       grid-template-columns: 1fr;
@@ -764,32 +794,6 @@
 
 .torneo-datos p {
   margin: 2px 0;
-}
-
-.campeones-swiper {
-  width: 100%;
-  padding: 10px 0;
-}
-
-.campeon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.campeon img {
-  width: 120px; /* Ajusta según quieras */
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 2px solid #f5de0c;
-  margin-bottom: 5px;
-}
-
-.campeon p {
-  margin: 2px 0;
-  font-size: 0.9rem;
 }
 
 
