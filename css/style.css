@@ -766,6 +766,11 @@
   margin: 2px 0;
 }
 
+.campeones-swiper {
+  width: 100%;
+  padding: 10px 0;
+}
+
 .campeon {
   display: flex;
   flex-direction: column;
@@ -774,8 +779,8 @@
 }
 
 .campeon img {
-  width: 100px;
-  height: 100px;
+  width: 120px; /* Ajusta según quieras */
+  height: 120px;
   object-fit: cover;
   border-radius: 10px;
   border: 2px solid #f5de0c;
@@ -786,6 +791,7 @@
   margin: 2px 0;
   font-size: 0.9rem;
 }
+
 
 
 
