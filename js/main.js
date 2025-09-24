@@ -1,10 +1,11 @@
-// Slider principal
+// Slider principal (hero)
 const swiper = new Swiper('.swiper', {
   loop: true,
   autoplay: { delay: 5000 },
   pagination: { el: '.swiper-pagination', clickable: true },
 });
 
+// Slider campeones
 const campeonesSwiper = new Swiper('.campeones-swiper', {
   slidesPerView: 1,
   spaceBetween: 15,
