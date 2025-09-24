@@ -765,3 +765,26 @@
 .torneo-datos p {
   margin: 2px 0;
 }
+
+.campeones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  text-align: center;
+}
+
+.campeon img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #f5de0c;
+  margin-bottom: 5px;
+}
+
+.campeon p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+}
+
+
