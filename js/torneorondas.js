@@ -2,7 +2,6 @@
 
 async function cargarTorneo() {
   try {
-    // Cargar el JSON del torneo
     const response = await fetch('https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/torneos/torneo_uruguay_open_cup_2v2.json');
     const data = await response.json();
 
@@ -15,7 +14,7 @@ async function cargarTorneo() {
 
 function mostrarGrupos(data) {
   const contenedor = document.getElementById('partidas');
-  contenedor.innerHTML = ''; // Limpiar contenido previo
+  contenedor.innerHTML = '';
 
   const titulo = document.createElement('h2');
   titulo.textContent = 'Fase de Grupos';
@@ -29,10 +28,12 @@ function mostrarGrupos(data) {
     nombreGrupo.textContent = grupo.nombre;
     grupoDiv.appendChild(nombreGrupo);
 
-    // Buscar las rondas del grupo
-    const rondas = data.rondas_grupos.find(r => r.grupo === grupo.nombre.split(' ')[1]);
-    if (rondas && rondas.partidos) {
-      rondas.partidos.forEach((ronda, index) => {
+    // Buscar las rondas del grupo (por ejemplo "Grupo A" → "A")
+    const letraGrupo = grupo.nombre.replace('Grupo ', '').trim();
+    const rondasGrupo = data.rondas_grupos.find(r => r.grupo === letraGrupo);
+
+    if (rondasGrupo && rondasGrupo.partidos) {
+      rondasGrupo.partidos.forEach(ronda => {
         const rondaDiv = document.createElement('div');
         rondaDiv.className = 'ronda';
 
@@ -64,7 +65,7 @@ function mostrarGrupos(data) {
 
 function mostrarEliminatorias(eliminatorias) {
   const contenedor = document.getElementById('tabla-posiciones');
-  contenedor.innerHTML = ''; // Limpiar contenido previo
+  contenedor.innerHTML = '';
 
   const titulo = document.createElement('h2');
   titulo.textContent = 'Eliminatorias';
@@ -78,7 +79,7 @@ function mostrarEliminatorias(eliminatorias) {
     rondaTitulo.textContent = ronda.ronda;
     rondaDiv.appendChild(rondaTitulo);
 
-    if (ronda.partidos.length === 0) {
+    if (!ronda.partidos || ronda.partidos.length === 0) {
       const p = document.createElement('p');
       p.textContent = 'Próximamente se definirán los partidos.';
       rondaDiv.appendChild(p);
@@ -95,3 +96,4 @@ function mostrarEliminatorias(eliminatorias) {
 }
 
 document.addEventListener('DOMContentLoaded', cargarTorneo);
+
