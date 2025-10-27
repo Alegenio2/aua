@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campeonato Uruguayo - AUA</title>
+  <link rel="stylesheet" href="css/style.css" />     
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <h1>Asociación Uruguaya de Age</h1>
+    </div>
+    <div class="header-center">
+      <img src="img/aua.png" alt="Logo AUA" class="logo-header" />
+    </div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <nav class="header-right" id="main-nav">
+      <a href="index.html">Inicio</a>
+      <a href="campeonato_info.html">Eventos</a>
+    </nav>
+  </header>
+
+  <!-- CATEGORÍAS -->
+  <section id="divisiones" class="section">
+    <div class="info-box">
+      <div class="box-header">🏆 Categorías</div>
+      <div class="contenedor-divisiones">
+        <ul id="division-list" class="division-list">
+          <!-- Se carga dinámicamente -->
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTONES DE CATEGORÍAS -->
+  <section class="section">
+    <div class="info-box">
+      <div class="box-header">📊 Rondas y Posiciones</div>
+      <div class="categoria-lista" style="text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+        <button class="btn categoria-btn" data-categoria="a">Categoría A</button>
+       </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO DE LA CATEGORÍA -->
+  <section id="info-categoria" class="section" style="display:none;">
+    <div class="info-box">
+      <div id="partidas" class="contenido"></div>
+      <div id="tabla-posiciones" class="contenido"></div>
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+<section id="sponsors" class="section">
+      <div class="info-box">
+        <div class="box-header">🤝 Sponsors</div>
+        <div class="contenedor-sponsors">
+          <div class="sponsor">
+            <img src="img/sponsors/abstract.png" alt="Abstract Gaming" />
+            <p>Abstract Gaming</p>
+            <a href="https://www.instagram.com/abstractlatam/" target="_blank"
+              >📷 Instagram</a
+            >
+          </div>
+          <div class="sponsor">
+            <img src="img/sponsors/banifox.png" alt="Banifox Uruguay" />
+            <p>Banifox Uruguay</p>
+            <a href="https://www.instagram.com/banifox.uruguay/" target="_blank"
+              >📷 Instagram</a
+            >
+          </div>
+          <div class="sponsor">
+            <img src="img/sponsors/jbl.png" alt="JBL Uruguay" />
+            <p>JBL Uruguay</p>
+            <a
+              href="https://www.instagram.com/jbluruguayoficial/"
+              target="_blank"
+              >📷 Instagram</a
+            >
+          </div>
+          <div class="sponsor">
+            <img src="img/sponsors/sharkoon.png" alt="Sharkoon LATAM" />
+            <p>Sharkoon LATAM</p>
+            <a href="https://www.instagram.com/sharkoonlatam/" target="_blank"
+              >📷 Instagram</a
+            >
+          </div>
+          <div class="sponsor">
+            <img src="img/sponsors/netac.jpg" alt="Netac" />
+            <p>Netac</p>
+            <a href="https://www.instagram.com/netac_official/" target="_blank"
+              >📷 Instagram</a
+            >
+          </div>
+          <div class="sponsor">
+            <img src="img/sponsors/estampame_esta.png" alt="estampame esta" />
+            <p>Estampame Esta</p>
+            <a href="https://www.instagram.com/estampameestauy" target="_blank"
+              >📷 Instagram</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- FOOTER -->
+   <footer>
+      <p>&copy; 2025 Asociación Uruguaya de Age of Empires II</p>
+      <div class="social-links">
+        <a
+          href="https://www.twitch.tv/jabsuy"
+          target="_blank"
+          aria-label="Twitch"
+        >
+          <i class="fab fa-twitch"></i>
+        </a>
+        <a
+          href="https://www.youtube.com/@jabsuy"
+          target="_blank"
+          aria-label="YouTube"
+        >
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a
+          href="https://www.instagram.com/fumage_"
+          target="_blank"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a
+          href="https://discord.gg/tu-invitacion"
+          target="_blank"
+          aria-label="Discord"
+        >
+          <i class="fab fa-discord"></i>
+        </a>
+      </div>
+    </footer>
+
+  <!-- JS -->
+  <script src="js/torneorondas.js"></script>
+  <script src="js/divisiones.js"></script>
+</body>
+</html>
