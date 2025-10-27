@@ -1,0 +1,220 @@
+{
+  "torneo": "uruguay_open_cup_2v2",
+  "grupos": [
+    {
+      "nombre": "Grupo A",
+      "equipos": [
+        {
+          "id": "dd3d5cad-765c-488b-b3cc-88ff71da0fb1",
+          "nombre": "URUwUS"
+        },
+        {
+          "id": "ee3da911-6e05-403c-844a-e9201caff342",
+          "nombre": "LA TASCONETA"
+        },
+        {
+          "id": "c20cd462-76bf-433f-b733-17be775a6b57",
+          "nombre": "La Banda Oriental"
+        },
+        {
+          "id": "11c48981-7efc-43e6-b2e6-52fd414659a6",
+          "nombre": "DGHIR URUGUAY DE LA C"
+        }
+      ]
+    },
+    {
+      "nombre": "Grupo B",
+      "equipos": [
+        {
+          "id": "646c7c18-fc92-451a-9cf3-3c812ade1c6e",
+          "nombre": "#1"
+        },
+        {
+          "id": "b059eaea-69ee-4f48-9907-c1725097899b",
+          "nombre": "RxonSky"
+        },
+        {
+          "id": "b93b725a-9883-49b3-9c33-91a6038b59a1",
+          "nombre": "AdminWin"
+        },
+        {
+          "id": "b8d83110-cad6-44b9-a318-57aa6c09a7b1",
+          "nombre": "Cachimba del piojo"
+        }
+      ]
+    }
+  ],
+  "rondas_grupos": [
+    {
+      "grupo": "A",
+      "partidos": [
+        {
+          "ronda": 1,
+          "partidos": [
+            {
+              "equipo1Id": "dd3d5cad-765c-488b-b3cc-88ff71da0fb1",
+              "equipo1Nombre": "URUwUS",
+              "equipo2Id": "11c48981-7efc-43e6-b2e6-52fd414659a6",
+              "equipo2Nombre": "DGHIR URUGUAY DE LA C",
+              "resultado": null,
+              "fecha": null,
+              "horario": null,
+              "diaSemana": null
+            },
+            {
+              "equipo1Id": "ee3da911-6e05-403c-844a-e9201caff342",
+              "equipo1Nombre": "LA TASCONETA",
+              "equipo2Id": "c20cd462-76bf-433f-b733-17be775a6b57",
+              "equipo2Nombre": "La Banda Oriental",
+              "resultado": null,
+              "fecha": "28/10/2025",
+              "horario": "21:00",
+              "diaSemana": "Martes"
+            }
+          ]
+        },
+        {
+          "ronda": 2,
+          "partidos": [
+            {
+              "equipo1Id": "dd3d5cad-765c-488b-b3cc-88ff71da0fb1",
+              "equipo1Nombre": "URUwUS",
+              "equipo2Id": "c20cd462-76bf-433f-b733-17be775a6b57",
+              "equipo2Nombre": "La Banda Oriental",
+              "resultado": null,
+              "fecha": null,
+              "horario": null,
+              "diaSemana": null
+            },
+            {
+              "equipo1Id": "11c48981-7efc-43e6-b2e6-52fd414659a6",
+              "equipo1Nombre": "DGHIR URUGUAY DE LA C",
+              "equipo2Id": "ee3da911-6e05-403c-844a-e9201caff342",
+              "equipo2Nombre": "LA TASCONETA",
+              "resultado": null,
+              "fecha": null,
+              "horario": null,
+              "diaSemana": null
+            }
+          ]
+        },
+        {
+          "ronda": 3,
+          "partidos": [
+            {
+              "equipo1Id": "dd3d5cad-765c-488b-b3cc-88ff71da0fb1",
+              "equipo1Nombre": "URUwUS",
+              "equipo2Id": "ee3da911-6e05-403c-844a-e9201caff342",
+              "equipo2Nombre": "LA TASCONETA",
+              "resultado": null,
+              "fecha": null,
+              "horario": null,
+              "diaSemana": null
+            },
+            {
+              "equipo1Id": "c20cd462-76bf-433f-b733-17be775a6b57",
+              "equipo1Nombre": "La Banda Oriental",
+              "equipo2Id": "11c48981-7efc-43e6-b2e6-52fd414659a6",
+              "equipo2Nombre": "DGHIR URUGUAY DE LA C",
+              "resultado": null,
+              "fecha": null,
+              "horario": null,
+              "diaSemana": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grupo": "B",
+      "partidos": [
+        {
+          "ronda": 1,
+          "partidos": [
+            {
+              "equipo1Id": "646c7c18-fc92-451a-9cf3-3c812ade1c6e",
+              "equipo1Nombre": "#1",
+              "equipo2Id": "b8d83110-cad6-44b9-a318-57aa6c09a7b1",
+              "equipo2Nombre": "Cachimba del piojo",
+              "resultado": null,
+              "fecha": null,
+              "horario": null,
+              "diaSemana": null
+            },
+            {
+              "equipo1Id": "b059eaea-69ee-4f48-9907-c1725097899b",
+              "equipo1Nombre": "RxonSky",
+              "equipo2Id": "b93b725a-9883-49b3-9c33-91a6038b59a1",
+              "equipo2Nombre": "AdminWin",
+              "resultado": null,
+              "fecha": "30/10/2025",
+              "horario": "22:30",
+              "diaSemana": "Jueves"
+            }
+          ]
+        },
+        {
+          "ronda": 2,
+          "partidos": [
+            {
+              "equipo1Id": "646c7c18-fc92-451a-9cf3-3c812ade1c6e",
+              "equipo1Nombre": "#1",
+              "equipo2Id": "b93b725a-9883-49b3-9c33-91a6038b59a1",
+              "equipo2Nombre": "AdminWin",
+              "resultado": null,
+              "fecha": "27/10/2025",
+              "horario": "23:59",
+              "diaSemana": "Lunes"
+            },
+            {
+              "equipo1Id": "b8d83110-cad6-44b9-a318-57aa6c09a7b1",
+              "equipo1Nombre": "Cachimba del piojo",
+              "equipo2Id": "b059eaea-69ee-4f48-9907-c1725097899b",
+              "equipo2Nombre": "RxonSky",
+              "resultado": null,
+              "fecha": null,
+              "horario": null,
+              "diaSemana": null
+            }
+          ]
+        },
+        {
+          "ronda": 3,
+          "partidos": [
+            {
+              "equipo1Id": "646c7c18-fc92-451a-9cf3-3c812ade1c6e",
+              "equipo1Nombre": "#1",
+              "equipo2Id": "b059eaea-69ee-4f48-9907-c1725097899b",
+              "equipo2Nombre": "RxonSky",
+              "resultado": null,
+              "fecha": null,
+              "horario": null,
+              "diaSemana": null
+            },
+            {
+              "equipo1Id": "b93b725a-9883-49b3-9c33-91a6038b59a1",
+              "equipo1Nombre": "AdminWin",
+              "equipo2Id": "b8d83110-cad6-44b9-a318-57aa6c09a7b1",
+              "equipo2Nombre": "Cachimba del piojo",
+              "resultado": null,
+              "fecha": null,
+              "horario": null,
+              "diaSemana": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "eliminatorias": [
+    {
+      "ronda": "Semifinal",
+      "partidos": []
+    },
+    {
+      "ronda": "Final",
+      "partidos": []
+    }
+  ],
+  "creado": "2025-10-21T01:38:24.226Z"
+}
