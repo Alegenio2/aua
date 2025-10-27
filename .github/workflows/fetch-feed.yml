@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.Bot-publico }}  # 👈 Usa el token con permisos de escritura
+          token: ${{ secrets.GITHUB_TOKE }}  # 👈 Usa el token con permisos de escritura
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
