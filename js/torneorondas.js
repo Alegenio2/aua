@@ -3,7 +3,7 @@
 async function cargarTorneo() {
   try {
     // Cargar el JSON del torneo
-    const response = await fetch('torneo_uruguay_open_cup_2v2.json');
+    const response = await fetch('https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/torneos/torneo_uruguay_open_cup_2v2.json');
     const data = await response.json();
 
     mostrarGrupos(data);
