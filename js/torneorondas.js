@@ -36,7 +36,6 @@ function mostrarGrupos(data) {
     nombreGrupo.textContent = grupo.nombre;
     grupoDiv.appendChild(nombreGrupo);
 
-    // Buscar rondas del grupo
     const grupoLetra = grupo.nombre.replace('Grupo ', '').trim();
     const rondas = data.rondas_grupos.find(r => r.grupo === grupoLetra);
 
@@ -55,18 +54,40 @@ function mostrarGrupos(data) {
 
           const info = document.createElement('p');
 
-          // Si el partido tiene resultado (es decir, contiene números)
+          // Si tiene resultado con dos valores numéricos
           const resultadoLimpio = partido.resultado
             ? Object.entries(partido.resultado).filter(([k, v]) => typeof v === 'number')
             : [];
 
           if (resultadoLimpio.length === 2) {
-            // Mostrar resultado final
             const [e1, s1] = resultadoLimpio[0];
             const [e2, s2] = resultadoLimpio[1];
-            info.textContent = `${e1} ${s1} 🆚 ${s2} ${e2}`;
+
+            // Determinar ganador y perdedor
+            const e1Ganador = s1 > s2;
+            const e2Ganador = s2 > s1;
+
+            // Crear spans con color
+            const spanE1 = document.createElement('span');
+            const spanE2 = document.createElement('span');
+            const spanScore = document.createElement('span');
+
+            spanE1.textContent = e1;
+            spanE2.textContent = e2;
+            spanScore.textContent = ` ${s1} 🆚 ${s2} `;
+
+            // Colores según resultado
+            spanE1.style.color = e1Ganador ? '#7CFC00' : '#ff4d4d';
+            spanE2.style.color = e2Ganador ? '#7CFC00' : '#ff4d4d';
+            spanScore.style.color = '#ffd60a';
+            spanScore.style.fontWeight = 'bold';
+
+            // Armar línea
+            info.appendChild(spanE1);
+            info.appendChild(spanScore);
+            info.appendChild(spanE2);
           } else {
-            // Si no hay resultado, mostrar fecha y hora de coordinación
+            // Mostrar fecha si no hay resultado
             const fecha =
               partido.fecha || partido.horario
                 ? ` (${partido.diaSemana || ''} ${partido.fecha || ''} ${partido.horario || ''})`
@@ -76,7 +97,6 @@ function mostrarGrupos(data) {
 
           partidoDiv.appendChild(info);
 
-          // Si hay resultado, mostrar un pequeño detalle (por ejemplo “Finalizado”)
           if (resultadoLimpio.length === 2) {
             const estado = document.createElement('small');
             estado.textContent = '✅ Finalizado';
@@ -94,6 +114,7 @@ function mostrarGrupos(data) {
     contenedor.appendChild(grupoDiv);
   });
 }
+
 
 
 // === TABLA DE POSICIONES ===
