@@ -37,7 +37,9 @@ function mostrarGrupos(data) {
     grupoDiv.appendChild(nombreGrupo);
 
     // Buscar rondas del grupo
-    const rondas = data.rondas_grupos.find(r => r.grupo === grupo.nombre.split(' ')[1]);
+    const grupoLetra = grupo.nombre.replace('Grupo ', '').trim();
+    const rondas = data.rondas_grupos.find(r => r.grupo === grupoLetra);
+
     if (rondas && rondas.partidos) {
       rondas.partidos.forEach(ronda => {
         const rondaDiv = document.createElement('div');
@@ -52,12 +54,36 @@ function mostrarGrupos(data) {
           partidoDiv.className = 'partido';
 
           const info = document.createElement('p');
-          const fecha = partido.fecha
-            ? ` (${partido.diaSemana || ''} ${partido.fecha} - ${partido.horario || ''})`
-            : '';
-          info.textContent = `${partido.equipo1Nombre} 🆚 ${partido.equipo2Nombre}${fecha}`;
+
+          // Si el partido tiene resultado (es decir, contiene números)
+          const resultadoLimpio = partido.resultado
+            ? Object.entries(partido.resultado).filter(([k, v]) => typeof v === 'number')
+            : [];
+
+          if (resultadoLimpio.length === 2) {
+            // Mostrar resultado final
+            const [e1, s1] = resultadoLimpio[0];
+            const [e2, s2] = resultadoLimpio[1];
+            info.textContent = `${e1} ${s1} 🆚 ${s2} ${e2}`;
+          } else {
+            // Si no hay resultado, mostrar fecha y hora de coordinación
+            const fecha =
+              partido.fecha || partido.horario
+                ? ` (${partido.diaSemana || ''} ${partido.fecha || ''} ${partido.horario || ''})`
+                : '';
+            info.textContent = `${partido.equipo1Nombre} 🆚 ${partido.equipo2Nombre}${fecha}`;
+          }
 
           partidoDiv.appendChild(info);
+
+          // Si hay resultado, mostrar un pequeño detalle (por ejemplo “Finalizado”)
+          if (resultadoLimpio.length === 2) {
+            const estado = document.createElement('small');
+            estado.textContent = '✅ Finalizado';
+            estado.style.color = '#9effa1';
+            partidoDiv.appendChild(estado);
+          }
+
           rondaDiv.appendChild(partidoDiv);
         });
 
@@ -68,6 +94,7 @@ function mostrarGrupos(data) {
     contenedor.appendChild(grupoDiv);
   });
 }
+
 
 // === TABLA DE POSICIONES ===
 function mostrarTablaPosiciones(data) {
