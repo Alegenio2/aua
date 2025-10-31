@@ -78,47 +78,74 @@ function mostrarTablaPosiciones(data) {
 
   data.grupos.forEach(grupo => {
     const nombreGrupo = grupo.nombre;
-    const equipos = grupo.equipos || []; // en tu JSON puede ser 'equipos' o 'participantes'
+    const equipos = grupo.equipos || [];
     const puntos = {};
 
     // Inicializar equipos
-    equipos.forEach(equipo => {
-      puntos[equipo.id] = {
-        nombre: equipo.nombre,
+    equipos.forEach(eq => {
+      puntos[eq.nombre] = {
+        nombre: eq.nombre,
         puntos: 0,
         jugadas: 0,
-        ganadas: 0
+        ganadas: 0,
+        setsFavor: 0,
+        setsContra: 0
       };
     });
 
-    // Buscar rondas de este grupo
-    const rondas = data.rondas_grupos.find(r => r.grupo === nombreGrupo.split(' ')[1]);
+    // Buscar rondas del grupo (A, B, etc.)
+    const grupoLetra = nombreGrupo.split(' ')[1];
+    const rondas = data.rondas_grupos.find(r => r.grupo === grupoLetra);
     if (!rondas || !rondas.partidos) return;
 
-    // Recorrer partidos
+    // Recorrer cada ronda
     rondas.partidos.forEach(ronda => {
       ronda.partidos.forEach(p => {
-        if (!p.resultado) return; // si no hay resultado aún, salta
+        if (!p.resultado) return;
 
-        const id1 = p.equipo1Id;
-        const id2 = p.equipo2Id;
-        const s1 = p.resultado[id1] ?? 0;
-        const s2 = p.resultado[id2] ?? 0;
+        // Tomar solo los nombres con valores numéricos
+        const resultadoLimpio = Object.entries(p.resultado)
+          .filter(([clave, valor]) => typeof valor === 'number');
 
-        if (!puntos[id1] || !puntos[id2]) return;
+        if (resultadoLimpio.length < 2) return;
 
-        puntos[id1].puntos += s1;
-        puntos[id2].puntos += s2;
-        puntos[id1].jugadas += 1;
-        puntos[id2].jugadas += 1;
+        const [e1, s1] = resultadoLimpio[0];
+        const [e2, s2] = resultadoLimpio[1];
 
-        if (s1 > s2) puntos[id1].ganadas += 1;
-        else if (s2 > s1) puntos[id2].ganadas += 1;
+        if (!puntos[e1] || !puntos[e2]) return;
+
+        // Actualizar jugadas y sets
+        puntos[e1].jugadas += 1;
+        puntos[e2].jugadas += 1;
+
+        puntos[e1].setsFavor += s1;
+        puntos[e1].setsContra += s2;
+        puntos[e2].setsFavor += s2;
+        puntos[e2].setsContra += s1;
+
+        // Asignar puntos según sets
+        if (s1 > s2) {
+          puntos[e1].puntos += 2;
+          puntos[e2].puntos += s2 === 1 ? 1 : 0;
+          puntos[e1].ganadas += 1;
+        } else if (s2 > s1) {
+          puntos[e2].puntos += 2;
+          puntos[e1].puntos += s1 === 1 ? 1 : 0;
+          puntos[e2].ganadas += 1;
+        }
       });
     });
 
-    const lista = Object.values(puntos).sort((a, b) => b.puntos - a.puntos);
+    // Ordenar por puntos → ganadas → diferencia de sets
+    const lista = Object.values(puntos).sort((a, b) => {
+      if (b.puntos !== a.puntos) return b.puntos - a.puntos;
+      if (b.ganadas !== a.ganadas) return b.ganadas - a.ganadas;
+      const diffA = a.setsFavor - a.setsContra;
+      const diffB = b.setsFavor - b.setsContra;
+      return diffB - diffA;
+    });
 
+    // Renderizar tabla
     const titulo = document.createElement('h3');
     titulo.textContent = nombreGrupo;
     tablaPosiciones.appendChild(titulo);
@@ -126,7 +153,16 @@ function mostrarTablaPosiciones(data) {
     const tabla = document.createElement('table');
     tabla.classList.add('tabla-posiciones');
     tabla.innerHTML = `
-      <tr><th>Pos</th><th>Equipo</th><th>Puntos</th><th>Jugadas</th><th>Ganadas</th></tr>
+      <tr>
+        <th>Pos</th>
+        <th>Equipo</th>
+        <th>Puntos</th>
+        <th>Jugadas</th>
+        <th>Ganadas</th>
+        <th>Sets +</th>
+        <th>Sets −</th>
+        <th>Dif</th>
+      </tr>
       ${lista.map((p, i) => `
         <tr>
           <td>${i + 1}</td>
@@ -134,6 +170,9 @@ function mostrarTablaPosiciones(data) {
           <td>${p.puntos}</td>
           <td>${p.jugadas}</td>
           <td>${p.ganadas}</td>
+          <td>${p.setsFavor}</td>
+          <td>${p.setsContra}</td>
+          <td>${p.setsFavor - p.setsContra}</td>
         </tr>
       `).join('')}
     `;
@@ -141,6 +180,7 @@ function mostrarTablaPosiciones(data) {
     tablaPosiciones.appendChild(tabla);
   });
 }
+
 
 // === ELIMINATORIAS ===
 function mostrarEliminatorias(eliminatorias) {
