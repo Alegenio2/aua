@@ -1,105 +1,85 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  const categorias = [
-    { name: "Categoría A", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_a.json" },
-    { name: "Categoría B", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_b.json" },
-    { name: "Categoría C", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_c.json" },
-    { name: "Categoría D", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_d.json" },
-    { name: "Categoría E", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_e.json" }
-  ];
+    const categorias = [
+        { name: "A", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_a.json" },
+        { name: "B", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_b.json" },
+        { name: "C", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_c.json" },
+        { name: "D", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_d.json" },
+        { name: "E", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_e.json" }
+    ];
 
-  const container = document.querySelector(".torneo-info .box-content");
-  if (!container) {
-    console.error("Contenedor para los próximos duelos no encontrado.");
-    return;
-  }
+    const container = document.getElementById("proximas-partidas");
+    if (!container) return;
 
-  function obtenerFechaPartido(partido) {
-    if (!partido.fecha || !partido.horario) return null;
-
-    const [dia, mes, anio] = partido.fecha.split(/[-/]/);
-    if (!dia || !mes || !anio) return null;
-
-    let horas = 0;
-    let minutos = 0;
-    const horario = partido.horario.trim();
-
-    if (/^\d{1,2}$/.test(horario)) {
-      horas = parseInt(horario, 10);
-    } else if (/^\d{1,2}[:.]\d{2}$/.test(horario)) {
-      const partes = horario.split(/[:.]/);
-      horas = parseInt(partes[0], 10);
-      minutos = parseInt(partes[1], 10);
-    } else {
-      return null;
+    function parsearFecha(p) {
+        if (!p.fecha || !p.horario) return null;
+        try {
+            const [d, m, a] = p.fecha.split(/[-/]/);
+            const horaLimpia = p.horario.replace('.', ':');
+            const [hh, mm] = horaLimpia.includes(':') ? horaLimpia.split(':') : [horaLimpia, '00'];
+            return new Date(a, m - 1, d, hh, mm);
+        } catch (e) { return null; }
     }
 
-    if (isNaN(horas) || isNaN(minutos)) return null;
+    try {
+        const ahora = new Date();
+        let todosLosDuelos = [];
 
-    const fechaStr = `${anio}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}T${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:00`;
-    return new Date(fechaStr);
-  }
+        // Usamos Promise.all para cargar todas las categorías en paralelo (más rápido)
+        const resultados = await Promise.all(categorias.map(cat => 
+            fetch(cat.url).then(res => res.json()).catch(() => null)
+        ));
 
-  try {
-    const ahora = new Date();
-    const duelosFuturos = [];
+        resultados.forEach((data, index) => {
+            if (!data || !data.jornadas) return;
+            const participantes = data.participantes || [];
+            
+            data.jornadas.forEach(j => {
+                (j.partidos || []).forEach(partido => {
+                    const fechaReal = parsearFecha(partido);
+                    if (fechaReal && fechaReal > ahora) {
+                        todosLosDuelos.push({
+                            cat: categorias[index].name,
+                            p: partido,
+                            fecha: fechaReal,
+                            parts: participantes
+                        });
+                    }
+                });
+            });
+        });
 
-    for (const categoria of categorias) {
-      const response = await fetch(categoria.url);
-      if (!response.ok) throw new Error(`Error al cargar ${categoria.name}`);
-      const data = await response.json();
+        todosLosDuelos.sort((a, b) => a.fecha - b.fecha);
+        const proximos = todosLosDuelos.slice(0, 2);
 
-      if (!data.jornadas || !Array.isArray(data.jornadas)) continue;
-
-      const participantes = data.participantes || [];
-      const partidos = data.jornadas.flatMap(j => j.partidos || []);
-
-      for (const partido of partidos) {
-        const fechaReal = obtenerFechaPartido(partido);
-        if (fechaReal && fechaReal > ahora) {
-          duelosFuturos.push({
-            categoria: categoria.name,
-            partido,
-            fechaReal,
-            participantes
-          });
+        if (proximos.length === 0) {
+            container.innerHTML = `<p class="empty-msg">No hay partidas programadas por ahora.</p>`;
+            return;
         }
-      }
+
+        container.innerHTML = ""; // Limpiar
+        proximos.forEach(duelo => {
+            const j1 = duelo.parts.find(p => p.id === duelo.p.jugador1Id)?.nombre || "A definir";
+            const j2 = duelo.parts.find(p => p.id === duelo.p.jugador2Id)?.nombre || "A definir";
+            
+            const item = document.createElement("div");
+            item.className = "categoria-info fade-in";
+            item.innerHTML = `
+                <div class="match-badge">Cat ${duelo.cat}</div>
+                <div class="match-players">
+                    <strong>${j1}</strong> <span class="vs">vs</span> <strong>${j2}</strong>
+                </div>
+                <div class="match-date">
+                    <i class="far fa-clock"></i> ${duelo.fecha.toLocaleString('es-UY', { 
+                        weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' 
+                    })}
+                </div>
+            `;
+            container.appendChild(item);
+        });
+
+    } catch (error) {
+        container.innerHTML = `<p>Error al sincronizar con el mapa.</p>`;
     }
-
-    // Ordenar por fecha más próxima
-    duelosFuturos.sort((a, b) => a.fechaReal - b.fechaReal);
-
-    // Mostrar los 2 más cercanos
-    const proximos = duelosFuturos.slice(0, 2);
-
-    if (proximos.length === 0) {
-      container.innerHTML = `<p>⏳ Todavía no hay partidos coordinados.</p>`;
-      return;
-    }
-
-    for (const duelo of proximos) {
-      const { partido, fechaReal, participantes, categoria } = duelo;
-
-      const jugador1 = participantes.find(p => p.id === partido.jugador1Id);
-      const jugador2 = participantes.find(p => p.id === partido.jugador2Id);
-
-      const nombre1 = jugador1 ? jugador1.nombre : "A definir";
-      const nombre2 = jugador2 ? jugador2.nombre : "A definir";
-      const fechaFormateada = fechaReal.toLocaleString();
-
-      const dueloHTML = `
-        <div class="categoria-info">
-          <h4>Próximo Duelo (${categoria})</h4>
-          <p>${nombre1} vs ${nombre2}</p>
-          <p>${fechaFormateada}</p>
-        </div>
-      `;
-      container.innerHTML += dueloHTML;
-    }
-
-  } catch (error) {
-    console.error("Error al cargar los datos:", error);
-    container.innerHTML = `<p>❌ Error cargando los partidos.</p>`;
-  }
 });
+
 
