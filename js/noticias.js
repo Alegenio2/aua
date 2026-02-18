@@ -1,37 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () { 
+    const noticiasContainer = document.getElementById("feed-news");
+    if (!noticiasContainer) return;
+
     fetch('https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/feed.json')
         .then(response => response.json())
         .then(data => {
-            const noticiasContainer = document.getElementById("feed-news");
-            
-            noticiasContainer.innerHTML = ""; // Limpio el contenido inicial
-
-            // Tomo solo las primeras 3 noticias (si hay menos, toma lo que haya)
+            noticiasContainer.innerHTML = ""; 
             const ultimasNoticias = data.slice(0, 3);
 
             ultimasNoticias.forEach(item => {
-                const title = item.title;
-                const link = item.link;
-                const description = item.description;
-                const pubDate = new Date(item.pubDate).toLocaleDateString();
-                const imageUrl = item.image;
+                const pubDate = new Date(item.pubDate).toLocaleDateString('es-UY', {
+                    day: '2-digit', month: 'long', year: 'numeric'
+                });
 
                 const noticia = document.createElement("div");
-                noticia.classList.add("noticia");
+                noticia.classList.add("noticia", "fade-in"); // Añadida animación fade-in de tu CSS
 
                 noticia.innerHTML = `
-                    <h3><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
-                    <img src="${imageUrl}" alt="${title}">
-                    <p>${description}</p>
-                    <small>Publicado el: ${pubDate}</small>
+                    <h3><a href="${item.link}" target="_blank" rel="noopener">${item.title}</a></h3>
+                    <div class="noticia-img-container">
+                        <img src="${item.image}" alt="${item.title}" loading="lazy">
+                    </div>
+                    <p>${item.description.substring(0, 150)}...</p>
+                    <small><i class="far fa-calendar-alt"></i> ${pubDate}</small>
                 `;
-
                 noticiasContainer.appendChild(noticia);
             });
         })
-        .catch(error => {
-            console.error("Error al obtener el JSON:", error);
-            const noticiasContainer = document.getElementById("feed-news");
-            noticiasContainer.innerHTML = "<p>Error al cargar las noticias.</p>";
+        .catch(err => {
+            console.error("Error noticias:", err);
+            noticiasContainer.innerHTML = "<p>No se pudieron cargar las noticias del frente.</p>";
         });
 });
