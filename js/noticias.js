@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () { 
-    fetch('https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/feed.json')
+    fetch('./feed.json')
         .then(response => response.json())
         .then(data => {
             const noticiasContainer = document.getElementById("feed-news");
@@ -35,3 +35,4 @@ document.addEventListener("DOMContentLoaded", function () {
             noticiasContainer.innerHTML = "<p>Error al cargar las noticias.</p>";
         });
 });
+
