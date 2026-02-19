@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reglamento Oficial | Copa Uruguaya de AoE2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0f;
+            --card-bg: #161b22;
+            --accent-color: #c2a343; /* Dorado AUA */
+            --primary-color: #4eb1f2; /* Azul AUA */
+            --text-main: #e6edf3;
+            --text-dim: #8b949e;
+            --border-color: #30363d;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(to bottom, #111, var(--bg-color));
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            color: var(--accent-color);
+            text-shadow: 0 0 15px rgba(194, 163, 67, 0.3);
+        }
+
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-color);
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-top: 10px;
+        }
+
+        /* Navigation */
+        .nav-quick {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-quick a {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.75rem;
+            border: 1px solid var(--accent-color);
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(194, 163, 67, 0.05);
+        }
+
+        .nav-quick a:hover {
+            background: var(--accent-color);
+            color: #000;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        /* Sections */
+        section { margin-top: 60px; }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--accent-color);
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th {
+            font-family: 'Cinzel', serif;
+            text-align: left;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Lists and Links */
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        a { color: var(--primary-color); text-decoration: none; transition: 0.3s; }
+        a:hover { color: var(--accent-color); text-decoration: underline; }
+
+        .important { color: var(--accent-color); font-weight: bold; }
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .config-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .config-box span { display: block; color: var(--accent-color); font-family: 'Cinzel', serif; font-weight: bold; }
+
+        .footer {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-dim);
+            font-family: 'Cinzel', serif;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Copa Uruguaya</h1>
+        <div class="subtitle">Age of Empires II: Definitive Edition (2026)</div>
+        <nav class="nav-quick">
+            <a href="#i-ii">Inscripción</a>
+            <a href="#iii-iv">Cronograma</a>
+            <a href="#v-vi">Formato</a>
+            <a href="#vii-viii">Coordinación</a>
+            <a href="#ix-x">Técnico</a>
+            <a href="#mapas">Mapas</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    
+    <section id="i-ii">
+        <h2>I. Requisitos y II. Inscripción</h2>
+        <div class="card">
+            <p><strong>Nacionalidad:</strong> Exclusivo para ciudadanos uruguayos o extranjeros con residencia vigente.</p>
+            <p><strong>Cuentas:</strong> Deben usar la cuenta registrada. Prohibido el cambio de <em>nickname</em> durante el torneo.</p>
+            <p><strong>Registro:</strong> Mediante el servidor de <a href="https://discord.gg/3xeSRaQxDE" target="_blank">Discord AUA</a> en el canal <code>#inscripción</code> usando el comando del bot.</p>
+            <p><strong>Datos requeridos:</strong> Nickname, Elo actual, Elo máximo y link al perfil (aoe2.net/insight).</p>
+        </div>
+    </section>
+
+    <section id="iii-iv">
+        <h2>III. Fair Play y IV. Cronograma</h2>
+        <div class="card">
+            <h3>Auditoría de Elo</h3>
+            <ul>
+                <li>Mínimo de <strong>50 partidas</strong> totales y <strong>10 partidas 1v1</strong> en el año 2026.</li>
+                <li>Se auditará historial para detectar <em>smurfing</em> o <em>sandbagging</em>.</li>
+                <li>La administración puede ajustar el Elo de un jugador según análisis técnico.</li>
+            </ul>
+            <h3>Fechas Clave</h3>
+            <p>• <strong>Inscripciones:</strong> 1 de marzo al 5 de abril de 2026.<br>
+               • <strong>Inicio del Torneo:</strong> Lunes 13 de abril de 2026.</p>
+        </div>
+    </section>
+
+    <section id="v-vi">
+        <h2>V. Transmisión y VI. Formato</h2>
+        <div class="card">
+            <p><strong>Canales Oficiales:</strong> jabsuy, fumage_, rxxon_, tano_stokes (Twitch).</p>
+            <p><strong>Casting:</strong> Libre con uso obligatorio del logo oficial en el overlay.</p>
+            <h3>Estructura del Torneo</h3>
+            <ul>
+                <li><strong>Fase de Grupos:</strong> 16-31 jugadores (4 grupos) / 32+ jugadores (8 grupos). Pasan los 2 mejores de cada uno.</li>
+                <li><strong>Puntuación:</strong> Resultado 2-1 (2 pts ganador / 1 pt perdedor). Admiwin (2 pts).</li>
+                <li><strong>Desempate:</strong> Enfrentamiento directo (Head-to-Head).</li>
+                <li><strong>Fase Final:</strong> Eliminación directa hasta la final.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="vii-viii">
+        <h2>VII. Coordinación y VIII. Integridad</h2>
+        <div class="card">
+            <p><strong>Plazo:</strong> 7 días corridos por ronda. Coordinación vía comando <code>/coordinado</code> en <code>#fixture</code>.</p>
+            <p><strong>Presencia:</strong> Obligatorio estar en el canal de voz "Campeonato Uruguayo" de AUA al jugar.</p>
+            <p><strong>Puntualidad:</strong> 15 minutos de tolerancia. Si no hay acuerdo, se juega el <strong>último día a las 22:00 (Hora UY)</strong>.</p>
+            <p><strong>Sanciones:</strong> Prohibido Smurfs, hacks o prestar cuentas. Incumplimiento = Descalificación inmediata.</p>
+        </div>
+    </section>
+
+    <section id="ix-x">
+        <h2>IX. Configuración y X. Formato Bo3</h2>
+        <div class="card">
+            <div class="config-grid">
+                <div class="config-box"><span>SERVIDOR</span>Brasil</div>
+                <div class="config-box"><span>POBLACIÓN</span>200</div>
+                <div class="config-box"><span>MODO</span>Conquista</div>
+                <div class="config-box"><span>VELOCIDAD</span>Bloqueada</div>
+            </div>
+            <p style="margin-top:20px;"><strong>Handicap:</strong> Si el bot lo indica, aplicar el % correspondiente.</p>
+            <h3>Draft y Mapas (Best of 3)</h3>
+            <ul>
+                <li><strong>Prioridad:</strong> El jugador de menor Elo elige ser Host del Draft de Mapas o de Civs.</li>
+                <li><strong>Drafts:</strong> <a href="https://aoe2cm.net/preset/DacpH" target="_blank">Mapas (DacpH)</a> | <a href="https://aoe2cm.net/preset/fwACJ" target="_blank">Civs (fwACJ)</a></li>
+                <li><strong>Orden:</strong> G1 (Draft), G2 (Perdedor G1 elige), G3 (Perdedor G2 elige).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="mapas">
+        <h2>Pool de Mapas por Categoría</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Categoría</th><th>Mapas Permitidos</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Abiertos</strong></td><td>Morass, Land Madness, Low Tide</td></tr>
+                    <tr><td><strong>Semi-Abiertos</strong></td><td>Brookside Battleground, Arabia, Enclosed</td></tr>
+                    <tr><td><strong>Cerrados</strong></td><td>Black Forest, Arena, ByPass</td></tr>
+                    <tr><td><strong>Híbridos</strong></td><td>Immersion, Kelimutu Lakes, Kawasan</td></tr>
+                    <tr><td><strong>Aguas</strong></td><td>Shorelines, Islas del Pacifico, Migración</td></tr>
+                    <tr><td><strong>Nómada</strong></td><td>Claro Africano, Nómade, Stranded</td></tr>
+                    <tr><td><strong>Caóticos</strong></td><td>Border Dispute, Skukuza, African Waters</td></tr>
+                </tbody>
+            </table>
+            <p><small>Descargar en mods como: <strong>"Campeonato Uruguayo 2025 Mapas"</strong>. Tamaño: 2 jugadores.</small></p>
+        </div>
+    </section>
+
+    <section id="xi-xiii">
+        <h2>XI. Fallos Técnicos y XII/XIII. Finalización</h2>
+        <div class="card">
+            <p><strong>Desconexiones:</strong> Restaurar partida es prioridad. <br>
+               - Antes min 8: RE obligatorio.<br>
+               - Post min 9: El jugador en sala puede reclamar victoria.<br>
+               - 1 RE libre por serie antes del min 4.</p>
+            <p><strong>Estrategias:</strong> Permitido Laming, Douche, Walls y cualquier mecánica del juego.</p>
+            <p><strong>Reporte:</strong> Informar en <code>#Recs</code> marcador, mapas y civs inmediatamente.</p>
+        </div>
+    </section>
+
+</div>
+
+<div class="footer">
+    © 2026 Asociación Uruguaya de Age of Empires - AUA
+</div>
+
+</body>
+</html>
