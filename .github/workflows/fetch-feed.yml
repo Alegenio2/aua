@@ -2,11 +2,11 @@ name: Fetch Age of Empires Feed
 
 on:
   schedule:
-    - cron: '0 12 * * *'  # Ejecuta una vez al día a las 9:00 AM (Uruguay)
-  workflow_dispatch:  # Permite ejecutarlo manualmente desde GitHub
+    - cron: '0 12 * * *'
+  workflow_dispatch:
 
 permissions:
-  contents: write  # Permite hacer push al mismo repo
+  contents: write
 
 jobs:
   fetch_feed:
@@ -22,26 +22,22 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+        run: npm install
 
-      - name: Fetch Age of Empires Feed
+      - name: Fetch and Process Feed
         run: |
           curl -s https://www.ageofempires.com/feed/ -o feed.xml
-          node fetch-feed.js  # este script debe generar feed.json
+          node fetch-feed.js
 
-      - name: Commit feed data
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and Push
         run: |
-          git config user.email "alegenio2@gmail.com"
           git config user.name "GitHub Actions"
+          git config user.email "alegenio2@gmail.com"
           git add feed.json
-          git diff --quiet && echo "No changes to commit" || (
-            git commit -m "Update feed data" &&
-            git push origin HEAD:${{ github.ref }}
-          )
+          # Solo hace commit si el archivo feed.json realmente cambió
+          if ! git diff --cached --quiet; then
+            git commit -m "Update feed data"
+            git push
+          else
+            echo "No hay cambios en el feed para actualizar."
+          fi
