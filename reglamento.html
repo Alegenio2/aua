@@ -33,12 +33,25 @@
             padding: 40px 20px;
         }
 
-        /* Hero Section */
+       /* HEADER SIEMPRE VISIBLE */
         header {
             text-align: center;
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border-color);
-            background: linear-gradient(to bottom, #111, var(--bg-color));
+            padding: 30px 0;
+            background: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent; /* Invisible al inicio */
+        }
+
+        /* Clase que se activa con el Scroll vía JS */
+        header.scrolled {
+            padding: 15px 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(78, 177, 242, 0.3);
         }
 
         h1 {
@@ -51,6 +64,10 @@
             text-shadow: 0 0 15px rgba(194, 163, 67, 0.3);
         }
 
+header.scrolled h1 {
+            font-size: 1.8rem;
+        }
+        
         .subtitle {
             font-family: 'Cinzel', serif;
             color: var(--primary-color);
@@ -59,6 +76,7 @@
             margin-top: 10px;
         }
 
+        header.scrolled .subtitle { display: none; } /* Ocultamos subtítulo al scrollear para ahorrar espacio */
         /* Navigation */
         .nav-quick {
             display: flex;
@@ -67,7 +85,7 @@
             margin-top: 30px;
             flex-wrap: wrap;
         }
-
+header.scrolled .nav-quick { margin-top: 10px; }
         .nav-quick a {
             font-family: 'Cinzel', serif;
             color: var(--accent-color);
@@ -167,8 +185,8 @@
 </head>
 <body>
 
-<header>
-    <div class="container">
+<header id="mainHeader">
+<div class="container" style="padding: 0;">
         <h1>Copa Uruguaya</h1>
         <div class="subtitle">Age of Empires II: Definitive Edition (2026)</div>
         <nav class="nav-quick">
@@ -291,9 +309,20 @@
     © 2026 Asociación Uruguaya de Age of Empires - AUA
 </div>
 
+    <script>
+    window.onscroll = function() {
+        const header = document.getElementById("mainHeader");
+        if (window.pageYOffset > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    };
+</script>
 </body>
 
 </html>
+
 
 
 
