@@ -45,6 +45,28 @@
             border-bottom: 1px solid transparent; /* Invisible al inicio */
         }
 
+/* ALINEACIÓN LOGO + TÍTULO */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+        
+        .logo-torneo {
+    height: 70px; /* Ajusta este valor a tu gusto (ej: 60px o 80px) */
+    width: auto;  /* Mantiene la proporción */
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+        /* Tamaño del logo cuando el usuario hace scroll */
+header.scrolled .logo-torneo {
+    height: 45px; 
+}
+
+.title-group { 
+    text-align: left; 
+}
         /* Clase que se activa con el Scroll vía JS */
         header.scrolled {
             padding: 15px 0;
@@ -333,6 +355,7 @@ header.scrolled .nav-quick { margin-top: 10px; }
 </body>
 
 </html>
+
 
 
 
