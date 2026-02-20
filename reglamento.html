@@ -7,207 +7,232 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0a0a0f;
-            --card-bg: #161b22;
-            --accent-color: #c2a343; /* Dorado AUA */
-            --primary-color: #4eb1f2; /* Azul AUA */
-            --text-main: #e6edf3;
-            --text-dim: #8b949e;
-            --border-color: #30363d;
-        }
+    --bg-color: #0a0a0f;
+    --card-bg: #161b22;
+    --accent-color: #c2a343; /* Dorado AUA */
+    --primary-color: #4eb1f2; /* Azul AUA */
+    --text-main: #e6edf3;
+    --text-dim: #8b949e;
+    --border-color: #30363d;
+}
 
-        html { scroll-behavior: smooth; }
+html { 
+    scroll-behavior: smooth; 
+}
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+/* --- HEADER SIEMPRE VISIBLE --- */
+header {
+    text-align: center;
+    padding: 40px 0 20px 0;
+    background: var(--bg-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 2px solid transparent;
+}
 
-       /* HEADER SIEMPRE VISIBLE */
-        header {
-            text-align: center;
-            padding: 30px 0;
-            background: var(--bg-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid transparent; /* Invisible al inicio */
-        }
+/* Estado del Header al hacer Scroll */
+header.scrolled {
+    padding: 10px 0;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(78, 177, 242, 0.3);
+}
 
-/* ALINEACIÓN LOGO + TÍTULO */
+/* --- CONTENEDOR LOGO + TÍTULO --- */
 .header-content {
     display: flex;
+    flex-direction: column; /* Logo arriba por defecto */
     align-items: center;
     justify-content: center;
+    gap: 15px;
+    transition: all 0.4s ease;
+}
+
+/* Cambio a fila al scrollear */
+header.scrolled .header-content {
+    flex-direction: row; /* Logo al costado */
     gap: 20px;
 }
-        
-        .logo-torneo {
-    height: 70px; /* Ajusta este valor a tu gusto (ej: 60px o 80px) */
-    width: auto;  /* Mantiene la proporción */
+
+.logo-torneo {
+    height: 120px; /* Tamaño grande inicial */
+    width: auto;
     object-fit: contain;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 0 10px rgba(194, 163, 67, 0.2));
 }
-        /* Tamaño del logo cuando el usuario hace scroll */
+
 header.scrolled .logo-torneo {
-    height: 45px; 
+    height: 50px; /* Tamaño compacto al scrollear */
 }
 
 .title-group { 
-    text-align: left; 
+    text-align: center;
+    transition: all 0.4s ease;
 }
-        /* Clase que se activa con el Scroll vía JS */
-        header.scrolled {
-            padding: 15px 0;
-            background: rgba(10, 10, 15, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--primary-color);
-            box-shadow: 0 4px 15px rgba(78, 177, 242, 0.3);
-        }
 
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin: 0;
-            color: var(--accent-color);
-            text-shadow: 0 0 15px rgba(194, 163, 67, 0.3);
-        }
+header.scrolled .title-group {
+    text-align: left; /* Alineado al texto cuando está de costado */
+}
+
+/* --- TIPOGRAFÍA --- */
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 3.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+    color: var(--accent-color);
+    text-shadow: 0 0 15px rgba(194, 163, 67, 0.3);
+    transition: all 0.4s ease;
+}
 
 header.scrolled h1 {
-            font-size: 1.8rem;
-        }
-        
-        .subtitle {
-            font-family: 'Cinzel', serif;
-            color: var(--primary-color);
-            font-weight: 400;
-            letter-spacing: 4px;
-            margin-top: 10px;
-        }
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+}
 
-        header.scrolled .subtitle { display: none; } /* Ocultamos subtítulo al scrollear para ahorrar espacio */
-        /* Navigation */
-        .nav-quick {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-header.scrolled .nav-quick { margin-top: 10px; }
-        .nav-quick a {
-            font-family: 'Cinzel', serif;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-size: 0.75rem;
-            border: 1px solid var(--accent-color);
-            padding: 6px 12px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            background: rgba(194, 163, 67, 0.05);
-        }
+.subtitle {
+    font-family: 'Cinzel', serif;
+    color: var(--primary-color);
+    font-weight: 400;
+    letter-spacing: 4px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
 
-        .nav-quick a:hover {
-            background: var(--accent-color);
-            color: #000;
-            box-shadow: 0 0 10px var(--accent-color);
-        }
+header.scrolled .subtitle { 
+    display: none; /* Ocultamos para máxima limpieza */
+}
 
-        /* Sections */
-        section { margin-top: 60px; }
+/* --- NAVEGACIÓN RÁPIDA --- */
+.nav-quick {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+    transition: all 0.4s ease;
+}
 
-        h2 {
-            font-family: 'Cinzel', serif;
-            border-left: 4px solid var(--primary-color);
-            padding-left: 15px;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: var(--accent-color);
-        }
+header.scrolled .nav-quick { 
+    margin-top: 10px; 
+}
 
-        h3 {
-            font-family: 'Cinzel', serif;
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-top: 20px;
-        }
+.nav-quick a {
+    font-family: 'Cinzel', serif;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.75rem;
+    border: 1px solid var(--accent-color);
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background: rgba(194, 163, 67, 0.05);
+}
 
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
+.nav-quick a:hover {
+    background: var(--accent-color);
+    color: #000;
+    box-shadow: 0 0 10px var(--accent-color);
+}
 
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
+/* --- CUERPO Y SECCIONES --- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-        th {
-            font-family: 'Cinzel', serif;
-            text-align: left;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding: 10px;
-        }
+section { 
+    margin-top: 60px; 
+    scroll-margin-top: 140px; /* Evita que el header tape el título al saltar */
+}
 
-        td {
-            padding: 10px;
-            border-bottom: 1px solid var(--border-color);
-        }
+h2 {
+    font-family: 'Cinzel', serif;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 15px;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: var(--accent-color);
+}
 
-        /* Lists and Links */
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
-        a { color: var(--primary-color); text-decoration: none; transition: 0.3s; }
-        a:hover { color: var(--accent-color); text-decoration: underline; }
+h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-top: 20px;
+}
 
-        .important { color: var(--accent-color); font-weight: bold; }
-        .config-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .config-box {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            text-align: center;
-            border-radius: 8px;
-        }
-        .config-box span { display: block; color: var(--accent-color); font-family: 'Cinzel', serif; font-weight: bold; }
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
 
-        .footer {
-            text-align: center;
-            padding: 60px;
-            color: var(--text-dim);
-            font-family: 'Cinzel', serif;
-            border-top: 1px solid var(--border-color);
-        }
-        .logo-aua {
-            height: 70px;
-            margin-bottom: 20px;
-            opacity: 0.8;
-        }
+/* --- TABLAS --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+th {
+    font-family: 'Cinzel', serif;
+    text-align: left;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.important { 
+    color: var(--accent-color); 
+    font-weight: bold; 
+}
+
+/* --- FOOTER --- */
+.footer {
+    text-align: center;
+    padding: 60px;
+    color: var(--text-dim);
+    font-family: 'Cinzel', serif;
+    border-top: 1px solid var(--border-color);
+}
+
+.logo-aua {
+    height: 80px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+/* Responsivo para celulares */
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    header.scrolled .header-content { flex-direction: column; }
+    header.scrolled h1 { font-size: 1.4rem; }
+}
     </style>
 </head>
 <body>
@@ -355,6 +380,7 @@ header.scrolled .nav-quick { margin-top: 10px; }
 </body>
 
 </html>
+
 
 
 
