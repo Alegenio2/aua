@@ -1,6 +1,6 @@
 {
   "visible": true,
-  "modo": "mini",
+  "modo": "pre",
   "grupo": "A",
   "ronda": "1",
   "formato": "Bo3",
@@ -212,5 +212,5 @@
     },
     "discordId": "244547091362217984"
   },
-  "ts": 1773606147616
+  "ts": 1773606150621
 }
