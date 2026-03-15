@@ -1,6 +1,190 @@
 {
-  "visible": false,
-  "modo": "off",
-  "reset": true,
-  "ts": 1773606346067
+  "meta": {
+    "torneo": "copa_uruguaya_2026",
+    "ultima_actualizacion": "2026-03-14T23:45:12.000Z",
+    "total_partidas": 28
+  },
+  "jugadores": {
+    "697996987210924072": {
+      "nick": "|FMG| TINCHO",
+      "aoe2Id": "2304739",
+      "global": { "pj": 10, "pg": 4, "pp": 6, "winrate": 40 },
+      "civs": {
+        "Mongols":    { "pj": 3, "pg": 2, "pp": 1, "winrate": 66.7, "por_mapa": { "Arabia": { "pj": 2, "pg": 2, "pp": 0, "winrate": 100 }, "Nomad": { "pj": 1, "pg": 0, "pp": 1, "winrate": 0 } } },
+        "Chinese":    { "pj": 2, "pg": 1, "pp": 1, "winrate": 50,   "por_mapa": { "African Clearing": { "pj": 1, "pg": 1, "pp": 0, "winrate": 100 }, "Arena": { "pj": 1, "pg": 0, "pp": 1, "winrate": 0 } } },
+        "Dravidians": { "pj": 2, "pg": 1, "pp": 1, "winrate": 50,   "por_mapa": { "Arabia": { "pj": 1, "pg": 1, "pp": 0, "winrate": 100 } } },
+        "Bengalis":   { "pj": 2, "pg": 0, "pp": 2, "winrate": 0,    "por_mapa": {} },
+        "Vietnamese": { "pj": 1, "pg": 0, "pp": 1, "winrate": 0,    "por_mapa": {} }
+      },
+      "mapas": {
+        "Arabia":           { "pj": 4, "pg": 3, "pp": 1, "winrate": 75 },
+        "Arena":            { "pj": 3, "pg": 1, "pp": 2, "winrate": 33.3 },
+        "Nomad":            { "pj": 2, "pg": 0, "pp": 2, "winrate": 0 },
+        "African Clearing": { "pj": 1, "pg": 1, "pp": 0, "winrate": 100 }
+      }
+    },
+    "244547091362217984": {
+      "nick": "|FMG| twitch/JabsUY",
+      "aoe2Id": "2583713",
+      "global": { "pj": 10, "pg": 6, "pp": 4, "winrate": 60 },
+      "civs": {
+        "Wei":         { "pj": 3, "pg": 3, "pp": 0, "winrate": 100,  "por_mapa": { "Arabia": { "pj": 1, "pg": 1, "pp": 0, "winrate": 100 }, "Nomad": { "pj": 1, "pg": 1, "pp": 0, "winrate": 100 } } },
+        "Italians":    { "pj": 2, "pg": 2, "pp": 0, "winrate": 100,  "por_mapa": { "Nomad": { "pj": 1, "pg": 1, "pp": 0, "winrate": 100 } } },
+        "Portuguese":  { "pj": 2, "pg": 1, "pp": 1, "winrate": 50,   "por_mapa": { "Arena": { "pj": 1, "pg": 1, "pp": 0, "winrate": 100 } } },
+        "Vietnamese":  { "pj": 2, "pg": 0, "pp": 2, "winrate": 0,    "por_mapa": {} },
+        "Hindustanis": { "pj": 1, "pg": 0, "pp": 1, "winrate": 0,    "por_mapa": {} }
+      },
+      "mapas": {
+        "Arabia":           { "pj": 4, "pg": 2, "pp": 2, "winrate": 50 },
+        "Arena":            { "pj": 3, "pg": 2, "pp": 1, "winrate": 66.7 },
+        "Nomad":            { "pj": 2, "pg": 2, "pp": 0, "winrate": 100 },
+        "African Clearing": { "pj": 1, "pg": 0, "pp": 1, "winrate": 0 }
+      }
+    },
+    "382719048571904001": {
+      "nick": "|FMG| Rxon",
+      "aoe2Id": "1874231",
+      "global": { "pj": 8, "pg": 6, "pp": 2, "winrate": 75 },
+      "civs": {
+        "Franks":     { "pj": 3, "pg": 3, "pp": 0, "winrate": 100,  "por_mapa": { "Arabia": { "pj": 2, "pg": 2, "pp": 0, "winrate": 100 } } },
+        "Lithuanians":{ "pj": 2, "pg": 2, "pp": 0, "winrate": 100,  "por_mapa": { "Arena": { "pj": 1, "pg": 1, "pp": 0, "winrate": 100 } } },
+        "Byzantines": { "pj": 2, "pg": 1, "pp": 1, "winrate": 50,   "por_mapa": {} },
+        "Celts":      { "pj": 1, "pg": 0, "pp": 1, "winrate": 0,    "por_mapa": {} }
+      },
+      "mapas": {
+        "Arabia":           { "pj": 4, "pg": 3, "pp": 1, "winrate": 75 },
+        "Arena":            { "pj": 2, "pg": 2, "pp": 0, "winrate": 100 },
+        "Nomad":            { "pj": 1, "pg": 1, "pp": 0, "winrate": 100 },
+        "African Clearing": { "pj": 1, "pg": 0, "pp": 1, "winrate": 0 }
+      }
+    },
+    "510384729016381440": {
+      "nick": "Buyan",
+      "aoe2Id": "3012847",
+      "global": { "pj": 8, "pg": 5, "pp": 3, "winrate": 62.5 },
+      "civs": {
+        "Cumans":    { "pj": 3, "pg": 2, "pp": 1, "winrate": 66.7, "por_mapa": { "Nomad": { "pj": 2, "pg": 2, "pp": 0, "winrate": 100 } } },
+        "Tatars":    { "pj": 2, "pg": 2, "pp": 0, "winrate": 100,  "por_mapa": {} },
+        "Mongols":   { "pj": 2, "pg": 1, "pp": 1, "winrate": 50,   "por_mapa": { "Arabia": { "pj": 1, "pg": 0, "pp": 1, "winrate": 0 } } },
+        "Huns":      { "pj": 1, "pg": 0, "pp": 1, "winrate": 0,    "por_mapa": {} }
+      },
+      "mapas": {
+        "Nomad":            { "pj": 3, "pg": 3, "pp": 0, "winrate": 100 },
+        "Arabia":           { "pj": 3, "pg": 1, "pp": 2, "winrate": 33.3 },
+        "Arena":            { "pj": 1, "pg": 1, "pp": 0, "winrate": 100 },
+        "African Clearing": { "pj": 1, "pg": 0, "pp": 1, "winrate": 0 }
+      }
+    },
+    "671029384716201984": {
+      "nick": "Tascon",
+      "aoe2Id": "2748193",
+      "global": { "pj": 6, "pg": 2, "pp": 4, "winrate": 33.3 },
+      "civs": {
+        "Britons":    { "pj": 2, "pg": 1, "pp": 1, "winrate": 50,   "por_mapa": { "Arabia": { "pj": 1, "pg": 0, "pp": 1, "winrate": 0 } } },
+        "Aztecs":     { "pj": 2, "pg": 1, "pp": 1, "winrate": 50,   "por_mapa": {} },
+        "Mayans":     { "pj": 1, "pg": 0, "pp": 1, "winrate": 0,    "por_mapa": {} },
+        "Saracens":   { "pj": 1, "pg": 0, "pp": 1, "winrate": 0,    "por_mapa": {} }
+      },
+      "mapas": {
+        "Arabia":           { "pj": 3, "pg": 1, "pp": 2, "winrate": 33.3 },
+        "Arena":            { "pj": 2, "pg": 1, "pp": 1, "winrate": 50 },
+        "Nomad":            { "pj": 1, "pg": 0, "pp": 1, "winrate": 0 }
+      }
+    },
+    "203847561029384756": {
+      "nick": "|FMG| Matix",
+      "aoe2Id": "1923847",
+      "global": { "pj": 6, "pg": 3, "pp": 3, "winrate": 50 },
+      "civs": {
+        "Goths":      { "pj": 2, "pg": 2, "pp": 0, "winrate": 100,  "por_mapa": { "Arena": { "pj": 1, "pg": 1, "pp": 0, "winrate": 100 } } },
+        "Teutons":    { "pj": 2, "pg": 1, "pp": 1, "winrate": 50,   "por_mapa": {} },
+        "Burgundians":{ "pj": 1, "pg": 0, "pp": 1, "winrate": 0,    "por_mapa": {} },
+        "Bohemians":  { "pj": 1, "pg": 0, "pp": 1, "winrate": 0,    "por_mapa": {} }
+      },
+      "mapas": {
+        "Arena":            { "pj": 3, "pg": 2, "pp": 1, "winrate": 66.7 },
+        "Arabia":           { "pj": 2, "pg": 1, "pp": 1, "winrate": 50 },
+        "African Clearing": { "pj": 1, "pg": 0, "pp": 1, "winrate": 0 }
+      }
+    }
+  },
+  "mapas": {
+    "Arabia": {
+      "total_partidas": 8,
+      "civs_ganadoras":  { "Franks": 2, "Mongols": 2, "Dravidians": 1, "Wei": 1, "Cumans": 1, "Lithuanians": 1 },
+      "civs_perdedoras": { "Vietnamese": 2, "Bengalis": 2, "Britons": 1, "Mongols": 1, "Saracens": 1, "Huns": 1 },
+      "enfrentamientos": {
+        "Franks_vs_Vietnamese": { "total": 2, "gano_primero": 2, "civ_a": "Franks",   "civ_b": "Vietnamese" },
+        "Mongols_vs_Bengalis":  { "total": 2, "gano_primero": 2, "civ_a": "Bengalis", "civ_b": "Mongols" }
+      }
+    },
+    "Arena": {
+      "total_partidas": 6,
+      "civs_ganadoras":  { "Goths": 2, "Lithuanians": 2, "Portuguese": 1, "Chinese": 1 },
+      "civs_perdedoras": { "Bohemians": 1, "Teutons": 1, "Vietnamese": 1, "Bengalis": 1, "Aztecs": 1, "Britons": 1 },
+      "enfrentamientos": {
+        "Goths_vs_Teutons":      { "total": 1, "gano_primero": 1, "civ_a": "Goths",         "civ_b": "Teutons" },
+        "Lithuanians_vs_Britons":{ "total": 1, "gano_primero": 1, "civ_a": "Lithuanians",   "civ_b": "Britons" }
+      }
+    },
+    "Nomad": {
+      "total_partidas": 5,
+      "civs_ganadoras":  { "Wei": 2, "Cumans": 2, "Italians": 1 },
+      "civs_perdedoras": { "Vietnamese": 2, "Dravidians": 1, "Huns": 1, "Mongols": 1 },
+      "enfrentamientos": {
+        "Cumans_vs_Mongols": { "total": 1, "gano_primero": 1, "civ_a": "Cumans", "civ_b": "Mongols" },
+        "Wei_vs_Vietnamese": { "total": 1, "gano_primero": 1, "civ_a": "Vietnamese", "civ_b": "Wei" }
+      }
+    },
+    "African Clearing": {
+      "total_partidas": 4,
+      "civs_ganadoras":  { "Chinese": 2, "Teutons": 1, "Aztecs": 1 },
+      "civs_perdedoras": { "Vietnamese": 2, "Huns": 1, "Celts": 1 },
+      "enfrentamientos": {
+        "Aztecs_vs_Vietnamese": { "total": 1, "gano_primero": 1, "civ_a": "Aztecs",   "civ_b": "Vietnamese" },
+        "Chinese_vs_Huns":      { "total": 1, "gano_primero": 1, "civ_a": "Chinese",  "civ_b": "Huns" }
+      }
+    }
+  },
+  "civs": {
+    "Franks":      { "total_jugadas": 3, "total_ganadas": 3, "winrate": 100,  "por_mapa": { "Arabia": { "jugadas": 2, "ganadas": 2, "winrate": 100 }, "Arena": { "jugadas": 1, "ganadas": 1, "winrate": 100 } }, "vs_civs": { "Vietnamese": { "jugadas": 2, "ganadas": 2, "winrate": 100 }, "Bengalis": { "jugadas": 1, "ganadas": 1, "winrate": 100 } } },
+    "Wei":         { "total_jugadas": 3, "total_ganadas": 3, "winrate": 100,  "por_mapa": { "Arabia": { "jugadas": 1, "ganadas": 1, "winrate": 100 }, "Nomad": { "jugadas": 2, "ganadas": 2, "winrate": 100 } }, "vs_civs": { "Mongols": { "jugadas": 1, "ganadas": 1, "winrate": 100 }, "Vietnamese": { "jugadas": 1, "ganadas": 1, "winrate": 100 } } },
+    "Lithuanians": { "total_jugadas": 2, "total_ganadas": 2, "winrate": 100,  "por_mapa": { "Arena": { "jugadas": 1, "ganadas": 1, "winrate": 100 }, "Nomad": { "jugadas": 1, "ganadas": 1, "winrate": 100 } }, "vs_civs": { "Britons": { "jugadas": 1, "ganadas": 1, "winrate": 100 } } },
+    "Tatars":      { "total_jugadas": 2, "total_ganadas": 2, "winrate": 100,  "por_mapa": {}, "vs_civs": {} },
+    "Cumans":      { "total_jugadas": 3, "total_ganadas": 2, "winrate": 66.7, "por_mapa": { "Nomad": { "jugadas": 2, "ganadas": 2, "winrate": 100 }, "Arabia": { "jugadas": 1, "ganadas": 0, "winrate": 0 } }, "vs_civs": { "Mongols": { "jugadas": 1, "ganadas": 1, "winrate": 100 }, "Vietnamese": { "jugadas": 1, "ganadas": 1, "winrate": 100 } } },
+    "Mongols":     { "total_jugadas": 5, "total_ganadas": 3, "winrate": 60,   "por_mapa": { "Arabia": { "jugadas": 3, "ganadas": 2, "winrate": 66.7 }, "Nomad": { "jugadas": 1, "ganadas": 0, "winrate": 0 } }, "vs_civs": { "Bengalis": { "jugadas": 1, "ganadas": 1, "winrate": 100 }, "Vietnamese": { "jugadas": 1, "ganadas": 1, "winrate": 100 } } },
+    "Goths":       { "total_jugadas": 2, "total_ganadas": 2, "winrate": 100,  "por_mapa": { "Arena": { "jugadas": 2, "ganadas": 2, "winrate": 100 } }, "vs_civs": { "Teutons": { "jugadas": 1, "ganadas": 1, "winrate": 100 }, "Bohemians": { "jugadas": 1, "ganadas": 1, "winrate": 100 } } },
+    "Italians":    { "total_jugadas": 2, "total_ganadas": 2, "winrate": 100,  "por_mapa": { "Nomad": { "jugadas": 1, "ganadas": 1, "winrate": 100 } }, "vs_civs": {} },
+    "Dravidians":  { "total_jugadas": 2, "total_ganadas": 1, "winrate": 50,   "por_mapa": { "Arabia": { "jugadas": 1, "ganadas": 1, "winrate": 100 } }, "vs_civs": {} },
+    "Chinese":     { "total_jugadas": 2, "total_ganadas": 1, "winrate": 50,   "por_mapa": { "African Clearing": { "jugadas": 1, "ganadas": 1, "winrate": 100 }, "Arena": { "jugadas": 1, "ganadas": 0, "winrate": 0 } }, "vs_civs": { "Vietnamese": { "jugadas": 1, "ganadas": 1, "winrate": 100 } } },
+    "Byzantines":  { "total_jugadas": 2, "total_ganadas": 1, "winrate": 50,   "por_mapa": {}, "vs_civs": {} },
+    "Portuguese":  { "total_jugadas": 2, "total_ganadas": 1, "winrate": 50,   "por_mapa": { "Arena": { "jugadas": 1, "ganadas": 1, "winrate": 100 } }, "vs_civs": {} },
+    "Aztecs":      { "total_jugadas": 2, "total_ganadas": 1, "winrate": 50,   "por_mapa": { "African Clearing": { "jugadas": 1, "ganadas": 1, "winrate": 100 } }, "vs_civs": {} },
+    "Teutons":     { "total_jugadas": 2, "total_ganadas": 1, "winrate": 50,   "por_mapa": {}, "vs_civs": { "Goths": { "jugadas": 1, "ganadas": 0, "winrate": 0 } } },
+    "Britons":     { "total_jugadas": 2, "total_ganadas": 1, "winrate": 50,   "por_mapa": { "Arabia": { "jugadas": 1, "ganadas": 1, "winrate": 100 } }, "vs_civs": {} },
+    "Vietnamese":  { "total_jugadas": 6, "total_ganadas": 0, "winrate": 0,    "por_mapa": { "Arabia": { "jugadas": 2, "ganadas": 0, "winrate": 0 }, "Nomad": { "jugadas": 2, "ganadas": 0, "winrate": 0 } }, "vs_civs": { "Wei": { "jugadas": 1, "ganadas": 0, "winrate": 0 }, "Franks": { "jugadas": 2, "ganadas": 0, "winrate": 0 } } },
+    "Bengalis":    { "total_jugadas": 2, "total_ganadas": 0, "winrate": 0,    "por_mapa": {}, "vs_civs": {} },
+    "Hindustanis": { "total_jugadas": 1, "total_ganadas": 0, "winrate": 0,    "por_mapa": {}, "vs_civs": {} },
+    "Mayans":      { "total_jugadas": 1, "total_ganadas": 0, "winrate": 0,    "por_mapa": {}, "vs_civs": {} },
+    "Saracens":    { "total_jugadas": 1, "total_ganadas": 0, "winrate": 0,    "por_mapa": {}, "vs_civs": {} },
+    "Huns":        { "total_jugadas": 1, "total_ganadas": 0, "winrate": 0,    "por_mapa": {}, "vs_civs": {} },
+    "Celts":       { "total_jugadas": 1, "total_ganadas": 0, "winrate": 0,    "por_mapa": {}, "vs_civs": {} },
+    "Burgundians": { "total_jugadas": 1, "total_ganadas": 0, "winrate": 0,    "por_mapa": {}, "vs_civs": {} },
+    "Bohemians":   { "total_jugadas": 1, "total_ganadas": 0, "winrate": 0,    "por_mapa": {}, "vs_civs": {} }
+  },
+  "partidas": [
+    { "matchId": 460550054, "fecha": "2026-03-04T02:23:54.000Z", "mapa": "Arabia",           "grupo": "B", "ronda": 1, "duracion": 27, "jugador1": { "discordId": "697996987210924072", "nick": "TINCHO",  "civ": "Mongols",   "gano": false }, "jugador2": { "discordId": "244547091362217984", "nick": "JabsUY", "civ": "Wei",        "gano": true  } },
+    { "matchId": 460546719, "fecha": "2026-03-04T02:04:54.000Z", "mapa": "Nomad",            "grupo": "B", "ronda": 1, "duracion": 24, "jugador1": { "discordId": "697996987210924072", "nick": "TINCHO",  "civ": "Vietnamese","gano": false }, "jugador2": { "discordId": "244547091362217984", "nick": "JabsUY", "civ": "Italians",   "gano": true  } },
+    { "matchId": 460542727, "fecha": "2026-03-04T01:40:44.000Z", "mapa": "Arena",            "grupo": "B", "ronda": 1, "duracion": 33, "jugador1": { "discordId": "697996987210924072", "nick": "TINCHO",  "civ": "Bengalis",  "gano": false }, "jugador2": { "discordId": "244547091362217984", "nick": "JabsUY", "civ": "Portuguese", "gano": true  } },
+    { "matchId": 460537460, "fecha": "2026-03-04T01:07:22.000Z", "mapa": "African Clearing", "grupo": "B", "ronda": 1, "duracion": 29, "jugador1": { "discordId": "697996987210924072", "nick": "TINCHO",  "civ": "Chinese",   "gano": true  }, "jugador2": { "discordId": "244547091362217984", "nick": "JabsUY", "civ": "Vietnamese", "gano": false } },
+    { "matchId": 460601234, "fecha": "2026-03-06T20:15:00.000Z", "mapa": "Arabia",           "grupo": "A", "ronda": 1, "duracion": 31, "jugador1": { "discordId": "382719048571904001", "nick": "Rxon",    "civ": "Franks",    "gano": true  }, "jugador2": { "discordId": "671029384716201984", "nick": "Tascon","civ": "Vietnamese", "gano": false } },
+    { "matchId": 460601235, "fecha": "2026-03-06T20:48:00.000Z", "mapa": "Arena",            "grupo": "A", "ronda": 1, "duracion": 44, "jugador1": { "discordId": "382719048571904001", "nick": "Rxon",    "civ": "Lithuanians","gano": true }, "jugador2": { "discordId": "671029384716201984", "nick": "Tascon","civ": "Aztecs",     "gano": false } },
+    { "matchId": 460601236, "fecha": "2026-03-06T21:38:00.000Z", "mapa": "Arabia",           "grupo": "A", "ronda": 1, "duracion": 28, "jugador1": { "discordId": "382719048571904001", "nick": "Rxon",    "civ": "Franks",    "gano": true  }, "jugador2": { "discordId": "671029384716201984", "nick": "Tascon","civ": "Britons",    "gano": false } },
+    { "matchId": 460701001, "fecha": "2026-03-08T19:30:00.000Z", "mapa": "Nomad",            "grupo": "B", "ronda": 2, "duracion": 19, "jugador1": { "discordId": "510384729016381440", "nick": "Buyan",   "civ": "Cumans",    "gano": true  }, "jugador2": { "discordId": "697996987210924072", "nick": "TINCHO", "civ": "Bengalis",  "gano": false } },
+    { "matchId": 460701002, "fecha": "2026-03-08T19:52:00.000Z", "mapa": "Arabia",           "grupo": "B", "ronda": 2, "duracion": 35, "jugador1": { "discordId": "510384729016381440", "nick": "Buyan",   "civ": "Mongols",   "gano": false }, "jugador2": { "discordId": "697996987210924072", "nick": "TINCHO", "civ": "Dravidians","gano": true  } },
+    { "matchId": 460701003, "fecha": "2026-03-08T20:31:00.000Z", "mapa": "Arena",            "grupo": "B", "ronda": 2, "duracion": 41, "jugador1": { "discordId": "510384729016381440", "nick": "Buyan",   "civ": "Tatars",    "gano": true  }, "jugador2": { "discordId": "697996987210924072", "nick": "TINCHO", "civ": "Mongols",   "gano": false } },
+    { "matchId": 460801001, "fecha": "2026-03-10T21:00:00.000Z", "mapa": "Arabia",           "grupo": "A", "ronda": 2, "duracion": 26, "jugador1": { "discordId": "203847561029384756", "nick": "Matix",   "civ": "Teutons",   "gano": false }, "jugador2": { "discordId": "382719048571904001", "nick": "Rxon",  "civ": "Byzantines", "gano": true } },
+    { "matchId": 460801002, "fecha": "2026-03-10T21:29:00.000Z", "mapa": "Arena",            "grupo": "A", "ronda": 2, "duracion": 38, "jugador1": { "discordId": "203847561029384756", "nick": "Matix",   "civ": "Goths",     "gano": true  }, "jugador2": { "discordId": "382719048571904001", "nick": "Rxon",  "civ": "Celts",      "gano": false } },
+    { "matchId": 460801003, "fecha": "2026-03-10T22:12:00.000Z", "mapa": "African Clearing", "grupo": "A", "ronda": 2, "duracion": 22, "jugador1": { "discordId": "203847561029384756", "nick": "Matix",   "civ": "Burgundians","gano": false }, "jugador2": { "discordId": "382719048571904001", "nick": "Rxon",  "civ": "Lithuanians","gano": true } }
+  ]
 }
