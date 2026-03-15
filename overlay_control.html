@@ -26,11 +26,9 @@ input::placeholder{color:#2a1a0a}
 .btn-outline:hover{border-color:#e8c87a;color:#e8c87a}
 .btn-danger{background:#5a1010;color:#f0a0a0;border:0.5px solid #7a2020}
 .btn-danger:hover{background:#7a1818}
-.btn:disabled{opacity:0.4;cursor:not-allowed}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;vertical-align:middle;margin-right:6px}
-.dot-on  {background:#a8c860;box-shadow:0 0 8px #a8c86060}
-.dot-off {background:#3a2a1a}
-.dot-warn{background:#e8a030;box-shadow:0 0 8px #e8a03060}
+.dot-on {background:#a8c860;box-shadow:0 0 8px #a8c86060}
+.dot-off{background:#3a2a1a}
 .status-text{font-size:12px;color:#a09070;vertical-align:middle}
 .mode-row{display:flex;gap:6px;margin-top:8px}
 .mode-btn{flex:1;padding:8px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;border:0.5px solid #2a1a0a;background:#0d0d0d;color:#665544;transition:all 0.18s;font-family:'Inter',sans-serif}
@@ -43,10 +41,6 @@ input::placeholder{color:#2a1a0a}
 .suggestions{background:#0d0d0d;border:0.5px solid #3a2a1a;border-radius:0 0 6px 6px;overflow:hidden;display:none}
 .sug-item{padding:8px 10px;font-size:13px;cursor:pointer;color:#a09070;border-top:0.5px solid #1a1208}
 .sug-item:hover{background:#1a1208;color:#e8c87a}
-.token-row{display:flex;gap:8px;align-items:center;margin-top:8px}
-.token-row input{flex:1;margin-top:0}
-.token-btn{padding:7px 14px;border-radius:6px;font-size:12px;font-weight:600;background:#1a1208;border:0.5px solid #3a2a1a;color:#a09070;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap}
-.token-btn:hover{border-color:#e8c87a;color:#e8c87a}
 .log{max-height:120px;overflow-y:auto;font-size:11px;padding:8px;background:#0d0d0d;border-radius:6px;border:0.5px solid #1a1208;scrollbar-width:thin}
 .log p{margin-bottom:2px;line-height:1.4}
 .ok{color:#6a8040}.err{color:#804040}.info{color:#806040}.warn{color:#a07020}
@@ -60,26 +54,6 @@ hr{border:none;border-top:0.5px solid #1a1208;margin:0}
   <div class="subtitle">Copa Uruguaya 2026 — Panel de transmisión</div>
 
   <div class="layout">
-
-    <!-- CONFIG GITHUB -->
-    <div class="panel full">
-      <div class="panel-title">Configuración GitHub</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
-        <div><label>Usuario</label><input id="gh-user" value="Alegenio2"/></div>
-        <div><label>Repositorio</label><input id="gh-repo" value="aua"/></div>
-        <div><label>Ruta del archivo</label><input id="gh-path" value="torneos/stats_copa_2026.json"/></div>
-      </div>
-      <label>Personal Access Token</label>
-      <div class="token-row">
-        <input id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxx"/>
-        <button class="token-btn" onclick="guardarToken()">Guardar</button>
-        <button class="token-btn" onclick="borrarToken()">Borrar</button>
-      </div>
-      <div style="margin-top:8px">
-        <span class="dot dot-off" id="token-dot"></span>
-        <span id="token-status" class="status-text">Token no configurado</span>
-      </div>
-    </div>
 
     <!-- JUGADOR 1 -->
     <div class="panel">
@@ -127,9 +101,9 @@ hr{border:none;border-top:0.5px solid #1a1208;margin:0}
         <button class="mode-btn"        onclick="setModo('mini',this)">Mini</button>
         <button class="mode-btn"        onclick="setModo('off',this)">Oculto</button>
       </div>
-      <button class="btn btn-gold"    id="btn-send" onclick="enviar()" style="margin-top:14px">▶ Enviar al overlay</button>
-      <button class="btn btn-outline"               onclick="ocultar()">✕ Ocultar</button>
-      <button class="btn btn-danger"                onclick="resetear()">↺ Reset</button>
+      <button class="btn btn-gold" onclick="enviar()" style="margin-top:14px">▶ Enviar al overlay</button>
+      <button class="btn btn-outline" onclick="ocultar()">✕ Ocultar</button>
+      <button class="btn btn-danger"  onclick="resetear()">↺ Reset</button>
     </div>
 
     <hr class="full"/>
@@ -138,17 +112,14 @@ hr{border:none;border-top:0.5px solid #1a1208;margin:0}
     <div class="panel full">
       <div class="panel-title">Log</div>
       <div class="log" id="log"></div>
-      <div style="margin-top:10px;font-size:11px;color:#3a2a1a">
-        URL para OBS → <code style="color:#806040">https://aua.netlify.app/overlay.html</code> · 1920×1080 · activar "Shutdown source when not visible" desactivado
-      </div>
     </div>
 
   </div>
 </div>
 
 <script>
-const STATS_URL = 'torneos/stats_copa_2026.json';
-const TOKEN_KEY = 'aua_gh_token';
+const STATS_URL  = 'torneos/stats_copa_2026.json';
+const LS_KEY     = 'aua_overlay_state';
 
 let DATA   = null;
 let indice = {};
@@ -162,43 +133,27 @@ function log(msg, tipo = 'info') {
   el.innerHTML = `<p class="${tipo}">[${t}] ${msg}</p>` + el.innerHTML;
 }
 
-// ── Token ─────────────────────────────────────────────────────────────────────
-function guardarToken() {
-  const t = document.getElementById('gh-token').value.trim();
-  if (!t) { log('Token vacío', 'err'); return; }
-  localStorage.setItem(TOKEN_KEY, t);
-  document.getElementById('gh-token').value = '●'.repeat(20);
-  setTokenUI(true);
-  log('Token guardado', 'ok');
-}
-function borrarToken() {
-  localStorage.removeItem(TOKEN_KEY);
-  document.getElementById('gh-token').value = '';
-  setTokenUI(false);
-  log('Token borrado', 'warn');
-}
-function getToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
-function setTokenUI(ok) {
-  document.getElementById('token-dot').className = 'dot ' + (ok ? 'dot-on' : 'dot-off');
-  document.getElementById('token-status').textContent = ok ? 'Token configurado ✓' : 'Token no configurado';
-}
-
-// ── Stats ─────────────────────────────────────────────────────────────────────
+// ── Cargar stats ──────────────────────────────────────────────────────────────
 async function cargarStats() {
   log('Cargando stats...', 'info');
   try {
     const res = await fetch(STATS_URL + '?t=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status);
     DATA = await res.json();
+
     indice = {};
     for (const [did, j] of Object.entries(DATA.jugadores)) {
       const clean = j.nick.replace(/[|\[\]]/g,'').trim();
-      const keys  = [clean.toLowerCase(), did, ...clean.toLowerCase().split(/[\s/|]+/).filter(p=>p.length>1)];
+      const lower = clean.toLowerCase();
+      const keys  = new Set([lower, did]);
+      lower.split(/[\s/|]+/).filter(p=>p.length>1).forEach(p=>keys.add(p));
+      const sinPref = lower.replace(/^(fmg\s*|twitch\/)/g,'');
+      if (sinPref.length>1) keys.add(sinPref);
       keys.forEach(k => { indice[k] = { ...j, discordId: did }; });
     }
     log(`Stats OK — ${Object.keys(DATA.jugadores).length} jugadores`, 'ok');
   } catch(e) {
-    log('Sin stats: ' + e.message + ' (overlay funcionará igual)', 'warn');
+    log('Sin stats: ' + e.message, 'warn');
     DATA = { jugadores:{}, meta:{ total_partidas:0 } };
   }
 }
@@ -225,8 +180,7 @@ function buscar(num) {
 
   if (!matches.length) {
     sugEl.style.display = 'none';
-    document.getElementById(`j${num}-preview`).innerHTML = '<div class="preview-empty" style="color:#804040">Sin resultados — se cargará sin stats</div>';
-    // Igual dejamos un jugador "manual" con solo el nick
+    document.getElementById(`j${num}-preview`).innerHTML = '<div class="preview-empty" style="color:#804040">Sin resultados</div>';
     sel[num] = { nick: document.getElementById(`j${num}-input`).value.trim(), global:{pj:0,pg:0,pp:0,winrate:0}, civs:{}, mapas:{} };
     return;
   }
@@ -242,9 +196,7 @@ function buscar(num) {
   }
 }
 
-function seleccionarById(num, did) {
-  seleccionar(num, indice[did]);
-}
+function seleccionarById(num, did) { seleccionar(num, indice[did]); }
 
 function seleccionar(num, j) {
   sel[num] = j;
@@ -254,8 +206,8 @@ function seleccionar(num, j) {
 }
 
 function buildPreview(j) {
-  const wr   = j.global?.winrate ?? 0;
-  const col  = wr >= 60 ? '#a8c860' : wr >= 40 ? '#e8c87a' : '#c87060';
+  const wr  = j.global?.winrate ?? 0;
+  const col = wr >= 60 ? '#a8c860' : wr >= 40 ? '#e8c87a' : '#c87060';
   const top3 = Object.entries(j.civs ?? {}).sort((a,b)=>b[1].pj-a[1].pj).slice(0,3);
   const topM = Object.entries(j.mapas ?? {}).sort((a,b)=>b[1].winrate-a[1].winrate).slice(0,1);
   return `
@@ -274,92 +226,42 @@ function setModo(m, btn) {
   btn.classList.add('active');
 }
 
-// ── GitHub API ────────────────────────────────────────────────────────────────
-function ghHeaders() {
-  return {
-    'Authorization': `Bearer ${getToken()}`,
-    'Accept':        'application/vnd.github+json',
-    'Content-Type':  'application/json',
-  };
-}
+// ── Acciones — escribe en localStorage, el overlay escucha el evento storage ──
+function enviar() {
+  if (!sel[1] && !sel[2]) { log('Seleccioná al menos un jugador', 'err'); return; }
 
-async function obtenerSha() {
-  const user = document.getElementById('gh-user').value.trim();
-  const repo = document.getElementById('gh-repo').value.trim();
-  const path = document.getElementById('gh-path').value.trim();
-  try {
-    const res = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/${path}`, { headers: ghHeaders() });
-    if (res.status === 404) return null;
-    const d = await res.json();
-    return d.sha ?? null;
-  } catch { return null; }
-}
-
-async function escribirGitHub(state) {
-  const user  = document.getElementById('gh-user').value.trim();
-  const repo  = document.getElementById('gh-repo').value.trim();
-  const path  = document.getElementById('gh-path').value.trim();
-  const token = getToken();
-
-  if (!token) { log('⚠ Configurá el token primero', 'err'); return false; }
-
-  const sha  = await obtenerSha();
-  const body = {
-    message: `overlay: ${state.visible ? 'update' : 'hide'} ${new Date().toISOString()}`,
-    content: btoa(unescape(encodeURIComponent(JSON.stringify(state, null, 2)))),
-    ...(sha ? { sha } : {})
-  };
-
-  try {
-    const res = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/${path}`, {
-      method: 'PUT', headers: ghHeaders(), body: JSON.stringify(body)
-    });
-    if (!res.ok) { const e = await res.json(); throw new Error(e.message); }
-    return true;
-  } catch(e) {
-    log('Error GitHub: ' + e.message, 'err');
-    return false;
-  }
-}
-
-// ── Acciones ──────────────────────────────────────────────────────────────────
-async function enviar() {
-  const btn = document.getElementById('btn-send');
-  btn.disabled = true; btn.textContent = 'Subiendo...';
-  setStatus('warn', 'Subiendo a GitHub...');
-
-  const ok = await escribirGitHub({
-    visible: true, modo,
+  const state = {
+    visible: true,
+    modo,
     grupo:   document.getElementById('enc-grupo').value.trim() || '?',
     ronda:   document.getElementById('enc-ronda').value.trim() || '?',
     formato: document.getElementById('enc-formato').value,
-    j1: sel[1] ?? null,
-    j2: sel[2] ?? null,
-    ts: Date.now(),
-  });
+    j1:      sel[1] ?? null,
+    j2:      sel[2] ?? null,
+    ts:      Date.now(),
+  };
 
-  if (ok) {
-    const n1 = sel[1]?.nick?.replace(/[|\[\]]/g,'').trim() ?? '?';
-    const n2 = sel[2]?.nick?.replace(/[|\[\]]/g,'').trim() ?? '?';
-    setStatus('on', `Activo — ${n1} vs ${n2} · ${modo}`);
-    log(`✓ Enviado: ${n1} vs ${n2} · modo ${modo}`, 'ok');
-  } else {
-    setStatus('off', 'Error al enviar');
-  }
+  localStorage.setItem(LS_KEY, JSON.stringify(state));
 
-  btn.disabled = false; btn.textContent = '▶ Enviar al overlay';
+  const n1 = sel[1]?.nick?.replace(/[|\[\]]/g,'').trim() ?? '?';
+  const n2 = sel[2]?.nick?.replace(/[|\[\]]/g,'').trim() ?? '?';
+  setStatus('on', `Activo — ${n1} vs ${n2} · ${modo}`);
+  log(`✓ Enviado: ${n1} vs ${n2} · modo ${modo}`, 'ok');
 }
 
-async function ocultar() {
-  setStatus('warn', 'Ocultando...');
-  const ok = await escribirGitHub({ visible: false, modo: 'off', ts: Date.now() });
-  if (ok) { setStatus('off', 'Overlay oculto'); log('Overlay ocultado', 'info'); }
+function ocultar() {
+  const s = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+  s.visible = false;
+  s.ts = Date.now();
+  localStorage.setItem(LS_KEY, JSON.stringify(s));
+  setStatus('off', 'Overlay oculto');
+  log('Overlay ocultado', 'info');
 }
 
-async function resetear() {
-  setStatus('warn', 'Reseteando...');
-  const ok = await escribirGitHub({ visible: false, modo: 'off', reset: true, ts: Date.now() });
-  if (ok) { setStatus('off', 'Reset OK'); log('Reset completo', 'warn'); }
+function resetear() {
+  localStorage.removeItem(LS_KEY);
+  setStatus('off', 'Reset OK');
+  log('Reset completo', 'warn');
 }
 
 function setStatus(tipo, texto) {
@@ -368,8 +270,7 @@ function setStatus(tipo, texto) {
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
-if (getToken()) setTokenUI(true);
-cargarStats();
+document.addEventListener('DOMContentLoaded', cargarStats);
 </script>
 </body>
 </html>
