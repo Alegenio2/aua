@@ -59,6 +59,38 @@ html,body{width:1920px;height:1080px;background:transparent;overflow:hidden;font
 .mini-wr{font-family:'Cinzel',serif;font-size:14px;font-weight:700;margin-left:4px}
 
 #status-badge{position:absolute;top:16px;right:16px;background:rgba(8,5,2,.8);border:0.5px solid #2a1a0a;border-radius:6px;padding:6px 12px;font-size:11px;color:#3a2a1a;letter-spacing:1px;display:none}
+
+/* ── Firma JabsUY ── */
+#firma{
+  position:absolute;
+  bottom:14px;
+  right:18px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  opacity:0.18;
+  transition:opacity 0.3s;
+  pointer-events:none;
+}
+#firma:hover{opacity:0.38}
+#firma img{width:28px;height:28px;border-radius:50%;object-fit:cover;filter:grayscale(30%)}
+#firma span{
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  color:#e8c87a;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+#firma .by{
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  color:#806040;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:1px;
+}
 </style>
 </head>
 <body>
@@ -92,6 +124,15 @@ html,body{width:1920px;height:1080px;background:transparent;overflow:hidden;font
 </div>
 
 <div id="status-badge">OVERLAY INACTIVO</div>
+
+<!-- Firma -->
+<div id="firma">
+  <div>
+    <span class="by">Diseñado por</span>
+    <span>JabsUY</span>
+  </div>
+  <img src="https://aua.netlify.app/img/jabs2.png" alt="JabsUY" onerror="this.style.display='none'"/>
+</div>
 
 <script>
 const LS_KEY  = 'aua_overlay_state';
