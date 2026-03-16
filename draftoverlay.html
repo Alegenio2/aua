@@ -338,20 +338,35 @@ function render() {
     };
     Object.values(civContainers).forEach(c => c.innerHTML = '');
 
-    const civsRaw = getCivsData();
-    // civsData puede ser array plano O puede tener hostName/guestName como props
-    // Normalizamos: si es array úsalo, sino buscamos en civsData key
+    // ── neutralCivs: bans globales (player=NONE) guardados por el admindraft ──
+    const neutralCivs = JSON.parse(localStorage.getItem('neutralCivs') || '[]');
+    neutralCivs.forEach(civ => {
+        // neutralCivs siempre son NONE — van a globalBans si es ban, a neutral si es pick
+        if (civ.actionType === 'ban' || civ.actionType === 'snipe') {
+            civContainers.globalBans.appendChild(buildCivCard(civ, 'civ-ban-card'));
+        } else {
+            civContainers.neutral.appendChild(buildCivCard(civ, ''));
+        }
+    });
+
+    // ── civsData: picks y bans de HOST y GUEST ────────────────────────────────
+    const civsRaw  = JSON.parse(localStorage.getItem('civsData') || '[]');
     const civsList = Array.isArray(civsRaw) ? civsRaw : [];
 
     civsList.forEach(civ => {
+        // civsData puede tener NONE también (bans globales del draft más viejo)
+        // pero preferimos los de neutralCivs — los saltamos si ya están en neutral
         const player = resolvePlayer(civ.player, cs);
 
         if (player === 'NONE') {
-            // Neutral global: ban global va a "globalBans", picks neutrales (raro) a "neutral"
-            if (civ.actionType === 'ban' || civ.actionType === 'snipe') {
-                civContainers.globalBans.appendChild(buildCivCard(civ, 'civ-ban-card'));
-            } else {
-                civContainers.neutral.appendChild(buildCivCard(civ, ''));
+            // Solo los agregamos si no están ya en neutralCivs
+            const yaEsta = neutralCivs.find(n => n.name === civ.name);
+            if (!yaEsta) {
+                if (civ.actionType === 'ban' || civ.actionType === 'snipe') {
+                    civContainers.globalBans.appendChild(buildCivCard(civ, 'civ-ban-card'));
+                } else {
+                    civContainers.neutral.appendChild(buildCivCard(civ, ''));
+                }
             }
         } else if (player === 'HOST') {
             if (civ.actionType === 'pick') {
@@ -422,20 +437,21 @@ async function asegurarCivDetails() {
 }
 
 // ─── Polling + storage event ──────────────────────────────────────────────────
-let lastCivs = '', lastMaps = '', lastSwap = '';
+let lastCivs = '', lastNeutral = '', lastMaps = '', lastSwap = '';
 
 function poll() {
-    const civs = localStorage.getItem('civsData')   || '';
-    const maps = localStorage.getItem('mapasData')  || '';
-    const swap = (localStorage.getItem('civSwapped')||'') + (localStorage.getItem('mapSwapped')||'') + (localStorage.getItem('draftNames')||'');
-    if (civs !== lastCivs || maps !== lastMaps || swap !== lastSwap) {
-        lastCivs = civs; lastMaps = maps; lastSwap = swap;
+    const civs    = localStorage.getItem('civsData')    || '';
+    const neutral = localStorage.getItem('neutralCivs') || '';
+    const maps    = localStorage.getItem('mapasData')   || '';
+    const swap    = (localStorage.getItem('civSwapped')||'') + (localStorage.getItem('mapSwapped')||'') + (localStorage.getItem('draftNames')||'');
+    if (civs !== lastCivs || neutral !== lastNeutral || maps !== lastMaps || swap !== lastSwap) {
+        lastCivs = civs; lastNeutral = neutral; lastMaps = maps; lastSwap = swap;
         render();
     }
 }
 
 window.addEventListener('storage', e => {
-    if (['civsData','mapasData','civSwapped','mapSwapped','draftNames'].includes(e.key)) render();
+    if (['civsData','neutralCivs','mapasData','civSwapped','mapSwapped','draftNames'].includes(e.key)) render();
 });
 
 asegurarCivDetails().then(() => {
