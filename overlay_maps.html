@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<title>Overlay Mapa — Copa Uruguaya 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+    width: 1920px; height: 1080px;
+    background: transparent;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ── Animaciones ── */
+@keyframes fadeIn  { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeOut { from{opacity:1;transform:translateY(0)} to{opacity:0;transform:translateY(10px)} }
+@keyframes shimmer { 0%,100%{opacity:.7} 50%{opacity:1} }
+@keyframes barIn   { from{width:0} to{width:100%} }
+
+/* ── Card principal — esquina inferior izquierda ── */
+/* Posición libre, la movés en OBS si querés otro lugar */
+#map-card {
+    position: absolute;
+    bottom: 80px;
+    left: 24px;
+    display: none;
+    flex-direction: column;
+    width: 260px;
+    animation: fadeIn .5s ease both;
+}
+#map-card.visible { display: flex; }
+#map-card.hiding  { animation: fadeOut .4s ease both; }
+
+/* Barra superior dorada */
+.mc-topbar {
+    height: 2px;
+    background: linear-gradient(to right, transparent, #e8c87a, #c8a040, transparent);
+    border-radius: 2px 2px 0 0;
+    animation: barIn .6s .1s ease both;
+    width: 0;
+}
+
+/* Cuerpo */
+.mc-body {
+    background: rgba(10,6,2,0.94);
+    border: 0.5px solid rgba(232,200,122,0.2);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+}
+
+/* Imagen del mapa */
+.mc-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+}
+.mc-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(.85);
+    transition: filter .3s;
+}
+.mc-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 40%,
+        rgba(10,6,2,.7) 80%,
+        rgba(10,6,2,.95) 100%
+    );
+}
+
+/* Info */
+.mc-info {
+    padding: 10px 14px 12px;
+}
+.mc-label {
+    font-size: 9px;
+    color: #665544;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    animation: shimmer 3s ease-in-out infinite;
+}
+.mc-name {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: #f0e0b0;
+    letter-spacing: .5px;
+    line-height: 1;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mc-cat {
+    font-size: 10px;
+    color: #806040;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.mc-cat-dot {
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+/* Colores por categoría */
+.cat-abierto    .mc-cat-dot { background: #a8c860; }
+.cat-semiabierto .mc-cat-dot { background: #e8c87a; }
+.cat-cerrado    .mc-cat-dot { background: #e86a6a; }
+.cat-hibrido    .mc-cat-dot { background: #6aaae8; }
+.cat-agua       .mc-cat-dot { background: #60c8e8; }
+.cat-nomada     .mc-cat-dot { background: #c8a060; }
+
+/* Firma */
+.mc-firma {
+    font-size: 8px;
+    color: rgba(100,80,50,.3);
+    text-align: right;
+    padding: 0 8px 6px;
+    letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<div id="map-card">
+    <div class="mc-topbar"></div>
+    <div class="mc-body">
+        <div class="mc-img-wrap">
+            <img class="mc-img" id="mc-img" src="" alt=""/>
+            <div class="mc-img-overlay"></div>
+        </div>
+        <div class="mc-info">
+            <div class="mc-label">⚔ Mapa en juego</div>
+            <div class="mc-name" id="mc-name">—</div>
+            <div class="mc-cat"><span class="mc-cat-dot"></span><span id="mc-cat">—</span></div>
+        </div>
+        <div class="mc-firma">JabsUY · AUA 2026</div>
+    </div>
+</div>
+
+<script>
+const GH_USER     = 'Alegenio2';
+const GH_REPO     = 'aua';
+const GH_BRANCH   = 'main';
+const MAP_TXT_URL = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/mapa_actual.txt`;
+const MAPAS_URL   = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/mapas.json`;
+
+let mapaDB   = {};
+let mapaActual = null;
+let lastId   = null;
+
+// ── Cargar mapa DB ────────────────────────────────────────────────────────────
+async function cargarMapaDB() {
+    try {
+        const r = await fetch(MAPAS_URL + '?t=' + Date.now());
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        mapaDB = await r.json();
+    } catch(e) {
+        console.error('Error cargando mapas.json:', e);
+    }
+}
+
+// ── Categoría → clase CSS ─────────────────────────────────────────────────────
+function catClass(cat) {
+    const c = (cat || '').trim().toLowerCase().replace(/\s+/g,'');
+    if (c.includes('semiabierto')) return 'cat-semiabierto';
+    if (c.includes('abierto'))     return 'cat-abierto';
+    if (c.includes('cerrado'))     return 'cat-cerrado';
+    if (c.includes('hibrido') || c.includes('híbrido')) return 'cat-hibrido';
+    if (c.includes('agua'))        return 'cat-agua';
+    if (c.includes('nomad') || c.includes('nómad')) return 'cat-nomada';
+    return '';
+}
+
+// ── Mostrar mapa ──────────────────────────────────────────────────────────────
+function mostrarMapa(id) {
+    const m    = mapaDB[id];
+    const card = document.getElementById('map-card');
+
+    if (!m) {
+        ocultarMapa();
+        return;
+    }
+
+    document.getElementById('mc-img').src  = m.url;
+    document.getElementById('mc-name').textContent = m.name;
+    document.getElementById('mc-cat').textContent  = (m.Categoria || '').trim();
+
+    // Clase de categoría para el color del dot
+    card.className = 'visible ' + catClass(m.Categoria);
+    mapaActual = id;
+}
+
+function ocultarMapa() {
+    const card = document.getElementById('map-card');
+    card.classList.add('hiding');
+    setTimeout(() => {
+        card.className = '';
+        card.style.display = 'none';
+    }, 400);
+    mapaActual = null;
+}
+
+// ── Poll GitHub cada 3 segundos ───────────────────────────────────────────────
+async function poll() {
+    try {
+        const r  = await fetch(MAP_TXT_URL + '?t=' + Date.now());
+        if (!r.ok) return;
+        const id = (await r.text()).trim();
+
+        if (id === lastId) return; // sin cambios
+        lastId = id;
+
+        if (!id || id === '0') {
+            ocultarMapa();
+        } else {
+            mostrarMapa(id);
+        }
+    } catch(e) {
+        console.error('Poll error:', e);
+    }
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+cargarMapaDB().then(() => {
+    poll();
+    setInterval(poll, 3000);
+});
+</script>
+</body>
+</html>
