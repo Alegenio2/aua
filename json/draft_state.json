@@ -159,12 +159,12 @@
     }
   ],
   "draftNames": {
-    "civHost": "",
-    "civGuest": "",
-    "mapHost": "",
-    "mapGuest": ""
+    "civHost": "Gino",
+    "civGuest": "Lionerrt",
+    "mapHost": "Lionerrt",
+    "mapGuest": "Gino"
   },
   "civSwapped": false,
   "mapSwapped": false,
-  "ts": 1773702538764
+  "ts": 1773703311045
 }
