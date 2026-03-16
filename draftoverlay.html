@@ -6,7 +6,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: transparent; font-family: 'Inter', sans-serif; padding: 12px; }
+
+/* ── 1920x1080 fijo para OBS Browser Source ── */
+html, body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+}
 
 :root {
     --gold:   #e8c87a;
@@ -21,52 +29,76 @@ body { background: transparent; font-family: 'Inter', sans-serif; padding: 12px;
     --dim:    #665544;
 }
 
-@keyframes fadeIn  { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn  { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
 @keyframes shimmer { 0%,100%{opacity:.8} 50%{opacity:1} }
 
-.overlay-wrap { display:flex; flex-direction:column; gap:8px; animation:fadeIn .45s ease both; }
+/* ── Contenedor principal: franja superior, debajo de la barra de alertas ── */
+/* Ocupa el ancho completo, altura fija para no tapar la cámara del centro  */
+.overlay-wrap {
+    position: absolute;
+    top: 44px;          /* debajo de la barra de alertas */
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 10px;
+    animation: fadeIn .45s ease both;
+    /* Máximo hasta y≈390 para no tapar la cámara centrada */
+    max-height: 346px;
+    overflow: hidden;
+}
 
 /* Header */
 .ov-header {
     background:var(--bg); border:0.5px solid var(--border); border-radius:8px;
-    padding:7px 16px; display:flex; align-items:center; justify-content:space-between;
+    padding:5px 16px; display:flex; align-items:center; justify-content:space-between;
 }
-.ov-title  { font-family:'Cinzel',serif; font-size:10px; color:var(--gold2); letter-spacing:3px; text-transform:uppercase; animation:shimmer 3s infinite; }
-.ov-players{ display:flex; gap:8px; align-items:center; font-size:12px; }
+.ov-title  { font-family:'Cinzel',serif; font-size:11px; color:var(--gold2); letter-spacing:3px; text-transform:uppercase; animation:shimmer 3s infinite; }
+.ov-players{ display:flex; gap:8px; align-items:center; font-size:13px; }
 .ov-host   { color:var(--host);  font-weight:600; }
 .ov-guest  { color:var(--guest); font-weight:600; }
 .ov-vs     { color:var(--dim); font-size:10px; letter-spacing:2px; }
 
+/* Bloques civs y mapas en dos columnas lado a lado para aprovechar el ancho */
+.ov-blocks-row {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 6px;
+    flex: 1;
+    min-height: 0;
+}
+
 /* Bloque */
-.ov-block { background:var(--bg); border:0.5px solid var(--border); border-radius:8px; padding:10px 12px; }
-.ov-block-title { font-size:9px; color:var(--dim); letter-spacing:2px; text-transform:uppercase; margin-bottom:9px; padding-bottom:6px; border-bottom:0.5px solid rgba(232,200,122,0.1); }
+.ov-block { background:var(--bg); border:0.5px solid var(--border); border-radius:8px; padding:8px 12px; }
+.ov-block-title { font-size:9px; color:var(--dim); letter-spacing:2px; text-transform:uppercase; margin-bottom:7px; padding-bottom:5px; border-bottom:0.5px solid rgba(232,200,122,0.1); }
 
 /* 3 columnas */
-.three-cols { display:grid; grid-template-columns:1fr 1.2fr 1fr; gap:8px; }
-.col-wrap   { display:flex; flex-direction:column; gap:6px; }
+.three-cols { display:grid; grid-template-columns:1fr 1.1fr 1fr; gap:6px; }
+.col-wrap   { display:flex; flex-direction:column; gap:4px; }
 
-.col-label { font-size:9px; letter-spacing:2px; text-transform:uppercase; padding:3px 8px; border-radius:3px; display:inline-block; margin-bottom:4px; }
+.col-label { font-size:8px; letter-spacing:1.5px; text-transform:uppercase; padding:2px 7px; border-radius:3px; display:inline-block; margin-bottom:3px; }
 .lbl-host    { color:var(--host);  background:rgba(106,170,232,.1);  border:0.5px solid rgba(106,170,232,.25); }
 .lbl-guest   { color:var(--guest); background:rgba(232,106,138,.1);  border:0.5px solid rgba(232,106,138,.25); }
 .lbl-neutral { color:var(--gold);  background:rgba(232,200,122,.08); border:0.5px solid rgba(232,200,122,.2);  }
-.lbl-ban     { color:#c07070; background:rgba(180,40,40,.1); border:0.5px solid rgba(180,40,40,.25); margin-top:8px; }
+.lbl-ban     { color:#c07070; background:rgba(180,40,40,.1); border:0.5px solid rgba(180,40,40,.25); margin-top:5px; }
 
 /* Civs flex */
-.civs-flex { display:flex; flex-wrap:wrap; gap:7px; }
+.civs-flex { display:flex; flex-wrap:wrap; gap:5px; }
 
 /* Civ card circular */
 .civ-card {
-    position:relative; width:74px; height:74px; border-radius:50%;
+    position:relative; width:62px; height:62px; border-radius:50%;
     border:2px solid rgba(232,200,122,0.15); background:var(--bg2);
     display:flex; align-items:center; justify-content:center;
     overflow:hidden; flex-shrink:0; transition:transform 0.18s;
 }
 .civ-card:hover { transform:scale(1.06); }
-.civ-img  { width:54px; height:54px; object-fit:cover; border-radius:50%; }
+.civ-img  { width:46px; height:46px; object-fit:cover; border-radius:50%; }
 .civ-name {
-    position:absolute; bottom:3px; left:50%; transform:translateX(-50%);
-    font-size:8px; font-weight:600; color:var(--text); white-space:nowrap;
-    background:rgba(8,5,2,.85); padding:1px 5px; border-radius:3px;
+    position:absolute; bottom:2px; left:50%; transform:translateX(-50%);
+    font-size:7px; font-weight:600; color:var(--text); white-space:nowrap;
+    background:rgba(8,5,2,.85); padding:1px 4px; border-radius:3px;
 }
 
 /* Estados civs */
@@ -95,7 +127,7 @@ body { background: transparent; font-family: 'Inter', sans-serif; padding: 12px;
 
 /* Map card */
 .map-card {
-    position:relative; width:90px; height:110px; border-radius:7px;
+    position:relative; width:76px; height:92px; border-radius:7px;
     border:0.5px solid rgba(232,200,122,.12); background:var(--bg2);
     display:flex; align-items:flex-end; justify-content:center;
     overflow:hidden; flex-shrink:0; transition:transform 0.18s, border-color 0.18s;
@@ -138,62 +170,56 @@ body { background: transparent; font-family: 'Inter', sans-serif; padding: 12px;
         </div>
     </div>
 
-    <!-- CIVS -->
-    <div class="ov-block">
-        <div class="ov-block-title">🛡 Civilizaciones</div>
-        <div class="three-cols">
+    <!-- CIVS + MAPAS en dos columnas lado a lado -->
+    <div class="ov-blocks-row">
 
-            <!-- Host civs -->
-            <div class="col-wrap">
-                <span class="col-label lbl-host" id="lblHostCivPicks">Host Picks</span>
-                <div class="civs-flex" id="ov-host-picks"></div>
-                <span class="col-label lbl-ban"  id="lblHostCivBans" style="margin-top:8px">Host Bans</span>
-                <div class="civs-flex" id="ov-host-bans"></div>
+        <!-- CIVS (columna izquierda, más ancha) -->
+        <div class="ov-block">
+            <div class="ov-block-title">🛡 Civilizaciones</div>
+            <div class="three-cols">
+                <div class="col-wrap">
+                    <span class="col-label lbl-host" id="lblHostCivPicks">Host Picks</span>
+                    <div class="civs-flex" id="ov-host-picks"></div>
+                    <span class="col-label lbl-ban" id="lblHostCivBans">Host Bans</span>
+                    <div class="civs-flex" id="ov-host-bans"></div>
+                </div>
+                <div class="col-wrap" style="align-items:center">
+                    <span class="col-label lbl-neutral">Neutrales</span>
+                    <div class="civs-flex" id="ov-neutral-civs" style="justify-content:center"></div>
+                    <span class="col-label lbl-ban">Bans Globales</span>
+                    <div class="civs-flex" id="ov-global-bans" style="justify-content:center"></div>
+                </div>
+                <div class="col-wrap">
+                    <span class="col-label lbl-guest" id="lblGuestCivPicks">Guest Picks</span>
+                    <div class="civs-flex" id="ov-guest-picks"></div>
+                    <span class="col-label lbl-ban" id="lblGuestCivBans">Guest Bans</span>
+                    <div class="civs-flex" id="ov-guest-bans"></div>
+                </div>
             </div>
-
-            <!-- Neutral civs -->
-            <div class="col-wrap" style="align-items:center">
-                <span class="col-label lbl-neutral">Neutrales</span>
-                <div class="civs-flex" id="ov-neutral-civs" style="justify-content:center"></div>
-                <span class="col-label lbl-ban" style="margin-top:8px">Bans Globales</span>
-                <div class="civs-flex" id="ov-global-bans" style="justify-content:center"></div>
-            </div>
-
-            <!-- Guest civs -->
-            <div class="col-wrap">
-                <span class="col-label lbl-guest" id="lblGuestCivPicks">Guest Picks</span>
-                <div class="civs-flex" id="ov-guest-picks"></div>
-                <span class="col-label lbl-ban"   id="lblGuestCivBans" style="margin-top:8px">Guest Bans</span>
-                <div class="civs-flex" id="ov-guest-bans"></div>
-            </div>
-
         </div>
+
+        <!-- MAPAS (columna derecha, más angosta) -->
+        <div class="ov-block">
+            <div class="ov-block-title">🗺 Mapas</div>
+            <div class="three-cols">
+                <div class="col-wrap">
+                    <span class="col-label lbl-host" id="lblHostMaps">Host</span>
+                    <div class="maps-flex" id="ov-host-maps"></div>
+                </div>
+                <div class="col-wrap" style="align-items:center">
+                    <span class="col-label lbl-neutral">Neutrales</span>
+                    <div class="maps-flex" id="ov-neutral-maps" style="justify-content:center"></div>
+                </div>
+                <div class="col-wrap">
+                    <span class="col-label lbl-guest" id="lblGuestMaps">Guest</span>
+                    <div class="maps-flex" id="ov-guest-maps"></div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- MAPAS -->
-    <div class="ov-block">
-        <div class="ov-block-title">🗺 Mapas</div>
-        <div class="three-cols">
-
-            <div class="col-wrap">
-                <span class="col-label lbl-host" id="lblHostMaps">Host</span>
-                <div class="maps-flex" id="ov-host-maps"></div>
-            </div>
-
-            <div class="col-wrap" style="align-items:center">
-                <span class="col-label lbl-neutral">Neutrales</span>
-                <div class="maps-flex" id="ov-neutral-maps" style="justify-content:center"></div>
-            </div>
-
-            <div class="col-wrap">
-                <span class="col-label lbl-guest" id="lblGuestMaps">Guest</span>
-                <div class="maps-flex" id="ov-guest-maps"></div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="ov-firma">Diseñado por JabsUY · AUA 2026</div>
+    <div class="ov-firma" style="position:absolute;bottom:6px;right:14px">Diseñado por JabsUY · AUA 2026</div>
 </div>
 
 <script>
