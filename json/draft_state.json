@@ -1,0 +1,170 @@
+{
+  "civsData": [
+    {
+      "name": "Khitans",
+      "player": "GUEST",
+      "actionType": "ban",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Franks",
+      "player": "HOST",
+      "actionType": "ban",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Mongols",
+      "player": "GUEST",
+      "actionType": "ban",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Hindustanis",
+      "player": "HOST",
+      "actionType": "ban",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Magyars",
+      "player": "HOST",
+      "actionType": "ban",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Dravidians",
+      "player": "GUEST",
+      "actionType": "ban",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Chinese",
+      "player": "HOST",
+      "actionType": "pick",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Mayans",
+      "player": "GUEST",
+      "actionType": "pick",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Goths",
+      "player": "HOST",
+      "actionType": "pick",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Ethiopians",
+      "player": "GUEST",
+      "actionType": "pick",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Italians",
+      "player": "GUEST",
+      "actionType": "pick",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Japanese",
+      "player": "HOST",
+      "actionType": "pick",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Vikings",
+      "player": "HOST",
+      "actionType": "pick",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "Aztecs",
+      "player": "GUEST",
+      "actionType": "pick",
+      "won": false,
+      "lost": false
+    }
+  ],
+  "neutralCivs": [],
+  "mapasData": [
+    {
+      "name": "6. Nomad",
+      "imageUrl": "https://raw.githubusercontent.com/machadokroyen/balanceador_de_equipos/refs/heads/main/MapasCopaUruguaya/6_Nomada.png",
+      "player": "HOST",
+      "actionType": "ban",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "1. Morass",
+      "imageUrl": "https://raw.githubusercontent.com/machadokroyen/balanceador_de_equipos/refs/heads/main/MapasCopaUruguaya/1_Morass.png",
+      "player": "GUEST",
+      "actionType": "ban",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "2. Arabia",
+      "imageUrl": "https://raw.githubusercontent.com/machadokroyen/balanceador_de_equipos/refs/heads/main/MapasCopaUruguaya/2_Arabia.png",
+      "player": "GUEST",
+      "actionType": "pick",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "6. Stranded",
+      "imageUrl": "https://raw.githubusercontent.com/machadokroyen/balanceador_de_equipos/refs/heads/main/MapasCopaUruguaya/6_Stranded.png",
+      "player": "HOST",
+      "actionType": "pick",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "3. Arena",
+      "imageUrl": "https://raw.githubusercontent.com/machadokroyen/balanceador_de_equipos/refs/heads/main/MapasCopaUruguaya/3_Arena.png",
+      "player": "HOST",
+      "actionType": "ban",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "5. Shorelines",
+      "imageUrl": "https://raw.githubusercontent.com/machadokroyen/balanceador_de_equipos/refs/heads/main/MapasCopaUruguaya/5_Shorelines.png",
+      "player": "GUEST",
+      "actionType": "ban",
+      "won": false,
+      "lost": false
+    },
+    {
+      "name": "7. Border Dispute",
+      "imageUrl": "https://raw.githubusercontent.com/machadokroyen/balanceador_de_equipos/refs/heads/main/MapasCopaUruguaya/7_Border%20Dispute.png",
+      "player": "NONE",
+      "actionType": "pick",
+      "won": false,
+      "lost": false
+    }
+  ],
+  "draftNames": {
+    "civHost": "",
+    "civGuest": "",
+    "mapHost": "",
+    "mapGuest": ""
+  },
+  "civSwapped": false,
+  "mapSwapped": false,
+  "ts": 1773702538764
+}
