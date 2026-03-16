@@ -1,83 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador de Drafts</title>
+    <title>Administrador de Drafts — Copa Uruguaya 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="css/draftmapas.css">
     <link rel="stylesheet" href="css/draftcivs.css">
-   <style>
-   body {
-  
-    color: #080808;
-  
-}
-   </style>
 </head>
-
 <body>
-    <h1>Administrador de Drafts</h1>
-<div>
-  <strong>Host:</strong> <span id="hostName">-</span>
-</div>
-<div>
-  <strong>Guest:</strong> <span id="guestName">-</span>
-</div>
 
-    <div class="input-container">
-        <label for="draftCode">Código de Draft:</label>
-        <input type="text" id="draftCode" placeholder="Ingresa el código del draft">
-        <button onclick="fetchAndSaveDraftData()">Cargar Draft</button>
+<header class="draft-header">
+    <div class="draft-header-inner">
+        <div class="draft-logo">⚔</div>
+        <div>
+            <h1>Administrador de Drafts</h1>
+            <div class="draft-subtitle">Copa Uruguaya 2026</div>
+        </div>
     </div>
-    <div class="input-container">
-        <label for="mapDraftCode">Código de Draft de Mapas:</label>
-        <input type="text" id="mapDraftCode" placeholder="Ingresa el código del draft de mapas">
-        <button onclick="fetchAndSaveMapData()">Cargar Mapas</button>
+</header>
+
+<main class="draft-main">
+
+    <!-- ── JUGADORES ── -->
+    <section class="players-bar">
+        <div class="player-card host">
+            <div class="player-role">HOST</div>
+            <div class="player-name" id="hostName">—</div>
+        </div>
+        <div class="vs-badge">VS</div>
+        <div class="player-card guest">
+            <div class="player-role">GUEST</div>
+            <div class="player-name" id="guestName">—</div>
+        </div>
+    </section>
+
+    <!-- ── INPUTS ── -->
+    <section class="inputs-grid">
+        <div class="input-block">
+            <label for="draftCode">Código Draft de Civs</label>
+            <div class="input-row">
+                <input type="text" id="draftCode" placeholder="ej: AbCdE"/>
+                <button onclick="fetchAndSaveDraftData()">Cargar</button>
+            </div>
+        </div>
+        <div class="input-block">
+            <label for="mapDraftCode">Código Draft de Mapas</label>
+            <div class="input-row">
+                <input type="text" id="mapDraftCode" placeholder="ej: XyZwQ"/>
+                <button onclick="fetchAndSaveMapData()">Cargar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── MAPAS ── -->
+    <section class="draft-section" id="mapContainer">
+        <h2 class="section-title">🗺 Mapas</h2>
+        <div class="maps-grid">
+            <div class="maps-col">
+                <div class="col-label host-label">Host</div>
+                <div id="hostMaps" class="map-section"></div>
+            </div>
+            <div class="maps-col">
+                <div class="col-label neutral-label">Neutrales</div>
+                <div id="neutralMaps" class="map-section"></div>
+            </div>
+            <div class="maps-col">
+                <div class="col-label guest-label">Guest</div>
+                <div id="guestMaps" class="map-section"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CIVS ── -->
+    <section class="draft-section">
+        <h2 class="section-title">🛡 Civilizaciones</h2>
+        <div class="civs-grid">
+
+            <div class="civs-col">
+                <div class="col-label host-label">Host Picks</div>
+                <div id="hostPicksColumn" class="column"></div>
+                <div class="col-label host-label" style="margin-top:12px">Host Bans</div>
+                <div id="hostBansColumn" class="column"></div>
+                <div id="hostSnipesColumn" class="column"></div>
+            </div>
+
+            <div class="civs-col neutral-col">
+                <div class="col-label neutral-label">Civilizaciones Neutrales</div>
+                <div id="neutralCivsColumn" class="column"></div>
+            </div>
+
+            <div class="civs-col">
+                <div class="col-label guest-label">Guest Picks</div>
+                <div id="guestPicksColumn" class="column"></div>
+                <div class="col-label guest-label" style="margin-top:12px">Guest Bans</div>
+                <div id="guestBansColumn" class="column"></div>
+                <div id="guestSnipesColumn" class="column"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── ACTUALIZAR ── -->
+    <div class="update-bar">
+        <button class="btn-update" id="btnActualizar">↺ Actualizar Overlay</button>
     </div>
-    <div class="map-container" id="mapContainer">
-        <h3>Host Maps</h3>
-        <div id="hostMaps" class="map-section"></div>
-        
-        <h3>Guest Maps</h3>
-        <div id="guestMaps" class="map-section"></div>
-        
-        <h3>Neutral Maps</h3>
-        <div id="neutralMaps" class="map-section"></div>
-    </div>
-    
-    
 
-    <h2>Host Picks</h2>
-    <div id="hostPicksColumn" class="column"></div>
+</main>
 
-    <h2>Guest Picks</h2>
-    <div id="guestPicksColumn" class="column"></div>
+<footer class="draft-footer">
+    <span>Copa Uruguaya 2026 · AUA</span>
+    <span style="color:#3a2a1a">·</span>
+    <span>Diseñado por JabsUY</span>
+</footer>
 
-    <h2>Host Bans</h2>
-    <div id="hostBansColumn" class="column"></div>
-    <div id="hostSnipesColumn" class="column"></div>
-   
-    
-    <h2>Guest Bans</h2>
-    <div id="guestBansColumn" class="column"></div>
-    <div id="guestSnipesColumn" class="column"></div>
+<script>
+    document.getElementById("btnActualizar").addEventListener("click", function () {
+        localStorage.setItem('civsData', JSON.stringify(updatedCivsData));
+        localStorage.setItem('mapasData', JSON.stringify(updatedMapsData));
+        location.reload();
+    });
+</script>
 
-    <h2>Civilizaciones Neutrales</h2>
-<div id="neutralCivsColumn" class="column"></div>
- 
-    <button class="btn-update" id="btnActualizar">Actualizar</button>
-
-    <script>
-        document.getElementById("btnActualizar").addEventListener("click", function () {
-            localStorage.setItem('civsData', JSON.stringify(updatedCivsData));
-            localStorage.setItem('mapasData', JSON.stringify(updatedMapsData));
-            location.reload();
-        });
-    
-    </script>
-    
-
+<script src="js/admindraftcivs.js"></script>
+<script src="js/admindraftmapas.js"></script>
+</body>
+</html>
     <script src="js/admindraftcivs.js"></script>
     <script src="js/admindraftmapas.js"></script>
 </body>
