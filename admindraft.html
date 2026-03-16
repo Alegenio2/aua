@@ -8,6 +8,51 @@
     <link rel="stylesheet" href="css/draftmapas.css">
     <link rel="stylesheet" href="css/draftcivs.css">
     <style>
+    /* Token section */
+    .token-section {
+        background: var(--bg2);
+        border: 0.5px solid var(--brown);
+        border-radius: 8px;
+        padding: 10px 16px;
+        margin-bottom: 14px;
+    }
+    .token-inner {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .token-label {
+        font-size: 11px;
+        color: var(--dim);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+    .token-section input[type="password"] {
+        flex: 1;
+        min-width: 200px;
+        max-width: 380px;
+        background: var(--bg0);
+        border: 0.5px solid var(--brown);
+        border-radius: 6px;
+        padding: 6px 10px;
+        color: var(--text);
+        font-size: 13px;
+        font-family: 'Inter', sans-serif;
+        outline: none;
+        letter-spacing: 2px;
+    }
+    .token-section input[type="password"]:focus { border-color: var(--gold2); }
+    .token-status {
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 10px;
+        white-space: nowrap;
+    }
+    .token-status.ok  { color: #a8c860; background: rgba(100,160,40,.1); border: 0.5px solid rgba(100,160,40,.3); }
+    .token-status.off { color: var(--dim); background: rgba(60,40,20,.3); border: 0.5px solid var(--brown); }
+
     /* OBS: scroll siempre visible */
     html { overflow-y: scroll !important; scrollbar-width: thin; scrollbar-color: #3a2a1a #0a0a0a; }
     body { overflow-y: visible !important; min-height: 100vh; }
@@ -127,6 +172,15 @@
 </header>
 
 <main class="draft-main">
+
+    <!-- TOKEN CONFIG -->
+    <section class="token-section">
+        <div class="token-inner">
+            <span class="token-label">🔑 GitHub Token</span>
+            <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxxxxxx" oninput="guardarToken(this.value)"/>
+            <span id="token-status" class="token-status off">No configurado</span>
+        </div>
+    </section>
 
     <!-- JUGADORES -->
     <section class="players-bar">
@@ -303,6 +357,33 @@ function actualizarNombres() {
     document.getElementById('guestName').textContent = cgLabel;
 }
 
+// ─── Token ───────────────────────────────────────────────────────────────────
+function guardarToken(val) {
+    const t = val.trim();
+    if (t) {
+        localStorage.setItem('aua_gh_token', t);
+        setTokenStatus(true);
+    } else {
+        localStorage.removeItem('aua_gh_token');
+        setTokenStatus(false);
+    }
+}
+
+function setTokenStatus(ok) {
+    const el = document.getElementById('token-status');
+    if (!el) return;
+    el.textContent = ok ? '✓ Token guardado' : 'No configurado';
+    el.className   = 'token-status ' + (ok ? 'ok' : 'off');
+}
+
+function cargarToken() {
+    const t = localStorage.getItem('aua_gh_token');
+    if (t) {
+        document.getElementById('ghToken').value = '●'.repeat(20);
+        setTokenStatus(true);
+    }
+}
+
 // ─── GitHub config ───────────────────────────────────────────────────────────
 const GH_USER   = 'Alegenio2';
 const GH_REPO   = 'aua';
@@ -400,7 +481,10 @@ document.getElementById("btnActualizar").addEventListener("click", async functio
     location.reload();
 });
 
-document.addEventListener('DOMContentLoaded', cargarEstado);
+document.addEventListener('DOMContentLoaded', function() {
+    cargarEstado();
+    cargarToken();
+});
 </script>
 <script src="js/admindraftcivs.js"></script>
 <script src="js/admindraftmapas.js"></script>
