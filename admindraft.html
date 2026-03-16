@@ -7,8 +7,114 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="css/draftmapas.css">
     <link rel="stylesheet" href="css/draftcivs.css">
+    <style>
+    /* OBS: scroll siempre visible */
+    html { overflow-y: scroll !important; scrollbar-width: thin; scrollbar-color: #3a2a1a #0a0a0a; }
+    body { overflow-y: visible !important; min-height: 100vh; }
+
+    /* Control flotante de zoom */
+    #zoom-ctrl {
+        position: fixed;
+        top: 8px; right: 8px;
+        z-index: 9999;
+        display: flex; align-items: center; gap: 6px;
+        background: rgba(10,6,2,0.95);
+        border: 0.5px solid #3a2a1a;
+        border-radius: 8px;
+        padding: 5px 10px;
+        backdrop-filter: blur(4px);
+    }
+    #zoom-ctrl .zlabel {
+        font-size: 10px; color: #665544;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-right: 2px;
+    }
+    #zoom-val {
+        font-size: 12px; color: #e8c87a;
+        font-family: 'Cinzel', serif;
+        min-width: 40px; text-align: center;
+    }
+    .zbtn {
+        width: 28px !important; height: 28px !important;
+        padding: 0 !important; margin: 0 !important;
+        font-size: 18px !important; font-weight: 700 !important;
+        border-radius: 5px !important;
+        background: #1a1208 !important;
+        border: 0.5px solid #3a2a1a !important;
+        color: #e8c87a !important;
+        cursor: pointer !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        line-height: 1 !important;
+        transition: background 0.15s;
+    }
+    .zbtn:hover { background: #3a2a1a !important; }
+    .zbtn-reset {
+        font-size: 12px !important;
+        width: 36px !important;
+        letter-spacing: 0 !important;
+        color: #a09070 !important;
+    }
+
+    #zoom-wrap {
+        transform-origin: top left;
+        will-change: transform;
+    }
+    </style>
 </head>
 <body>
+
+<!-- Control de zoom para OBS interactivo -->
+<div id="zoom-ctrl">
+    <span class="zlabel">Zoom</span>
+    <button class="zbtn" onclick="ajustarZoom(-0.1)">−</button>
+    <span id="zoom-val">100%</span>
+    <button class="zbtn" onclick="ajustarZoom(0.1)">+</button>
+    <button class="zbtn zbtn-reset" onclick="resetZoom()">↺ reset</button>
+</div>
+
+<script>
+(function() {
+    const ZOOM_KEY = 'admindraft_zoom';
+    let zoom = parseFloat(localStorage.getItem(ZOOM_KEY) || '1');
+
+    function aplicarZoom() {
+        const wrap = document.getElementById('zoom-wrap');
+        if (!wrap) return;
+        wrap.style.transform = zoom !== 1 ? 'scale(' + zoom + ')' : '';
+        // Ajustar el ancho del wrap para que el scroll sea correcto
+        wrap.style.width     = zoom < 1 ? (100 / zoom) + '%' : '';
+        document.getElementById('zoom-val').textContent = Math.round(zoom * 100) + '%';
+        localStorage.setItem(ZOOM_KEY, String(zoom));
+    }
+
+    window.ajustarZoom = function(delta) {
+        zoom = Math.round(Math.min(2.0, Math.max(0.4, zoom + delta)) * 10) / 10;
+        aplicarZoom();
+    };
+
+    window.resetZoom = function() {
+        zoom = 1;
+        aplicarZoom();
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mover todo el contenido del body (excepto zoom-ctrl y scripts inline) a #zoom-wrap
+        const wrap = document.createElement('div');
+        wrap.id    = 'zoom-wrap';
+        wrap.style.transformOrigin = 'top left';
+
+        const toMove = Array.from(document.body.children).filter(function(el) {
+            return el.id !== 'zoom-ctrl' && el.tagName !== 'SCRIPT';
+        });
+        toMove.forEach(function(el) { wrap.appendChild(el); });
+        document.body.appendChild(wrap);
+
+        aplicarZoom();
+    });
+})();
+</script>
 
 <header class="draft-header">
     <div class="draft-header-inner">
