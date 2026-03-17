@@ -1,8 +1,8 @@
 {
-  "visible": false,
-  "id": "0",
-  "name": "",
-  "url": "",
-  "categoria": "",
-  "ts": 1773714200926
+  "visible": true,
+  "id": "10",
+  "name": "Immersion",
+  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/immersion.png",
+  "categoria": "Hibrido",
+  "ts": 1773715140215
 }
