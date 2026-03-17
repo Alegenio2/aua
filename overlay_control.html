@@ -263,12 +263,8 @@ function setTokenUI(ok) {
 
 // ── GitHub helpers ────────────────────────────────────────────────────────────
 function cleanToken(t) {
-  var clean = '';
-  for (var i = 0; i < t.length; i++) {
-    var c = t.charCodeAt(i);
-    if (c >= 33 && c <= 126) clean += t[i];
-  }
-  return clean;
+  // Token GitHub: solo letras, numeros, guion bajo y guion medio
+  return (t || '').replace(/[^a-zA-Z0-9_\-]/g, '');
 }
 
 function ghH() {
