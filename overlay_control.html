@@ -115,8 +115,8 @@ hr{border:none;border-top:0.5px solid #1a1208;margin:0}
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
         <div class="token-row" style="flex:1;min-width:220px">
           <input id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxx"/>
-          <button class="tbtn" onclick="guardarToken()">Guardar</button>
-          <button class="tbtn" onclick="borrarToken()">Borrar</button>
+          <button class="tbtn" id="btn-guardar-token">Guardar</button>
+          <button class="tbtn" id="btn-borrar-token">Borrar</button>
         </div>
         <span id="token-status" class="tok-off">No configurado</span>
       </div>
@@ -263,8 +263,12 @@ function setTokenUI(ok) {
 
 // ── GitHub helpers ────────────────────────────────────────────────────────────
 function cleanToken(t) {
-  // Eliminar cualquier carácter no ASCII (no ISO-8859-1) que rompa los headers
-  return t.replace(/[^ -ÿ]/g, '').replace(/\s/g, '').trim();
+  var clean = '';
+  for (var i = 0; i < t.length; i++) {
+    var c = t.charCodeAt(i);
+    if (c >= 33 && c <= 126) clean += t[i];
+  }
+  return clean;
 }
 
 function ghH() {
@@ -538,6 +542,10 @@ function setSt(tipo, texto) {
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
+  // Token buttons
+  document.getElementById('btn-guardar-token').addEventListener('click', guardarToken);
+  document.getElementById('btn-borrar-token').addEventListener('click', borrarToken);
+
   if (getToken()) {
     document.getElementById('gh-token').value = '●'.repeat(20);
     setTokenUI(true);
