@@ -19,7 +19,7 @@
       "player": "HOST",
       "actionType": "pick",
       "won": false,
-      "lost": false
+      "lost": true
     },
     {
       "name": "Vietnamese",
@@ -46,8 +46,8 @@
       "name": "Italians",
       "player": "HOST",
       "actionType": "pick",
-      "won": false,
-      "lost": false
+      "won": true,
+      "lost": true
     },
     {
       "name": "Mongols",
@@ -188,12 +188,12 @@
     }
   ],
   "draftNames": {
-    "civHost": "Tincho",
-    "civGuest": "Jabs",
-    "mapHost": "Jabs",
-    "mapGuest": "Tincho"
+    "civHost": "Jabs",
+    "civGuest": "Tincho",
+    "mapHost": "Tincho",
+    "mapGuest": "Jabs"
   },
   "civSwapped": false,
   "mapSwapped": false,
-  "ts": 1773761507369
+  "ts": 1773761617386
 }
