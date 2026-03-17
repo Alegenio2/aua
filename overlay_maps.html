@@ -156,8 +156,8 @@ html, body {
 const GH_USER     = 'Alegenio2';
 const GH_REPO     = 'aua';
 const GH_BRANCH   = 'main';
-const MAP_TXT_URL = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/mapa_actual.txt`;
-const MAPAS_URL   = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/mapas.json`;
+const MAP_JSON_URL = 'https://raw.githubusercontent.com/' + GH_USER + '/' + GH_REPO + '/' + GH_BRANCH + '/json/mapa_actual.json';
+const MAPAS_URL    = 'https://raw.githubusercontent.com/' + GH_USER + '/' + GH_REPO + '/' + GH_BRANCH + '/mapas.json';
 
 let mapaDB   = {};
 let mapaActual = null;
@@ -218,21 +218,37 @@ function ocultarMapa() {
 // ── Poll GitHub cada 3 segundos ───────────────────────────────────────────────
 async function poll() {
     try {
-        const r  = await fetch(MAP_TXT_URL + '?t=' + Date.now());
+        const r = await fetch(MAP_JSON_URL + '?t=' + Date.now());
         if (!r.ok) return;
-        const id = (await r.text()).trim();
+        const estado = await r.json();
 
-        if (id === lastId) return; // sin cambios
-        lastId = id;
+        // Solo re-renderizar si cambió el ts
+        if (estado.ts === lastId) return;
+        lastId = estado.ts;
 
-        if (!id || id === '0') {
+        if (!estado.visible || !estado.id || estado.id === '0') {
             ocultarMapa();
         } else {
-            mostrarMapa(id);
+            // Si tenemos todos los datos en el JSON, no necesitamos buscar en mapaDB
+            if (estado.url && estado.name) {
+                mostrarMapaDirecto(estado);
+            } else if (mapaDB[estado.id]) {
+                mostrarMapa(estado.id);
+            }
         }
     } catch(e) {
         console.error('Poll error:', e);
     }
+}
+
+// ── Mostrar mapa desde datos del JSON (sin necesitar mapaDB) ─────────────────
+function mostrarMapaDirecto(estado) {
+    const card = document.getElementById('map-card');
+    document.getElementById('mc-img').src           = estado.url;
+    document.getElementById('mc-name').textContent  = estado.name;
+    document.getElementById('mc-cat').textContent   = estado.categoria || '';
+    card.className = 'visible ' + catClass(estado.categoria);
+    mapaActual = estado.id;
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
