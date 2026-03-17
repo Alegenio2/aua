@@ -1,65 +1,10 @@
 {
   "visible": true,
-  "modo": "pre",
-  "grupo": "A",
-  "ronda": "5",
-  "formato": "Bo3",
+  "modo": "mini",
+  "grupo": "?",
+  "ronda": "?",
+  "formato": "Bo5",
   "j1": {
-    "nick": "|FMG| Tano Stokes",
-    "aoe2Id": "4822389",
-    "global": {
-      "pj": 2,
-      "pg": 2,
-      "pp": 0,
-      "winrate": 100
-    },
-    "civs": {
-      "Sicilians": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100,
-        "por_mapa": {
-          "Arena": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          }
-        }
-      },
-      "Mongols": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100,
-        "por_mapa": {
-          "CopaU_2026_Slopes v2 (Custom)": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          }
-        }
-      }
-    },
-    "mapas": {
-      "Arena": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100
-      },
-      "CopaU_2026_Slopes v2 (Custom)": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100
-      }
-    },
-    "discordId": "760308403087867916"
-  },
-  "j2": {
     "nick": "FMG | Rxon",
     "aoe2Id": "1780624",
     "global": {
@@ -114,5 +59,60 @@
     },
     "discordId": "238414625417330688"
   },
-  "ts": 1773757289464
+  "j2": {
+    "nick": "|FMG| Tano Stokes",
+    "aoe2Id": "4822389",
+    "global": {
+      "pj": 2,
+      "pg": 2,
+      "pp": 0,
+      "winrate": 100
+    },
+    "civs": {
+      "Sicilians": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "Arena": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Mongols": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_Slopes v2 (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      }
+    },
+    "mapas": {
+      "Arena": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "CopaU_2026_Slopes v2 (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      }
+    },
+    "discordId": "760308403087867916"
+  },
+  "ts": 1773757935165
 }
