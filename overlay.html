@@ -135,9 +135,10 @@ html,body{width:1920px;height:1080px;background:transparent;overflow:hidden;font
 </div>
 
 <script>
-const LS_KEY  = 'aua_overlay_state';
-const civImg  = c => `https://backend.cdn.aoe2companion.com/public/aoe2/de/civilizations/${(c||'').toLowerCase().replace(/ /g,'_')}.png`;
-const wrColor = w => w >= 60 ? '#a8c860' : w >= 40 ? '#e8c87a' : '#c87060';
+// ── GitHub polling — mismo patrón que draftoverlay.html ─────────────────────
+const STATE_URL = 'https://raw.githubusercontent.com/Alegenio2/aua/main/json/overlay_state.json';
+const civImg    = c => `https://backend.cdn.aoe2companion.com/public/aoe2/de/civilizations/${(c||'').toLowerCase().replace(/ /g,'_')}.png`;
+const wrColor   = w => w >= 60 ? '#a8c860' : w >= 40 ? '#e8c87a' : '#c87060';
 const cleanNick = n => (n||'').replace(/[|\[\]]/g,'').trim();
 
 function apply(s) {
@@ -207,24 +208,31 @@ function buildMiniJ(j) {
   `;
 }
 
-// Leer estado actual al cargar
-function cargarEstado() {
+// ── Polling GitHub raw cada 2.5s ─────────────────────────────────────────────
+let lastTs = null;
+
+async function pollGitHub() {
   try {
-    const raw = localStorage.getItem(LS_KEY);
-    apply(raw ? JSON.parse(raw) : null);
+    const r = await fetch(STATE_URL + '?t=' + Date.now());
+    if (!r.ok) return;
+    const s = await r.json();
+    if (s.ts !== lastTs) {
+      lastTs = s.ts;
+      apply(s);
+    }
   } catch(e) {}
 }
 
-// Escuchar cambios — igual que tu civsadmin.html
-window.addEventListener('storage', (event) => {
-  if (event.key === LS_KEY) {
-    try {
-      apply(event.newValue ? JSON.parse(event.newValue) : null);
-    } catch(e) {}
+// Fallback localStorage (mismo navegador)
+window.addEventListener('storage', e => {
+  if (e.key === 'aua_overlay_state') {
+    try { apply(e.newValue ? JSON.parse(e.newValue) : null); } catch(e) {}
   }
 });
 
-cargarEstado();
+// Arrancar
+pollGitHub();
+setInterval(pollGitHub, 2500);
 </script>
 </body>
 </html>

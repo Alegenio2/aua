@@ -227,7 +227,8 @@ const TOKEN_KEY   = 'aua_gh_token';
 const GH_USER     = 'Alegenio2';
 const GH_REPO     = 'aua';
 const GH_BRANCH   = 'main';
-const GH_MAP_PATH = 'json/mapa_actual.json';
+const GH_MAP_PATH   = 'json/mapa_actual.json';
+const GH_STATS_PATH = 'json/overlay_state.json';
 
 // ── Log ───────────────────────────────────────────────────────────────────────
 function log(msg, tipo='info') {
@@ -502,7 +503,7 @@ function setModo(m, btn) {
   btn.classList.add('active');
 }
 
-function enviarStats() {
+async function enviarStats() {
   if (!sel[1] && !sel[2]) { log('Seleccioná al menos un jugador', 'err'); return; }
   const state = {
     visible: true, modo,
@@ -512,23 +513,30 @@ function enviarStats() {
     j1: sel[1] ?? null, j2: sel[2] ?? null,
     ts: Date.now(),
   };
-  localStorage.setItem(LS_KEY, JSON.stringify(state));
   const n1 = sel[1]?.nick?.replace(/[|\[\]]/g,'').trim() ?? '?';
   const n2 = sel[2]?.nick?.replace(/[|\[\]]/g,'').trim() ?? '?';
-  setSt('on', `Activo — ${n1} vs ${n2} · ${modo}`);
-  log(`✓ Stats: ${n1} vs ${n2} · ${modo}`, 'ok');
+  setSt('warn', 'Subiendo...');
+  const ok = await ghWrite(GH_STATS_PATH, JSON.stringify(state, null, 2), 'overlay: ' + n1 + ' vs ' + n2);
+  if (ok) {
+    setSt('on', 'Activo — ' + n1 + ' vs ' + n2 + ' · ' + modo);
+    log('✓ Stats enviadas: ' + n1 + ' vs ' + n2 + ' · ' + modo, 'ok');
+  } else {
+    setSt('off', 'Error al enviar');
+  }
 }
 
-function ocultarStats() {
-  const s = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
-  s.visible = false; s.ts = Date.now();
-  localStorage.setItem(LS_KEY, JSON.stringify(s));
-  setSt('off', 'Overlay oculto'); log('Stats ocultadas', 'info');
+async function ocultarStats() {
+  setSt('warn', 'Ocultando...');
+  const state = { visible: false, ts: Date.now() };
+  const ok = await ghWrite(GH_STATS_PATH, JSON.stringify(state, null, 2), 'overlay: hide');
+  if (ok) { setSt('off', 'Overlay oculto'); log('Stats ocultadas', 'info'); }
 }
 
-function resetearStats() {
-  localStorage.removeItem(LS_KEY);
-  setSt('off', 'Reset OK'); log('Reset', 'warn');
+async function resetearStats() {
+  setSt('warn', 'Reseteando...');
+  const state = { visible: false, reset: true, ts: Date.now() };
+  const ok = await ghWrite(GH_STATS_PATH, JSON.stringify(state, null, 2), 'overlay: reset');
+  if (ok) { setSt('off', 'Reset OK'); log('Reset', 'warn'); }
 }
 
 function setSt(tipo, texto) {
