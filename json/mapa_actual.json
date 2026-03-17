@@ -1,8 +1,8 @@
 {
   "visible": true,
-  "id": "3",
-  "name": "Dry River",
-  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/Dry%20River.png",
-  "categoria": "Abierto",
-  "ts": 1773757824483
+  "id": "15",
+  "name": "Shorelines",
+  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/shorelines.png",
+  "categoria": "Agua",
+  "ts": 1773757900239
 }
