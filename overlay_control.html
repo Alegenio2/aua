@@ -264,4 +264,287 @@ function setTokenUI(ok) {
 // ── GitHub helpers ────────────────────────────────────────────────────────────
 function cleanToken(t) {
   // Eliminar cualquier carácter no ASCII (no ISO-8859-1) que rompa los headers
-  return t.replace(/[^
+  return t.replace(/[^ -ÿ]/g, '').replace(/\s/g, '').trim();
+}
+
+function ghH() {
+  const t = cleanToken(getToken());
+  return {
+    'Authorization': 'Bearer ' + t,
+    'Accept':        'application/vnd.github+json',
+    'Content-Type':  'application/json',
+  };
+}
+
+async function getSha(path) {
+  try {
+    const r = await fetch(`https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${path}?ref=${GH_BRANCH}`, { headers: ghH() });
+    if (r.status === 404) return null;
+    return (await r.json()).sha ?? null;
+  } catch { return null; }
+}
+
+async function ghWrite(path, content, msg) {
+  if (!getToken()) { log('⚠ Configurá el token primero', 'err'); return false; }
+  const sha  = await getSha(path);
+  const body = {
+    message: msg || `update: ${path}`,
+    content: btoa(unescape(encodeURIComponent(content))),
+    branch:  GH_BRANCH,
+    ...(sha ? { sha } : {})
+  };
+  try {
+    const r = await fetch(
+      `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${path}`,
+      { method: 'PUT', headers: ghH(), body: JSON.stringify(body) }
+    );
+    return r.ok;
+  } catch(e) { log('Error GitHub: ' + e.message, 'err'); return false; }
+}
+
+// ── Mapas ─────────────────────────────────────────────────────────────────────
+let mapaDB  = {};
+let mapaSel = null;
+
+async function cargarMapas() {
+  try {
+    const r = await fetch(MAPAS_URL + '?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    mapaDB  = await r.json();
+    renderMapGrid();
+    log('Mapas cargados — ' + Object.keys(mapaDB).length, 'ok');
+  } catch(e) { log('Error mapas: ' + e.message, 'err'); }
+}
+
+async function leerMapaActual() {
+  try {
+    const r = await fetch(
+      'https://raw.githubusercontent.com/' + GH_USER + '/' + GH_REPO + '/' + GH_BRANCH + '/' + GH_MAP_PATH + '?t=' + Date.now()
+    );
+    if (!r.ok) return;
+    const estado = await r.json();
+    if (estado.visible && estado.id && estado.id !== '0' && mapaDB[estado.id]) {
+      mostrarMapaActivo(estado.id);
+    }
+  } catch {}
+}
+
+function renderMapGrid() {
+  const grid = document.getElementById('map-grid');
+  grid.innerHTML = '';
+  // Agrupar por categoría
+  const cats = {};
+  for (const [id, m] of Object.entries(mapaDB)) {
+    const c = (m.Categoria || 'Otros').trim();
+    if (!cats[c]) cats[c] = [];
+    cats[c].push({ id, ...m });
+  }
+  let first = true;
+  for (const [cat, mapas] of Object.entries(cats)) {
+    const lbl = document.createElement('div');
+    lbl.className = 'map-cat-label';
+    if (first) { lbl.style.borderTop = 'none'; lbl.style.marginTop = '0'; first = false; }
+    lbl.textContent = cat;
+    grid.appendChild(lbl);
+    for (const m of mapas) {
+      const div = document.createElement('div');
+      div.className     = 'mthumb';
+      div.dataset.mapId = m.id;
+      div.onclick       = () => elegirMapa(m.id);
+      div.innerHTML = `<img src="${m.url}" alt="${m.name}" onerror="this.style.display='none'"/><div class="mthumb-name">${m.name}</div>`;
+      grid.appendChild(div);
+    }
+  }
+}
+
+function elegirMapa(id) {
+  mapaSel = { id, ...mapaDB[id] };
+  document.querySelectorAll('.mthumb').forEach(el => el.classList.remove('sel'));
+  const t = document.querySelector(`.mthumb[data-map-id="${id}"]`);
+  if (t) { t.classList.add('sel'); t.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
+  mostrarMapaActivo(id);
+  document.getElementById('btn-publicar-mapa').disabled = false;
+  log('Mapa elegido: ' + mapaDB[id].name, 'info');
+}
+
+function mostrarMapaActivo(id) {
+  if (!mapaDB[id]) return;
+  document.getElementById('map-active-bar').style.display = 'flex';
+  document.getElementById('map-active-img').src   = mapaDB[id].url;
+  document.getElementById('map-active-name').textContent = mapaDB[id].name;
+  document.getElementById('map-active-cat').textContent  = (mapaDB[id].Categoria || '').trim();
+  // Seleccionar thumb visualmente
+  document.querySelectorAll('.mthumb').forEach(el => el.classList.remove('sel'));
+  const t = document.querySelector(`.mthumb[data-map-id="${id}"]`);
+  if (t) t.classList.add('sel');
+  mapaSel = { id, ...mapaDB[id] };
+  document.getElementById('btn-publicar-mapa').disabled = false;
+}
+
+async function publicarMapa() {
+  if (!mapaSel) { log('Elegí un mapa primero', 'err'); return; }
+  const btn = document.getElementById('btn-publicar-mapa');
+  btn.disabled = true; btn.textContent = '⏳ Subiendo...';
+  document.getElementById('map-dot').className = 'dot dot-warn';
+  document.getElementById('map-status').textContent = 'Subiendo...';
+
+  // Escribir JSON completo con todos los datos del mapa
+  const estado = {
+    visible:   true,
+    id:        mapaSel.id,
+    name:      mapaSel.name,
+    url:       mapaSel.url,
+    categoria: (mapaSel.Categoria || '').trim(),
+    ts:        Date.now()
+  };
+  const ok = await ghWrite(GH_MAP_PATH, JSON.stringify(estado, null, 2), 'mapa: ' + mapaSel.name);
+
+  if (ok) {
+    document.getElementById('map-dot').className = 'dot dot-on';
+    document.getElementById('map-status').textContent = 'En juego: ' + mapaSel.name;
+    log('✓ Mapa publicado: ' + mapaSel.name, 'ok');
+  } else {
+    document.getElementById('map-dot').className = 'dot dot-off';
+    document.getElementById('map-status').textContent = 'Error al publicar';
+  }
+  btn.disabled = false; btn.textContent = '🗺 Publicar en overlay';
+}
+
+async function ocultarMapa() {
+  const estado = { visible: false, id: '0', name: '', url: '', categoria: '', ts: Date.now() };
+  const ok = await ghWrite(GH_MAP_PATH, JSON.stringify(estado, null, 2), 'mapa: hide');
+  if (ok) {
+    document.getElementById('map-dot').className = 'dot dot-off';
+    document.getElementById('map-status').textContent = 'Overlay de mapa oculto';
+    log('Mapa ocultado', 'info');
+  }
+}
+
+// ── Stats overlay ─────────────────────────────────────────────────────────────
+let DATA = null, indice = {}, sel = {1:null, 2:null}, modo = 'pre';
+
+async function cargarStats() {
+  try {
+    const r = await fetch(STATS_URL + '?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    DATA = await r.json();
+    indice = {};
+    for (const [did, j] of Object.entries(DATA.jugadores)) {
+      const clean = j.nick.replace(/[|\[\]]/g,'').trim();
+      const lower = clean.toLowerCase();
+      const keys  = new Set([lower, did]);
+      lower.split(/[\s/|]+/).filter(p=>p.length>1).forEach(p=>keys.add(p));
+      const s = lower.replace(/^(fmg\s*|twitch\/)/g,'');
+      if (s.length>1) keys.add(s);
+      keys.forEach(k => { indice[k] = { ...j, discordId: did }; });
+    }
+    log(`Stats OK — ${Object.keys(DATA.jugadores).length} jugadores`, 'ok');
+  } catch(e) {
+    log('Sin stats: ' + e.message, 'warn');
+    DATA = { jugadores:{}, meta:{total_partidas:0} };
+  }
+}
+
+function buscar(num) {
+  const val   = document.getElementById(`j${num}-input`).value.trim().toLowerCase();
+  const sugEl = document.getElementById(`j${num}-sug`);
+  sel[num]    = null;
+  if (val.length < 2) {
+    sugEl.style.display = 'none';
+    document.getElementById(`j${num}-preview`).innerHTML = '<div class="preview-empty">Escribí un nick para buscar</div>';
+    return;
+  }
+  const seen = new Set(), matches = [];
+  for (const [k, j] of Object.entries(indice)) {
+    if (k.includes(val) && !seen.has(j.discordId)) { seen.add(j.discordId); matches.push(j); }
+  }
+  if (!matches.length) {
+    sugEl.style.display = 'none';
+    document.getElementById(`j${num}-preview`).innerHTML = '<div class="preview-empty" style="color:#804040">Sin resultados</div>';
+    sel[num] = { nick: document.getElementById(`j${num}-input`).value.trim(), global:{pj:0,pg:0,pp:0,winrate:0}, civs:{}, mapas:{} };
+    return;
+  }
+  if (matches.length === 1) { seleccionar(num, matches[0]); sugEl.style.display = 'none'; }
+  else {
+    sugEl.innerHTML = matches.slice(0,5).map(j =>
+      `<div class="sug-item" onclick='selById(${num},"${j.discordId}")'>${j.nick.replace(/[|\[\]]/g,'').trim()}</div>`
+    ).join('');
+    sugEl.style.display = 'block';
+  }
+}
+
+function selById(num, did) { seleccionar(num, indice[did]); }
+
+function seleccionar(num, j) {
+  sel[num] = j;
+  document.getElementById(`j${num}-sug`).style.display = 'none';
+  document.getElementById(`j${num}-input`).value = j.nick.replace(/[|\[\]]/g,'').trim();
+  document.getElementById(`j${num}-preview`).innerHTML = buildPreview(j);
+}
+
+function buildPreview(j) {
+  const wr   = j.global?.winrate ?? 0;
+  const col  = wr >= 60 ? '#a8c860' : wr >= 40 ? '#e8c87a' : '#c87060';
+  const top3 = Object.entries(j.civs ?? {}).sort((a,b)=>b[1].pj-a[1].pj).slice(0,3);
+  const topM = Object.entries(j.mapas ?? {}).sort((a,b)=>b[1].winrate-a[1].winrate).slice(0,1);
+  return `
+    <div class="pv-nick">${j.nick.replace(/[|\[\]]/g,'').trim()}</div>
+    <div class="pv-row"><span class="pv-label">Winrate</span><span style="color:${col};font-weight:600">${wr}%</span></div>
+    <div class="pv-row"><span class="pv-label">Partidas</span><span style="color:#e8c87a">${j.global?.pj??0}</span></div>
+    ${top3.map(([c,d])=>`<div class="pv-row"><span class="pv-label">${c}</span><span style="color:${d.winrate>=50?'#a8c860':'#c87060'}">${d.winrate}% (${d.pj}g)</span></div>`).join('')}
+    ${topM.length?`<div class="pv-row"><span class="pv-label">Mejor mapa</span><span style="color:#a8c860">${topM[0][0]}</span></div>`:''}
+  `;
+}
+
+function setModo(m, btn) {
+  modo = m;
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function enviarStats() {
+  if (!sel[1] && !sel[2]) { log('Seleccioná al menos un jugador', 'err'); return; }
+  const state = {
+    visible: true, modo,
+    grupo:   document.getElementById('enc-grupo').value.trim() || '?',
+    ronda:   document.getElementById('enc-ronda').value.trim() || '?',
+    formato: document.getElementById('enc-formato').value,
+    j1: sel[1] ?? null, j2: sel[2] ?? null,
+    ts: Date.now(),
+  };
+  localStorage.setItem(LS_KEY, JSON.stringify(state));
+  const n1 = sel[1]?.nick?.replace(/[|\[\]]/g,'').trim() ?? '?';
+  const n2 = sel[2]?.nick?.replace(/[|\[\]]/g,'').trim() ?? '?';
+  setSt('on', `Activo — ${n1} vs ${n2} · ${modo}`);
+  log(`✓ Stats: ${n1} vs ${n2} · ${modo}`, 'ok');
+}
+
+function ocultarStats() {
+  const s = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+  s.visible = false; s.ts = Date.now();
+  localStorage.setItem(LS_KEY, JSON.stringify(s));
+  setSt('off', 'Overlay oculto'); log('Stats ocultadas', 'info');
+}
+
+function resetearStats() {
+  localStorage.removeItem(LS_KEY);
+  setSt('off', 'Reset OK'); log('Reset', 'warn');
+}
+
+function setSt(tipo, texto) {
+  document.getElementById('st-dot').className    = 'dot dot-' + tipo;
+  document.getElementById('st-text').textContent = texto;
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+  if (getToken()) {
+    document.getElementById('gh-token').value = '●'.repeat(20);
+    setTokenUI(true);
+  }
+  await Promise.all([cargarStats(), cargarMapas()]);
+  await leerMapaActual();
+});
+</script>
+</body>
+</html>
