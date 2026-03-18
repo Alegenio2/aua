@@ -406,14 +406,31 @@
         const d = DATA;
         const mapCount = Object.keys(d.mapas).length;
         const civEntries = Object.entries(d.civs).sort((a,b)=>b[1].total_jugadas-a[1].total_jugadas);
-        const topCiv = Object.entries(d.civs).sort((a,b)=>b[1].winrate-a[1].winrate).find(([,v])=>v.total_jugadas>=2) ?? civEntries[0];
+        //const topCiv = Object.entries(d.civs).sort((a,b)=>b[1].winrate-a[1].winrate).find(([,v])=>v.total_jugadas>=2) ?? civEntries[0];
+        // 1. Ordenamos por Winrate (desc), luego por Victorias (desc) y luego por jugadas (desc)
+const sortedByPerformance = Object.entries(d.civs).sort((a, b) => {
+    if (b[1].winrate !== a[1].winrate) return b[1].winrate - a[1].winrate;
+    if (b[1].total_ganadas !== a[1].total_ganadas) return b[1].total_ganadas - a[1].total_ganadas;
+    return b[1].total_jugadas - a[1].total_jugadas;
+});
 
-        document.getElementById('metrics-box').innerHTML = `
-          <div class="metric"><div class="metric-label">Partidas</div><div class="metric-value">${d.meta.total_partidas}</div><div class="metric-sub">jugadas</div></div>
-          <div class="metric"><div class="metric-label">Jugadores</div><div class="metric-value">${Object.keys(d.jugadores).length}</div><div class="metric-sub">participantes</div></div>
-          <div class="metric"><div class="metric-label">Mapas</div><div class="metric-value">${mapCount}</div><div class="metric-sub">distintos</div></div>
-          <div class="metric"><div class="metric-label">Civ rey</div><div class="metric-value" style="font-size:14px;font-family:'Open Sans',sans-serif">${topCiv?.[0]??'—'}</div><div class="metric-sub">${topCiv?.[1].winrate??0}% WR</div></div>
-        `;
+// 2. Intentamos buscar una con al menos 2 partidas, si no hay, agarramos la mejor que tenga al menos 1 victoria
+let topCiv = sortedByPerformance.find(([, v]) => v.total_jugadas >= 2 && v.total_ganadas > 0);
+
+if (!topCiv) {
+    topCiv = sortedByPerformance.find(([, v]) => v.total_ganadas > 0);
+}
+
+// 3. Si de plano NADIE ha ganado (0% general), mostramos un guion o la primera
+const civReyName = topCiv ? topCiv[0] : "—";
+const civReyWR = topCiv ? topCiv[1].winrate : 0;
+
+      document.getElementById('metrics-box').innerHTML = `
+  <div class="metric"><div class="metric-label">Partidas</div><div class="metric-value">${d.meta.total_partidas}</div><div class="metric-sub">jugadas</div></div>
+  <div class="metric"><div class="metric-label">Jugadores</div><div class="metric-value">${Object.keys(d.jugadores).length}</div><div class="metric-sub">participantes</div></div>
+  <div class="metric"><div class="metric-label">Mapas</div><div class="metric-value">${mapCount}</div><div class="metric-sub">distintos</div></div>
+  <div class="metric"><div class="metric-label">Civ rey</div><div class="metric-value" style="font-size:14px;font-family:'Open Sans',sans-serif">${civReyName}</div><div class="metric-sub">${civReyWR}% WR</div></div>
+`;
 
         const topCivs   = civEntries.slice(0, 7);
         const labels    = topCivs.map(([c]) => c);
