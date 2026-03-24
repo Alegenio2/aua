@@ -1,34 +1,20 @@
 {
   "visible": true,
   "modo": "pre",
-  "grupo": "A",
-  "ronda": "5",
-  "formato": "Bo3",
+  "grupo": "?",
+  "ronda": "?",
+  "formato": "Bo5",
   "j1": {
-    "nick": "FMG | Rxon",
-    "aoe2Id": "1780624",
+    "nick": "|FMG| TINCHO",
+    "aoe2Id": "2304739",
     "global": {
-      "pj": 2,
-      "pg": 0,
+      "pj": 3,
+      "pg": 1,
       "pp": 2,
-      "winrate": 0
+      "winrate": 33.3
     },
     "civs": {
-      "Burmese": {
-        "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0,
-        "por_mapa": {
-          "Arena": {
-            "pj": 1,
-            "pg": 0,
-            "pp": 1,
-            "winrate": 0
-          }
-        }
-      },
-      "Britons": {
+      "Vietnamese": {
         "pj": 1,
         "pg": 0,
         "pp": 1,
@@ -41,49 +27,69 @@
             "winrate": 0
           }
         }
-      }
-    },
-    "mapas": {
-      "Arena": {
+      },
+      "Spanish": {
         "pj": 1,
         "pg": 0,
         "pp": 1,
-        "winrate": 0
+        "winrate": 0,
+        "por_mapa": {
+          "CopaU_2026_Quarry v3 (Custom)": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          }
+        }
       },
+      "Romans": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_African River v3 (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      }
+    },
+    "mapas": {
       "CopaU_2026_Slopes v2 (Custom)": {
         "pj": 1,
         "pg": 0,
         "pp": 1,
         "winrate": 0
+      },
+      "CopaU_2026_Quarry v3 (Custom)": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0
+      },
+      "CopaU_2026_African River v3 (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
       }
     },
-    "discordId": "238414625417330688"
+    "discordId": "697996987210924072"
   },
   "j2": {
-    "nick": "|FMG| Tano Stokes",
-    "aoe2Id": "4822389",
+    "nick": "Culero Connor",
+    "aoe2Id": "5736044",
     "global": {
-      "pj": 2,
+      "pj": 3,
       "pg": 2,
-      "pp": 0,
-      "winrate": 100
+      "pp": 1,
+      "winrate": 66.7
     },
     "civs": {
-      "Sicilians": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100,
-        "por_mapa": {
-          "Arena": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          }
-        }
-      },
-      "Mongols": {
+      "Tupi": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
@@ -96,23 +102,57 @@
             "winrate": 100
           }
         }
-      }
-    },
-    "mapas": {
-      "Arena": {
+      },
+      "Portuguese": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
-        "winrate": 100
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_Quarry v3 (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
       },
+      "Chinese": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0,
+        "por_mapa": {
+          "CopaU_2026_African River v3 (Custom)": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          }
+        }
+      }
+    },
+    "mapas": {
       "CopaU_2026_Slopes v2 (Custom)": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
         "winrate": 100
+      },
+      "CopaU_2026_Quarry v3 (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "CopaU_2026_African River v3 (Custom)": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0
       }
     },
-    "discordId": "760308403087867916"
+    "discordId": "689907393001291884"
   },
-  "ts": 1774320122816
+  "ts": 1774329303437
 }
