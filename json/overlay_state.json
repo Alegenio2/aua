@@ -1,9 +1,9 @@
 {
   "visible": true,
-  "modo": "mini",
-  "grupo": "?",
-  "ronda": "?",
-  "formato": "Bo5",
+  "modo": "pre",
+  "grupo": "A",
+  "ronda": "5",
+  "formato": "Bo3",
   "j1": {
     "nick": "FMG | Rxon",
     "aoe2Id": "1780624",
@@ -114,5 +114,5 @@
     },
     "discordId": "760308403087867916"
   },
-  "ts": 1773757935165
+  "ts": 1774320122816
 }
