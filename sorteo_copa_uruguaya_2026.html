@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sorteo Copa Uruguaya 2026 | AUA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root {
+  --gold:   #e8c87a;
+  --gold2:  #c8a040;
+  --gold3:  #f0d890;
+  --brown:  #3a2a1a;
+  --bg0:    #0d0d0d;
+  --bg1:    #131008;
+  --bg2:    #1a1208;
+  --bg3:    #22180a;
+  --bg4:    #2a1e0c;
+  --text:   #e8e0d0;
+  --muted:  #a09070;
+  --dim:    #665544;
+  --border: rgba(232,200,122,0.15);
+  --b1: #8B4513; --b1l: #a0522d; --b1t: #FFD700;
+  --b2: #1a3a5c; --b2l: #1e4a7a; --b2t: #64b5f6;
+  --b3: #2d5a27; --b3l: #3a7a32; --b3t: #81c784;
+  --b4: #5a1a1a; --b4l: #7a2020; --b4t: #ef9a9a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg0);
+  color: var(--text);
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* FONDO ANIMADO */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(232,200,122,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 30% at 20% 100%, rgba(58,42,26,0.5) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ══ HEADER ══ */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: linear-gradient(180deg, #1a0a00 0%, var(--bg1) 100%);
+  border-bottom: 1px solid var(--brown);
+  position: relative;
+  z-index: 10;
+}
+.header-left h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(11px, 2vw, 16px);
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+.logo-header {
+  height: 48px;
+  filter: drop-shadow(0 0 8px rgba(232,200,122,0.3));
+}
+header nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 0 10px;
+  transition: color 0.2s;
+}
+header nav a:hover, header nav a.active { color: var(--gold); }
+
+/* ══ HERO ══ */
+.sorteo-hero {
+  text-align: center;
+  padding: 36px 20px 28px;
+  background: linear-gradient(180deg, #1a0a00 0%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+.sorteo-hero .crown {
+  font-size: 32px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 12px rgba(232,200,122,0.5));
+}
+.sorteo-hero h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(20px, 5vw, 34px);
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(232,200,122,0.3);
+  margin-bottom: 6px;
+}
+.sorteo-hero .sub {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 14px auto 0;
+  width: fit-content;
+}
+.ornament-line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold2), transparent);
+}
+.ornament-diamond {
+  width: 6px; height: 6px;
+  background: var(--gold2);
+  transform: rotate(45deg);
+}
+
+/* ══ CONTENEDOR PRINCIPAL ══ */
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+/* ══ ESTADO / CONTROLES ══ */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.estado-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg2);
+  border: 0.5px solid var(--brown);
+  border-radius: 20px;
+  padding: 7px 16px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.estado-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--dim);
+  transition: background 0.4s;
+}
+.estado-dot.active { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+.estado-dot.done   { background: #81c784; box-shadow: 0 0 8px #81c784; }
+
+.btn-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--brown) 0%, #2a1800 100%);
+  border: 1px solid var(--gold2);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 10px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+.btn-main:hover {
+  background: linear-gradient(135deg, #4a3010 0%, #3a2000 100%);
+  border-color: var(--gold3);
+  color: var(--gold3);
+  box-shadow: 0 0 16px rgba(232,200,122,0.2);
+}
+.btn-main:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.btn-secondary {
+  background: var(--bg2);
+  border: 0.5px solid var(--brown);
+  color: var(--muted);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  padding: 9px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--gold2); color: var(--gold); }
+
+/* ══ LAYOUT: BOMBOS + GRUPOS ══ */
+.sorteo-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .sorteo-layout { grid-template-columns: 1fr; }
+}
+
+/* ══ PANEL BOMBOS ══ */
+.bombos-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.bombo-card {
+  background: var(--bg2);
+  border: 0.5px solid var(--brown);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.bombo-card.activo { border-color: var(--gold2); box-shadow: 0 0 20px rgba(200,160,64,0.15); }
+
+.bombo-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 0.5px solid var(--brown);
+}
+.bombo-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.b-1 .bombo-num { background: var(--b1); color: var(--b1t); border: 1px solid var(--b1t); }
+.b-2 .bombo-num { background: var(--b2); color: var(--b2t); border: 1px solid var(--b2t); }
+.b-3 .bombo-num { background: var(--b3); color: var(--b3t); border: 1px solid var(--b3t); }
+.b-4 .bombo-num { background: var(--b4); color: var(--b4t); border: 1px solid var(--b4t); }
+
+.bombo-title {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+}
+.bombo-rango {
+  font-size: 10px;
+  color: var(--dim);
+  margin-left: auto;
+}
+.bombo-counter {
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--bg3);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.bombo-jugadores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 12px;
+  min-height: 52px;
+}
+
+.bolilla {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 0.5px solid;
+  animation: fadeInBolilla 0.4s ease;
+  position: relative;
+  white-space: nowrap;
+}
+@keyframes fadeInBolilla {
+  from { opacity: 0; transform: scale(0.7) translateY(-4px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.bolilla-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.b-1 .bolilla { background: rgba(139,69,19,0.25); border-color: var(--b1l); color: var(--b1t); }
+.b-1 .bolilla:hover { background: rgba(139,69,19,0.5); box-shadow: 0 0 8px rgba(255,215,0,0.3); }
+.b-1 .bolilla-dot { background: var(--b1t); }
+.b-2 .bolilla { background: rgba(26,58,92,0.35); border-color: var(--b2l); color: var(--b2t); }
+.b-2 .bolilla:hover { background: rgba(26,58,92,0.6); box-shadow: 0 0 8px rgba(100,181,246,0.3); }
+.b-2 .bolilla-dot { background: var(--b2t); }
+.b-3 .bolilla { background: rgba(45,90,39,0.3); border-color: var(--b3l); color: var(--b3t); }
+.b-3 .bolilla:hover { background: rgba(45,90,39,0.55); box-shadow: 0 0 8px rgba(129,199,132,0.3); }
+.b-3 .bolilla-dot { background: var(--b3t); }
+.b-4 .bolilla { background: rgba(90,26,26,0.3); border-color: var(--b4l); color: var(--b4t); }
+.b-4 .bolilla:hover { background: rgba(90,26,26,0.55); box-shadow: 0 0 8px rgba(239,154,154,0.3); }
+.b-4 .bolilla-dot { background: var(--b4t); }
+
+.bolilla.sorteando {
+  animation: sortear 0.6s ease;
+}
+@keyframes sortear {
+  0%  { transform: scale(1); }
+  30% { transform: scale(1.15) rotate(-3deg); box-shadow: 0 0 20px var(--gold); }
+  60% { transform: scale(0.9) rotate(2deg); }
+  100%{ transform: scale(1); opacity: 0; }
+}
+.bolilla.sorteada-out {
+  opacity: 0.15;
+  cursor: default;
+  filter: grayscale(0.8);
+  pointer-events: none;
+}
+
+/* Bolilla actualmente girando */
+.bombo-card.girando .bolilla:not(.sorteada-out) {
+  animation: shake 0.15s infinite;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px) rotate(-1deg); }
+  75% { transform: translateX(2px) rotate(1deg); }
+}
+
+/* ══ PANEL GRUPOS ══ */
+.grupos-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-content: start;
+}
+@media (max-width: 500px) {
+  .grupos-panel { grid-template-columns: 1fr; }
+}
+
+.grupo-card {
+  background: var(--bg2);
+  border: 0.5px solid var(--brown);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.grupo-card.highlight {
+  border-color: var(--gold2);
+  box-shadow: 0 0 16px rgba(232,200,122,0.2);
+}
+
+.grupo-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 0.5px solid var(--brown);
+  background: var(--bg3);
+}
+.grupo-letra {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  min-width: 20px;
+}
+.grupo-nombre {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.grupo-count {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--dim);
+}
+
+.grupo-slots {
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 140px;
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 11px;
+  border: 0.5px dashed rgba(102,85,68,0.4);
+  min-height: 28px;
+  transition: all 0.3s;
+  color: var(--dim);
+}
+.slot.ocupado {
+  border-style: solid;
+  animation: slotIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes slotIn {
+  from { opacity: 0; transform: translateX(20px) scale(0.9); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+.slot.nuevo {
+  border-color: var(--gold2) !important;
+  background: rgba(232,200,122,0.07) !important;
+}
+
+.slot-bombo {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+}
+.slot-nick { flex: 1; color: var(--text); font-size: 11px; }
+.slot-elo  { font-size: 10px; color: var(--dim); }
+
+/* Colores bombo en slot */
+.sb-1 { background: var(--b1);  color: var(--b1t); }
+.sb-2 { background: var(--b2);  color: var(--b2t); }
+.sb-3 { background: var(--b3);  color: var(--b3t); }
+.sb-4 { background: var(--b4);  color: var(--b4t); }
+
+/* ══ NOTIFICACIÓN CENTRAL ══ */
+.notif-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.notif-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+.notif-card {
+  background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%);
+  border: 1px solid var(--gold2);
+  border-radius: 14px;
+  padding: 32px 40px;
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 0 60px rgba(232,200,122,0.2);
+  animation: notifPop 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes notifPop {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.notif-bombo {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+.notif-nick {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(16px, 4vw, 22px);
+  color: var(--gold);
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+.notif-destino {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.notif-destino span {
+  color: var(--gold3);
+  font-weight: 700;
+}
+.notif-elo {
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 20px;
+}
+.notif-close {
+  background: var(--brown);
+  border: 1px solid var(--gold2);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  padding: 8px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+.notif-close:hover { background: var(--bg4); box-shadow: 0 0 10px rgba(232,200,122,0.2); }
+
+/* ══ LOG ══ */
+.log-panel {
+  margin-top: 20px;
+  background: var(--bg1);
+  border: 0.5px solid var(--brown);
+  border-radius: 10px;
+  padding: 12px 16px;
+  max-height: 120px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brown) transparent;
+}
+.log-title {
+  font-size: 10px;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.log-entry {
+  font-size: 11px;
+  color: var(--muted);
+  padding: 2px 0;
+  border-bottom: 0.5px solid rgba(58,42,26,0.3);
+  display: flex;
+  gap: 8px;
+}
+.log-entry:last-child { border-bottom: none; }
+.log-num { color: var(--dim); min-width: 22px; font-family: 'Cinzel', serif; }
+.log-player { color: var(--gold2); }
+.log-grupo { color: var(--text); }
+
+/* ══ FINALE ══ */
+.finale-banner {
+  display: none;
+  text-align: center;
+  padding: 28px;
+  background: linear-gradient(135deg, rgba(58,42,26,0.6), rgba(34,24,10,0.8));
+  border: 1px solid var(--gold2);
+  border-radius: 12px;
+  margin-top: 20px;
+}
+.finale-banner.visible { display: block; animation: fadeInBolilla 0.6s ease; }
+.finale-banner h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+.finale-banner p { font-size: 13px; color: var(--muted); }
+
+/* ══ BARRA PROGRESO ══ */
+.progreso-bar {
+  height: 3px;
+  background: var(--bg3);
+  border-radius: 2px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.progreso-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold2), var(--gold3));
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+/* ══ FOOTER ══ */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid var(--brown);
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 40px;
+}
+footer .social-links { margin-top: 8px; }
+footer .social-links a { color: var(--dim); font-size: 16px; margin: 0 6px; transition: color 0.2s; }
+footer .social-links a:hover { color: var(--gold); }
+
+/* Spinner bombo */
+.spinner {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid var(--brown);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left"><h1>Asociación Uruguaya de Age</h1></div>
+  <div class="header-center">
+    <img src="img/aua.png" alt="Logo AUA" class="logo-header" onerror="this.style.display='none'"/>
+  </div>
+  <nav class="header-right" id="main-nav">
+    <a href="index.html">Home</a>
+    <a href="campeonato_info.html">Eventos</a>
+    <a href="torneos.html">Salón de la Fama</a>
+    <a href="copa_stats.html">Stats Copa</a>
+    <a href="#" class="active">Sorteo</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="sorteo-hero">
+  <div class="crown">⚔️</div>
+  <h2>Sorteo Copa Uruguaya 2026</h2>
+  <div class="sub">4 Bombos · 8 Grupos · 32 Participantes</div>
+  <div class="ornament">
+    <div class="ornament-line"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line"></div>
+  </div>
+</div>
+
+<!-- NOTIFICACIÓN -->
+<div class="notif-overlay" id="notifOverlay" onclick="cerrarNotif()">
+  <div class="notif-card" onclick="event.stopPropagation()">
+    <div class="notif-bombo" id="notifBombo"></div>
+    <div class="notif-nick" id="notifNick"></div>
+    <div class="notif-destino">Va al <span id="notifGrupo"></span></div>
+    <div class="notif-elo" id="notifElo"></div>
+    <button class="notif-close" onclick="cerrarNotif()">CONTINUAR ›</button>
+  </div>
+</div>
+
+<main>
+
+  <!-- CONTROLES -->
+  <div class="controls">
+    <div class="estado-badge">
+      <div class="estado-dot" id="estadoDot"></div>
+      <span id="estadoTexto">Listo para comenzar</span>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn-secondary" onclick="sortearTodo()" id="btnTodo">⚡ Sortear Todo</button>
+      <button class="btn-main" onclick="sortearSiguiente()" id="btnSortear">
+        <i class="fas fa-random"></i> Sortear Siguiente
+      </button>
+      <button class="btn-secondary" onclick="resetear()" id="btnReset">↺ Reiniciar</button>
+    </div>
+  </div>
+
+  <!-- BARRA PROGRESO -->
+  <div class="progreso-bar">
+    <div class="progreso-fill" id="progresoBarra"></div>
+  </div>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="sorteo-layout">
+
+    <!-- BOMBOS -->
+    <div class="bombos-panel" id="bombosPanel"></div>
+
+    <!-- GRUPOS -->
+    <div class="grupos-panel" id="gruposPanel"></div>
+
+  </div>
+
+  <!-- LOG -->
+  <div class="log-panel" id="logPanel">
+    <div class="log-title">Historial del Sorteo</div>
+    <div id="logEntries"><div style="color:var(--dim);font-size:11px;font-style:italic">El historial aparecerá aquí...</div></div>
+  </div>
+
+  <!-- FINALE -->
+  <div class="finale-banner" id="finaleBanner">
+    <h3>🏆 ¡SORTEO COMPLETADO!</h3>
+    <p>Los 32 jugadores ya están distribuidos en sus grupos. ¡Que comience la Copa Uruguaya 2026!</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Asociación Uruguaya de Age of Empires II</p>
+  <div class="social-links">
+    <a href="https://www.twitch.tv/jabsuy" target="_blank"><i class="fab fa-twitch"></i></a>
+    <a href="https://www.youtube.com/@jabsuy" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/fumage_" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://discord.gg/tu-invitacion" target="_blank"><i class="fab fa-discord"></i></a>
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+//  DATOS: 32 jugadores en 4 bombos → 8 grupos (4 por bombo)
+//  Estructura: bombo 1 = cabezas de serie (elos más altos)
+//              La posición en el array = grupo destino (0-7)
+// ══════════════════════════════════════════════════════════════
+
+const GRUPOS_NOMBRES = ['A','B','C','D','E','F','G','H'];
+
+// Cada bombo tiene 8 jugadores (uno por grupo).
+// El índice 0 = va al Grupo A, índice 1 = Grupo B, etc.
+// Esto simula los 32 jugadores distribuidos por ELO en 4 cabezas.
+
+const BOMBOS_DATA = [
+  {
+    num: 1,
+    nombre: 'Bombo 1',
+    rango: 'Top 8 · ELO 1800+',
+    jugadores: [
+      { nick: 'FMG | Rxon',            elo: 1911, grupoIdx: 0 },
+      { nick: '|FMG| TINCHO',          elo: 1813, grupoIdx: 1 },
+      { nick: 'DGHIR | Garezo',        elo: 1800, grupoIdx: 2 },
+      { nick: '|FMG| twitch/JabsUY',   elo: 1790, grupoIdx: 3 },
+      { nick: 'Lautaro_UY',            elo: 1780, grupoIdx: 4 },
+      { nick: 'FMG | Condor',          elo: 1755, grupoIdx: 5 },
+      { nick: 'DGHIR | Pampero',       elo: 1730, grupoIdx: 6 },
+      { nick: 'El_Gaucho',             elo: 1710, grupoIdx: 7 },
+    ]
+  },
+  {
+    num: 2,
+    nombre: 'Bombo 2',
+    rango: 'ELO 1600–1799',
+    jugadores: [
+      { nick: '|FMG| Tano Stokes',     elo: 1632, grupoIdx: 0 },
+      { nick: '-FMG- Rodri',           elo: 1582, grupoIdx: 1 },
+      { nick: 'Kroyen',                elo: 1560, grupoIdx: 2 },
+      { nick: '|FMG| Gral_Artigas',    elo: 1498, grupoIdx: 3 },
+      { nick: 'Tupac_AoE',             elo: 1490, grupoIdx: 4 },
+      { nick: 'La_Oveja_Negra',        elo: 1478, grupoIdx: 5 },
+      { nick: 'CaudilloUY',            elo: 1465, grupoIdx: 6 },
+      { nick: 'Moncho_Areco',          elo: 1450, grupoIdx: 7 },
+    ]
+  },
+  {
+    num: 3,
+    nombre: 'Bombo 3',
+    rango: 'ELO 1350–1599',
+    jugadores: [
+      { nick: '|FMG| TatoSky',         elo: 1420, grupoIdx: 0 },
+      { nick: '|FMG| ROGELIO III',     elo: 1395, grupoIdx: 1 },
+      { nick: 'Matixxx',               elo: 1380, grupoIdx: 2 },
+      { nick: 'kakaidolo',             elo: 1370, grupoIdx: 3 },
+      { nick: 'Rancho_Fijo',           elo: 1355, grupoIdx: 4 },
+      { nick: 'Chasque_UY',            elo: 1340, grupoIdx: 5 },
+      { nick: 'VitoriaUY',             elo: 1325, grupoIdx: 6 },
+      { nick: 'El_Ñandú',              elo: 1310, grupoIdx: 7 },
+    ]
+  },
+  {
+    num: 4,
+    nombre: 'Bombo 4',
+    rango: 'ELO < 1350',
+    jugadores: [
+      { nick: 'Payador_Nuevo',         elo: 1290, grupoIdx: 0 },
+      { nick: 'Lapacho_Siege',         elo: 1270, grupoIdx: 1 },
+      { nick: 'Mate_Rush',             elo: 1255, grupoIdx: 2 },
+      { nick: 'Terere_Nomad',          elo: 1240, grupoIdx: 3 },
+      { nick: 'Asado_Fast',            elo: 1225, grupoIdx: 4 },
+      { nick: 'Milonga_Boom',          elo: 1210, grupoIdx: 5 },
+      { nick: 'Candombe_AoE',          elo: 1195, grupoIdx: 6 },
+      { nick: 'Ceibo_Fire',            elo: 1180, grupoIdx: 7 },
+    ]
+  }
+];
+
+// ══════════════════════════════════════════════════════════════
+//  ESTADO
+// ══════════════════════════════════════════════════════════════
+let estado = {
+  // Cola de sorteo: todos los jugadores mezclados visualmente por bombo
+  // pero el destino real ya está fijado en BOMBOS_DATA
+  cola: [],       // array de { bomboIdx, jugadorIdx, nick, elo, grupoIdx }
+  grupos: Array(8).fill(null).map(() => []),  // jugadores en cada grupo
+  sorteados: 0,
+  total: 32,
+  girando: false,
+  iniciado: false,
+  completado: false,
+};
+
+// ══════════════════════════════════════════════════════════════
+//  INICIALIZAR
+// ══════════════════════════════════════════════════════════════
+function init() {
+  // Mezclar el orden visual dentro de cada bombo
+  // pero los destinos de grupo NO cambian
+  BOMBOS_DATA.forEach((bombo, bi) => {
+    // Copia y mezcla para mostrar en orden aleatorio
+    bombo._mezclados = shuffle([...bombo.jugadores.map((j,ji) => ({...j, bomboIdx: bi, jugadorIdx: ji}))]);
+    bombo._pendientes = new Set(bombo._mezclados.map(j => j.nick));
+  });
+
+  // Cola global (bombo 1 primero, luego bombo 2, etc.) pero mezclada dentro de cada bombo
+  estado.cola = [];
+  BOMBOS_DATA.forEach((bombo, bi) => {
+    bombo._mezclados.forEach(j => estado.cola.push(j));
+  });
+
+  estado.grupos = Array(8).fill(null).map(() => []);
+  estado.sorteados = 0;
+  estado.girando = false;
+  estado.iniciado = false;
+  estado.completado = false;
+
+  renderBombos();
+  renderGrupos();
+  actualizarProgreso();
+  actualizarEstado('Listo para comenzar', false, false);
+  document.getElementById('logEntries').innerHTML = '<div style="color:var(--dim);font-size:11px;font-style:italic">El historial aparecerá aquí...</div>';
+  document.getElementById('finaleBanner').classList.remove('visible');
+}
+
+// ══════════════════════════════════════════════════════════════
+//  RENDER BOMBOS
+// ══════════════════════════════════════════════════════════════
+function renderBombos() {
+  const panel = document.getElementById('bombosPanel');
+  panel.innerHTML = BOMBOS_DATA.map((bombo, bi) => {
+    const bolillas = bombo._mezclados.map(j => `
+      <span class="bolilla" id="bolilla-${j.nick.replace(/[^a-zA-Z0-9]/g,'_')}" title="${j.nick} · ELO ${j.elo}">
+        <span class="bolilla-dot"></span>${j.nick}
+      </span>
+    `).join('');
+
+    return `
+      <div class="bombo-card b-${bombo.num}" id="bombo-card-${bi}">
+        <div class="bombo-header">
+          <div class="bombo-num">${bombo.num}</div>
+          <div>
+            <div class="bombo-title">${bombo.nombre}</div>
+            <div class="bombo-rango">${bombo.rango}</div>
+          </div>
+          <div class="bombo-counter" id="counter-${bi}">8/8</div>
+        </div>
+        <div class="bombo-jugadores" id="bolillas-${bi}">${bolillas}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════════════════════
+//  RENDER GRUPOS
+// ══════════════════════════════════════════════════════════════
+function renderGrupos() {
+  const panel = document.getElementById('gruposPanel');
+  panel.innerHTML = GRUPOS_NOMBRES.map((letra, gi) => {
+    const slots = estado.grupos[gi].map(j => `
+      <div class="slot ocupado">
+        <div class="slot-bombo sb-${j.bomboIdx+1}">${j.bomboIdx+1}</div>
+        <div class="slot-nick">${j.nick}</div>
+        <div class="slot-elo">${j.elo}</div>
+      </div>
+    `).join('');
+
+    // Slots vacíos
+    const vacios = Array(4 - estado.grupos[gi].length).fill(0).map(() => `
+      <div class="slot"><span style="font-size:10px;color:var(--dim)">— pendiente —</span></div>
+    `).join('');
+
+    return `
+      <div class="grupo-card" id="grupo-card-${gi}">
+        <div class="grupo-header">
+          <div class="grupo-letra">${letra}</div>
+          <div class="grupo-nombre">Grupo ${letra}</div>
+          <div class="grupo-count" id="grupo-count-${gi}">${estado.grupos[gi].length}/4</div>
+        </div>
+        <div class="grupo-slots" id="grupo-slots-${gi}">${slots}${vacios}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════════════════════
+//  SORTEAR SIGUIENTE
+// ══════════════════════════════════════════════════════════════
+let sorteoIdx = 0;
+
+async function sortearSiguiente() {
+  if (estado.girando || estado.completado) return;
+  if (sorteoIdx >= estado.cola.length) return;
+
+  const jugador = estado.cola[sorteoIdx];
+  sorteoIdx++;
+
+  estado.girando = true;
+  estado.iniciado = true;
+  document.getElementById('btnSortear').disabled = true;
+  document.getElementById('btnTodo').disabled = true;
+  actualizarEstado('Sorteando...', true, false);
+
+  // Animación en la bolilla
+  const bolillaId = 'bolilla-' + jugador.nick.replace(/[^a-zA-Z0-9]/g,'_');
+  const bolillaEl = document.getElementById(bolillaId);
+  const bomboCard = document.getElementById('bombo-card-' + jugador.bomboIdx);
+
+  // Marcar bombo como girando
+  bomboCard.classList.add('girando', 'activo');
+
+  await sleep(500);
+
+  bomboCard.classList.remove('girando');
+
+  if (bolillaEl) {
+    bolillaEl.classList.add('sorteando');
+    await sleep(650);
+    bolillaEl.classList.remove('sorteando');
+    bolillaEl.classList.add('sorteada-out');
+  }
+
+  // Añadir al grupo
+  estado.grupos[jugador.grupoIdx].push(jugador);
+  estado.sorteados++;
+
+  // Actualizar counter del bombo
+  const bomboData = BOMBOS_DATA[jugador.bomboIdx];
+  const restantes = bomboData._mezclados.filter(j => !estado.grupos[jugador.grupoIdx] || true)
+    .length - estado.grupos.flat().filter(j => j.bomboIdx === jugador.bomboIdx).length;
+  document.getElementById('counter-' + jugador.bomboIdx).textContent =
+    `${8 - estado.grupos.flat().filter(j => j.bomboIdx === jugador.bomboIdx).length}/8`;
+
+  // Actualizar grupo
+  updateGrupoUI(jugador);
+
+  // Log
+  agregarLog(estado.sorteados, jugador);
+
+  // Actualizar progreso
+  actualizarProgreso();
+
+  // Mostrar notificación
+  mostrarNotif(jugador);
+
+  estado.girando = false;
+
+  if (estado.sorteados >= estado.total) {
+    completar();
+  } else {
+    document.getElementById('btnSortear').disabled = false;
+    document.getElementById('btnTodo').disabled = false;
+    actualizarEstado(`${estado.sorteados}/${estado.total} sorteados`, true, false);
+  }
+}
+
+function updateGrupoUI(jugador) {
+  const grupoCard = document.getElementById('grupo-card-' + jugador.grupoIdx);
+  const slotsEl = document.getElementById('grupo-slots-' + jugador.grupoIdx);
+  const countEl = document.getElementById('grupo-count-' + jugador.grupoIdx);
+
+  grupoCard.classList.add('highlight');
+  setTimeout(() => grupoCard.classList.remove('highlight'), 1500);
+
+  // Re-render slots
+  const slots = estado.grupos[jugador.grupoIdx].map((j, i) => `
+    <div class="slot ocupado ${i === estado.grupos[jugador.grupoIdx].length-1 ? 'nuevo' : ''}">
+      <div class="slot-bombo sb-${j.bomboIdx+1}">${j.bomboIdx+1}</div>
+      <div class="slot-nick">${j.nick}</div>
+      <div class="slot-elo">${j.elo}</div>
+    </div>
+  `).join('');
+
+  const vacios = Array(4 - estado.grupos[jugador.grupoIdx].length).fill(0).map(() => `
+    <div class="slot"><span style="font-size:10px;color:var(--dim)">— pendiente —</span></div>
+  `).join('');
+
+  slotsEl.innerHTML = slots + vacios;
+  countEl.textContent = `${estado.grupos[jugador.grupoIdx].length}/4`;
+
+  // Quitar clase nuevo después de un momento
+  setTimeout(() => {
+    const nuevos = slotsEl.querySelectorAll('.nuevo');
+    nuevos.forEach(n => n.classList.remove('nuevo'));
+  }, 1500);
+}
+
+// ══════════════════════════════════════════════════════════════
+//  SORTEAR TODO (automático con delays)
+// ══════════════════════════════════════════════════════════════
+let autoSorteoInterval = null;
+
+async function sortearTodo() {
+  if (estado.girando || estado.completado) return;
+  document.getElementById('btnTodo').disabled = true;
+  document.getElementById('btnSortear').disabled = true;
+
+  while (sorteoIdx < estado.cola.length && !estado.completado) {
+    await sortearSiguiente();
+    cerrarNotif(true); // cerrar notif sin animación
+    await sleep(350);
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  NOTIFICACIÓN
+// ══════════════════════════════════════════════════════════════
+function mostrarNotif(jugador) {
+  const colores = [
+    { bg: 'var(--b1)', color: 'var(--b1t)', border: '2px solid var(--b1t)' },
+    { bg: 'var(--b2)', color: 'var(--b2t)', border: '2px solid var(--b2t)' },
+    { bg: 'var(--b3)', color: 'var(--b3t)', border: '2px solid var(--b3t)' },
+    { bg: 'var(--b4)', color: 'var(--b4t)', border: '2px solid var(--b4t)' },
+  ];
+  const c = colores[jugador.bomboIdx];
+  const bomboEl = document.getElementById('notifBombo');
+  bomboEl.style.cssText = `background:${c.bg};color:${c.color};border:${c.border};width:56px;height:56px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:22px;font-weight:700;`;
+  bomboEl.textContent = jugador.bomboIdx + 1;
+
+  document.getElementById('notifNick').textContent = jugador.nick;
+  document.getElementById('notifGrupo').textContent = 'Grupo ' + GRUPOS_NOMBRES[jugador.grupoIdx];
+  document.getElementById('notifElo').textContent = 'ELO: ' + jugador.elo + ' · Bombo ' + (jugador.bomboIdx + 1);
+  document.getElementById('notifOverlay').classList.add('visible');
+}
+
+function cerrarNotif(silencioso = false) {
+  document.getElementById('notifOverlay').classList.remove('visible');
+}
+
+// ══════════════════════════════════════════════════════════════
+//  UTILIDADES UI
+// ══════════════════════════════════════════════════════════════
+function actualizarEstado(txt, activo, done) {
+  document.getElementById('estadoTexto').textContent = txt;
+  const dot = document.getElementById('estadoDot');
+  dot.className = 'estado-dot' + (done ? ' done' : activo ? ' active' : '');
+}
+
+function actualizarProgreso() {
+  const pct = (estado.sorteados / estado.total) * 100;
+  document.getElementById('progresoBarra').style.width = pct + '%';
+}
+
+function agregarLog(n, jugador) {
+  const entriesEl = document.getElementById('logEntries');
+  if (n === 1) entriesEl.innerHTML = '';
+  const entry = document.createElement('div');
+  entry.className = 'log-entry';
+  entry.innerHTML = `
+    <span class="log-num">#${n}</span>
+    <span class="log-player">${jugador.nick}</span>
+    <span style="color:var(--dim)">→</span>
+    <span class="log-grupo">Grupo ${GRUPOS_NOMBRES[jugador.grupoIdx]}</span>
+    <span style="color:var(--dim);margin-left:auto">ELO ${jugador.elo}</span>
+  `;
+  entriesEl.prepend(entry);
+}
+
+function completar() {
+  estado.completado = true;
+  actualizarEstado('¡Sorteo completado!', false, true);
+  document.getElementById('btnSortear').disabled = true;
+  document.getElementById('btnTodo').disabled = true;
+  document.getElementById('finaleBanner').classList.add('visible');
+  // Quitar activo de todos los bombos
+  document.querySelectorAll('.bombo-card').forEach(b => b.classList.remove('activo'));
+}
+
+function resetear() {
+  sorteoIdx = 0;
+  init();
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
+// ══════════════════════════════════════════════════════════════
+//  START
+// ══════════════════════════════════════════════════════════════
+init();
+</script>
+</body>
+</html>
