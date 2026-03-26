@@ -1,8 +1,8 @@
 {
   "visible": true,
-  "id": "7",
-  "name": "Arena",
-  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/arena.png",
-  "categoria": "Cerrado",
-  "ts": 1774550225373
+  "id": "13",
+  "name": "Islands",
+  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/Islas.png",
+  "categoria": "Agua",
+  "ts": 1774560198042
 }
