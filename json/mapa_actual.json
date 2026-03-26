@@ -1,8 +1,8 @@
 {
   "visible": true,
-  "id": "12",
-  "name": "African River",
-  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/African%20River.png",
-  "categoria": "Hibrido",
-  "ts": 1774547097019
+  "id": "3",
+  "name": "Dry River",
+  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/Dry%20River.png",
+  "categoria": "Abierto",
+  "ts": 1774547235424
 }
