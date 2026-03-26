@@ -1,8 +1,8 @@
 {
   "visible": true,
-  "id": "2",
-  "name": "Slopes",
-  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/Slopes.png",
-  "categoria": "Abierto",
-  "ts": 1774548529876
+  "id": "7",
+  "name": "Arena",
+  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/arena.png",
+  "categoria": "Cerrado",
+  "ts": 1774548624451
 }
