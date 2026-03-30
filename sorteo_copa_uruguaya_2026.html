@@ -710,18 +710,13 @@ footer .social-links a:hover { color: var(--gold); }
 
 <script>
 // ══════════════════════════════════════════════════════════════
-//  DATOS: 32 jugadores en 4 bombos → 8 grupos (4 por bombo)
-//  Estructura: bombo 1 = cabezas de serie (elos más altos)
-//              La posición en el array = grupo destino (0-7)
+//  DATOS: Se cargan desde JSON o datos de prueba
 // ══════════════════════════════════════════════════════════════
 
 const GRUPOS_NOMBRES = ['A','B','C','D','E','F','G','H'];
 
-// Cada bombo tiene 8 jugadores (uno por grupo).
-// El índice 0 = va al Grupo A, índice 1 = Grupo B, etc.
-// Esto simula los 32 jugadores distribuidos por ELO en 4 cabezas.
-
-const BOMBOS_DATA = [
+// Datos de prueba (se usan si no hay JSON disponible)
+const BOMBOS_DATA_PRUEBA = [
   {
     num: 1,
     nombre: 'Bombo 1',
@@ -784,6 +779,114 @@ const BOMBOS_DATA = [
   }
 ];
 
+// Variable global para los datos actuales
+let BOMBOS_DATA = [];
+
+// ══════════════════════════════════════════════════════════════
+//  CARGAR DATOS DESDE JSON
+// ══════════════════════════════════════════════════════════════
+async function cargarDatosJSON() {
+  try {
+    // Intentar cargar el JSON desde la carpeta torneos
+    const response = await fetch('torneos/1v1_copa_uruguaya_2026.json');
+    
+    if (!response.ok) {
+      throw new Error('JSON no encontrado');
+    }
+    
+    const datos = await response.json();
+    
+    // Convertir el formato del JSON al formato que usa el sorteo
+    BOMBOS_DATA = convertirJSONaBombos(datos);
+    
+    console.log('✓ Datos cargados desde JSON:', datos.torneo);
+    return true;
+    
+  } catch (error) {
+    console.log('→ Usando datos de prueba (JSON no disponible)');
+    BOMBOS_DATA = BOMBOS_DATA_PRUEBA;
+    return false;
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  CONVERTIR JSON A FORMATO DE BOMBOS
+// ══════════════════════════════════════════════════════════════
+function convertirJSONaBombos(datos) {
+  // Obtener todos los jugadores de todos los grupos
+  const todosJugadores = [];
+  
+  datos.grupos.forEach((grupo, grupoIdx) => {
+    grupo.jugadores.forEach(jugador => {
+      todosJugadores.push({
+        ...jugador,
+        grupoIdx: grupoIdx
+      });
+    });
+  });
+  
+  // Ordenar por ELO descendente
+  todosJugadores.sort((a, b) => b.elo - a.elo);
+  
+  // Crear los 4 bombos
+  const totalJugadores = todosJugadores.length;
+  const jugadoresPorBombo = Math.floor(totalJugadores / 4);
+  
+  const bombos = [
+    {
+      num: 1,
+      nombre: 'Bombo 1',
+      rango: 'Top ELO',
+      jugadores: []
+    },
+    {
+      num: 2,
+      nombre: 'Bombo 2',
+      rango: 'ELO Alto',
+      jugadores: []
+    },
+    {
+      num: 3,
+      nombre: 'Bombo 3',
+      rango: 'ELO Medio',
+      jugadores: []
+    },
+    {
+      num: 4,
+      nombre: 'Bombo 4',
+      rango: 'ELO Base',
+      jugadores: []
+    }
+  ];
+  
+  // Distribuir jugadores en bombos
+  todosJugadores.forEach((jugador, idx) => {
+    const bomboIdx = Math.floor(idx / jugadoresPorBombo);
+    const bomboFinal = Math.min(bomboIdx, 3); // Asegurar que no se pase de bombo 4
+    
+    bombos[bomboFinal].jugadores.push({
+      nick: jugador.nick,
+      elo: jugador.elo,
+      grupoIdx: jugador.grupoIdx
+    });
+  });
+  
+  // Actualizar rangos de ELO reales
+  bombos.forEach((bombo, idx) => {
+    if (bombo.jugadores.length > 0) {
+      const eloMax = Math.max(...bombo.jugadores.map(j => j.elo));
+      const eloMin = Math.min(...bombo.jugadores.map(j => j.elo));
+      if (idx === 0) {
+        bombo.rango = `Top ${bombo.jugadores.length} · ELO ${eloMin}+`;
+      } else {
+        bombo.rango = `ELO ${eloMin}–${eloMax}`;
+      }
+    }
+  });
+  
+  return bombos;
+}
+
 // ══════════════════════════════════════════════════════════════
 //  ESTADO
 // ══════════════════════════════════════════════════════════════
@@ -802,7 +905,14 @@ let estado = {
 // ══════════════════════════════════════════════════════════════
 //  INICIALIZAR
 // ══════════════════════════════════════════════════════════════
-function init() {
+async function init() {
+  // Primero cargar los datos (JSON o prueba)
+  await cargarDatosJSON();
+  
+  // Actualizar el total de jugadores según los datos cargados
+  const totalJugadores = BOMBOS_DATA.reduce((sum, bombo) => sum + bombo.jugadores.length, 0);
+  estado.total = totalJugadores;
+  
   // Mezclar el orden visual dentro de cada bombo
   // pero los destinos de grupo NO cambian
   BOMBOS_DATA.forEach((bombo, bi) => {
@@ -843,6 +953,8 @@ function renderBombos() {
       </span>
     `).join('');
 
+    const totalBombo = bombo.jugadores.length;
+
     return `
       <div class="bombo-card b-${bombo.num}" id="bombo-card-${bi}">
         <div class="bombo-header">
@@ -851,7 +963,7 @@ function renderBombos() {
             <div class="bombo-title">${bombo.nombre}</div>
             <div class="bombo-rango">${bombo.rango}</div>
           </div>
-          <div class="bombo-counter" id="counter-${bi}">8/8</div>
+          <div class="bombo-counter" id="counter-${bi}">${totalBombo}/${totalBombo}</div>
         </div>
         <div class="bombo-jugadores" id="bolillas-${bi}">${bolillas}</div>
       </div>
@@ -934,10 +1046,9 @@ async function sortearSiguiente() {
 
   // Actualizar counter del bombo
   const bomboData = BOMBOS_DATA[jugador.bomboIdx];
-  const restantes = bomboData._mezclados.filter(j => !estado.grupos[jugador.grupoIdx] || true)
-    .length - estado.grupos.flat().filter(j => j.bomboIdx === jugador.bomboIdx).length;
-  document.getElementById('counter-' + jugador.bomboIdx).textContent =
-    `${8 - estado.grupos.flat().filter(j => j.bomboIdx === jugador.bomboIdx).length}/8`;
+  const totalBombo = bomboData.jugadores.length;
+  const restantes = totalBombo - estado.grupos.flat().filter(j => j.bomboIdx === jugador.bomboIdx).length;
+  document.getElementById('counter-' + jugador.bomboIdx).textContent = `${restantes}/${totalBombo}`;
 
   // Actualizar grupo
   updateGrupoUI(jugador);
