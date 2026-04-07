@@ -2,11 +2,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     const container = document.getElementById("proximas-partidas");
     if (!container) return;
 
-    // URLs de los JSONs a intentar
+    // URLs locales (ruta relativa al archivo HTML)
     const urls = [
-        // Copa Uruguaya 2026
-        "https://raw.githubusercontent.com/Alegenio2/aua/main/torneos/1v1_copa_uruguaya_2026.json",
-        // Formato Liga (categorías)
+        // Copa Uruguaya 2026 (ruta local)
+        "torneos/1v1_copa_uruguaya_2026.json",
+        // Formato Liga (categorías) - estos siguen siendo remotos
         { name: "A", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_a.json" },
         { name: "B", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_b.json" },
         { name: "C", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_c.json" },
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         item.innerHTML = `
             <div class="match-header">
                 <span class="match-badge">${grupo}</span>
-                ${coordinadoPor ? `<span class="match-coord">Coordinado por ${coordinadoPor}</span>` : ''}
+                ${coordinadoPor ? `<span class="match-coord">Coord: ${coordinadoPor}</span>` : ''}
             </div>
             <div class="match-players">
                 <span class="player">${cleanNick(j1)}</span>
@@ -97,7 +97,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     async function processCopa() {
         try {
             const res = await fetch(urls[0]);
-            if (!res.ok) return null;
+            if (!res.ok) {
+                console.warn('No se pudo cargar Copa Uruguaya:', res.status);
+                return null;
+            }
             const data = await res.json();
 
             // Detectar formato Copa: tiene grupos y rondas_grupos
@@ -108,7 +111,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             data.rondas_grupos.forEach(rg => {
                 rg.partidos.forEach(ronda => {
                     ronda.partidos.forEach(partido => {
-                        // Solo partidos SIN resultado pero CON fecha coordinada
+                        // Solo partidos SIN resultado PERO CON fecha coordinada
                         if (partido.resultado === null && partido.fecha && partido.horario) {
                             const fechaObj = parsearFechaCopa(partido.fecha, partido.horario);
                             if (fechaObj) {
@@ -132,6 +135,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             
             // Tomar los 2 primeros
             const proximos = todosLosPartidos.slice(0, 2);
+
+            console.log('Partidos coordinados encontrados:', todosLosPartidos.length);
 
             if (proximos.length === 0) return null;
 
@@ -188,10 +193,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // ── Init ─────────────────────────────────────────────────
     try {
-        // Intentar Copa Uruguaya primero
+        // Intentar Copa Uruguaya primero (local)
         const copaResult = await processCopa();
         
-        if (copaResult && copaResult.type === 'copa') {
+        if (copaResult && copaResult.type === 'copa' && copaResult.matches.length > 0) {
+            // Limpiar container (quitar "Cargando...")
+            container.innerHTML = '';
             // Renderizar formato Copa
             copaResult.matches.forEach(match => {
                 container.appendChild(renderDueloCopa(
@@ -208,14 +215,17 @@ document.addEventListener("DOMContentLoaded", async function () {
             // Intentar formato Liga
             const ligaResult = await processLiga();
             
-            if (ligaResult && ligaResult.type === 'liga') {
+            if (ligaResult && ligaResult.type === 'liga' && ligaResult.matches.length > 0) {
+                // Limpiar container (quitar "Cargando...")
+                container.innerHTML = '';
                 ligaResult.matches.forEach(duelo => {
                     const j1 = duelo.parts.find(p => p.id === duelo.p.jugador1Id)?.nombre || "A definir";
                     const j2 = duelo.parts.find(p => p.id === duelo.p.jugador2Id)?.nombre || "A definir";
-                    container.appendChild(renderDueloLiga(j1, j2, duelo.cat, duelo.fecha));
+                    container.appendChild(renderDueloLiga(j1, j2, ligaResult.matches.cat, duelo.fecha));
                 });
             } else {
-                container.innerHTML = `<p class="empty-msg">No hay partidas programadas por ahora.</p>`;
+                // No hay partidas - dejar el "Cargando..." o mostrar vacío
+                container.innerHTML = `<p class="empty-msg">No hay partidas coordinadas por ahora.</p>`;
             }
         }
 
