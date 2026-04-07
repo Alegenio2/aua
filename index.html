@@ -202,7 +202,7 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
 }
 
 .grid-main.main-section{
-  grid-template-columns:870px 340px
+  grid-template-columns:1080px 340px
 }
 
 /* ══ SWIPER CAROUSEL ══════════════════════════════════════ */
@@ -422,6 +422,86 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
 }
 
 .sponsor a:hover{color:var(--gold-light)}
+
+/* ══ MATCH ITEMS (Partidas en vivo/próximas) ════════════════ */
+.match-item{
+  background:var(--bg3);
+  border:0.5px solid var(--brown);
+  border-radius:8px;
+  padding:14px;
+  margin-bottom:12px;
+  transition:border-color 0.18s;
+}
+.match-item:last-child{margin-bottom:0}
+.match-item:hover{border-color:rgba(232,200,122,0.3)}
+
+.match-header{
+  display:flex;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.match-badge{
+  font-size:9px;
+  letter-spacing:1.5px;
+  color:var(--celeste);
+  background:rgba(91,184,212,0.1);
+  border:0.5px solid rgba(91,184,212,0.3);
+  padding:2px 8px;
+  border-radius:10px;
+  text-transform:uppercase;
+}
+
+.match-coord{
+  font-size:10px;
+  color:var(--muted);
+  margin-left:auto;
+}
+
+.match-players{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.match-players .player{
+  font-size:13px;
+  color:var(--text);
+  font-weight:500;
+  text-align:center;
+  flex:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.match-players .vs{
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  color:var(--dim);
+  letter-spacing:2px;
+  flex-shrink:0;
+}
+
+.match-date{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:8px;
+  text-align:center;
+}
+
+.match-date i{
+  color:var(--gold);
+  margin-right:4px;
+}
+
+.empty-msg{
+  font-size:12px;
+  color:var(--dim);
+  text-align:center;
+  padding:16px 0;
+}
 
 /* ══ FOOTER ═══════════════════════════════════════════════ */
 footer{
