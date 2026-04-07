@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const content = document.getElementById("torneo-internacional-content");
 
   try {
-    const res = await fetch("https://aldeanooscar.onrender.com/api/torneos");
+    const res = await fetch("https://aldeanooscar.squareweb.app/api/torneos");
     if (!res.ok) throw new Error("No se pudo obtener el torneo actual");
 
     const torneos = await res.json(); // el endpoint devuelve un array
