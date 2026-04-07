@@ -1,8 +1,8 @@
 {
-  "visible": false,
-  "id": "0",
-  "name": "",
-  "url": "",
-  "categoria": "",
-  "ts": 1775521348981
+  "visible": true,
+  "id": "16",
+  "name": "Nomad",
+  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/nomad.png",
+  "categoria": "Nomada",
+  "ts": 1775524648479
 }
