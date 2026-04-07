@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    const categorias = [
+    const container = document.getElementById("proximas-partidas");
+    if (!container) return;
+
+    // URLs de los JSONs a intentar
+    const urls = [
+        // Copa Uruguaya 2026
+        "https://raw.githubusercontent.com/Alegenio2/aua/main/torneos/1v1_copa_uruguaya_2026.json",
+        // Formato Liga (categorías)
         { name: "A", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_a.json" },
         { name: "B", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_b.json" },
         { name: "C", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_c.json" },
@@ -7,10 +14,25 @@ document.addEventListener("DOMContentLoaded", async function () {
         { name: "E", url: "https://raw.githubusercontent.com/Alegenio2/civs/main/ligas/liga_e.json" }
     ];
 
-    const container = document.getElementById("proximas-partidas");
-    if (!container) return;
+    // ── Helper: limpiar nick ──────────────────────────────────
+    function cleanNick(nick) {
+        return (nick || '').replace(/[|\[\]]/g, '').trim();
+    }
 
-    function parsearFecha(p) {
+    // ── Helper: parsear fecha Copa (DD-MM-YYYY HH:MM) ──────
+    function parsearFechaCopa(fecha, horario) {
+        if (!fecha || !horario) return null;
+        try {
+            const [d, m, y] = fecha.split('-');
+            const [hh, mm] = horario.split(':');
+            return new Date(y, m - 1, d, hh, mm);
+        } catch (e) { 
+            return null; 
+        }
+    }
+
+    // ── Helper: parsear fecha formato Liga ───────────────────
+    function parsearFechaLiga(p) {
         if (!p.fecha || !p.horario) return null;
         try {
             const [d, m, a] = p.fecha.split(/[-/]/);
@@ -20,66 +42,185 @@ document.addEventListener("DOMContentLoaded", async function () {
         } catch (e) { return null; }
     }
 
-    try {
-        const ahora = new Date();
-        let todosLosDuelos = [];
+    // ── Renderizar duelo (formato Copa) ──────────────────────
+    function renderDueloCopa(j1, j2, grupo, fechaObj, horario, diaSemana, coordinadoPor) {
+        const item = document.createElement("div");
+        item.className = "match-item";
+        
+        // Formatear fecha
+        let fechaStr = '';
+        if (fechaObj && horario) {
+            fechaStr = `${diaSemana} ${fechaObj.getDate()} de ${fechaObj.toLocaleString('es-UY', { month: 'short' })} · ${horario}`;
+        }
+        
+        item.innerHTML = `
+            <div class="match-header">
+                <span class="match-badge">${grupo}</span>
+                ${coordinadoPor ? `<span class="match-coord">Coordinado por ${coordinadoPor}</span>` : ''}
+            </div>
+            <div class="match-players">
+                <span class="player">${cleanNick(j1)}</span>
+                <span class="vs">vs</span>
+                <span class="player">${cleanNick(j2)}</span>
+            </div>
+            ${fechaStr ? `
+            <div class="match-date">
+                <i class="far fa-calendar-alt"></i> ${fechaStr}
+            </div>` : ''}
+        `;
+        return item;
+    }
 
-        // Usamos Promise.all para cargar todas las categorías en paralelo (más rápido)
-        const resultados = await Promise.all(categorias.map(cat => 
-            fetch(cat.url).then(res => res.json()).catch(() => null)
-        ));
+    // ── Renderizar duelo (formato Liga) ──────────────────────
+    function renderDueloLiga(j1Nombre, j2Nombre, cat, fecha) {
+        const item = document.createElement("div");
+        item.className = "match-item";
+        item.innerHTML = `
+            <div class="match-header">
+                <span class="match-badge">Cat ${cat}</span>
+            </div>
+            <div class="match-players">
+                <span class="player">${j1Nombre}</span>
+                <span class="vs">vs</span>
+                <span class="player">${j2Nombre}</span>
+            </div>
+            <div class="match-date">
+                <i class="far fa-clock"></i> ${fecha.toLocaleString('es-UY', { 
+                    weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' 
+                })}
+            </div>
+        `;
+        return item;
+    }
 
-        resultados.forEach((data, index) => {
-            if (!data || !data.jornadas) return;
-            const participantes = data.participantes || [];
-            
-            data.jornadas.forEach(j => {
-                (j.partidos || []).forEach(partido => {
-                    const fechaReal = parsearFecha(partido);
-                    if (fechaReal && fechaReal > ahora) {
-                        todosLosDuelos.push({
-                            cat: categorias[index].name,
-                            p: partido,
-                            fecha: fechaReal,
-                            parts: participantes
-                        });
-                    }
+    // ── Procesar formato Copa Uruguaya ──────────────────────
+    async function processCopa() {
+        try {
+            const res = await fetch(urls[0]);
+            if (!res.ok) return null;
+            const data = await res.json();
+
+            // Detectar formato Copa: tiene grupos y rondas_grupos
+            if (!data.grupos || !data.rondas_grupos) return null;
+
+            const todosLosPartidos = [];
+
+            data.rondas_grupos.forEach(rg => {
+                rg.partidos.forEach(ronda => {
+                    ronda.partidos.forEach(partido => {
+                        // Solo partidos SIN resultado pero CON fecha coordinada
+                        if (partido.resultado === null && partido.fecha && partido.horario) {
+                            const fechaObj = parsearFechaCopa(partido.fecha, partido.horario);
+                            if (fechaObj) {
+                                todosLosPartidos.push({
+                                    j1: partido.jugador1Nick,
+                                    j2: partido.jugador2Nick,
+                                    grupo: `Grupo ${rg.grupo}`,
+                                    fecha: fechaObj,
+                                    horario: partido.horario,
+                                    diaSemana: partido.diaSemana || '',
+                                    coordinadoPor: partido.coordinadoPor || ''
+                                });
+                            }
+                        }
+                    });
                 });
             });
-        });
 
-        todosLosDuelos.sort((a, b) => a.fecha - b.fecha);
-        const proximos = todosLosDuelos.slice(0, 2);
+            // Ordenar por fecha (próximos primero)
+            todosLosPartidos.sort((a, b) => a.fecha - b.fecha);
+            
+            // Tomar los 2 primeros
+            const proximos = todosLosPartidos.slice(0, 2);
 
-        if (proximos.length === 0) {
-            container.innerHTML = `<p class="empty-msg">No hay partidas programadas por ahora.</p>`;
-            return;
+            if (proximos.length === 0) return null;
+
+            return { type: 'copa', matches: proximos };
+        } catch (e) {
+            console.error('Error procesando Copa:', e);
+            return null;
+        }
+    }
+
+    // ── Procesar formato Liga ────────────────────────────────
+    async function processLiga() {
+        try {
+            const ligaUrls = urls.slice(1); // URLs de ligas
+            const resultados = await Promise.all(
+                ligaUrls.map(cat => 
+                    fetch(cat.url).then(res => res.json()).catch(() => null)
+                )
+            );
+
+            const ahora = new Date();
+            let todosLosDuelos = [];
+
+            resultados.forEach((data, index) => {
+                if (!data || !data.jornadas) return;
+                const participantes = data.participantes || [];
+                
+                data.jornadas.forEach(j => {
+                    (j.partidos || []).forEach(partido => {
+                        const fechaReal = parsearFechaLiga(partido);
+                        if (fechaReal && fechaReal > ahora) {
+                            todosLosDuelos.push({
+                                cat: ligaUrls[index].name,
+                                p: partido,
+                                fecha: fechaReal,
+                                parts: participantes
+                            });
+                        }
+                    });
+                });
+            });
+
+            todosLosDuelos.sort((a, b) => a.fecha - b.fecha);
+            const proximos = todosLosDuelos.slice(0, 2);
+
+            if (proximos.length === 0) return null;
+
+            return { type: 'liga', matches: proximos };
+        } catch (e) {
+            console.error('Error procesando Liga:', e);
+            return null;
+        }
+    }
+
+    // ── Init ─────────────────────────────────────────────────
+    try {
+        // Intentar Copa Uruguaya primero
+        const copaResult = await processCopa();
+        
+        if (copaResult && copaResult.type === 'copa') {
+            // Renderizar formato Copa
+            copaResult.matches.forEach(match => {
+                container.appendChild(renderDueloCopa(
+                    match.j1, 
+                    match.j2, 
+                    match.grupo, 
+                    match.fecha, 
+                    match.horario, 
+                    match.diaSemana,
+                    match.coordinadoPor
+                ));
+            });
+        } else {
+            // Intentar formato Liga
+            const ligaResult = await processLiga();
+            
+            if (ligaResult && ligaResult.type === 'liga') {
+                ligaResult.matches.forEach(duelo => {
+                    const j1 = duelo.parts.find(p => p.id === duelo.p.jugador1Id)?.nombre || "A definir";
+                    const j2 = duelo.parts.find(p => p.id === duelo.p.jugador2Id)?.nombre || "A definir";
+                    container.appendChild(renderDueloLiga(j1, j2, duelo.cat, duelo.fecha));
+                });
+            } else {
+                container.innerHTML = `<p class="empty-msg">No hay partidas programadas por ahora.</p>`;
+            }
         }
 
-        container.innerHTML = ""; // Limpiar
-        proximos.forEach(duelo => {
-            const j1 = duelo.parts.find(p => p.id === duelo.p.jugador1Id)?.nombre || "A definir";
-            const j2 = duelo.parts.find(p => p.id === duelo.p.jugador2Id)?.nombre || "A definir";
-            
-            const item = document.createElement("div");
-            item.className = "categoria-info fade-in";
-            item.innerHTML = `
-                <div class="match-badge">Cat ${duelo.cat}</div>
-                <div class="match-players">
-                    <strong>${j1}</strong> <span class="vs">vs</span> <strong>${j2}</strong>
-                </div>
-                <div class="match-date">
-                    <i class="far fa-clock"></i> ${duelo.fecha.toLocaleString('es-UY', { 
-                        weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' 
-                    })}
-                </div>
-            `;
-            container.appendChild(item);
-        });
-
     } catch (error) {
-        container.innerHTML = `<p>Error al sincronizar con el mapa.</p>`;
+        console.error('Error general:', error);
+        container.innerHTML = `<p class="empty-msg">Error al sincronizar.</p>`;
     }
 });
-
-
