@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("torneos-globales-content");
 
   try {
-    const res = await fetch("https://aldeanooscar.onrender.com/api/torneos");
+    const res = await fetch("https://aldeanooscar.squareweb.app/api/torneos");
     if (!res.ok) throw new Error("No se pudo obtener la lista de torneos");
 
     const torneos = await res.json();
