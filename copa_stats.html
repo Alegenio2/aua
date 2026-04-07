@@ -372,12 +372,16 @@
     let charts      = {};
 
     // ── Helpers ───────────────────────────────────────────────────────────────
-    const civImg = c => `https://backend.cdn.aoe2companion.com/public/aoe2/de/civilizations/${c.toLowerCase().replace(/ /g,'_')}.png`;
-    const wrColor = w => w >= 60 ? '#a8c860' : w >= 40 ? '#e8c87a' : '#c87060';
-    const initials = n => n.replace(/[|\[\]]/g,'').trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();
-    const fmtDate = iso => iso ? new Date(iso).toLocaleDateString('es-UY',{day:'2-digit',month:'2-digit'}) : '';
-    const fmtTime = iso => iso ? new Date(iso).toLocaleString('es-UY') : '—';
-    function destroyChart(id) { if(charts[id]){ charts[id].destroy(); delete charts[id]; } }
+     const civImg = c => `https://backend.cdn.aoe2companion.com/public/aoe2/de/civilizations/${c.toLowerCase().replace(/ /g,'_')}.png`;
+     const wrColor = w => w >= 60 ? '#a8c860' : w >= 40 ? '#e8c87a' : '#c87060';
+     const initials = n => n.replace(/[|\[\]]/g,'').trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();
+     const fmtDate = iso => iso ? new Date(iso).toLocaleDateString('es-UY',{day:'2-digit',month:'2-digit'}) : '';
+     const fmtTime = iso => iso ? new Date(iso).toLocaleString('es-UY') : '—';
+     const formatMapName = (mapName) => {
+         // Remove CopaU_2026_ prefix and everything in parentheses, then trim
+         return mapName.replace(/^CopaU_2026_/, '').replace(/\s*\([^)]*\)/, '').trim();
+     };
+     function destroyChart(id) { if(charts[id]){ charts[id].destroy(); delete charts[id]; } }
 
     function civRow(civ, pj, wr) {
         const w = Math.min(wr, 100);
@@ -572,56 +576,56 @@ const civReyWR = topCiv ? topCiv[1].winrate : 0;
         renderCivs();
     }
 
-    // ── RENDER MAPAS ─────────────────────────────────────────────────────────
-    function renderMapas() {
-        const mapEntries = Object.entries(DATA.mapas).sort((a,b) => b[1].total_partidas - a[1].total_partidas);
-        const labels = mapEntries.map(([m]) => m);
-        const counts = mapEntries.map(([,d]) => d.total_partidas);
-        const colors = ['#5a6830','#3a5820','#8a7020','#6a4820','#5a3820','#8a3020'];
+     // ── RENDER MAPAS ─────────────────────────────────────────────────────────
+     function renderMapas() {
+         const mapEntries = Object.entries(DATA.mapas).sort((a,b) => b[1].total_partidas - a[1].total_partidas);
+         const labels = mapEntries.map(([m]) => formatMapName(m));
+         const counts = mapEntries.map(([,d]) => d.total_partidas);
+         const colors = ['#5a6830','#3a5820','#8a7020','#6a4820','#5a3820','#8a3020'];
 
-        destroyChart('ch-mapas');
+         destroyChart('ch-mapas');
 
-        const civCards = mapEntries.map(([mapa, d]) => {
-            const topG = Object.entries(d.civs_ganadoras).sort((a,b)=>b[1]-a[1]).slice(0,3);
-            const topP = Object.entries(d.civs_perdedoras).sort((a,b)=>b[1]-a[1]).slice(0,3);
-            return `
-              <div style="padding:10px 0;border-bottom:0.5px solid var(--bg3)">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-                  <div style="font-size:13px;color:var(--text);font-weight:700">${mapa}</div>
-                  <div style="font-size:10px;color:var(--dim)">${d.total_partidas} partida${d.total_partidas>1?'s':''}</div>
-                </div>
-                <div style="font-size:10px;color:var(--dim);margin-bottom:3px">Civs ganadoras:</div>
-                <div class="map-civ-tags">${topG.map(([c,n])=>`<span class="map-tag" style="border-color:#5a8030;color:var(--win)">${c} ×${n}</span>`).join('')}</div>
-              </div>`;
-        }).join('');
+         const civCards = mapEntries.map(([mapa, d]) => {
+             const topG = Object.entries(d.civs_ganadoras).sort((a,b)=>b[1]-a[1]).slice(0,3);
+             const topP = Object.entries(d.civs_perdedoras).sort((a,b)=>b[1]-a[1]).slice(0,3);
+             return `
+               <div style="padding:10px 0;border-bottom:0.5px solid var(--bg3)">
+                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                   <div style="font-size:13px;color:var(--text);font-weight:700">${formatMapName(mapa)}</div>
+                   <div style="font-size:10px;color:var(--dim)">${d.total_partidas} partida${d.total_partidas>1?'s':''}</div>
+                 </div>
+                 <div style="font-size:10px;color:var(--dim);margin-bottom:3px">Civs ganadoras:</div>
+                 <div class="map-civ-tags">${topG.map(([c,n])=>`<span class="map-tag" style="border-color:#5a8030;color:var(--win)">${formatMapName(c)} ×${n}</span>`).join('')}</div>
+               </div>`;
+         }).join('');
 
-        document.getElementById('mapas-box').innerHTML = `
-          <div class="s-card">
-            <div class="s-card-title">Partidas por mapa</div>
-            <div id="leg-mapas" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;font-size:11px;color:var(--muted)"></div>
-            <div style="position:relative;height:${Math.max(labels.length*44+60,180)}px"><canvas id="ch-mapas"></canvas></div>
-          </div>
-          <div class="s-card">
-            <div class="s-card-title">Civs ganadoras por mapa</div>
-            ${civCards}
-          </div>
-        `;
+         document.getElementById('mapas-box').innerHTML = `
+           <div class="s-card">
+             <div class="s-card-title">Partidas por mapa</div>
+             <div id="leg-mapas" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;font-size:11px;color:var(--muted)"></div>
+             <div style="position:relative;height:${Math.max(labels.length*44+60,180)}px"><canvas id="ch-mapas"></canvas></div>
+           </div>
+           <div class="s-card">
+             <div class="s-card-title">Civs ganadoras por mapa</div>
+             ${civCards}
+           </div>
+         `;
 
-        setTimeout(() => {
-            document.getElementById('leg-mapas').innerHTML = labels.map((l,i)=>`<span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:${colors[i%colors.length]}"></span>${l}</span>`).join('');
-            charts['ch-mapas'] = new Chart(document.getElementById('ch-mapas'), {
-                type:'bar',
-                data:{ labels, datasets:[{ data:counts, backgroundColor:colors.slice(0,labels.length), borderRadius:3 }] },
-                options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
-                    plugins:{legend:{display:false}},
-                    scales:{
-                        x:{ ticks:{color:'#665544',font:{size:10},stepSize:1}, grid:{color:'#1a1208'} },
-                        y:{ ticks:{color:'#806040',font:{size:11}}, grid:{display:false} }
-                    }
-                }
-            });
-        }, 30);
-    }
+         setTimeout(() => {
+             document.getElementById('leg-mapas').innerHTML = labels.map((l,i)=>`<span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:${colors[i%colors.length]}"></span>${l}</span>`).join('');
+             charts['ch-mapas'] = new Chart(document.getElementById('ch-mapas'), {
+                 type:'bar',
+                 data:{ labels, datasets:[{ data:counts, backgroundColor:colors.slice(0,labels.length), borderRadius:3 }] },
+                 options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
+                     plugins:{legend:{display:false}},
+                     scales:{
+                         x:{ ticks:{color:'#665544',font:{size:10},stepSize:1}, grid:{color:'#1a1208'} },
+                         y:{ ticks:{color:'#806040',font:{size:11}}, grid:{display:false} }
+                     }
+                 }
+             });
+         }, 30);
+     }
 
     // ── RENDER PARTIDAS ──────────────────────────────────────────────────────
     function renderPartidas() {
