@@ -1,110 +1,175 @@
+
 /* ══════════════════════════════════════════════════════════
-   ESTILO GLOBAL AUA - Medieval Oscuro
-   Basado en la identidad de la Copa Uruguaya 2026
+   ESTILO DEFINITIVO AUA - IMPERIAL DARK
+   Basado en la estética de la Copa Uruguaya 2026
 ══════════════════════════════════════════════════════════ */
 
 :root {
-  --bg0: #080604;
-  --bg1: #0f0b06;
-  --gold: #e8c87a;
-  --gold-2: #c8a040;
-  --gold-light: #f5d98a;
+  --bg0: #080604;         /* Negro profundo */
+  --bg1: #0f0b06;         /* Negro pardo */
+  --bg2: #16110a;         /* Gris/marrón oscuro */
+  --gold: #e8c87a;        /* Dorado principal */
+  --gold2: #c8a040;       /* Dorado oscuro */
+  --gold-light: #f5d98a;  /* Brillo */
   --text: #ffffff;
   --text-dim: #b0b0b0;
-  --accent: #5bb8d4;
+  --accent: #5bb8d4;      /* Celeste Uruguay */
+  --shadow: rgba(0, 0, 0, 0.7);
 }
 
-* { box-sizing: border-box; }
-
+/* Base */
 body {
   margin: 0;
-  background: var(--bg0);
+  background-color: var(--bg0);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(200, 160, 64, 0.05), transparent 50%),
+    url('https://www.transparenttextures.com/patterns/dark-matter.png'); /* Textura sutil */
   color: var(--text);
   font-family: 'Open Sans', sans-serif;
-  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Header Medieval */
+/* Header Estilo "Copa" */
 header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(8, 6, 4, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--gold-2);
-  padding: 15px 30px;
+  z-index: 1000;
+  background: rgba(8, 6, 4, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gold2);
+  padding: 12px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 4px 20px var(--shadow);
 }
 
 .header-left h1 {
   font-family: 'Cinzel', serif;
-  font-size: 1.4rem;
-  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
   color: var(--gold);
   text-transform: uppercase;
-  text-shadow: 0 0 10px rgba(232, 200, 122, 0.3);
+  margin: 0;
 }
 
-/* Botones Épicos */
-.btn-primary {
-  background: linear-gradient(135deg, var(--gold-2), var(--gold));
-  color: #000 !important;
+.logo-header {
+  height: 60px;
+  filter: drop-shadow(0 0 8px rgba(232, 200, 122, 0.2));
+}
+
+/* Hero Section y Swiper */
+.hero {
+  padding: 20px;
+  gap: 20px;
+}
+
+.swiper-slide {
+  border: 1px solid var(--gold2);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg1);
+}
+
+.noticia-info {
+  background: linear-gradient(to top, var(--bg0), transparent);
+  padding: 20px;
+}
+
+/* Botones Estilo Gremio */
+.btn-primary, .btn-secondary {
   font-family: 'Cinzel', serif;
   font-weight: 700;
   text-transform: uppercase;
-  padding: 12px 24px;
-  text-decoration: none;
+  padding: 12px 28px;
   border-radius: 2px;
   transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
   display: inline-block;
-  box-shadow: 0 4px 0 #8a6d29;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold2), var(--gold));
+  color: #000 !important;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 .btn-primary:hover {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(232, 200, 122, 0.3);
+  box-shadow: 0 6px 20px rgba(232, 200, 122, 0.2);
 }
 
-/* Tarjetas con Efecto de Brillo */
+/* Secciones y Cards */
+section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: var(--gold2);
+  margin: 15px auto;
+}
+
 .noticia-card {
   background: var(--bg1);
-  border: 1px solid rgba(232, 200, 122, 0.1);
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s ease;
+  border: 1px solid rgba(232, 200, 122, 0.15);
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
 .noticia-card:hover {
   border-color: var(--gold);
-  box-shadow: 0 0 20px rgba(232, 200, 122, 0.1);
+  background: var(--bg2);
+  transform: translateY(-5px);
 }
 
-/* Footer Temático */
+/* Footer Imperial */
 footer {
   background: var(--bg0);
-  border-top: 2px solid var(--gold-2);
-  padding: 50px 20px;
+  border-top: 1px solid var(--gold2);
+  padding: 40px 20px;
   text-align: center;
-  color: var(--text-dim);
+}
+
+footer p {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  letter-spacing: 1px;
 }
 
 .social-links a {
-  color: var(--gold-2);
-  font-size: 1.5rem;
+  color: var(--gold2);
+  font-size: 1.6rem;
   margin: 0 15px;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .social-links a:hover {
-  color: var(--gold-light);
-  transform: scale(1.2);
+  color: var(--gold);
+  text-shadow: 0 0 10px var(--gold);
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Media Queries */
+@media (max-width: 768px) {
+  header { padding: 10px 20px; }
+  .header-left h1 { font-size: 0.9rem; }
+  .hero { grid-template-columns: 1fr; }
 }
