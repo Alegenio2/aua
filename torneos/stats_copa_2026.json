@@ -839,7 +839,7 @@
     "Japanese": {
       "total_jugadas": 3,
       "total_ganadas": 3,
-      "winrate": 75,
+      "winrate": 100,
       "por_mapa": {
         "CopaU_2026_High Tides v3 (Custom)": {
           "jugadas": 1,
@@ -1184,6 +1184,25 @@
           "winrate": 100
         }
       }
+    },
+    "Armenians": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "CopaU_2026_Shorelines (Custom)": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Persians": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
     }
   },
   "partidas": [
@@ -1388,22 +1407,20 @@
       }
     },
     {
-      "matchId": 469007393,
-      "fecha": "2026-04-09T02:51:22.000Z",
+      "matchId": 469005332,
+      "fecha": "2026-04-09T02:35:44.000Z",
       "mapa": "CopaU_2026_Shorelines (Custom)",
-      "duracion": 0,
+      "duracion": 40,
       "grupo": "H",
       "ronda": 3,
       "jugador1": {
-        "discordId": "135113382217908224",
-        "nick": "URU | Juasteint",
-        "civ": "Japanese",
+        "nick": "Juasteint",
+        "civ": "Armenians",
         "gano": false
       },
       "jugador2": {
-        "discordId": "408054148110614529",
-        "nick": "-FMG- Rodri",
-        "civ": "Bulgarians",
+        "nick": "Rodri",
+        "civ": "Persians",
         "gano": true
       }
     },
