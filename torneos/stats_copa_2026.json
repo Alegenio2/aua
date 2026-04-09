@@ -481,23 +481,29 @@
       "nick": "URU | Juasteint",
       "aoe2Id": "2878364",
       "global": {
-        "pj": 2,
+        "pj": 3,
         "pg": 2,
-        "pp": 0,
-        "winrate": 100
+        "pp": 1,
+        "winrate": 66.7
       },
       "civs": {
         "Japanese": {
-          "pj": 1,
+          "pj": 2,
           "pg": 1,
-          "pp": 0,
-          "winrate": 100,
+          "pp": 1,
+          "winrate": 50,
           "por_mapa": {
             "CopaU_2026_Dry River (Custom)": {
               "pj": 1,
               "pg": 1,
               "pp": 0,
               "winrate": 100
+            },
+            "CopaU_2026_Shorelines (Custom)": {
+              "pj": 1,
+              "pg": 0,
+              "pp": 1,
+              "winrate": 0
             }
           }
         },
@@ -523,6 +529,12 @@
           "pp": 0,
           "winrate": 100
         },
+        "CopaU_2026_Shorelines (Custom)": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0
+        },
         "Enclosed": {
           "pj": 1,
           "pg": 1,
@@ -535,23 +547,29 @@
       "nick": "-FMG- Rodri",
       "aoe2Id": "3147129",
       "global": {
-        "pj": 2,
+        "pj": 3,
         "pg": 1,
-        "pp": 1,
-        "winrate": 50
+        "pp": 2,
+        "winrate": 33.3
       },
       "civs": {
         "Bulgarians": {
-          "pj": 1,
-          "pg": 0,
+          "pj": 2,
+          "pg": 1,
           "pp": 1,
-          "winrate": 0,
+          "winrate": 50,
           "por_mapa": {
             "CopaU_2026_Dry River (Custom)": {
               "pj": 1,
               "pg": 0,
               "pp": 1,
               "winrate": 0
+            },
+            "CopaU_2026_Shorelines (Custom)": {
+              "pj": 1,
+              "pg": 1,
+              "pp": 0,
+              "winrate": 100
             }
           }
         },
@@ -577,11 +595,593 @@
           "pp": 1,
           "winrate": 0
         },
+        "CopaU_2026_Shorelines (Custom)": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
+        },
         "Enclosed": {
           "pj": 1,
           "pg": 0,
           "pp": 1,
           "winrate": 0
+        }
+      }
+    }
+  },
+  "mapas": {
+    "Nomad": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Berbers": 1
+      },
+      "civs_perdedoras": {
+        "Franks": 1
+      },
+      "enfrentamientos": {
+        "Berbers_vs_Franks": {
+          "total": 1,
+          "gano_primero": 1,
+          "civ_a": "Berbers",
+          "civ_b": "Franks"
+        }
+      }
+    },
+    "CopaU_2026_High Tides v3 (Custom)": {
+      "total_partidas": 2,
+      "civs_ganadoras": {
+        "Japanese": 1,
+        "Koreans": 1
+      },
+      "civs_perdedoras": {
+        "Malay": 1,
+        "Vikings": 1
+      },
+      "enfrentamientos": {
+        "Japanese_vs_Malay": {
+          "total": 1,
+          "gano_primero": 1,
+          "civ_a": "Japanese",
+          "civ_b": "Malay"
+        },
+        "Koreans_vs_Vikings": {
+          "total": 1,
+          "gano_primero": 1,
+          "civ_a": "Koreans",
+          "civ_b": "Vikings"
+        }
+      }
+    },
+    "CopaU_2026_Slopes v2 (Custom)": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Portuguese": 1
+      },
+      "civs_perdedoras": {
+        "Tatars": 1
+      },
+      "enfrentamientos": {
+        "Portuguese_vs_Tatars": {
+          "total": 1,
+          "gano_primero": 1,
+          "civ_a": "Portuguese",
+          "civ_b": "Tatars"
+        }
+      }
+    },
+    "Arabia": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Khitans": 1
+      },
+      "civs_perdedoras": {
+        "Mongols": 1
+      },
+      "enfrentamientos": {
+        "Khitans_vs_Mongols": {
+          "total": 1,
+          "gano_primero": 1,
+          "civ_a": "Khitans",
+          "civ_b": "Mongols"
+        }
+      }
+    },
+    "CopaU_2026_African River v3 (Custom)": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Japanese": 1
+      },
+      "civs_perdedoras": {
+        "Magyars": 1
+      },
+      "enfrentamientos": {
+        "Japanese_vs_Magyars": {
+          "total": 1,
+          "gano_primero": 1,
+          "civ_a": "Japanese",
+          "civ_b": "Magyars"
+        }
+      }
+    },
+    "Hideout": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Bohemians": 1
+      },
+      "civs_perdedoras": {
+        "Italians": 1
+      },
+      "enfrentamientos": {
+        "Bohemians_vs_Italians": {
+          "total": 1,
+          "gano_primero": 1,
+          "civ_a": "Bohemians",
+          "civ_b": "Italians"
+        }
+      }
+    },
+    "CopaU_2026_Shorelines (Custom)": {
+      "total_partidas": 2,
+      "civs_ganadoras": {
+        "Persians": 2
+      },
+      "civs_perdedoras": {
+        "Georgians": 1,
+        "Armenians": 1
+      },
+      "enfrentamientos": {
+        "Georgians_vs_Persians": {
+          "total": 1,
+          "gano_primero": 0,
+          "civ_a": "Georgians",
+          "civ_b": "Persians"
+        },
+        "Armenians_vs_Persians": {
+          "total": 1,
+          "gano_primero": 0,
+          "civ_a": "Armenians",
+          "civ_b": "Persians"
+        }
+      }
+    },
+    "CopaU_2026_Stranded v3 (Custom)": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Chinese": 1
+      },
+      "civs_perdedoras": {
+        "Persians": 1
+      },
+      "enfrentamientos": {
+        "Chinese_vs_Persians": {
+          "total": 1,
+          "gano_primero": 1,
+          "civ_a": "Chinese",
+          "civ_b": "Persians"
+        }
+      }
+    },
+    "CopaU_2026_Dry River (Custom)": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Japanese": 1
+      },
+      "civs_perdedoras": {
+        "Bulgarians": 1
+      },
+      "enfrentamientos": {
+        "Bulgarians_vs_Japanese": {
+          "total": 1,
+          "gano_primero": 0,
+          "civ_a": "Bulgarians",
+          "civ_b": "Japanese"
+        }
+      }
+    },
+    "Enclosed": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Romans": 1
+      },
+      "civs_perdedoras": {
+        "Magyars": 1
+      },
+      "enfrentamientos": {
+        "Magyars_vs_Romans": {
+          "total": 1,
+          "gano_primero": 0,
+          "civ_a": "Magyars",
+          "civ_b": "Romans"
+        }
+      }
+    }
+  },
+  "civs": {
+    "Berbers": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "Nomad": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Franks": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Franks": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "Nomad": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Berbers": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Japanese": {
+      "total_jugadas": 3,
+      "total_ganadas": 3,
+      "winrate": 75,
+      "por_mapa": {
+        "CopaU_2026_High Tides v3 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        },
+        "CopaU_2026_African River v3 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        },
+        "CopaU_2026_Dry River (Custom)": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Malay": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        },
+        "Magyars": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        },
+        "Bulgarians": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Malay": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "CopaU_2026_High Tides v3 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Japanese": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Portuguese": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "CopaU_2026_Slopes v2 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Tatars": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Tatars": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "CopaU_2026_Slopes v2 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Portuguese": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Khitans": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "Arabia": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Mongols": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Mongols": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "Arabia": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Khitans": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Magyars": {
+      "total_jugadas": 2,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "CopaU_2026_African River v3 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        },
+        "Enclosed": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Japanese": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        },
+        "Romans": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Bohemians": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "Hideout": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Italians": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Italians": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "Hideout": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Bohemians": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Persians": {
+      "total_jugadas": 3,
+      "total_ganadas": 2,
+      "winrate": 66.7,
+      "por_mapa": {
+        "CopaU_2026_Shorelines (Custom)": {
+          "jugadas": 2,
+          "ganadas": 2,
+          "winrate": 100
+        },
+        "CopaU_2026_Stranded v3 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Georgians": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        },
+        "Armenians": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        },
+        "Chinese": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Georgians": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "CopaU_2026_Shorelines (Custom)": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Persians": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Koreans": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "CopaU_2026_High Tides v3 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Vikings": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Vikings": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "CopaU_2026_High Tides v3 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Koreans": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Chinese": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "CopaU_2026_Stranded v3 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Persians": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Bulgarians": {
+      "total_jugadas": 2,
+      "total_ganadas": 1,
+      "winrate": 50,
+      "por_mapa": {
+        "CopaU_2026_Dry River (Custom)": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Japanese": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Romans": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "Enclosed": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Magyars": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
         }
       }
     }
@@ -768,42 +1368,6 @@
       }
     },
     {
-      "matchId": 468998192,
-      "fecha": "2026-04-09T01:57:54.000Z",
-      "mapa": "Enclosed",
-      "duracion": 18,
-      "grupo": "H",
-      "ronda": 3,
-      "jugador1": {
-        "nick": "Juasteint",
-        "civ": "Romans",
-        "gano": true
-      },
-      "jugador2": {
-        "nick": "Rodri",
-        "civ": "Magyars",
-        "gano": false
-      }
-    },
-    {
-      "matchId": 469005332,
-      "fecha": "2026-04-09T02:35:44.000Z",
-      "mapa": "CopaU_2026_Shorelines (Custom)",
-      "duracion": 40,
-      "grupo": "H",
-      "ronda": 3,
-      "jugador1": {
-        "nick": "Juasteint",
-        "civ": "Armenians",
-        "gano": false
-      },
-      "jugador2": {
-        "nick": "Rodri",
-        "civ": "Persians",
-        "gano": true
-      }
-    },
-    {
       "matchId": 469008223,
       "fecha": "2026-04-09T02:55:56.000Z",
       "mapa": "CopaU_2026_Dry River (Custom)",
@@ -811,13 +1375,55 @@
       "grupo": "H",
       "ronda": 3,
       "jugador1": {
-        "nick": "Juasteint",
+        "discordId": "135113382217908224",
+        "nick": "URU | Juasteint",
         "civ": "Japanese",
         "gano": true
       },
       "jugador2": {
-        "nick": "Rodri",
+        "discordId": "408054148110614529",
+        "nick": "-FMG- Rodri",
         "civ": "Bulgarians",
+        "gano": false
+      }
+    },
+    {
+      "matchId": 469007393,
+      "fecha": "2026-04-09T02:51:22.000Z",
+      "mapa": "CopaU_2026_Shorelines (Custom)",
+      "duracion": 0,
+      "grupo": "H",
+      "ronda": 3,
+      "jugador1": {
+        "discordId": "135113382217908224",
+        "nick": "URU | Juasteint",
+        "civ": "Japanese",
+        "gano": false
+      },
+      "jugador2": {
+        "discordId": "408054148110614529",
+        "nick": "-FMG- Rodri",
+        "civ": "Bulgarians",
+        "gano": true
+      }
+    },
+    {
+      "matchId": 468998192,
+      "fecha": "2026-04-09T01:57:54.000Z",
+      "mapa": "Enclosed",
+      "duracion": 18,
+      "grupo": "H",
+      "ronda": 3,
+      "jugador1": {
+        "discordId": "135113382217908224",
+        "nick": "URU | Juasteint",
+        "civ": "Romans",
+        "gano": true
+      },
+      "jugador2": {
+        "discordId": "408054148110614529",
+        "nick": "-FMG- Rodri",
+        "civ": "Magyars",
         "gano": false
       }
     }
