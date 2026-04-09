@@ -43,32 +43,32 @@
             }
           }
         }
+      },
+      "mapas": {
+        "Nomad": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
+        },
+        "CopaU_2026_High Tides v3 (Custom)": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
+        }
       }
     },
     "662427737138528308": {
       "nick": "kakaidolo",
       "aoe2Id": "14501687",
       "global": {
-        "pj": 3,
-        "pg": 2,
-        "pp": 1,
-        "winrate": 66.7
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
       },
       "civs": {
-        "Portuguese": {
-          "pj": 1,
-          "pg": 1,
-          "pp": 0,
-          "winrate": 100,
-          "por_mapa": {
-            "CopaU_2026_Slopes v2 (Custom)": {
-              "pj": 1,
-              "pg": 1,
-              "pp": 0,
-              "winrate": 100
-            }
-          }
-        },
         "Khitans": {
           "pj": 1,
           "pg": 1,
@@ -82,20 +82,14 @@
               "winrate": 100
             }
           }
-        },
-        "Magyars": {
+        }
+      },
+      "mapas": {
+        "Arabia": {
           "pj": 1,
-          "pg": 0,
-          "pp": 1,
-          "winrate": 0,
-          "por_mapa": {
-            "CopaU_2026_African River v3 (Custom)": {
-              "pj": 1,
-              "pg": 0,
-              "pp": 1,
-              "winrate": 0
-            }
-          }
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
         }
       }
     },
@@ -103,8 +97,8 @@
       "nick": "|FMG| TINCHO",
       "aoe2Id": "2304739",
       "global": {
-        "pj": 2,
-        "pg": 2,
+        "pj": 1,
+        "pg": 1,
         "pp": 0,
         "winrate": 100
       },
@@ -122,20 +116,14 @@
               "winrate": 100
             }
           }
-        },
-        "Persians": {
+        }
+      },
+      "mapas": {
+        "Hideout": {
           "pj": 1,
           "pg": 1,
           "pp": 0,
-          "winrate": 100,
-          "por_mapa": {
-            "CopaU_2026_Shorelines (Custom)": {
-              "pj": 1,
-              "pg": 1,
-              "pp": 0,
-              "winrate": 100
-            }
-          }
+          "winrate": 100
         }
       }
     },
@@ -143,26 +131,12 @@
       "nick": "DGHIR | Lionerrt",
       "aoe2Id": "5204719",
       "global": {
-        "pj": 2,
-        "pg": 2,
+        "pj": 1,
+        "pg": 1,
         "pp": 0,
         "winrate": 100
       },
       "civs": {
-        "Koreans": {
-          "pj": 1,
-          "pg": 1,
-          "pp": 0,
-          "winrate": 100,
-          "por_mapa": {
-            "CopaU_2026_High Tides v3 (Custom)": {
-              "pj": 1,
-              "pg": 1,
-              "pp": 0,
-              "winrate": 100
-            }
-          }
-        },
         "Chinese": {
           "pj": 1,
           "pg": 1,
@@ -176,6 +150,14 @@
               "winrate": 100
             }
           }
+        }
+      },
+      "mapas": {
+        "CopaU_2026_Stranded v3 (Custom)": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
         }
       }
     },
@@ -231,6 +213,26 @@
             }
           }
         }
+      },
+      "mapas": {
+        "Enclosed": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
+        },
+        "CopaU_2026_Dry River (Custom)": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
+        },
+        "CopaU_2026_Shorelines (Custom)": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0
+        }
       }
     },
     "408054148110614529": {
@@ -285,49 +287,313 @@
             }
           }
         }
+      },
+      "mapas": {
+        "Enclosed": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0
+        },
+        "CopaU_2026_Dry River (Custom)": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0
+        },
+        "CopaU_2026_Shorelines (Custom)": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
+        }
       }
     }
   },
   "mapas": {
     "Nomad": {
-      "pj": 1,
-      "gano1": 1,
-      "gano2": 0
-    },
-    "CopaU_2026_High Tides v3 (Custom)": {
-      "pj": 2,
-      "gano1": 2,
-      "gano2": 0
-    },
-    "Acotado": {
-      "pj": 1,
-      "gano1": 1,
-      "gano2": 0
-    },
-    "CopaU_2026_Shorelines (Custom)": {
-      "pj": 2,
-      "gano1": 1,
-      "gano2": 1
-    },
-    "CopaU_2026_Dry River (Custom)": {
-      "pj": 1,
-      "gano1": 1,
-      "gano2": 0
-    },
-    "Enclosed": {
-      "pj": 1,
-      "gano1": 1,
-      "gano2": 0
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Berbers": 1
+      },
+      "civs_perdedoras": {
+        "Franks": 1
+      }
     },
     "Arabia": {
-      "pj": 1,
-      "gano1": 1,
-      "gano2": 0
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Khitans": 1
+      },
+      "civs_perdedoras": {
+        "Mongols": 1
+      }
     },
     "Hideout": {
-      "pj": 1,
-      "gano1": 1,
-      "gano2": 0
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Bohemians": 1
+      },
+      "civs_perdedoras": {
+        "Italians": 1
+      }
+    },
+    "CopaU_2026_Stranded v3 (Custom)": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Chinese": 1
+      },
+      "civs_perdedoras": {
+        "Persians": 1
+      }
+    },
+    "Enclosed": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Romans": 1
+      },
+      "civs_perdedoras": {
+        "Magyars": 1
+      }
+    },
+    "CopaU_2026_Shorelines (Custom)": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Persians": 1
+      },
+      "civs_perdedoras": {
+        "Armenians": 1
+      }
+    },
+    "CopaU_2026_Dry River (Custom)": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Japanese": 1
+      },
+      "civs_perdedoras": {
+        "Bulgarians": 1
+      }
+    },
+    "CopaU_2026_High Tides v3 (Custom)": {
+      "total_partidas": 1,
+      "civs_ganadoras": {
+        "Japanese": 1
+      },
+      "civs_perdedoras": {
+        "Franks": 1
+      }
+    }
+  },
+  "civs": {
+    "Berbers": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "Nomad": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Franks": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Japanese": {
+      "total_jugadas": 2,
+      "total_ganadas": 2,
+      "winrate": 100,
+      "por_mapa": {
+        "CopaU_2026_Dry River (Custom)": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        },
+        "CopaU_2026_High Tides v3 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Bulgarians": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        },
+        "Franks": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Khitans": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "Arabia": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Mongols": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Bohemians": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "Hideout": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Italians": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Chinese": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "CopaU_2026_Stranded v3 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Persians": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Romans": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "Enclosed": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Magyars": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Persians": {
+      "total_jugadas": 2,
+      "total_ganadas": 1,
+      "winrate": 50,
+      "por_mapa": {
+        "CopaU_2026_Shorelines (Custom)": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        },
+        "CopaU_2026_Stranded v3 (Custom)": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Armenians": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        },
+        "Chinese": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Magyars": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "Enclosed": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Romans": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Bulgarians": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "CopaU_2026_Dry River (Custom)": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Japanese": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Armenians": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "CopaU_2026_Shorelines (Custom)": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Persians": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
     }
   },
   "partidas": [
@@ -339,14 +605,12 @@
       "grupo": "A",
       "ronda": 1,
       "jugador1": {
-        "discordId": "733765577570779279",
         "nick": "Nacional",
         "civ": "Berbers",
         "gano": true
       },
       "jugador2": {
-        "discordId": "694749732467245088",
-        "nick": "[LOPDA] Shebby",
+        "nick": "Shebby",
         "civ": "Franks",
         "gano": false
       }
@@ -359,13 +623,11 @@
       "grupo": "G",
       "ronda": 1,
       "jugador1": {
-        "discordId": "662427737138528308",
         "nick": "kakaidolo",
         "civ": "Khitans",
         "gano": true
       },
       "jugador2": {
-        "discordId": "760308403087867916",
         "nick": "Tano Stokes",
         "civ": "Mongols",
         "gano": false
@@ -379,14 +641,12 @@
       "grupo": "C",
       "ronda": 1,
       "jugador1": {
-        "discordId": "697996987210924072",
-        "nick": "|FMG| TINCHO",
+        "nick": "TINCHO",
         "civ": "Bohemians",
         "gano": true
       },
       "jugador2": {
-        "discordId": "1008090545513570495",
-        "nick": "ElOsoConBarba",
+        "nick": "OsoConBarba",
         "civ": "Italians",
         "gano": false
       }
@@ -399,14 +659,12 @@
       "grupo": "B",
       "ronda": 1,
       "jugador1": {
-        "discordId": "277256502023290881",
-        "nick": "DGHIR | Lionerrt",
+        "nick": "Lionerrt",
         "civ": "Chinese",
         "gano": true
       },
       "jugador2": {
-        "discordId": "697973693157998712",
-        "nick": "DGHIR | SamuraiNinja08",
+        "nick": "SamuraiNinja08",
         "civ": "Persians",
         "gano": false
       }
@@ -419,14 +677,12 @@
       "grupo": "H",
       "ronda": 3,
       "jugador1": {
-        "discordId": "135113382217908224",
-        "nick": "URU | Juasteint",
+        "nick": "Juasteint",
         "civ": "Romans",
         "gano": true
       },
       "jugador2": {
-        "discordId": "408054148110614529",
-        "nick": "-FMG- Rodri",
+        "nick": "Rodri",
         "civ": "Magyars",
         "gano": false
       }
@@ -439,14 +695,12 @@
       "grupo": "H",
       "ronda": 3,
       "jugador1": {
-        "discordId": "135113382217908224",
-        "nick": "URU | Juasteint",
+        "nick": "Juasteint",
         "civ": "Armenians",
         "gano": false
       },
       "jugador2": {
-        "discordId": "408054148110614529",
-        "nick": "-FMG- Rodri",
+        "nick": "Rodri",
         "civ": "Persians",
         "gano": true
       }
@@ -459,15 +713,31 @@
       "grupo": "H",
       "ronda": 3,
       "jugador1": {
-        "discordId": "135113382217908224",
-        "nick": "URU | Juasteint",
+        "nick": "Juasteint",
         "civ": "Japanese",
         "gano": true
       },
       "jugador2": {
-        "discordId": "408054148110614529",
-        "nick": "-FMG- Rodri",
+        "nick": "Rodri",
         "civ": "Bulgarians",
+        "gano": false
+      }
+    },
+    {
+      "matchId": 469009555,
+      "fecha": "2026-04-09T03:10:00.000Z",
+      "mapa": "CopaU_2026_High Tides v3 (Custom)",
+      "duracion": 28,
+      "grupo": "A",
+      "ronda": 1,
+      "jugador1": {
+        "nick": "Nacional",
+        "civ": "Japanese",
+        "gano": true
+      },
+      "jugador2": {
+        "nick": "Shebby",
+        "civ": "Franks",
         "gano": false
       }
     }
