@@ -1,9 +1,9 @@
 {
   "visible": true,
   "modo": "pre",
-  "grupo": "F",
-  "ronda": "1",
-  "formato": "Bo3",
+  "grupo": "?",
+  "ronda": "?",
+  "formato": "Bo5",
   "j1": {
     "nick": "|FMG| Nadie",
     "aoe2Id": "673060",
@@ -166,5 +166,5 @@
     },
     "discordId": "594988359965999118"
   },
-  "ts": 1776197472356
+  "ts": 1776197556298
 }
