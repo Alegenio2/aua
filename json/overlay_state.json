@@ -1,4 +1,170 @@
 {
-  "visible": false,
-  "ts": 1776197442285
+  "visible": true,
+  "modo": "pre",
+  "grupo": "F",
+  "ronda": "1",
+  "formato": "Bo3",
+  "j1": {
+    "nick": "|FMG| Nadie",
+    "aoe2Id": "673060",
+    "global": {
+      "pj": 2,
+      "pg": 2,
+      "pp": 0,
+      "winrate": 100
+    },
+    "civs": {
+      "Japanese": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_Valley (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Dravidians": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_Shorelines (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      }
+    },
+    "mapas": {
+      "CopaU_2026_Valley (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "CopaU_2026_Shorelines (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      }
+    },
+    "discordId": "341001672786575360"
+  },
+  "j2": {
+    "nick": "N4cHoV",
+    "aoe2Id": "2295211",
+    "global": {
+      "pj": 5,
+      "pg": 2,
+      "pp": 3,
+      "winrate": 40
+    },
+    "civs": {
+      "Goths": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0,
+        "por_mapa": {
+          "CopaU_2026_Valley (Custom)": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          }
+        }
+      },
+      "Berbers": {
+        "pj": 2,
+        "pg": 1,
+        "pp": 1,
+        "winrate": 50,
+        "por_mapa": {
+          "CopaU_2026_Shorelines (Custom)": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          },
+          "CopaU_2026_High Tides v3 (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Spanish": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_Stranded v3 (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Cumans": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0,
+        "por_mapa": {
+          "CopaU_2026_Quarry v3 (Custom)": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          }
+        }
+      }
+    },
+    "mapas": {
+      "CopaU_2026_Valley (Custom)": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0
+      },
+      "CopaU_2026_Shorelines (Custom)": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0
+      },
+      "CopaU_2026_Stranded v3 (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "CopaU_2026_High Tides v3 (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "CopaU_2026_Quarry v3 (Custom)": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0
+      }
+    },
+    "discordId": "594988359965999118"
+  },
+  "ts": 1776197472356
 }
