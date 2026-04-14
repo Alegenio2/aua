@@ -1,8 +1,8 @@
 {
-  "visible": false,
-  "id": "0",
-  "name": "",
-  "url": "",
-  "categoria": "",
-  "ts": 1776197571887
+  "visible": true,
+  "id": "2",
+  "name": "Slopes",
+  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/Slopes.png",
+  "categoria": "Abierto",
+  "ts": 1776197685928
 }
