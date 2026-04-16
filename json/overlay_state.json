@@ -1,26 +1,26 @@
 {
   "visible": true,
   "modo": "pre",
-  "grupo": "E",
-  "ronda": "1",
-  "formato": "Bo3",
+  "grupo": "?",
+  "ronda": "?",
+  "formato": "Bo5",
   "j1": {
-    "nick": "|FMG| Nadie",
-    "aoe2Id": "673060",
+    "nick": "|FMG| TINCHO",
+    "aoe2Id": "2304739",
     "global": {
-      "pj": 2,
-      "pg": 2,
+      "pj": 4,
+      "pg": 4,
       "pp": 0,
       "winrate": 100
     },
     "civs": {
-      "Japanese": {
+      "Bohemians": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
         "winrate": 100,
         "por_mapa": {
-          "CopaU_2026_Valley (Custom)": {
+          "Hideout": {
             "pj": 1,
             "pg": 1,
             "pp": 0,
@@ -28,7 +28,7 @@
           }
         }
       },
-      "Dravidians": {
+      "Persians": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
@@ -39,77 +39,16 @@
             "pg": 1,
             "pp": 0,
             "winrate": 100
-          }
-        }
-      }
-    },
-    "mapas": {
-      "CopaU_2026_Valley (Custom)": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100
-      },
-      "CopaU_2026_Shorelines (Custom)": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100
-      }
-    },
-    "discordId": "341001672786575360"
-  },
-  "j2": {
-    "nick": "N4cHoV",
-    "aoe2Id": "2295211",
-    "global": {
-      "pj": 5,
-      "pg": 2,
-      "pp": 3,
-      "winrate": 40
-    },
-    "civs": {
-      "Goths": {
-        "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0,
-        "por_mapa": {
-          "CopaU_2026_Valley (Custom)": {
-            "pj": 1,
-            "pg": 0,
-            "pp": 1,
-            "winrate": 0
           }
         }
       },
       "Berbers": {
-        "pj": 2,
-        "pg": 1,
-        "pp": 1,
-        "winrate": 50,
-        "por_mapa": {
-          "CopaU_2026_Shorelines (Custom)": {
-            "pj": 1,
-            "pg": 0,
-            "pp": 1,
-            "winrate": 0
-          },
-          "CopaU_2026_High Tides v3 (Custom)": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          }
-        }
-      },
-      "Spanish": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
         "winrate": 100,
         "por_mapa": {
-          "CopaU_2026_Stranded v3 (Custom)": {
+          "Nomad": {
             "pj": 1,
             "pg": 1,
             "pp": 0,
@@ -117,41 +56,35 @@
           }
         }
       },
-      "Cumans": {
+      "Tatars": {
         "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
         "por_mapa": {
           "CopaU_2026_Quarry v3 (Custom)": {
             "pj": 1,
-            "pg": 0,
-            "pp": 1,
-            "winrate": 0
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
           }
         }
       }
     },
     "mapas": {
-      "CopaU_2026_Valley (Custom)": {
-        "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0
-      },
-      "CopaU_2026_Shorelines (Custom)": {
-        "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0
-      },
-      "CopaU_2026_Stranded v3 (Custom)": {
+      "Hideout": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
         "winrate": 100
       },
-      "CopaU_2026_High Tides v3 (Custom)": {
+      "CopaU_2026_Shorelines (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Nomad": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
@@ -159,12 +92,23 @@
       },
       "CopaU_2026_Quarry v3 (Custom)": {
         "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
       }
     },
-    "discordId": "594988359965999118"
+    "discordId": "697996987210924072"
   },
-  "ts": 1776197616515
+  "j2": {
+    "nick": "Gino",
+    "global": {
+      "pj": 0,
+      "pg": 0,
+      "pp": 0,
+      "winrate": 0
+    },
+    "civs": {},
+    "mapas": {}
+  },
+  "ts": 1776307649964
 }
