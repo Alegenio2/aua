@@ -1,8 +1,8 @@
 {
   "visible": true,
-  "id": "13",
-  "name": "Islands",
-  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/Islas.png",
-  "categoria": "Agua",
-  "ts": 1776307997599
+  "id": "11",
+  "name": "High Tide",
+  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/High%20Tide.png",
+  "categoria": "Hibrido",
+  "ts": 1776310306262
 }
