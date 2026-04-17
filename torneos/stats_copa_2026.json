@@ -1,8 +1,8 @@
 {
   "meta": {
     "torneo": "copa_uruguaya_2026",
-    "ultima_actualizacion": "2026-04-17T23:17:52.234Z",
-    "total_partidas": 59
+    "ultima_actualizacion": "2026-04-17T03:11:51.714Z",
+    "total_partidas": 57
   },
   "jugadores": {
     "733765577570779279": {
@@ -1747,9 +1747,9 @@
       "nick": "Aztreonam",
       "aoe2Id": "2317043",
       "global": {
-        "pj": 4,
+        "pj": 2,
         "pg": 0,
-        "pp": 4,
+        "pp": 2,
         "winrate": 0
       },
       "civs": {
@@ -1780,34 +1780,6 @@
               "winrate": 0
             }
           }
-        },
-        "Byzantines": {
-          "pj": 1,
-          "pg": 0,
-          "pp": 1,
-          "winrate": 0,
-          "por_mapa": {
-            "Arabia": {
-              "pj": 1,
-              "pg": 0,
-              "pp": 1,
-              "winrate": 0
-            }
-          }
-        },
-        "Italians": {
-          "pj": 1,
-          "pg": 0,
-          "pp": 1,
-          "winrate": 0,
-          "por_mapa": {
-            "Pilgrims": {
-              "pj": 1,
-              "pg": 0,
-              "pp": 1,
-              "winrate": 0
-            }
-          }
         }
       },
       "mapas": {
@@ -1818,18 +1790,6 @@
           "winrate": 0
         },
         "CopaU_2026_Quarry v3 (Custom)": {
-          "pj": 1,
-          "pg": 0,
-          "pp": 1,
-          "winrate": 0
-        },
-        "Arabia": {
-          "pj": 1,
-          "pg": 0,
-          "pp": 1,
-          "winrate": 0
-        },
-        "Pilgrims": {
           "pj": 1,
           "pg": 0,
           "pp": 1,
@@ -2461,10 +2421,10 @@
       "nick": "|FMG| Donde Estan Mis 5 Pizzas",
       "aoe2Id": "10222046",
       "global": {
-        "pj": 5,
-        "pg": 3,
+        "pj": 3,
+        "pg": 1,
         "pp": 2,
-        "winrate": 60
+        "winrate": 33.3
       },
       "civs": {
         "Magyars": {
@@ -2508,34 +2468,6 @@
               "winrate": 100
             }
           }
-        },
-        "Sicilians": {
-          "pj": 1,
-          "pg": 1,
-          "pp": 0,
-          "winrate": 100,
-          "por_mapa": {
-            "Arabia": {
-              "pj": 1,
-              "pg": 1,
-              "pp": 0,
-              "winrate": 100
-            }
-          }
-        },
-        "Dravidians": {
-          "pj": 1,
-          "pg": 1,
-          "pp": 0,
-          "winrate": 100,
-          "por_mapa": {
-            "Pilgrims": {
-              "pj": 1,
-              "pg": 1,
-              "pp": 0,
-              "winrate": 100
-            }
-          }
         }
       },
       "mapas": {
@@ -2552,18 +2484,6 @@
           "winrate": 0
         },
         "Islands": {
-          "pj": 1,
-          "pg": 1,
-          "pp": 0,
-          "winrate": 100
-        },
-        "Arabia": {
-          "pj": 1,
-          "pg": 1,
-          "pp": 0,
-          "winrate": 100
-        },
-        "Pilgrims": {
           "pj": 1,
           "pg": 1,
           "pp": 0,
@@ -2785,21 +2705,19 @@
       }
     },
     "Arabia": {
-      "total_partidas": 6,
+      "total_partidas": 5,
       "civs_ganadoras": {
         "Khitans": 1,
         "Vietnamese": 1,
         "Chinese": 1,
         "Malians": 1,
-        "Japanese": 1,
-        "Sicilians": 1
+        "Japanese": 1
       },
       "civs_perdedoras": {
         "Mongols": 1,
         "Ethiopians": 1,
         "Berbers": 2,
-        "Saracens": 1,
-        "Byzantines": 1
+        "Saracens": 1
       },
       "enfrentamientos": {
         "Khitans_vs_Mongols": {
@@ -2831,12 +2749,6 @@
           "gano_primero": 0,
           "civ_a": "Berbers",
           "civ_b": "Japanese"
-        },
-        "Byzantines_vs_Sicilians": {
-          "total": 1,
-          "gano_primero": 0,
-          "civ_a": "Byzantines",
-          "civ_b": "Sicilians"
         }
       }
     },
@@ -3070,14 +2982,12 @@
       }
     },
     "Pilgrims": {
-      "total_partidas": 2,
+      "total_partidas": 1,
       "civs_ganadoras": {
-        "Spanish": 1,
-        "Dravidians": 1
+        "Spanish": 1
       },
       "civs_perdedoras": {
-        "Persians": 1,
-        "Italians": 1
+        "Persians": 1
       },
       "enfrentamientos": {
         "Persians_vs_Spanish": {
@@ -3085,12 +2995,6 @@
           "gano_primero": 0,
           "civ_a": "Persians",
           "civ_b": "Spanish"
-        },
-        "Dravidians_vs_Italians": {
-          "total": 1,
-          "gano_primero": 1,
-          "civ_a": "Dravidians",
-          "civ_b": "Italians"
         }
       }
     },
@@ -3696,9 +3600,9 @@
       }
     },
     "Italians": {
-      "total_jugadas": 7,
+      "total_jugadas": 6,
       "total_ganadas": 3,
-      "winrate": 42.9,
+      "winrate": 50,
       "por_mapa": {
         "Hideout": {
           "jugadas": 2,
@@ -3724,11 +3628,6 @@
           "jugadas": 1,
           "ganadas": 1,
           "winrate": 100
-        },
-        "Pilgrims": {
-          "jugadas": 1,
-          "ganadas": 0,
-          "winrate": 0
         }
       },
       "vs_civs": {
@@ -3753,11 +3652,6 @@
           "winrate": 100
         },
         "Cumans": {
-          "jugadas": 1,
-          "ganadas": 0,
-          "winrate": 0
-        },
-        "Dravidians": {
           "jugadas": 1,
           "ganadas": 0,
           "winrate": 0
@@ -4353,9 +4247,9 @@
       }
     },
     "Dravidians": {
-      "total_jugadas": 6,
-      "total_ganadas": 4,
-      "winrate": 66.7,
+      "total_jugadas": 5,
+      "total_ganadas": 3,
+      "winrate": 60,
       "por_mapa": {
         "CopaU_2026_Shorelines (Custom)": {
           "jugadas": 2,
@@ -4370,11 +4264,6 @@
         "CopaU_2026_Stranded v3 (Custom)": {
           "jugadas": 2,
           "ganadas": 2,
-          "winrate": 100
-        },
-        "Pilgrims": {
-          "jugadas": 1,
-          "ganadas": 1,
           "winrate": 100
         }
       },
@@ -4398,11 +4287,6 @@
           "jugadas": 1,
           "ganadas": 0,
           "winrate": 0
-        },
-        "Italians": {
-          "jugadas": 1,
-          "ganadas": 1,
-          "winrate": 100
         }
       }
     },
@@ -4539,44 +4423,6 @@
       },
       "vs_civs": {
         "Franks": {
-          "jugadas": 1,
-          "ganadas": 1,
-          "winrate": 100
-        }
-      }
-    },
-    "Byzantines": {
-      "total_jugadas": 1,
-      "total_ganadas": 0,
-      "winrate": 0,
-      "por_mapa": {
-        "Arabia": {
-          "jugadas": 1,
-          "ganadas": 0,
-          "winrate": 0
-        }
-      },
-      "vs_civs": {
-        "Sicilians": {
-          "jugadas": 1,
-          "ganadas": 0,
-          "winrate": 0
-        }
-      }
-    },
-    "Sicilians": {
-      "total_jugadas": 1,
-      "total_ganadas": 1,
-      "winrate": 100,
-      "por_mapa": {
-        "Arabia": {
-          "jugadas": 1,
-          "ganadas": 1,
-          "winrate": 100
-        }
-      },
-      "vs_civs": {
-        "Byzantines": {
           "jugadas": 1,
           "ganadas": 1,
           "winrate": 100
@@ -5721,46 +5567,6 @@
         "nick": "|FMG| doomjota",
         "civ": "Franks",
         "gano": false
-      }
-    },
-    {
-      "matchId": 470954926,
-      "fecha": "2026-04-17T02:42:19.000Z",
-      "mapa": "Arabia",
-      "duracion": 9,
-      "grupo": "C",
-      "ronda": 1,
-      "jugador1": {
-        "discordId": "701537224248000563",
-        "nick": "Aztreonam",
-        "civ": "Byzantines",
-        "gano": false
-      },
-      "jugador2": {
-        "discordId": "755853346149105786",
-        "nick": "|FMG| Donde Estan Mis 5 Pizzas",
-        "civ": "Sicilians",
-        "gano": true
-      }
-    },
-    {
-      "matchId": 470950022,
-      "fecha": "2026-04-17T02:13:48.000Z",
-      "mapa": "Pilgrims",
-      "duracion": 27,
-      "grupo": "C",
-      "ronda": 1,
-      "jugador1": {
-        "discordId": "701537224248000563",
-        "nick": "Aztreonam",
-        "civ": "Italians",
-        "gano": false
-      },
-      "jugador2": {
-        "discordId": "755853346149105786",
-        "nick": "|FMG| Donde Estan Mis 5 Pizzas",
-        "civ": "Dravidians",
-        "gano": true
       }
     }
   ]
