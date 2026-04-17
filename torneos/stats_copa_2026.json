@@ -1,8 +1,8 @@
 {
   "meta": {
     "torneo": "copa_uruguaya_2026",
-    "ultima_actualizacion": "2026-04-17T03:11:51.714Z",
-    "total_partidas": 57
+    "ultima_actualizacion": "2026-04-17T23:59:28.139Z",
+    "total_partidas": 61
   },
   "jugadores": {
     "733765577570779279": {
@@ -1533,9 +1533,9 @@
       "nick": "Kroyen",
       "aoe2Id": "828458",
       "global": {
-        "pj": 2,
+        "pj": 4,
         "pg": 0,
-        "pp": 2,
+        "pp": 4,
         "winrate": 0
       },
       "civs": {
@@ -1566,6 +1566,34 @@
               "winrate": 0
             }
           }
+        },
+        "Saracens": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0,
+          "por_mapa": {
+            "Hideout": {
+              "pj": 1,
+              "pg": 0,
+              "pp": 1,
+              "winrate": 0
+            }
+          }
+        },
+        "Hindustanis": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0,
+          "por_mapa": {
+            "Arabia": {
+              "pj": 1,
+              "pg": 0,
+              "pp": 1,
+              "winrate": 0
+            }
+          }
         }
       },
       "mapas": {
@@ -1576,6 +1604,18 @@
           "winrate": 0
         },
         "CopaU_2026_African River v3 (Custom)": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0
+        },
+        "Hideout": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0
+        },
+        "Arabia": {
           "pj": 1,
           "pg": 0,
           "pp": 1,
@@ -1693,8 +1733,8 @@
       "nick": "ToNGa",
       "aoe2Id": "2639502",
       "global": {
-        "pj": 2,
-        "pg": 2,
+        "pj": 4,
+        "pg": 4,
         "pp": 0,
         "winrate": 100
       },
@@ -1726,6 +1766,34 @@
               "winrate": 100
             }
           }
+        },
+        "Wei": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100,
+          "por_mapa": {
+            "Hideout": {
+              "pj": 1,
+              "pg": 1,
+              "pp": 0,
+              "winrate": 100
+            }
+          }
+        },
+        "Maya": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100,
+          "por_mapa": {
+            "Arabia": {
+              "pj": 1,
+              "pg": 1,
+              "pp": 0,
+              "winrate": 100
+            }
+          }
         }
       },
       "mapas": {
@@ -1740,6 +1808,18 @@
           "pg": 1,
           "pp": 0,
           "winrate": 100
+        },
+        "Hideout": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
+        },
+        "Arabia": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
         }
       }
     },
@@ -1747,9 +1827,9 @@
       "nick": "Aztreonam",
       "aoe2Id": "2317043",
       "global": {
-        "pj": 2,
+        "pj": 4,
         "pg": 0,
-        "pp": 2,
+        "pp": 4,
         "winrate": 0
       },
       "civs": {
@@ -1780,6 +1860,34 @@
               "winrate": 0
             }
           }
+        },
+        "Byzantines": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0,
+          "por_mapa": {
+            "Arabia": {
+              "pj": 1,
+              "pg": 0,
+              "pp": 1,
+              "winrate": 0
+            }
+          }
+        },
+        "Italians": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0,
+          "por_mapa": {
+            "Pilgrims": {
+              "pj": 1,
+              "pg": 0,
+              "pp": 1,
+              "winrate": 0
+            }
+          }
         }
       },
       "mapas": {
@@ -1790,6 +1898,18 @@
           "winrate": 0
         },
         "CopaU_2026_Quarry v3 (Custom)": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0
+        },
+        "Arabia": {
+          "pj": 1,
+          "pg": 0,
+          "pp": 1,
+          "winrate": 0
+        },
+        "Pilgrims": {
           "pj": 1,
           "pg": 0,
           "pp": 1,
@@ -2421,10 +2541,10 @@
       "nick": "|FMG| Donde Estan Mis 5 Pizzas",
       "aoe2Id": "10222046",
       "global": {
-        "pj": 3,
-        "pg": 1,
+        "pj": 5,
+        "pg": 3,
         "pp": 2,
-        "winrate": 33.3
+        "winrate": 60
       },
       "civs": {
         "Magyars": {
@@ -2468,6 +2588,34 @@
               "winrate": 100
             }
           }
+        },
+        "Sicilians": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100,
+          "por_mapa": {
+            "Arabia": {
+              "pj": 1,
+              "pg": 1,
+              "pp": 0,
+              "winrate": 100
+            }
+          }
+        },
+        "Dravidians": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100,
+          "por_mapa": {
+            "Pilgrims": {
+              "pj": 1,
+              "pg": 1,
+              "pp": 0,
+              "winrate": 100
+            }
+          }
         }
       },
       "mapas": {
@@ -2484,6 +2632,18 @@
           "winrate": 0
         },
         "Islands": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
+        },
+        "Arabia": {
+          "pj": 1,
+          "pg": 1,
+          "pp": 0,
+          "winrate": 100
+        },
+        "Pilgrims": {
           "pj": 1,
           "pg": 1,
           "pp": 0,
@@ -2705,19 +2865,23 @@
       }
     },
     "Arabia": {
-      "total_partidas": 5,
+      "total_partidas": 7,
       "civs_ganadoras": {
         "Khitans": 1,
         "Vietnamese": 1,
         "Chinese": 1,
         "Malians": 1,
-        "Japanese": 1
+        "Japanese": 1,
+        "Sicilians": 1,
+        "Maya": 1
       },
       "civs_perdedoras": {
         "Mongols": 1,
         "Ethiopians": 1,
         "Berbers": 2,
-        "Saracens": 1
+        "Saracens": 1,
+        "Byzantines": 1,
+        "Hindustanis": 1
       },
       "enfrentamientos": {
         "Khitans_vs_Mongols": {
@@ -2749,6 +2913,18 @@
           "gano_primero": 0,
           "civ_a": "Berbers",
           "civ_b": "Japanese"
+        },
+        "Byzantines_vs_Sicilians": {
+          "total": 1,
+          "gano_primero": 0,
+          "civ_a": "Byzantines",
+          "civ_b": "Sicilians"
+        },
+        "Hindustanis_vs_Maya": {
+          "total": 1,
+          "gano_primero": 0,
+          "civ_a": "Hindustanis",
+          "civ_b": "Maya"
         }
       }
     },
@@ -2777,13 +2953,15 @@
       }
     },
     "Hideout": {
-      "total_partidas": 2,
+      "total_partidas": 3,
       "civs_ganadoras": {
         "Bohemians": 1,
-        "Khitans": 1
+        "Khitans": 1,
+        "Wei": 1
       },
       "civs_perdedoras": {
-        "Italians": 2
+        "Italians": 2,
+        "Saracens": 1
       },
       "enfrentamientos": {
         "Bohemians_vs_Italians": {
@@ -2797,6 +2975,12 @@
           "gano_primero": 0,
           "civ_a": "Italians",
           "civ_b": "Khitans"
+        },
+        "Saracens_vs_Wei": {
+          "total": 1,
+          "gano_primero": 0,
+          "civ_a": "Saracens",
+          "civ_b": "Wei"
         }
       }
     },
@@ -2982,12 +3166,14 @@
       }
     },
     "Pilgrims": {
-      "total_partidas": 1,
+      "total_partidas": 2,
       "civs_ganadoras": {
-        "Spanish": 1
+        "Spanish": 1,
+        "Dravidians": 1
       },
       "civs_perdedoras": {
-        "Persians": 1
+        "Persians": 1,
+        "Italians": 1
       },
       "enfrentamientos": {
         "Persians_vs_Spanish": {
@@ -2995,6 +3181,12 @@
           "gano_primero": 0,
           "civ_a": "Persians",
           "civ_b": "Spanish"
+        },
+        "Dravidians_vs_Italians": {
+          "total": 1,
+          "gano_primero": 1,
+          "civ_a": "Dravidians",
+          "civ_b": "Italians"
         }
       }
     },
@@ -3600,9 +3792,9 @@
       }
     },
     "Italians": {
-      "total_jugadas": 6,
+      "total_jugadas": 7,
       "total_ganadas": 3,
-      "winrate": 50,
+      "winrate": 42.9,
       "por_mapa": {
         "Hideout": {
           "jugadas": 2,
@@ -3628,6 +3820,11 @@
           "jugadas": 1,
           "ganadas": 1,
           "winrate": 100
+        },
+        "Pilgrims": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
         }
       },
       "vs_civs": {
@@ -3652,6 +3849,11 @@
           "winrate": 100
         },
         "Cumans": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        },
+        "Dravidians": {
           "jugadas": 1,
           "ganadas": 0,
           "winrate": 0
@@ -4098,7 +4300,7 @@
       }
     },
     "Saracens": {
-      "total_jugadas": 2,
+      "total_jugadas": 3,
       "total_ganadas": 0,
       "winrate": 0,
       "por_mapa": {
@@ -4111,6 +4313,11 @@
           "jugadas": 1,
           "ganadas": 0,
           "winrate": 0
+        },
+        "Hideout": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
         }
       },
       "vs_civs": {
@@ -4120,6 +4327,11 @@
           "winrate": 0
         },
         "Malians": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        },
+        "Wei": {
           "jugadas": 1,
           "ganadas": 0,
           "winrate": 0
@@ -4247,9 +4459,9 @@
       }
     },
     "Dravidians": {
-      "total_jugadas": 5,
-      "total_ganadas": 3,
-      "winrate": 60,
+      "total_jugadas": 6,
+      "total_ganadas": 4,
+      "winrate": 66.7,
       "por_mapa": {
         "CopaU_2026_Shorelines (Custom)": {
           "jugadas": 2,
@@ -4264,6 +4476,11 @@
         "CopaU_2026_Stranded v3 (Custom)": {
           "jugadas": 2,
           "ganadas": 2,
+          "winrate": 100
+        },
+        "Pilgrims": {
+          "jugadas": 1,
+          "ganadas": 1,
           "winrate": 100
         }
       },
@@ -4287,6 +4504,11 @@
           "jugadas": 1,
           "ganadas": 0,
           "winrate": 0
+        },
+        "Italians": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
         }
       }
     },
@@ -4426,6 +4648,101 @@
           "jugadas": 1,
           "ganadas": 1,
           "winrate": 100
+        }
+      }
+    },
+    "Byzantines": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "Arabia": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Sicilians": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      }
+    },
+    "Sicilians": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "Arabia": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Byzantines": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Wei": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "Hideout": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Saracens": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Maya": {
+      "total_jugadas": 1,
+      "total_ganadas": 1,
+      "winrate": 100,
+      "por_mapa": {
+        "Arabia": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      },
+      "vs_civs": {
+        "Hindustanis": {
+          "jugadas": 1,
+          "ganadas": 1,
+          "winrate": 100
+        }
+      }
+    },
+    "Hindustanis": {
+      "total_jugadas": 1,
+      "total_ganadas": 0,
+      "winrate": 0,
+      "por_mapa": {
+        "Arabia": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
+        }
+      },
+      "vs_civs": {
+        "Maya": {
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
         }
       }
     }
@@ -5566,6 +5883,86 @@
         "discordId": "264781067506941962",
         "nick": "|FMG| doomjota",
         "civ": "Franks",
+        "gano": false
+      }
+    },
+    {
+      "matchId": 470954926,
+      "fecha": "2026-04-17T02:42:19.000Z",
+      "mapa": "Arabia",
+      "duracion": 9,
+      "grupo": "C",
+      "ronda": 1,
+      "jugador1": {
+        "discordId": "701537224248000563",
+        "nick": "Aztreonam",
+        "civ": "Byzantines",
+        "gano": false
+      },
+      "jugador2": {
+        "discordId": "755853346149105786",
+        "nick": "|FMG| Donde Estan Mis 5 Pizzas",
+        "civ": "Sicilians",
+        "gano": true
+      }
+    },
+    {
+      "matchId": 470950022,
+      "fecha": "2026-04-17T02:13:48.000Z",
+      "mapa": "Pilgrims",
+      "duracion": 27,
+      "grupo": "C",
+      "ronda": 1,
+      "jugador1": {
+        "discordId": "701537224248000563",
+        "nick": "Aztreonam",
+        "civ": "Italians",
+        "gano": false
+      },
+      "jugador2": {
+        "discordId": "755853346149105786",
+        "nick": "|FMG| Donde Estan Mis 5 Pizzas",
+        "civ": "Dravidians",
+        "gano": true
+      }
+    },
+    {
+      "matchId": 471151690,
+      "fecha": "2026-04-17T22:40:10.000Z",
+      "mapa": "Hideout",
+      "duracion": 17,
+      "grupo": "D",
+      "ronda": 3,
+      "jugador1": {
+        "discordId": "833806737902534738",
+        "nick": "ToNGa",
+        "civ": "Wei",
+        "gano": true
+      },
+      "jugador2": {
+        "discordId": "485610092092456975",
+        "nick": "Kroyen",
+        "civ": "Saracens",
+        "gano": false
+      }
+    },
+    {
+      "matchId": 471147576,
+      "fecha": "2026-04-17T22:19:48.000Z",
+      "mapa": "Arabia",
+      "duracion": 16,
+      "grupo": "D",
+      "ronda": 3,
+      "jugador1": {
+        "discordId": "833806737902534738",
+        "nick": "ToNGa",
+        "civ": "Maya",
+        "gano": true
+      },
+      "jugador2": {
+        "discordId": "485610092092456975",
+        "nick": "Kroyen",
+        "civ": "Hindustanis",
         "gano": false
       }
     }
