@@ -5,22 +5,77 @@
   "ronda": "?",
   "formato": "Bo5",
   "j1": {
-    "nick": "|FMG| TINCHO",
-    "aoe2Id": "2304739",
+    "nick": "[VL] Santiagoi1212",
+    "aoe2Id": "2249432",
     "global": {
-      "pj": 4,
-      "pg": 4,
+      "pj": 2,
+      "pg": 0,
+      "pp": 2,
+      "winrate": 0
+    },
+    "civs": {
+      "Berbers": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0,
+        "por_mapa": {
+          "Arabia": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          }
+        }
+      },
+      "Magyars": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0,
+        "por_mapa": {
+          "CopaU_2026_Shorelines (Custom)": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          }
+        }
+      }
+    },
+    "mapas": {
+      "Arabia": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0
+      },
+      "CopaU_2026_Shorelines (Custom)": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0
+      }
+    },
+    "discordId": "831027477652570132"
+  },
+  "j2": {
+    "nick": "DGHIR | Lionerrt",
+    "aoe2Id": "5204719",
+    "global": {
+      "pj": 2,
+      "pg": 2,
       "pp": 0,
       "winrate": 100
     },
     "civs": {
-      "Bohemians": {
+      "Koreans": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
         "winrate": 100,
         "por_mapa": {
-          "Hideout": {
+          "CopaU_2026_High Tides v3 (Custom)": {
             "pj": 1,
             "pg": 1,
             "pp": 0,
@@ -28,41 +83,13 @@
           }
         }
       },
-      "Persians": {
+      "Chinese": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
         "winrate": 100,
         "por_mapa": {
-          "CopaU_2026_Shorelines (Custom)": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          }
-        }
-      },
-      "Berbers": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100,
-        "por_mapa": {
-          "Nomad": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          }
-        }
-      },
-      "Tatars": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100,
-        "por_mapa": {
-          "CopaU_2026_Quarry v3 (Custom)": {
+          "CopaU_2026_Stranded v3 (Custom)": {
             "pj": 1,
             "pg": 1,
             "pp": 0,
@@ -72,43 +99,20 @@
       }
     },
     "mapas": {
-      "Hideout": {
+      "CopaU_2026_High Tides v3 (Custom)": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
         "winrate": 100
       },
-      "CopaU_2026_Shorelines (Custom)": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100
-      },
-      "Nomad": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100
-      },
-      "CopaU_2026_Quarry v3 (Custom)": {
+      "CopaU_2026_Stranded v3 (Custom)": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
         "winrate": 100
       }
     },
-    "discordId": "697996987210924072"
+    "discordId": "277256502023290881"
   },
-  "j2": {
-    "nick": "Gino",
-    "global": {
-      "pj": 0,
-      "pg": 0,
-      "pp": 0,
-      "winrate": 0
-    },
-    "civs": {},
-    "mapas": {}
-  },
-  "ts": 1776308024474
+  "ts": 1776737912283
 }
