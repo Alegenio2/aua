@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorteo Octavos de Final | Copa Uruguaya 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #e8c87a;
+            --bg-dark: #0d0d0d;
+            --border: rgba(232, 200, 122, 0.3);
+        }
+        body {
+            background: var(--bg-dark);
+            color: #e8e0d0;
+            font-family: 'Open Sans', sans-serif;
+            margin: 0; padding: 20px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        h1 { font-family: 'Cinzel', serif; color: var(--gold); text-shadow: 0 0 10px rgba(232,200,122,0.5); }
+        
+        .bombos-container { display: flex; gap: 40px; margin-bottom: 30px; }
+        .bombo {
+            border: 1px solid var(--border);
+            padding: 20px; background: rgba(255,255,255,0.03);
+            width: 250px; border-radius: 8px;
+        }
+        .bombo h2 { font-family: 'Cinzel'; font-size: 1.2rem; text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        
+        .player-card {
+            padding: 10px; margin: 5px 0;
+            background: rgba(232, 200, 122, 0.1);
+            border-left: 3px solid var(--gold);
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .player-card.used { opacity: 0.3; text-decoration: line-through; }
+
+        .bracket-container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+            width: 100%; max-width: 900px;
+        }
+        .matchup {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            padding: 15px; border-radius: 4px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .vs { color: var(--gold); font-weight: bold; margin: 5px 0; }
+        
+        .btn-sorteo {
+            background: linear-gradient(to bottom, #e8c87a, #c8a040);
+            border: none; padding: 15px 40px;
+            font-family: 'Cinzel'; font-weight: 900;
+            cursor: pointer; border-radius: 4px; margin-bottom: 20px;
+        }
+        .btn-sorteo:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <h1>Sorteo Octavos de Final</h1>
+
+    <div class="bombos-container">
+        <div class="bombo" id="bombo1">
+            <h2>Bombo 1 (Primeros)</h2>
+            <div id="lista-primeros"></div>
+        </div>
+        <div class="bombo" id="bombo2">
+            <h2>Bombo 2 (Segundos)</h2>
+            <div id="lista-segundos"></div>
+        </div>
+    </div>
+
+    <button class="btn-sorteo" onclick="ejecutarSorteo()">Sortear Cruce</button>
+
+    <div class="bracket-container" id="bracket">
+        </div>
+
+<script>
+    // Estos datos los podrías cargar del JSON, pero para el simulador los definimos así:
+    const primeros = [
+        { id: "1", nick: "Nacional", grupo: "A", seed: 1 },
+        { id: "2", nick: "URU | Juasteint", grupo: "B", seed: 2 },
+        // ... añadir los 8
+    ];
+
+    const segundos = [
+        { id: "10", nick: "buyanjavyn", grupo: "A", seed: 9 },
+        { id: "11", nick: "Matixxx", grupo: "B", seed: 10 },
+        // ... añadir los 8
+    ];
+
+    let sorteadosSegundos = [];
+    let crucesRealizados = 0;
+    // Orden de llaves estilo Tenis para los primeros
+    const ordenPrimeros = [0, 7, 4, 3, 1, 6, 5, 2]; 
+
+    function init() {
+        const pDiv = document.getElementById('lista-primeros');
+        const sDiv = document.getElementById('lista-segundos');
+        
+        primeros.forEach(p => {
+            pDiv.innerHTML += `<div class="player-card" id="p-${p.id}">${p.nick} (G:${p.grupo})</div>`;
+        });
+        segundos.forEach(s => {
+            sDiv.innerHTML += `<div class="player-card" id="s-${s.id}">${s.nick} (G:${s.grupo})</div>`;
+        });
+    }
+
+    function ejecutarSorteo() {
+        if (crucesRealizados >= 8) return alert("Sorteo finalizado");
+
+        const indexP = ordenPrimeros[crucesRealizados];
+        const primero = primeros[indexP];
+        
+        // Filtrar segundos disponibles y que no sean del mismo grupo
+        let opciones = segundos.filter(s => 
+            !sorteadosSegundos.includes(s.id) && s.grupo !== primero.grupo
+        );
+
+        // Validación de bloqueo (deadlock)
+        if (opciones.length === 0) {
+            alert("⚠️ Error: Bloqueo de grupos. Reiniciando sorteo...");
+            location.reload();
+            return;
+        }
+
+        const segundo = opciones[Math.floor(Math.random() * opciones.length)];
+        sorteadosSegundos.push(segundo.id);
+
+        // Actualizar UI
+        document.getElementById(`p-${primero.id}`).classList.add('used');
+        document.getElementById(`s-${segundo.id}`).classList.add('used');
+
+        const bracket = document.getElementById('bracket');
+        bracket.innerHTML += `
+            <div class="matchup">
+                <div style="color:var(--gold)">OF ${crucesRealizados + 1}</div>
+                <div>${primero.nick}</div>
+                <div class="vs">VS</div>
+                <div>${segundo.nick}</div>
+            </div>
+        `;
+
+        crucesRealizados++;
+    }
+
+    init();
+</script>
+</body>
+</html>
