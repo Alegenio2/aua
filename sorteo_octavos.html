@@ -106,7 +106,7 @@
     async function cargarDatos() {
         try {
             // Buscamos el archivo que me pasaste
-            const response = await fetch('1v1_copa_uruguaya_2026.json');
+            const response = await fetch('./torneos/1v1_copa_uruguaya_2026.json');
             const data = await response.json();
             
             // Simulación de procesamiento de tablas para obtener clasificados
