@@ -1,161 +1,227 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Sorteo Épico | Copa Uruguaya 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #0a0a0f; color: #e0e0e6; font-family: 'Barlow Condensed', sans-serif; min-height: 100vh; padding: 30px; display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
-    
-    .header h1 { font-family: 'Cinzel', serif; color: #d4a843; font-size: 28px; text-align: center; letter-spacing: 4px; text-shadow: 0 0 15px rgba(212, 168, 67, 0.4); margin-bottom: 30px; }
+<meta charset="UTF-8">
+<title>Sorteo Épico | Copa Uruguaya 2026</title>
 
-    .bombos-wrapper { display: flex; gap: 20px; margin-bottom: 30px; width: 100%; max-width: 900px; }
-    .bombo-box { flex: 1; background: rgba(20, 20, 30, 0.8); border: 1px solid rgba(212, 168, 67, 0.2); border-radius: 8px; padding: 15px; }
-    .bombo-box h2 { font-family: 'Cinzel', serif; font-size: 14px; color: #d4a843; text-align: center; border-bottom: 1px solid rgba(212, 168, 67, 0.2); padding-bottom: 8px; margin-bottom: 10px; }
-    
-    .player-tag { background: rgba(255, 255, 255, 0.03); padding: 8px 12px; margin-bottom: 5px; border-radius: 4px; font-size: 14px; transition: all 0.5s ease; border-left: 2px solid transparent; }
-    .player-tag.active { border-left-color: #d4a843; background: rgba(212, 168, 67, 0.2); transform: translateX(5px); box-shadow: 0 0 10px rgba(212, 168, 67, 0.3); }
-    .player-tag.used { opacity: 0.1; filter: grayscale(1); }
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 
-    .controls { margin-bottom: 30px; }
-    .btn-sorteo { background: linear-gradient(135deg, #d4a843 0%, #a67c2d 100%); color: #0a0a0a; border: none; padding: 15px 40px; font-family: 'Cinzel', serif; font-weight: 900; cursor: pointer; border-radius: 4px; transition: 0.3s; }
-    .btn-sorteo:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(212, 168, 67, 0.5); }
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* GRID DE CRUCES ALEATORIOS */
-    .bracket-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 arriba, 4 abajo */
-      gap: 15px;
-      width: 100%;
-      max-width: 1200px;
-    }
+body {
+  background: #0a0a0f;
+  color: #e0e0e6;
+  font-family: 'Barlow Condensed', sans-serif;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    .slot-partido {
-      height: 120px;
-      border: 1px dashed rgba(212, 168, 67, 0.1);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      transition: all 0.3s;
-    }
+.header h1 {
+  font-family: 'Cinzel', serif;
+  color: #d4a843;
+  letter-spacing: 4px;
+  margin-bottom: 25px;
+}
 
-    .matchup-card {
-      width: 100%; height: 100%;
-      background: linear-gradient(180deg, rgba(30, 30, 45, 0.9) 0%, rgba(15, 15, 25, 1) 100%);
-      border: 1px solid #d4a843;
-      padding: 15px;
-      border-radius: 6px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
+.bombos-wrapper {
+  display: flex;
+  gap: 20px;
+  width: 900px;
+  margin-bottom: 20px;
+}
 
-    @keyframes popIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
-    .vs-text { font-family: 'Cinzel', serif; color: #d4a843; font-size: 12px; margin: 5px 0; }
-    .p-name { font-weight: 700; font-size: 15px; text-align: center; }
-  </style>
+.bombo-box {
+  flex: 1;
+  background: #14141e;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.player-tag {
+  padding: 6px;
+  margin: 3px 0;
+  background: rgba(255,255,255,0.05);
+  transition: 0.2s;
+}
+
+.player-tag.active {
+  background: #d4a843;
+  color: black;
+}
+
+.player-tag.used {
+  opacity: 0.2;
+}
+
+/* BOTON */
+.btn {
+  padding: 12px 30px;
+  background: #d4a843;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+/* BRACKET */
+.bracket {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  width: 1000px;
+}
+
+.slot {
+  height: 110px;
+  border: 1px dashed #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CARD */
+.card {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #d4a843;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #111;
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+/* ANIMACION RULETA */
+.roulette {
+  font-size: 14px;
+  color: #d4a843;
+  animation: blink 0.1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.2; }
+}
+</style>
 </head>
+
 <body>
 
-  <div class="header">
-    <h1>COPA URUGUAYA 2026</h1>
-  </div>
+<h1>COPA URUGUAYA 2026</h1>
 
-  <div class="bombos-wrapper">
-    <div class="bombo-box">
-      <h2>CABEZAS DE SERIE</h2>
-      <div id="b1"></div>
-    </div>
-    <div class="bombo-box">
-      <h2>CLASIFICADOS</h2>
-      <div id="b2"></div>
-    </div>
-  </div>
+<div class="bombos-wrapper">
+  <div id="b1"></div>
+  <div id="b2"></div>
+</div>
 
-  <div class="controls">
-    <button class="btn-sorteo" id="mainBtn" onclick="sortearProximo()">SORTEAR LLAVE AL AZAR</button>
-  </div>
+<button class="btn" onclick="sortear()">SORTEAR</button>
 
-  <div class="bracket-container">
-    <div id="slot-OF1" class="slot-partido"></div>
-    <div id="slot-OF2" class="slot-partido"></div>
-    <div id="slot-OF3" class="slot-partido"></div>
-    <div id="slot-OF4" class="slot-partido"></div>
-    <div id="slot-OF5" class="slot-partido"></div>
-    <div id="slot-OF6" class="slot-partido"></div>
-    <div id="slot-OF7" class="slot-partido"></div>
-    <div id="slot-OF8" class="slot-partido"></div>
-  </div>
+<div class="bracket">
+  <div id="slot-OF1" class="slot"></div>
+  <div id="slot-OF2" class="slot"></div>
+  <div id="slot-OF3" class="slot"></div>
+  <div id="slot-OF4" class="slot"></div>
+  <div id="slot-OF5" class="slot"></div>
+  <div id="slot-OF6" class="slot"></div>
+  <div id="slot-OF7" class="slot"></div>
+  <div id="slot-OF8" class="slot"></div>
+</div>
 
-  <script>
-    let poolPartidos = [];
-    let etapa = "B1"; 
-    let partidoActual = null;
+<script>
+let pool = [];
+let etapa = "B1";
+let actual = null;
+let slotsRandom = [];
 
-    async function init() {
-      const resp = await fetch('torneos/1v1_copa_uruguaya_2026.json');
-      const data = await resp.json();
-      poolPartidos = data.eliminatorias.octavos;
+async function init() {
+  const data = await fetch('torneos/1v1_copa_uruguaya_2026.json').then(r=>r.json());
 
-      const b1 = document.getElementById('b1');
-      const b2 = document.getElementById('b2');
+  pool = data.eliminatorias.octavos;
 
-      poolPartidos.forEach(m => {
-        b1.innerHTML += `<div class="player-tag" id="t1-${m.jugador1Id}">${m.jugador1Nick}</div>`;
-        b2.innerHTML += `<div class="player-tag" id="t2-${m.jugador2Id}">${m.jugador2Nick}</div>`;
-      });
-    }
+  // slots visuales random
+  slotsRandom = [...pool.map(p=>p.partidoId)];
+  slotsRandom.sort(()=>Math.random()-0.5);
 
-    function sortearProximo() {
-      const btn = document.getElementById('mainBtn');
+  pool.forEach(m=>{
+    b1.innerHTML += `<div class="player-tag" id="t1-${m.jugador1Id}">${m.jugador1Nick}</div>`;
+    b2.innerHTML += `<div class="player-tag" id="t2-${m.jugador2Id}">${m.jugador2Nick}</div>`;
+  });
+}
 
-      if (etapa === "B1") {
-        // Elegimos un partido al azar de los que aún no se han revelado
-        const randomIndex = Math.floor(Math.random() * poolPartidos.length);
-        partidoActual = poolPartidos.splice(randomIndex, 1)[0];
+function randomHighlight(containerId){
+  const list = document.querySelectorAll(`#${containerId} .player-tag:not(.used)`);
+  list.forEach(el=>el.classList.remove('active'));
 
-        // Resaltamos al J1 en el bombo
-        document.getElementById(`t1-${partidoActual.jugador1Id}`).classList.add('active');
-        btn.innerText = `¿Quién enfrenta a ${partidoActual.jugador1Nick}?`;
-        etapa = "B2";
-      } 
-      else {
-        // Revelamos el rival y lo mandamos a su slot correspondiente en el grid
-        const t1 = document.getElementById(`t1-${partidoActual.jugador1Id}`);
-        const t2 = document.getElementById(`t2-${partidoActual.jugador2Id}`);
-        
+  const r = list[Math.floor(Math.random()*list.length)];
+  if(r) r.classList.add('active');
+}
+
+function sortear(){
+
+  if(etapa==="B1"){
+    const i = Math.floor(Math.random()*pool.length);
+    actual = pool.splice(i,1)[0];
+
+    let ticks = 0;
+
+    const interval = setInterval(()=>{
+      randomHighlight("b1");
+      ticks++;
+      if(ticks>15){
+        clearInterval(interval);
+        document.getElementById(`t1-${actual.jugador1Id}`).classList.add('active');
+      }
+    },80);
+
+    etapa="B2";
+  }
+
+  else {
+
+    let ticks = 0;
+
+    const interval = setInterval(()=>{
+      randomHighlight("b2");
+      ticks++;
+
+      if(ticks>20){
+        clearInterval(interval);
+
+        const t1 = document.getElementById(`t1-${actual.jugador1Id}`);
+        const t2 = document.getElementById(`t2-${actual.jugador2Id}`);
+
         t1.classList.remove('active');
         t1.classList.add('used');
         t2.classList.add('used');
 
-        // Buscamos el slot predefinido (ej: "slot-OF1")
-        const slot = document.getElementById(`slot-${partidoActual.partidoId}`);
+        // slot falso 🔥
+        const fake = slotsRandom.shift();
+        const slot = document.getElementById(`slot-${fake}`);
+
         slot.innerHTML = `
-          <div class="matchup-card">
-            <div style="font-size:9px; color:#d4a843; margin-bottom:5px">LLAVE ${partidoActual.partidoId}</div>
-            <div class="p-name">${partidoActual.jugador1Nick}</div>
-            <div class="vs-text">VS</div>
-            <div class="p-name">${partidoActual.jugador2Nick}</div>
+          <div class="card">
+            <div>${actual.jugador1Nick}</div>
+            <div style="color:#d4a843">VS</div>
+            <div>${actual.jugador2Nick}</div>
           </div>
         `;
-        slot.style.border = "none";
 
-        if (poolPartidos.length === 0) {
-          btn.innerText = "SORTEO FINALIZADO";
-          btn.disabled = true;
-        } else {
-          btn.innerText = "SORTEAR SIGUIENTE CABEZA";
-          etapa = "B1";
-        }
+        etapa="B1";
       }
-    }
+    },80);
+  }
+}
 
-    init();
-  </script>
+init();
+</script>
+
 </body>
 </html>
