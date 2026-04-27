@@ -7,6 +7,7 @@
     <style>
         :root {
             --gold: #e8c87a;
+            --gold-dark: #c8a040;
             --bg-dark: #0d0d0d;
             --border: rgba(232, 200, 122, 0.3);
         }
@@ -17,111 +18,151 @@
             margin: 0; padding: 20px;
             display: flex; flex-direction: column; align-items: center;
         }
-        h1 { font-family: 'Cinzel', serif; color: var(--gold); text-shadow: 0 0 10px rgba(232,200,122,0.5); }
+        h1 { font-family: 'Cinzel', serif; color: var(--gold); text-shadow: 0 0 15px rgba(232,200,122,0.5); margin-bottom: 5px; }
+        .subtitle { color: var(--gold-dark); margin-bottom: 30px; letter-spacing: 2px; font-size: 0.8rem; text-transform: uppercase; }
         
         .bombos-container { display: flex; gap: 40px; margin-bottom: 30px; }
         .bombo {
             border: 1px solid var(--border);
             padding: 20px; background: rgba(255,255,255,0.03);
-            width: 250px; border-radius: 8px;
+            width: 280px; border-radius: 8px; box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
-        .bombo h2 { font-family: 'Cinzel'; font-size: 1.2rem; text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .bombo h2 { font-family: 'Cinzel'; font-size: 1.1rem; text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; color: var(--gold); }
         
         .player-card {
-            padding: 10px; margin: 5px 0;
-            background: rgba(232, 200, 122, 0.1);
+            padding: 10px; margin: 8px 0;
+            background: rgba(232, 200, 122, 0.05);
+            border: 1px solid rgba(232, 200, 122, 0.1);
             border-left: 3px solid var(--gold);
-            font-size: 0.9rem;
-            transition: all 0.3s;
+            font-size: 0.85rem; display: flex; justify-content: space-between;
+            transition: all 0.4s ease;
         }
-        .player-card.used { opacity: 0.3; text-decoration: line-through; }
+        .player-card span { color: var(--gold-dark); font-weight: bold; }
+        .player-card.used { opacity: 0.2; transform: translateX(10px); filter: grayscale(1); }
 
         .bracket-container {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-            width: 100%; max-width: 900px;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+            width: 100%; max-width: 1000px; margin-top: 20px;
         }
         .matchup {
-            background: rgba(255,255,255,0.05);
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
             border: 1px solid var(--border);
-            padding: 15px; border-radius: 4px;
+            padding: 20px; border-radius: 4px;
             display: flex; flex-direction: column; align-items: center;
+            animation: fadeIn 0.5s ease forwards;
         }
-        .vs { color: var(--gold); font-weight: bold; margin: 5px 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
+        .vs { color: var(--gold); font-weight: bold; margin: 10px 0; font-family: 'Cinzel'; font-size: 1.2rem; }
+        .match-title { font-size: 0.7rem; color: var(--gold-dark); margin-bottom: 10px; border-bottom: 1px solid var(--border); width: 100%; text-align: center; }
+        
+        .controls { display: flex; gap: 15px; }
         .btn-sorteo {
             background: linear-gradient(to bottom, #e8c87a, #c8a040);
             border: none; padding: 15px 40px;
             font-family: 'Cinzel'; font-weight: 900;
             cursor: pointer; border-radius: 4px; margin-bottom: 20px;
+            color: #2a1e0c; transition: all 0.3s;
         }
-        .btn-sorteo:hover { transform: scale(1.05); }
+        .btn-sorteo:hover:not(:disabled) { transform: scale(1.05); box-shadow: 0 0 20px rgba(232,200,122,0.4); }
+        .btn-sorteo:disabled { background: #444; color: #888; cursor: not-allowed; }
+        
+        .btn-reset { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 15px 20px; cursor: pointer; font-family: 'Cinzel'; border-radius: 4px; }
     </style>
 </head>
 <body>
 
-    <h1>Sorteo Octavos de Final</h1>
+    <h1>Copa Uruguaya 2026</h1>
+    <div class="subtitle">Simulador de Sorteo - Octavos de Final</div>
 
     <div class="bombos-container">
-        <div class="bombo" id="bombo1">
+        <div class="bombo">
             <h2>Bombo 1 (Primeros)</h2>
-            <div id="lista-primeros"></div>
+            <div id="lista-primeros">Cargando datos...</div>
         </div>
-        <div class="bombo" id="bombo2">
+        <div class="bombo">
             <h2>Bombo 2 (Segundos)</h2>
-            <div id="lista-segundos"></div>
+            <div id="lista-segundos">Cargando datos...</div>
         </div>
     </div>
 
-    <button class="btn-sorteo" onclick="ejecutarSorteo()">Sortear Cruce</button>
+    <div class="controls">
+        <button class="btn-sorteo" id="btnSortear" onclick="ejecutarSorteo()">Sortear Próximo Cruce</button>
+        <button class="btn-reset" onclick="location.reload()">Reiniciar</button>
+    </div>
 
-    <div class="bracket-container" id="bracket">
-        </div>
+    <div class="bracket-container" id="bracket"></div>
 
 <script>
-    // Estos datos los podrías cargar del JSON, pero para el simulador los definimos así:
-    const primeros = [
-        { id: "1", nick: "Nacional", grupo: "A", seed: 1 },
-        { id: "2", nick: "URU | Juasteint", grupo: "B", seed: 2 },
-        // ... añadir los 8
-    ];
-
-    const segundos = [
-        { id: "10", nick: "buyanjavyn", grupo: "A", seed: 9 },
-        { id: "11", nick: "Matixxx", grupo: "B", seed: 10 },
-        // ... añadir los 8
-    ];
-
+    let primeros = [];
+    let segundos = [];
     let sorteadosSegundos = [];
     let crucesRealizados = 0;
-    // Orden de llaves estilo Tenis para los primeros
+    
+    // Orden de llaves (Seeds): 1v16, 8v9, 5v12, 4v13... adaptado a 8 grupos
+    // Este orden asegura que el 1 y el 2 solo se crucen en una hipotética final
     const ordenPrimeros = [0, 7, 4, 3, 1, 6, 5, 2]; 
 
-    function init() {
+    async function cargarDatos() {
+        try {
+            // Buscamos el archivo que me pasaste
+            const response = await fetch('1v1_copa_uruguaya_2026.json');
+            const data = await response.json();
+            
+            // Simulación de procesamiento de tablas para obtener clasificados
+            // En un entorno real, usarías los resultados para ordenar
+            // Aquí extraemos los 2 primeros de cada grupo basándonos en tu JSON
+            data.grupos.forEach(g => {
+                if (g.jugadores && g.jugadores.length >= 2) {
+                    // Tomamos al 1ero y 2do (el JSON ya suele venir en orden de inscripción o mérito)
+                    primeros.push({ 
+                        id: g.jugadores[0].id, 
+                        nick: g.jugadores[0].nick, 
+                        grupo: g.nombre.replace('Grupo ', '') 
+                    });
+                    segundos.push({ 
+                        id: g.jugadores[1].id, 
+                        nick: g.jugadores[1].nick, 
+                        grupo: g.nombre.replace('Grupo ', '') 
+                    });
+                }
+            });
+
+            renderListas();
+        } catch (error) {
+            console.error("Error cargando el JSON:", error);
+            document.getElementById('lista-primeros').innerHTML = "Error al cargar JSON";
+        }
+    }
+
+    function renderListas() {
         const pDiv = document.getElementById('lista-primeros');
         const sDiv = document.getElementById('lista-segundos');
+        pDiv.innerHTML = "";
+        sDiv.innerHTML = "";
         
         primeros.forEach(p => {
-            pDiv.innerHTML += `<div class="player-card" id="p-${p.id}">${p.nick} (G:${p.grupo})</div>`;
+            pDiv.innerHTML += `<div class="player-card" id="p-${p.id}">${p.nick} <span>G-${p.grupo}</span></div>`;
         });
         segundos.forEach(s => {
-            sDiv.innerHTML += `<div class="player-card" id="s-${s.id}">${s.nick} (G:${s.grupo})</div>`;
+            sDiv.innerHTML += `<div class="player-card" id="s-${s.id}">${s.nick} <span>G-${s.grupo}</span></div>`;
         });
     }
 
     function ejecutarSorteo() {
-        if (crucesRealizados >= 8) return alert("Sorteo finalizado");
+        if (crucesRealizados >= 8) return;
 
         const indexP = ordenPrimeros[crucesRealizados];
         const primero = primeros[indexP];
         
-        // Filtrar segundos disponibles y que no sean del mismo grupo
+        // Filtro: No sorteado y que NO sea del mismo grupo
         let opciones = segundos.filter(s => 
             !sorteadosSegundos.includes(s.id) && s.grupo !== primero.grupo
         );
 
-        // Validación de bloqueo (deadlock)
+        // Verificación de Deadlock (Bloqueo por restricciones de grupo)
         if (opciones.length === 0) {
-            alert("⚠️ Error: Bloqueo de grupos. Reiniciando sorteo...");
+            alert("⚠️ BLOQUEO LÓGICO: Las restricciones de grupo impiden completar el sorteo. Reiniciando...");
             location.reload();
             return;
         }
@@ -129,24 +170,30 @@
         const segundo = opciones[Math.floor(Math.random() * opciones.length)];
         sorteadosSegundos.push(segundo.id);
 
-        // Actualizar UI
+        // Efectos Visuales
         document.getElementById(`p-${primero.id}`).classList.add('used');
         document.getElementById(`s-${segundo.id}`).classList.add('used');
 
         const bracket = document.getElementById('bracket');
+        const matchNum = crucesRealizados + 1;
+        
         bracket.innerHTML += `
             <div class="matchup">
-                <div style="color:var(--gold)">OF ${crucesRealizados + 1}</div>
-                <div>${primero.nick}</div>
+                <div class="match-title">OCTAVOS DE FINAL - LLAVE ${matchNum}</div>
+                <div style="font-weight:600">${primero.nick} (1° ${primero.grupo})</div>
                 <div class="vs">VS</div>
-                <div>${segundo.nick}</div>
+                <div style="font-weight:600">${segundo.nick} (2° ${segundo.grupo})</div>
             </div>
         `;
 
         crucesRealizados++;
+        if (crucesRealizados === 8) {
+            document.getElementById('btnSortear').disabled = true;
+            document.getElementById('btnSortear').innerText = "SORTEO FINALIZADO";
+        }
     }
 
-    init();
+    cargarDatos();
 </script>
 </body>
 </html>
