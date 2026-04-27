@@ -3,126 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <title>Sorteo Épico | Copa Uruguaya 2026</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+/* ... (mantenemos tu estilo que está muy bien) ... */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  background: #0a0a0f;
-  color: #e0e0e6;
-  font-family: 'Barlow Condensed', sans-serif;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.header h1 {
-  font-family: 'Cinzel', serif;
-  color: #d4a843;
-  letter-spacing: 4px;
-  margin-bottom: 25px;
-}
-
-.bombos-wrapper {
-  display: flex;
-  gap: 20px;
-  width: 900px;
-  margin-bottom: 20px;
-}
-
-.bombo-box {
-  flex: 1;
-  background: #14141e;
-  padding: 10px;
-  border-radius: 6px;
-}
-
-.player-tag {
-  padding: 6px;
-  margin: 3px 0;
-  background: rgba(255,255,255,0.05);
-  transition: 0.2s;
-}
-
-.player-tag.active {
-  background: #d4a843;
-  color: black;
-}
-
-.player-tag.used {
-  opacity: 0.2;
-}
-
-/* BOTON */
-.btn {
-  padding: 12px 30px;
-  background: #d4a843;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  margin-bottom: 25px;
-}
-
-/* BRACKET */
-.bracket {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  width: 1000px;
-}
-
-.slot {
-  height: 110px;
-  border: 1px dashed #444;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* CARD */
-.card {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #d4a843;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #111;
-  animation: pop 0.4s ease;
-}
-
-@keyframes pop {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
-}
-
-/* ANIMACION RULETA */
-.roulette {
-  font-size: 14px;
-  color: #d4a843;
-  animation: blink 0.1s infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0.2; }
-}
+body { background: #0a0a0f; color: #e0e0e6; font-family: 'Barlow Condensed', sans-serif; padding: 30px; display: flex; flex-direction: column; align-items: center; }
+.header h1 { font-family: 'Cinzel', serif; color: #d4a843; letter-spacing: 4px; margin-bottom: 25px; text-shadow: 0 0 15px rgba(212,168,67,0.3); }
+.bombos-wrapper { display: flex; gap: 20px; width: 900px; margin-bottom: 20px; }
+.bombo-box { flex: 1; background: #14141e; padding: 15px; border-radius: 6px; border: 1px solid rgba(212,168,67,0.1); }
+.bombo-box h2 { font-family: 'Cinzel'; font-size: 14px; color: #d4a843; margin-bottom: 10px; text-align: center; border-bottom: 1px solid #333; padding-bottom: 5px; }
+.player-tag { padding: 8px; margin: 4px 0; background: rgba(255,255,255,0.03); transition: 0.2s; border-radius: 3px; font-size: 14px; }
+.player-tag.active { background: #d4a843; color: black; font-weight: bold; transform: scale(1.02); }
+.player-tag.used { opacity: 0.1; filter: grayscale(1); }
+.btn { padding: 15px 40px; background: linear-gradient(135deg, #d4a843 0%, #a67c2d 100%); border: none; cursor: pointer; font-family: 'Cinzel'; font-weight: bold; margin-bottom: 25px; border-radius: 4px; }
+.bracket { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; width: 1000px; }
+.slot { height: 110px; border: 1px dashed #444; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+.card { width: 100%; height: 100%; border: 1px solid #d4a843; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #111; animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+@keyframes pop { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 </style>
 </head>
 
 <body>
 
-<h1>COPA URUGUAYA 2026</h1>
+<div class="header"><h1>COPA URUGUAYA 2026</h1></div>
 
 <div class="bombos-wrapper">
-  <div id="b1"></div>
-  <div id="b2"></div>
+  <div class="bombo-box">
+    <h2>BOMBO 1</h2>
+    <div id="b1"></div>
+  </div>
+  <div class="bombo-box">
+    <h2>BOMBO 2</h2>
+    <div id="b2"></div>
+  </div>
 </div>
 
-<button class="btn" onclick="sortear()">SORTEAR</button>
+<button class="btn" id="btnSortear" onclick="sortear()">COMENZAR SORTEO</button>
 
 <div class="bracket">
   <div id="slot-OF1" class="slot"></div>
@@ -143,58 +60,66 @@ let slotsRandom = [];
 
 async function init() {
   const data = await fetch('torneos/1v1_copa_uruguaya_2026.json').then(r=>r.json());
-
   pool = data.eliminatorias.octavos;
 
-  // slots visuales random
-  slotsRandom = [...pool.map(p=>p.partidoId)];
-  slotsRandom.sort(()=>Math.random()-0.5);
+  // 1. Mezclamos los slots visuales para que no se llenen en orden 1, 2, 3...
+  slotsRandom = pool.map(p => p.partidoId).sort(() => Math.random() - 0.5);
 
-  pool.forEach(m=>{
-    b1.innerHTML += `<div class="player-tag" id="t1-${m.jugador1Id}">${m.jugador1Nick}</div>`;
-    b2.innerHTML += `<div class="player-tag" id="t2-${m.jugador2Id}">${m.jugador2Nick}</div>`;
+  // 2. Extraemos nombres y desordenamos los bombos visualmente
+  // Aunque estén desordenados en pantalla, el ID nos permite encontrarlos después
+  const listaB1 = pool.map(m => ({ id: m.jugador1Id, nick: m.jugador1Nick })).sort(() => Math.random() - 0.5);
+  const listaB2 = pool.map(m => ({ id: m.jugador2Id, nick: m.jugador2Nick })).sort(() => Math.random() - 0.5);
+
+  const b1Container = document.getElementById('b1');
+  const b2Container = document.getElementById('b2');
+
+  listaB1.forEach(p => {
+    b1Container.innerHTML += `<div class="player-tag" id="t1-${p.id}">${p.nick}</div>`;
+  });
+  listaB2.forEach(p => {
+    b2Container.innerHTML += `<div class="player-tag" id="t2-${p.id}">${p.nick}</div>`;
   });
 }
 
 function randomHighlight(containerId){
   const list = document.querySelectorAll(`#${containerId} .player-tag:not(.used)`);
-  list.forEach(el=>el.classList.remove('active'));
-
-  const r = list[Math.floor(Math.random()*list.length)];
+  list.forEach(el => el.classList.remove('active'));
+  const r = list[Math.floor(Math.random() * list.length)];
   if(r) r.classList.add('active');
 }
 
 function sortear(){
+  const btn = document.getElementById('btnSortear');
+  btn.disabled = true; // Evitar clics dobles durante la animación
 
-  if(etapa==="B1"){
-    const i = Math.floor(Math.random()*pool.length);
-    actual = pool.splice(i,1)[0];
+  if(etapa === "B1"){
+    const i = Math.floor(Math.random() * pool.length);
+    actual = pool.splice(i, 1)[0];
 
     let ticks = 0;
-
-    const interval = setInterval(()=>{
+    const interval = setInterval(() => {
       randomHighlight("b1");
       ticks++;
-      if(ticks>15){
+      if(ticks > 15){
         clearInterval(interval);
+        // Limpiamos brillos y activamos al ganador real
+        document.querySelectorAll(`#b1 .player-tag`).forEach(el => el.classList.remove('active'));
         document.getElementById(`t1-${actual.jugador1Id}`).classList.add('active');
+        btn.disabled = false;
+        btn.innerText = "SORTEAR RIVAL";
+        etapa = "B2";
       }
-    },80);
-
-    etapa="B2";
+    }, 60);
   }
-
   else {
-
     let ticks = 0;
-
-    const interval = setInterval(()=>{
+    const interval = setInterval(() => {
       randomHighlight("b2");
       ticks++;
-
-      if(ticks>20){
+      if(ticks > 20){
         clearInterval(interval);
-
+        
+        document.querySelectorAll(`#b2 .player-tag`).forEach(el => el.classList.remove('active'));
         const t1 = document.getElementById(`t1-${actual.jugador1Id}`);
         const t2 = document.getElementById(`t2-${actual.jugador2Id}`);
 
@@ -202,21 +127,29 @@ function sortear(){
         t1.classList.add('used');
         t2.classList.add('used');
 
-        // slot falso 🔥
-        const fake = slotsRandom.shift();
-        const slot = document.getElementById(`slot-${fake}`);
+        // Llenar slot aleatorio
+        const fakeId = slotsRandom.shift();
+        const slot = document.getElementById(`slot-${fakeId}`);
 
         slot.innerHTML = `
           <div class="card">
-            <div>${actual.jugador1Nick}</div>
-            <div style="color:#d4a843">VS</div>
-            <div>${actual.jugador2Nick}</div>
+            <div style="font-size:10px; color:#d4a843; margin-bottom:5px">LLAVE ${fakeId}</div>
+            <div style="font-weight:bold">${actual.jugador1Nick}</div>
+            <div style="color:#d4a843; font-family:Cinzel; font-size:12px">VS</div>
+            <div style="font-weight:bold">${actual.jugador2Nick}</div>
           </div>
         `;
 
-        etapa="B1";
+        btn.disabled = false;
+        if(pool.length === 0){
+          btn.innerText = "SORTEO FINALIZADO";
+          btn.disabled = true;
+        } else {
+          btn.innerText = "SORTEAR SIGUIENTE";
+          etapa = "B1";
+        }
       }
-    },80);
+    }, 60);
   }
 }
 
