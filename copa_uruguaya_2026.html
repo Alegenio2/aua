@@ -41,7 +41,6 @@ body{
   overflow-x:hidden;
 }
 
-/* ── Background texture ── */
 body::before{
   content:'';
   position:fixed;inset:0;
@@ -52,12 +51,10 @@ body::before{
   pointer-events:none;z-index:0;
 }
 
-/* ── Scroll bar ── */
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--bg0)}
 ::-webkit-scrollbar-thumb{background:#3a2a1a;border-radius:3px}
 
-/* ══ HEADER ══════════════════════════════════════════════ */
 header{
   position:sticky;top:0;z-index:100;
   background:rgba(8,6,4,0.97);
@@ -92,7 +89,6 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
 }
 .nav-stats:hover{background:var(--gold-light)!important}
 
-/* ══ HERO ════════════════════════════════════════════════ */
 .hero{
   position:relative;
   padding:80px 32px 60px;
@@ -145,7 +141,6 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   width:8px;height:8px;background:var(--gold);
   clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);
 }
-/* Pills info */
 .hero-pills{
   display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
   margin-bottom:36px;
@@ -158,7 +153,6 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   font-size:12px;color:var(--muted);letter-spacing:0.5px;
 }
 .pill i{color:var(--gold);font-size:11px}
-/* Quick links */
 .quick-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .ql-btn{
   display:flex;align-items:center;gap:8px;
@@ -168,9 +162,7 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   transition:all 0.18s;cursor:pointer;border:none;
   font-family:'Inter',sans-serif;
 }
-.ql-primary{
-  background:var(--gold);color:var(--bg0);
-}
+.ql-primary{background:var(--gold);color:var(--bg0);}
 .ql-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
 .ql-secondary{
   background:transparent;
@@ -179,7 +171,6 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
 }
 .ql-secondary:hover{background:var(--gold-dim);transform:translateY(-1px)}
 
-/* ══ SECTION LAYOUT ══════════════════════════════════════ */
 .section{
   position:relative;z-index:1;
   max-width:1280px;margin:0 auto;
@@ -204,10 +195,7 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   background:linear-gradient(to right,rgba(232,200,122,0.2),transparent);
 }
 
-/* ══ TABS ════════════════════════════════════════════════ */
-.tabs{
-  display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;
-}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;}
 .tab-btn{
   padding:8px 18px;border-radius:6px;
   font-size:12px;font-weight:500;letter-spacing:1px;
@@ -222,10 +210,9 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   color:var(--gold);
 }
 
-/* ══ GRUPOS GRID ══════════════════════════════════════════ */
 .grupos-grid{
   display:grid;
-  /*grid-template-columns:repeat(auto-fill,minmax(340px,1fr));*/
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
   gap:16px;
 }
 .grupo-card{
@@ -233,9 +220,7 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   border:0.5px solid var(--brown);
   border-radius:10px;
   overflow:hidden;
-  transition:border-color 0.2s;
 }
-.grupo-card:hover{border-color:rgba(232,200,122,0.3)}
 .grupo-card-header{
   display:flex;align-items:center;justify-content:space-between;
   padding:12px 16px;
@@ -251,7 +236,7 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   background:var(--bg2);border:0.5px solid var(--brown);
   padding:2px 8px;border-radius:10px;
 }
-/* Tabla posiciones */
+
 .tabla-pos{width:100%;border-collapse:collapse}
 .tabla-pos th{
   font-size:8px;letter-spacing:1.5px;color:var(--dim);
@@ -264,149 +249,48 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   border-bottom:0.5px solid rgba(58,42,26,0.5);
   text-align:center;
 }
-.tabla-pos tr:last-child td{border-bottom:none}
 .tabla-pos td:first-child{text-align:left}
-.tabla-pos tbody tr{transition:background 0.15s}
-.tabla-pos tbody tr:hover{background:rgba(232,200,122,0.03)}
-/* Clasificado highlight */
-.tabla-pos tbody tr.clasificado td:first-child{
-  border-left:2px solid var(--gold);
-}
+.tabla-pos tbody tr.clasificado td:first-child{border-left:2px solid var(--gold);}
 .tabla-pos tbody tr.clasificado .pos-num{color:var(--gold);font-weight:700}
-.pos-num{
-  font-family:'Cinzel',serif;font-size:12px;
-  color:var(--dim);margin-right:6px;
-}
+.pos-num{font-family:'Cinzel',serif;font-size:12px;color:var(--dim);margin-right:6px;}
 .nick-text{font-size:13px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px;display:inline-block;vertical-align:middle}
-.pts-cell{
-  font-family:'Cinzel',serif;font-size:14px;font-weight:700;
-  color:var(--gold);
-}
-.elo-badge{
-  font-size:10px;color:var(--dim);
-  background:rgba(58,42,26,0.4);
-  padding:1px 6px;border-radius:3px;
-}
+.pts-cell{font-family:'Cinzel',serif;font-size:14px;font-weight:700;color:var(--gold);}
+.elo-badge{font-size:10px;color:var(--dim);background:rgba(58,42,26,0.4);padding:1px 6px;border-radius:3px;}
 .stat-cell{color:var(--muted);font-size:12px}
 .stat-cell.win{color:var(--win)}
 .stat-cell.loss{color:#c07070}
 
-/* ══ RONDAS ══════════════════════════════════════════════ */
 .rondas-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-.ronda-block{
-  background:var(--bg2);border:0.5px solid var(--brown);
-  border-radius:10px;overflow:hidden;
-}
-.ronda-header{
-  padding:10px 16px;background:var(--bg3);
-  border-bottom:0.5px solid var(--brown);
-  display:flex;align-items:center;gap:10px;
-}
-.ronda-label{
-  font-family:'Cinzel',serif;font-size:11px;
-  color:var(--gold2);letter-spacing:2px;text-transform:uppercase;
-}
-.partido-row{
-  display:flex;align-items:center;padding:12px 16px;
-  border-bottom:0.5px solid rgba(58,42,26,0.4);
-  gap:8px;
-}
-.partido-row:last-child{border-bottom:none}
+.ronda-block{background:var(--bg2);border:0.5px solid var(--brown);border-radius:10px;overflow:hidden;}
+.ronda-header{padding:10px 16px;background:var(--bg3);border-bottom:0.5px solid var(--brown);display:flex;align-items:center;gap:10px;}
+.ronda-label{font-family:'Cinzel',serif;font-size:11px;color:var(--gold2);letter-spacing:2px;text-transform:uppercase;}
+.partido-row{display:flex;align-items:center;padding:12px 16px;border-bottom:0.5px solid rgba(58,42,26,0.4);gap:8px;}
 .p-j1{flex:1;text-align:right;font-size:12px;color:var(--text)}
 .p-j2{flex:1;text-align:left;font-size:12px;color:var(--text)}
-.p-score{
-  display:flex;align-items:center;gap:6px;
-  font-family:'Cinzel',serif;font-size:14px;
-  font-weight:700;min-width:60px;justify-content:center;
-}
-.p-score .s1{color:var(--text)}
-.p-score .sep{color:var(--brown);font-size:10px}
-.p-score .s2{color:var(--text)}
-.p-score.has-result .s1.won{color:var(--win)}
-.p-score.has-result .s2.won{color:var(--win)}
+.p-score{display:flex;align-items:center;gap:6px;font-family:'Cinzel',serif;font-size:14px;font-weight:700;min-width:60px;justify-content:center;}
 .p-score.pending{color:var(--brown);font-size:11px;letter-spacing:1px}
 .partido-links{display:flex;gap:5px}
-.p-link{
-  font-size:9px;padding:2px 7px;border-radius:4px;
-  color:var(--dim);border:0.5px solid var(--brown);
-  text-decoration:none;transition:all 0.15s;
-}
-.p-link:hover{color:var(--gold);border-color:var(--gold2)}
+.p-link{font-size:9px;padding:2px 7px;border-radius:4px;color:var(--dim);border:0.5px solid var(--brown);text-decoration:none;}
 
-/* ══ CRUCES (Bracket) ════════════════════════════════════ */
-.bracket-info{
-  background:var(--bg2);border:0.5px solid var(--brown);
-  border-radius:10px;padding:24px;margin-bottom:16px;
-}
-.bracket-info-title{
-  font-family:'Cinzel',serif;font-size:13px;color:var(--gold);
-  letter-spacing:2px;margin-bottom:12px;
-}
-.cruces-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:12px;
-}
-.cruce-card{
-  background:var(--bg3);border:0.5px solid var(--brown);
-  border-radius:8px;padding:14px 16px;
-}
-.cruce-num{
-  font-size:9px;color:var(--dim);letter-spacing:2px;
-  text-transform:uppercase;margin-bottom:10px;
-}
-.cruce-j{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:7px 0;
-}
+.bracket-info{background:var(--bg2);border:0.5px solid var(--brown);border-radius:10px;padding:24px;margin-bottom:16px;}
+.bracket-info-title{font-family:'Cinzel',serif;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:12px;}
+.cruces-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;}
+.cruce-card{background:var(--bg3);border:0.5px solid var(--brown);border-radius:8px;padding:14px 16px;}
+.cruce-num{font-size:9px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.cruce-j{display:flex;align-items:center;justify-content:space-between;padding:7px 0;}
 .cruce-j:first-of-type{border-bottom:0.5px solid var(--brown)}
-.cruce-pos{
-  font-size:9px;color:var(--dim);letter-spacing:1px;
-  background:rgba(58,42,26,0.4);padding:1px 6px;border-radius:3px;
-}
+.cruce-pos{font-size:9px;color:var(--dim);letter-spacing:1px;background:rgba(58,42,26,0.4);padding:1px 6px;border-radius:3px;}
 .cruce-nick{font-size:13px;color:var(--text)}
 .cruce-nick.tbd{color:var(--brown);font-style:italic}
-.cruce-vs{
-  display:flex;align-items:center;justify-content:center;
-  padding:4px 0;font-size:9px;color:var(--dim);letter-spacing:3px;
-}
+.cruce-vs{display:flex;align-items:center;justify-content:center;padding:4px 0;font-size:9px;color:var(--dim);letter-spacing:3px;}
 
-/* ══ MAPA POOL ════════════════════════════════════════════ */
-.mapas-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
-  gap:12px;
-}
-.mapa-cat-title{
-  grid-column:1/-1;
-  font-size:9px;color:var(--dim);letter-spacing:3px;
-  text-transform:uppercase;padding:8px 0 4px;
-  border-top:0.5px solid var(--brown);margin-top:8px;
-}
-.mapa-cat-title:first-child{border-top:none;margin-top:0}
-.mapa-thumb{
-  position:relative;border-radius:8px;overflow:hidden;
-  border:0.5px solid var(--brown);aspect-ratio:16/10;
-  background:var(--bg2);cursor:default;
-  transition:border-color 0.18s,transform 0.18s;
-}
-.mapa-thumb:hover{border-color:var(--gold2);transform:translateY(-2px)}
-.mapa-thumb img{width:100%;height:100%;object-fit:cover;opacity:0.7;display:block;transition:opacity 0.18s}
-.mapa-thumb:hover img{opacity:0.9}
-.mapa-thumb-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,transparent 30%,rgba(8,5,2,0.9) 100%);
-}
-.mapa-thumb-name{
-  position:absolute;bottom:0;left:0;right:0;
-  font-size:10px;font-weight:600;color:var(--text);
-  text-align:center;padding:0 6px 7px;line-height:1.2;
-}
-.mapa-thumb-cat{
-  position:absolute;top:6px;right:6px;
-  font-size:8px;letter-spacing:1px;
-  padding:1px 6px;border-radius:3px;
-  text-transform:uppercase;
-}
+.mapas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
+.mapa-cat-title{grid-column:1/-1;font-size:9px;color:var(--dim);letter-spacing:3px;text-transform:uppercase;padding:8px 0 4px;border-top:0.5px solid var(--brown);margin-top:8px;}
+.mapa-thumb{position:relative;border-radius:8px;overflow:hidden;border:0.5px solid var(--brown);aspect-ratio:16/10;background:var(--bg2);}
+.mapa-thumb img{width:100%;height:100%;object-fit:cover;opacity:0.7;display:block;}
+.mapa-thumb-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(8,5,2,0.9) 100%);}
+.mapa-thumb-name{position:absolute;bottom:0;left:0;right:0;font-size:10px;font-weight:600;color:var(--text);text-align:center;padding:0 6px 7px;line-height:1.2;}
+.mapa-thumb-cat{position:absolute;top:6px;right:6px;font-size:8px;letter-spacing:1px;padding:1px 6px;border-radius:3px;text-transform:uppercase;}
 .cat-abierto{background:rgba(100,160,40,0.7);color:#c8f080}
 .cat-semiabierto{background:rgba(200,160,40,0.7);color:#f0d880}
 .cat-cerrado{background:rgba(180,40,40,0.7);color:#f09090}
@@ -414,98 +298,38 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
 .cat-agua{background:rgba(40,160,200,0.7);color:#80e0f8}
 .cat-nomada{background:rgba(160,100,40,0.7);color:#f0c080}
 
-/* ══ CRONOGRAMA ══════════════════════════════════════════ */
 .cronograma-list{display:flex;flex-direction:column;gap:10px}
-.crono-item{
-  display:flex;align-items:center;gap:16px;
-  background:var(--bg2);border:0.5px solid var(--brown);
-  border-radius:8px;padding:14px 18px;
-  transition:border-color 0.18s;
-}
-.crono-item:hover{border-color:rgba(232,200,122,0.2)}
-.crono-item.activo{
-  border-color:rgba(232,200,122,0.4);
-  background:rgba(232,200,122,0.04);
-}
-.crono-item.activo .crono-fase{color:var(--gold)}
-.crono-date{
-  min-width:100px;font-family:'Cinzel',serif;font-size:12px;
-  color:var(--gold2);letter-spacing:1px;text-align:center;
-}
-.crono-dot{
-  width:10px;height:10px;border-radius:50%;flex-shrink:0;
-  background:var(--brown);border:2px solid var(--brown);
-}
-.crono-item.activo .crono-dot{
-  background:var(--gold);border-color:var(--gold);
-  box-shadow:0 0 8px rgba(232,200,122,0.4);
-}
+.crono-item{display:flex;align-items:center;gap:16px;background:var(--bg2);border:0.5px solid var(--brown);border-radius:8px;padding:14px 18px;}
+.crono-item.activo{border-color:rgba(232,200,122,0.4);background:rgba(232,200,122,0.04);}
+.crono-date{min-width:100px;font-family:'Cinzel',serif;font-size:12px;color:var(--gold2);letter-spacing:1px;text-align:center;}
+.crono-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;background:var(--brown);border:2px solid var(--brown);}
+.crono-item.activo .crono-dot{background:var(--gold);border-color:var(--gold);box-shadow:0 0 8px rgba(232,200,122,0.4);}
 .crono-item.completado .crono-dot{background:var(--win);border-color:var(--win)}
 .crono-fase{font-size:13px;color:var(--text);flex:1}
-.crono-desc{font-size:11px;color:var(--dim);margin-top:2px}
-.crono-status{
-  font-size:9px;letter-spacing:1px;text-transform:uppercase;
-  padding:2px 8px;border-radius:10px;white-space:nowrap;
-}
+.crono-status{font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:10px;white-space:nowrap;}
 .status-activo{background:rgba(232,200,122,0.1);color:var(--gold);border:0.5px solid rgba(232,200,122,0.3)}
 .status-pendiente{background:rgba(58,42,26,0.4);color:var(--dim);border:0.5px solid var(--brown)}
 .status-completado{background:rgba(100,160,40,0.1);color:var(--win);border:0.5px solid rgba(100,160,40,0.3)}
 
-/* ══ REGLAMENTO / INFO ════════════════════════════════════ */
 .info-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
-.info-card{
-  background:var(--bg2);border:0.5px solid var(--brown);
-  border-radius:10px;padding:20px;
-  transition:border-color 0.2s;
-}
-.info-card:hover{border-color:rgba(232,200,122,0.25)}
+.info-card{background:var(--bg2);border:0.5px solid var(--brown);border-radius:10px;padding:20px;}
 .info-card-icon{font-size:22px;margin-bottom:10px}
-.info-card-title{
-  font-family:'Cinzel',serif;font-size:12px;
-  color:var(--gold);letter-spacing:2px;margin-bottom:8px;
-  text-transform:uppercase;
-}
+.info-card-title{font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:8px;text-transform:uppercase;}
 .info-card-body{font-size:12px;color:var(--muted);line-height:1.7}
-.info-card-link{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:12px;font-size:11px;color:var(--gold2);
-  text-decoration:none;letter-spacing:1px;
-  border-bottom:0.5px solid rgba(232,200,122,0.3);
-  padding-bottom:1px;transition:color 0.18s;
-}
-.info-card-link:hover{color:var(--gold)}
+.info-card-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:11px;color:var(--gold2);text-decoration:none;letter-spacing:1px;border-bottom:0.5px solid rgba(232,200,122,0.3);padding-bottom:1px;}
 
-/* ══ FOOTER ══════════════════════════════════════════════ */
-footer{
-  position:relative;z-index:1;
-  text-align:center;padding:40px 24px;
-  border-top:0.5px solid rgba(58,42,26,0.5);
-  background:var(--bg1);
-}
-.footer-logo{
-  font-family:'Cinzel Decorative',serif;font-size:14px;
-  color:var(--gold);letter-spacing:3px;margin-bottom:12px;
-}
+footer{position:relative;z-index:1;text-align:center;padding:40px 24px;border-top:0.5px solid rgba(58,42,26,0.5);background:var(--bg1);}
+.footer-logo{font-family:'Cinzel Decorative',serif;font-size:14px;color:var(--gold);letter-spacing:3px;margin-bottom:12px;}
 .footer-text{font-size:11px;color:var(--dim);letter-spacing:1px;margin-bottom:16px}
 .footer-links{display:flex;justify-content:center;gap:20px}
-.footer-links a{color:var(--dim);font-size:18px;transition:color 0.18s}
-.footer-links a:hover{color:var(--gold)}
+.footer-links a{color:var(--dim);font-size:18px;}
 
-/* ══ LOADING / ESTADO ════════════════════════════════════ */
-.loading{
-  text-align:center;padding:40px;
-  font-size:12px;color:var(--dim);letter-spacing:2px;
-}
-.loading-dot{
-  display:inline-block;width:6px;height:6px;border-radius:50%;
-  background:var(--gold);margin:0 3px;
-  animation:ldot 1.4s ease-in-out infinite;
-}
+.loading{text-align:center;padding:40px;font-size:12px;color:var(--dim);letter-spacing:2px;}
+.loading-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin:0 3px;animation:ldot 1.4s ease-in-out infinite;}
 .loading-dot:nth-child(2){animation-delay:.2s}
 .loading-dot:nth-child(3){animation-delay:.4s}
 @keyframes ldot{0%,80%,100%{transform:scale(0);opacity:.4}40%{transform:scale(1);opacity:1}}
 
-/* ══ RESPONSIVE ══════════════════════════════════════════ */
 @media(max-width:768px){
   header{padding:0 16px}
   .hero{padding:50px 16px 40px}
@@ -515,14 +339,12 @@ footer{
   nav a{padding:5px 10px;font-size:11px}
 }
 
-/* ══ ANIMATIONS ══════════════════════════════════════════ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .fade-up{animation:fadeUp 0.5s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <a href="index.html" class="header-logo">
     <span class="logo-icon">⚔</span>
@@ -534,7 +356,6 @@ footer{
   </nav>
 </header>
 
-<!-- HERO -->
 <div class="hero fade-up">
   <div class="hero-label">Asociación Uruguaya de Age of Empires II</div>
   <h1 class="hero-title">Copa <span>Uruguaya</span></h1>
@@ -552,11 +373,9 @@ footer{
     <a href="#cruces" class="ql-btn ql-secondary"><i class="fas fa-sitemap"></i> Cruces</a>
     <a href="#mapas" class="ql-btn ql-secondary"><i class="fas fa-map"></i> Mapas</a>
     <a href="#cronograma" class="ql-btn ql-secondary"><i class="fas fa-clock"></i> Cronograma</a>
-    <a href="copa_stats.html" class="ql-btn ql-secondary"><i class="fas fa-chart-bar"></i> Estadísticas</a>
   </div>
 </div>
 
-<!-- ══ SECCIÓN GRUPOS ══════════════════════════════════ -->
 <section class="section" id="grupos">
   <div class="section-header">
     <div class="section-icon">🏆</div>
@@ -566,16 +385,12 @@ footer{
     </div>
     <div class="section-line"></div>
   </div>
-
-  <!-- Tabs grupos -->
   <div class="tabs" id="grupos-tabs"></div>
-  <!-- Grid grupos (tabla o rondas) -->
   <div id="grupos-content" class="grupos-grid">
     <div class="loading"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></div>
   </div>
 </section>
 
-<!-- ══ SECCIÓN CRUCES ══════════════════════════════════ -->
 <section class="section" id="cruces">
   <div class="section-header">
     <div class="section-icon">⚔</div>
@@ -585,185 +400,55 @@ footer{
     </div>
     <div class="section-line"></div>
   </div>
-
   <div class="bracket-info">
     <div class="bracket-info-title">🛡 Formato de Eliminación</div>
     <div style="font-size:12px;color:var(--muted);line-height:1.8">
-      Los dos<strong style="color:var(--gold)">primeros de cada grupo</strong> avanzan a la fase eliminatoria.<br>
-      </div>
+      Los <strong style="color:var(--gold)">primeros de cada grupo</strong> avanzan a la fase eliminatoria.<br>
+      Los cruces se determinarán según la posición final en la tabla de grupos.
+    </div>
   </div>
-
   <div class="cruces-grid" id="cruces-content">
-    <!-- Generado dinámicamente -->
-  </div>
+    </div>
 </section>
 
-<!-- ══ SECCIÓN MAPAS ════════════════════════════════════ -->
 <section class="section" id="mapas">
   <div class="section-header">
     <div class="section-icon">🗺</div>
-    <div>
-      <div class="section-title">Pool de Mapas</div>
-      <div class="section-sub">18 mapas divididos en 6 categorías</div>
-    </div>
+    <div><div class="section-title">Pool de Mapas</div><div class="section-sub">18 mapas</div></div>
     <div class="section-line"></div>
   </div>
-  <div class="mapas-grid" id="mapas-content">
-    <div class="loading"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></div>
-  </div>
+  <div class="mapas-grid" id="mapas-content"></div>
 </section>
 
-<!-- ══ SECCIÓN CRONOGRAMA ══════════════════════════════ -->
 <section class="section" id="cronograma">
   <div class="section-header">
     <div class="section-icon">📅</div>
-    <div>
-      <div class="section-title">Cronograma</div>
-      <div class="section-sub">Fechas y fases del torneo</div>
-    </div>
+    <div><div class="section-title">Cronograma</div><div class="section-sub">Fases del torneo</div></div>
     <div class="section-line"></div>
   </div>
   <div class="cronograma-list">
-    <div class="crono-item completado">
-      <div class="crono-date">Mar 2026</div>
-      <div class="crono-dot"></div>
-      <div>
-        <div class="crono-fase">Inscripciones & Sorteo</div>
-        <div class="crono-desc">Registro de jugadores y formación de grupos</div>
-      </div>
-      <span class="crono-status status-completado">Completado</span>
-    </div>
-    <div class="crono-item activo">
-      <div class="crono-date">Abr</div>
-      <div class="crono-dot"></div>
-      <div>
-        <div class="crono-fase">Fase de Grupos</div>
-        <div class="crono-desc">8 grupos · Robin Round · Bo3</div>
-      </div>
-      <span class="crono-status status-activo">En curso</span>
-    </div>
-    <div class="crono-item">
-      <div class="crono-date">Abr - May</div>
-      <div class="crono-dot"></div>
-      <div>
-        <div class="crono-fase">Octavos de Final</div>
-        <div class="crono-desc">16 clasificados · Bo3</div>
-      </div>
-      <span class="crono-status status-pendiente">Pendiente</span>
-    </div>
-    <div class="crono-item">
-      <div class="crono-date">May 2026</div>
-      <div class="crono-dot"></div>
-      <div>
-        <div class="crono-fase">Cuartos de Final</div>
-        <div class="crono-desc">8 jugadores · Bo3</div>
-      </div>
-      <span class="crono-status status-pendiente">Pendiente</span>
-    </div>
-    <div class="crono-item">
-      <div class="crono-date">May 2026</div>
-      <div class="crono-dot"></div>
-      <div>
-        <div class="crono-fase">Semifinales</div>
-        <div class="crono-desc">4 jugadores · Bo3</div>
-      </div>
-      <span class="crono-status status-pendiente">Pendiente</span>
-    </div>
-    <div class="crono-item">
-      <div class="crono-date">May 2026</div>
-      <div class="crono-dot"></div>
-      <div>
-        <div class="crono-fase">🏆 Gran Final</div>
-        <div class="crono-desc">Bo5 · Stream en vivo</div>
-      </div>
-      <span class="crono-status status-pendiente">Pendiente</span>
-    </div>
+    <div class="crono-item completado"><div class="crono-date">Mar 2026</div><div class="crono-dot"></div><div class="crono-fase">Inscripciones</div><span class="crono-status status-completado">Listo</span></div>
+    <div class="crono-item activo"><div class="crono-date">Abr</div><div class="crono-dot"></div><div class="crono-fase">Fase de Grupos</div><span class="crono-status status-activo">En curso</span></div>
+    <div class="crono-item"><div class="crono-date">May</div><div class="crono-dot"></div><div class="crono-fase">🏆 Play-offs</div><span class="crono-status status-pendiente">Pendiente</span></div>
   </div>
 </section>
 
-<!-- ══ SECCIÓN INFO ════════════════════════════════════ -->
-<section class="section" id="info">
-  <div class="section-header">
-    <div class="section-icon">📋</div>
-    <div>
-      <div class="section-title">Información</div>
-      <div class="section-sub">Reglamento, draft y recursos del torneo</div>
-    </div>
-    <div class="section-line"></div>
-  </div>
-  <div class="info-cards">
-    <div class="info-card">
-      <div class="info-card-icon">📜</div>
-      <div class="info-card-title">Reglamento</div>
-      <div class="info-card-body">
-        Formato Bo3 en fase de grupos, cuartos y semifinal. Draft de civs y mapas obligatorio. Sistema de handicap por diferencia de ELO.
-      </div>
-      <a href="#" class="info-card-link"><i class="fas fa-external-link-alt"></i> Ver reglamento completo</a>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">🛡</div>
-      <div class="info-card-title">Sistema de Draft</div>
-      <div class="info-card-body">
-        Draft de civilizaciones y mapas vía aoe2cm.net. El jugador de menor ELO elige si es HOST o GUEST en el draft.
-      </div>
-      <a href=" https://aoe2cm.net/preset/Xhakp" target="_blank" class="info-card-link"><i class="fas fa-external-link-alt"></i> Draft de mapas</a>
-      <a href="https://aoe2cm.net/preset/CPFXv" target="_blank" class="info-card-link"><i class="fas fa-external-link-alt"></i> Draf de civs</a>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">📊</div>
-      <div class="info-card-title">Estadísticas</div>
-      <div class="info-card-body">
-        Seguí las estadísticas individuales de cada jugador: winrate, civs más usadas, mapas y resultados de cada partida.
-      </div>
-      <a href="copa_stats.html" class="info-card-link"><i class="fas fa-chart-bar"></i> Ver estadísticas</a>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">📺</div>
-      <div class="info-card-title">Stream</div>
-      <div class="info-card-body">
-        Las partidas destacadas se transmiten en vivo. Seguí el canal de Twitch para no perderte ningún encuentro.
-      </div>
-      <a href="https://www.twitch.tv/jabsuy" target="_blank" class="info-card-link"><i class="fab fa-twitch"></i> Twitch JabsUY</a>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">💬</div>
-      <div class="info-card-title">Discord</div>
-      <div class="info-card-body">
-        Coordiná tus partidas, subí resultados y mantente al día con las novedades del torneo en el servidor de Discord.
-      </div>
-      <a href="https://discord.gg/c82s8DSAaY" target="_blank" class="info-card-link"><i class="fab fa-discord"></i> Unirse al Discord</a>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">🎯</div>
-      <div class="info-card-title">Handicap</div>
-      <div class="info-card-body">
-        5% de handicap cada 150 puntos de diferencia de ELO. El jugador favorecido puede perder un juego adicional sin quedar eliminado.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">AUA</div>
-  <div class="footer-text">Asociación Uruguaya de Age of Empires II · Copa Uruguaya 2026</div>
+  <div class="footer-text">Asociación Uruguaya de Age of Empires II</div>
   <div class="footer-links">
-    <a href="https://www.twitch.tv/jabsuy" target="_blank" title="Twitch"><i class="fab fa-twitch"></i></a>
-    <a href="https://www.youtube.com/@jabsuy" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.instagram.com/fumage_" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://discord.gg/c82s8DSAaY" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+    <a href="https://www.twitch.tv/jabsuy" target="_blank"><i class="fab fa-twitch"></i></a>
+    <a href="https://discord.gg/c82s8DSAaY" target="_blank"><i class="fab fa-discord"></i></a>
   </div>
 </footer>
 
 <script>
-// ══════════════════════════════════════════════════════════
-//  COPA URUGUAYA 2026 — JS
-// ══════════════════════════════════════════════════════════
-
-const TORNEO_URL  = 'torneos/1v1_copa_uruguaya_2026.json';
+const TORNEO_URL  = 'https://raw.githubusercontent.com/Alegenio2/aua/main/torneos/1v1_copa_uruguaya_2026.json';
 const MAPAS_URL   = 'https://raw.githubusercontent.com/Alegenio2/aua/main/mapas.json';
 
-// ── Helpers ──────────────────────────────────────────────
+let vistaGrupos = 'tabla';
+let torneoDB    = null;
+
 const cleanNick = n => (n||'').replace(/[|\[\]]/g,'').trim();
 
 async function fetchJSON(url) {
@@ -772,317 +457,105 @@ async function fetchJSON(url) {
   return r.json();
 }
 
-// ── Calcular tabla de posiciones ─────────────────────────
 function calcularTabla(torneo, letraGrupo) {
   const grupoOriginal = torneo.grupos.find(g => g.nombre === `Grupo ${letraGrupo}`);
   if (!grupoOriginal) return [];
-
   const stats = {};
   grupoOriginal.jugadores.forEach(j => {
     stats[j.id] = { nick: j.nick, elo: j.elo, pj:0, pg:0, pp:0, sf:0, sc:0, pts:0 };
   });
-
   const rg = torneo.rondas_grupos.find(r => r.grupo === letraGrupo);
   if (rg) {
     rg.partidos.forEach(ronda => {
       ronda.partidos.forEach(partido => {
         if (!partido.resultado) return;
-        const ids = Object.keys(partido.resultado).filter(k =>
-          !['mapas','civs','recs_url','recs_local','evidencia','fecha_registro'].includes(k)
-        );
+        const ids = Object.keys(partido.resultado).filter(k => !['mapas','civs','recs_url','recs_local','evidencia','fecha_registro'].includes(k));
         const id1 = ids[0], id2 = ids[1];
-        if (!id1 || !id2) return;
-        const pts1 = partido.resultado[id1];
-        const pts2 = partido.resultado[id2];
         if (!stats[id1] || !stats[id2]) return;
+        const pts1 = partido.resultado[id1], pts2 = partido.resultado[id2];
         stats[id1].pj++; stats[id2].pj++;
         stats[id1].sf += pts1; stats[id1].sc += pts2;
         stats[id2].sf += pts2; stats[id2].sc += pts1;
-        if (pts1 > pts2) {
-          stats[id1].pg++;
-          stats[id1].pts += 2; // ganador: 2 pts
-          stats[id2].pp++;
-          // perdedor: 1 pt si perdió 2-1 (pts2 == 1), 0 si perdió 2-0 (pts2 == 0)
-          if (pts2 === 1) {
-            stats[id2].pts += 1;
-          }
-        } else if (pts2 > pts1) {
-          stats[id2].pg++;
-          stats[id2].pts += 2; // ganador: 2 pts
-          stats[id1].pp++;
-          // perdedor: 1 pt si perdió 2-1 (pts1 == 1), 0 si perdió 2-0 (pts1 == 0)
-          if (pts1 === 1) {
-            stats[id1].pts += 1;
-          }
-        }
+        if (pts1 > pts2) { stats[id1].pg++; stats[id1].pts += 2; if (pts2 === 1) stats[id2].pts += 1; }
+        else if (pts2 > pts1) { stats[id2].pg++; stats[id2].pts += 2; if (pts1 === 1) stats[id1].pts += 1; }
       });
     });
   }
-
-  return Object.values(stats).sort((a,b) => {
-    if (b.pts !== a.pts) return b.pts - a.pts;
-    const da = a.sf - a.sc, db = b.sf - b.sc;
-    if (db !== da) return db - da;
-    return b.sf - a.sf;
-  });
+  return Object.values(stats).sort((a,b) => (b.pts - a.pts) || ((b.sf-b.sc) - (a.sf-a.sc)));
 }
 
-// ── Calcular partidos de un grupo ────────────────────────
-function getPartidosGrupo(torneo, letraGrupo) {
-  const rg = torneo.rondas_grupos.find(r => r.grupo === letraGrupo);
-  return rg ? rg.partidos : [];
-}
-
-// ── Render tabla posiciones ──────────────────────────────
 function renderTabla(tabla, clasificados = 1) {
-  const rows = tabla.map((j, i) => {
-    const isClasif = i < clasificados;
-    const diff = j.sf - j.sc;
-    return `<tr class="${isClasif ? 'clasificado' : ''}">
-      <td><span class="pos-num">${i+1}.</span><span class="nick-text" title="${cleanNick(j.nick)}">${cleanNick(j.nick)}</span></td>
+  const rows = tabla.map((j, i) => `
+    <tr class="${i < clasificados ? 'clasificado' : ''}">
+      <td><span class="pos-num">${i+1}.</span><span class="nick-text">${cleanNick(j.nick)}</span></td>
       <td><span class="elo-badge">${j.elo}</span></td>
       <td class="stat-cell">${j.pj}</td>
       <td class="stat-cell win">${j.pg}</td>
       <td class="stat-cell loss">${j.pp}</td>
-      <td class="stat-cell">${j.sf}</td>
-      <td class="stat-cell">${j.sc}</td>
-      <td class="stat-cell" style="color:${diff>=0?'var(--win)':'#c07070'}">${diff>0?'+':''}${diff}</td>
       <td class="pts-cell">${j.pts}</td>
-    </tr>`;
-  }).join('');
-
-  return `<table class="tabla-pos">
-    <thead><tr>
-      <th style="text-align:left">Jugador</th>
-      <th>ELO</th><th>PJ</th><th>PG</th><th>PP</th>
-      <th>SF</th><th>SC</th><th>Dif</th><th>PTS</th>
-    </tr></thead>
-    <tbody>${rows}</tbody>
-  </table>`;
+    </tr>`).join('');
+  return `<table class="tabla-pos"><thead><tr><th>Jugador</th><th>ELO</th><th>PJ</th><th>PG</th><th>PP</th><th>PTS</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
-
-// ── Render partidos de un grupo ──────────────────────────
-function renderPartidos(rondas) {
-  if (!rondas.length) return '<div class="loading" style="padding:16px">Sin partidos registrados</div>';
-
-  return rondas.map(ronda => {
-    const partidos = ronda.partidos.map(p => {
-      const res = p.resultado;
-      const ids = res ? Object.keys(res).filter(k => !['mapas','civs','recs_url','recs_local','evidencia','fecha_registro'].includes(k)) : [];
-      const id1 = p.jugador1Id, id2 = p.jugador2Id;
-      const pts1 = res ? res[id1] : null;
-      const pts2 = res ? res[id2] : null;
-
-      const links = res ? `
-        ${res.mapas ? `<a href="${res.mapas}" target="_blank" class="p-link">🗺 Draft Mapas</a>` : ''}
-        ${res.civs  ? `<a href="${res.civs}"  target="_blank" class="p-link">🛡 Draft Civs</a>`  : ''}
-        ${res.recs_url ? `<a href="${res.recs_url}" target="_blank" class="p-link">🎬 Rec</a>` : ''}
-      ` : '';
-
-      const scoreHtml = res
-        ? `<div class="p-score has-result">
-            <span class="s1 ${pts1 > pts2 ? 'won' : ''}">${pts1}</span>
-            <span class="sep">—</span>
-            <span class="s2 ${pts2 > pts1 ? 'won' : ''}">${pts2}</span>
-           </div>`
-        : `<div class="p-score pending">VS</div>`;
-
-      return `<div class="partido-row">
-        <div class="p-j1">${cleanNick(p.jugador1Nick)}</div>
-        ${scoreHtml}
-        <div class="p-j2">${cleanNick(p.jugador2Nick)}</div>
-        ${links ? `<div class="partido-links">${links}</div>` : ''}
-      </div>`;
-    }).join('');
-
-    return `<div class="ronda-block">
-      <div class="ronda-header">
-        <span class="ronda-label">Ronda ${ronda.ronda}</span>
-      </div>
-      ${partidos}
-    </div>`;
-  }).join('');
-}
-
-// ── Estado vista grupos: 'tabla' | 'partidos' ────────────
-let vistaGrupos = 'tabla';
-let torneoDB    = null;
-
-function renderGrupos(torneo) {
-  const letras = torneo.rondas_grupos.map(r => r.grupo);
-  const clasificados = torneo.config?.clasificados_por_grupo || 1;
-
-  // Tabs
-  const tabsEl = document.getElementById('grupos-tabs');
-  tabsEl.innerHTML = `
-    <button class="tab-btn ${vistaGrupos==='tabla'?'active':''}" onclick="switchVista('tabla')">📊 Tablas</button>
-    <button class="tab-btn ${vistaGrupos==='partidos'?'active':''}" onclick="switchVista('partidos')">⚔ Partidos</button>
-    <div style="flex:1"></div>
-    ${letras.map(l => `<button class="tab-btn" onclick="scrollToGrupo('${l}')">Grupo ${l}</button>`).join('')}
-  `;
-
-  // Content
-  const contentEl = document.getElementById('grupos-content');
-  if (vistaGrupos === 'tabla') {
-    contentEl.className = 'grupos-grid';
-    contentEl.innerHTML = letras.map(l => {
-      const tabla = calcularTabla(torneo, l);
-      const grupoOriginal = torneo.grupos.find(g => g.nombre === `Grupo ${l}`);
-      if (!grupoOriginal) return '';
-      const completados = torneo.rondas_grupos.find(r => r.grupo === l)?.partidos
-        .flatMap(r => r.partidos).filter(p => p.resultado).length || 0;
-      const total = torneo.rondas_grupos.find(r => r.grupo === l)?.partidos
-        .flatMap(r => r.partidos).length || 0;
-
-      return `<div class="grupo-card" id="grupo-${l}">
-        <div class="grupo-card-header">
-          <span class="grupo-nombre">Grupo ${l}</span>
-          <span class="grupo-badge">${completados}/${total} partidos</span>
-        </div>
-        <div style="padding:12px 8px">
-          ${renderTabla(tabla, clasificados)}
-        </div>
-      </div>`;
-    }).join('');
-  } else {
-    contentEl.className = '';
-    contentEl.innerHTML = letras.map(l => {
-      const rondas = getPartidosGrupo(torneo, l);
-      return `<div style="margin-bottom:28px" id="grupo-${l}">
-        <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:0.5px solid var(--brown)">
-          Grupo ${l}
-        </div>
-        <div class="rondas-wrap">${renderPartidos(rondas)}</div>
-      </div>`;
-    }).join('');
-  }
-
-  // Cruces
-  renderCruces(torneo);
-}
-
-window.switchVista = function(v) {
-  vistaGrupos = v;
-  renderGrupos(torneoDB);
-};
-
-window.scrollToGrupo = function(l) {
-  document.getElementById('grupo-' + l)?.scrollIntoView({behavior:'smooth', block:'start'});
-};
 
 function renderCruces(torneo) {
   const el = document.getElementById('cruces-content');
-
-  if (!torneo.cruces || torneo.cruces.length === 0) {
-    el.innerHTML = `<div class="loading">No hay cruces definidos</div>`;
-    return;
-  }
-
-  const cruces = torneo.cruces.map(c => {
-    const tabla1 = calcularTabla(torneo, c.g1);
-    const tabla2 = calcularTabla(torneo, c.g2);
-
-    const j1 = tabla1[c.pos1 - 1];
-    const j2 = tabla2[c.pos2 - 1];
-
-    return {
-      num: c.num,
-      g1: c.g1,
-      g2: c.g2,
-      pos1: c.pos1,
-      pos2: c.pos2,
-      j1,
-      j2
-    };
-  });
-
-  el.innerHTML = cruces.map(c => `
+  if(!torneo || !el) return;
+  const letras = torneo.rondas_grupos.map(r => r.grupo);
+  let html = '';
+  for (let i = 0; i < letras.length; i += 2) {
+    const l1 = letras[i], l2 = letras[i+1];
+    if (!l2) break;
+    const t1 = calcularTabla(torneo, l1)[0];
+    const t2 = calcularTabla(torneo, l2)[0];
+    html += `
     <div class="cruce-card">
-      <div class="cruce-num">
-        Cruce ${c.num} · ${c.pos1}° Grupo ${c.g1} vs ${c.pos2}° Grupo ${c.g2}
-      </div>
-
-      <div class="cruce-j">
-        <span class="cruce-pos">${c.pos1}° Grupo ${c.g1}</span>
-        <span class="cruce-nick ${c.j1?.pj > 0 ? '' : 'tbd'}">
-          ${c.j1?.pj > 0 ? cleanNick(c.j1.nick) : 'Por definir'}
-        </span>
-      </div>
-
+      <div class="cruce-num">Cruce ${Math.floor(i/2)+1} · 1°G${l1} vs 1°G${l2}</div>
+      <div class="cruce-j"><span class="cruce-pos">1° Grupo ${l1}</span><span class="cruce-nick">${t1 ? cleanNick(t1.nick) : 'TBD'}</span></div>
       <div class="cruce-vs">VS</div>
-
-      <div class="cruce-j">
-        <span class="cruce-pos">${c.pos2}° Grupo ${c.g2}</span>
-        <span class="cruce-nick ${c.j2?.pj > 0 ? '' : 'tbd'}">
-          ${c.j2?.pj > 0 ? cleanNick(c.j2.nick) : 'Por definir'}
-        </span>
-      </div>
-    </div>
-  `).join('');
-}
-
-// ── Render mapas ──────────────────────────────────────────
-async function renderMapas() {
-  const el = document.getElementById('mapas-content');
-  try {
-    const mapas = await fetchJSON(MAPAS_URL);
-    const cats = {};
-    for (const [id, m] of Object.entries(mapas)) {
-      const cat = (m.Categoria || 'Otros').trim();
-      if (!cats[cat]) cats[cat] = [];
-      cats[cat].push({ id, ...m });
-    }
-
-    const catClass = cat => {
-      const c = cat.toLowerCase().replace(/\s+/,'');
-      if (c.includes('semiabierto')) return 'cat-semiabierto';
-      if (c.includes('abierto'))    return 'cat-abierto';
-      if (c.includes('cerrado'))    return 'cat-cerrado';
-      if (c.includes('hibrido'))    return 'cat-hibrido';
-      if (c.includes('agua'))       return 'cat-agua';
-      if (c.includes('nomad'))      return 'cat-nomada';
-      return '';
-    };
-
-    el.innerHTML = Object.entries(cats).map(([cat, mapas]) => `
-      <div class="mapa-cat-title">${cat}</div>
-      ${mapas.map(m => `
-        <div class="mapa-thumb">
-          <img src="${m.url}" alt="${m.name}" loading="lazy" onerror="this.style.display='none'"/>
-          <div class="mapa-thumb-overlay"></div>
-          <span class="mapa-thumb-cat ${catClass(cat)}">${cat}</span>
-          <div class="mapa-thumb-name">${m.name}</div>
-        </div>
-      `).join('')}
-    `).join('');
-  } catch(e) {
-    el.innerHTML = '<div class="loading">Error cargando mapas</div>';
+      <div class="cruce-j"><span class="cruce-pos">1° Grupo ${l2}</span><span class="cruce-nick">${t2 ? cleanNick(t2.nick) : 'TBD'}</span></div>
+    </div>`;
   }
+  el.innerHTML = html;
 }
 
-// ── Init ──────────────────────────────────────────────────
+function renderGrupos(torneo) {
+  const letras = torneo.rondas_grupos.map(r => r.grupo);
+  const clasificados = torneo.config?.clasificados_por_grupo || 2;
+  
+  document.getElementById('grupos-tabs').innerHTML = `
+    <button class="tab-btn ${vistaGrupos==='tabla'?'active':''}" onclick="switchVista('tabla')">Tablas</button>
+    <button class="tab-btn ${vistaGrupos==='partidos'?'active':''}" onclick="switchVista('partidos')">Partidos</button>
+  `;
+
+  const contentEl = document.getElementById('grupos-content');
+  contentEl.innerHTML = letras.map(l => {
+    const tabla = calcularTabla(torneo, l);
+    return `<div class="grupo-card">
+      <div class="grupo-card-header"><span class="grupo-nombre">Grupo ${l}</span></div>
+      <div style="padding:12px 8px">${renderTabla(tabla, clasificados)}</div>
+    </div>`;
+  }).join('');
+  
+  renderCruces(torneo);
+}
+
+window.switchVista = v => { vistaGrupos = v; renderGrupos(torneoDB); };
+
 async function init() {
   try {
-    const torneo = await fetchJSON(TORNEO_URL);
-    torneoDB = torneo;
-    renderGrupos(torneo);
-  } catch(e) {
-    document.getElementById('grupos-content').innerHTML =
-      '<div class="loading">Error cargando datos del torneo</div>';
-    console.error(e);
-  }
-  renderMapas();
+    torneoDB = await fetchJSON(TORNEO_URL);
+    renderGrupos(torneoDB);
+    const mapas = await fetchJSON(MAPAS_URL);
+    document.getElementById('mapas-content').innerHTML = Object.entries(mapas).slice(0,18).map(([id, m]) => `
+      <div class="mapa-thumb">
+        <img src="${m.url}" onerror="this.style.display='none'"/>
+        <div class="mapa-thumb-overlay"></div>
+        <div class="mapa-thumb-name">${m.name}</div>
+      </div>`).join('');
+  } catch(e) { console.error(e); }
 }
 
 init();
-// Refrescar datos cada 3 minutos
-setInterval(async () => {
-  try {
-    const torneo = await fetchJSON(TORNEO_URL);
-    torneoDB = torneo;
-    renderGrupos(torneo);
-  } catch(e) {}
-}, 3 * 60 * 1000);
 </script>
 </body>
 </html>
