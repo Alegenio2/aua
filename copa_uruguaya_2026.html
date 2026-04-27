@@ -972,34 +972,49 @@ window.scrollToGrupo = function(l) {
   document.getElementById('grupo-' + l)?.scrollIntoView({behavior:'smooth', block:'start'});
 };
 
-// ── Render cruces ─────────────────────────────────────────
-function renderCruces(torneo, letras, clasificados) {
+function renderCruces(torneo) {
   const el = document.getElementById('cruces-content');
 
-  // Calcular posibles cruces A vs B, C vs D, etc.
-  const cruces = [];
-  for (let i = 0; i < letras.length; i += 2) {
-    const l1 = letras[i], l2 = letras[i+1];
-    if (!l2) break;
-    const t1 = calcularTabla(torneo, l1);
-    const t2 = calcularTabla(torneo, l2);
-    const j1 = t1[0];
-    const j2 = t2[0];
-    cruces.push({ num: (i/2)+1, g1: l1, g2: l2, j1, j2 });
+  if (!torneo.cruces || torneo.cruces.length === 0) {
+    el.innerHTML = `<div class="loading">No hay cruces definidos</div>`;
+    return;
   }
+
+  const cruces = torneo.cruces.map(c => {
+    const tabla1 = calcularTabla(torneo, c.g1);
+    const tabla2 = calcularTabla(torneo, c.g2);
+
+    const j1 = tabla1[c.pos1 - 1];
+    const j2 = tabla2[c.pos2 - 1];
+
+    return {
+      num: c.num,
+      g1: c.g1,
+      g2: c.g2,
+      pos1: c.pos1,
+      pos2: c.pos2,
+      j1,
+      j2
+    };
+  });
 
   el.innerHTML = cruces.map(c => `
     <div class="cruce-card">
-      <div class="cruce-num">Cruce ${c.num} · 1°Grupo ${c.g1} vs 1°Grupo ${c.g2}</div>
+      <div class="cruce-num">
+        Cruce ${c.num} · ${c.pos1}° Grupo ${c.g1} vs ${c.pos2}° Grupo ${c.g2}
+      </div>
+
       <div class="cruce-j">
-        <span class="cruce-pos">1° Grupo ${c.g1}</span>
+        <span class="cruce-pos">${c.pos1}° Grupo ${c.g1}</span>
         <span class="cruce-nick ${c.j1?.pj > 0 ? '' : 'tbd'}">
           ${c.j1?.pj > 0 ? cleanNick(c.j1.nick) : 'Por definir'}
         </span>
       </div>
+
       <div class="cruce-vs">VS</div>
+
       <div class="cruce-j">
-        <span class="cruce-pos">1° Grupo ${c.g2}</span>
+        <span class="cruce-pos">${c.pos2}° Grupo ${c.g2}</span>
         <span class="cruce-nick ${c.j2?.pj > 0 ? '' : 'tbd'}">
           ${c.j2?.pj > 0 ? cleanNick(c.j2.nick) : 'Por definir'}
         </span>
