@@ -8,8 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <style>
 /* ══════════════════════════════════════════════════════════
-   COPA URUGUAYA 2026 — AUA
-   Estilo: medieval oscuro con dorado uruguayo
+   COPA URUGUAYA 2026 — AUA - Estilo Medieval Restaurado
 ══════════════════════════════════════════════════════════ */
 :root {
   --gold:       #e8c87a;
@@ -26,8 +25,6 @@
   --text:       #e8e0d0;
   --muted:      #a09070;
   --dim:        #665544;
-  --host:       #6aaae8;
-  --guest:      #e86a8a;
   --win:        #a8c860;
 }
 
@@ -65,7 +62,6 @@ header{
 }
 .header-logo .logo-icon{
   font-size:22px;color:var(--gold);
-  text-shadow:0 0 20px rgba(232,200,122,0.4);
 }
 .header-logo .logo-text{
   font-family:'Cinzel',serif;font-size:13px;color:var(--gold);
@@ -77,8 +73,7 @@ nav a{
   padding:6px 14px;border-radius:6px;text-decoration:none;
   transition:all 0.18s;text-transform:uppercase;
 }
-nav a:hover{color:var(--gold);background:var(--gold-dim)}
-nav a.active{color:var(--gold);background:var(--gold-dim)}
+nav a:hover, nav a.active{color:var(--gold);background:var(--gold-dim)}
 
 .hero{
   position:relative;
@@ -89,8 +84,6 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   font-family:'Cinzel Decorative',serif;
   font-size:clamp(28px,5vw,56px);
   color:var(--text);
-  letter-spacing:2px;
-  line-height:1.1;
   margin-bottom:6px;
 }
 .hero-title span{
@@ -102,6 +95,19 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   font-size:14px;color:var(--dim);
   letter-spacing:4px;text-transform:uppercase;
 }
+
+.hero-pills{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+  margin-top:24px;
+}
+.pill{
+  display:flex;align-items:center;gap:7px;
+  background:rgba(232,200,122,0.06);
+  border:0.5px solid rgba(232,200,122,0.2);
+  border-radius:20px;padding:6px 16px;
+  font-size:12px;color:var(--muted);
+}
+.pill i{color:var(--gold)}
 
 .section{
   position:relative;z-index:1;
@@ -123,7 +129,7 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
 .tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;}
 .tab-btn{
   padding:8px 18px;border-radius:6px;
-  font-size:12px;font-weight:500;letter-spacing:1px;
+  font-size:12px;font-weight:500;
   cursor:pointer;transition:all 0.18s;
   background:var(--bg2);border:0.5px solid var(--brown);
   color:var(--dim);font-family:'Inter',sans-serif;
@@ -136,7 +142,6 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
 
 .grupos-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
   gap:16px;
 }
 .grupo-card{
@@ -155,7 +160,7 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
 
 .tabla-pos{width:100%;border-collapse:collapse}
 .tabla-pos th{
-  font-size:8px;letter-spacing:1.5px;color:var(--dim);
+  font-size:8px;color:var(--dim);
   text-transform:uppercase;padding:8px 10px;
   border-bottom:0.5px solid var(--brown);
 }
@@ -168,7 +173,7 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
 .pos-num{font-family:'Cinzel',serif;font-size:12px;color:var(--dim);margin-right:6px;}
 .pts-cell{font-family:'Cinzel',serif;font-size:14px;font-weight:700;color:var(--gold);}
 
-/* CRUCES - ESTILO DINÁMICO */
+/* CRUCES */
 .fase-divider {
   font-family: 'Cinzel', serif;
   font-size: 11px;
@@ -193,7 +198,7 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   border-radius:8px;
   padding:14px 16px;
 }
-.cruce-id{font-size:9px;color:var(--dim);letter-spacing:2px;margin-bottom:10px;text-transform:uppercase;}
+.cruce-num{font-size:9px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
 .cruce-j{display:flex;align-items:center;justify-content:space-between;padding:7px 0;}
 .cruce-j:first-of-type{border-bottom:0.5px solid var(--brown)}
 .cruce-nick{font-size:13px;color:var(--text)}
@@ -201,7 +206,50 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
 .cruce-score{font-family:'Cinzel',serif;font-weight:700;color:var(--gold)}
 .cruce-vs{display:flex;align-items:center;justify-content:center;padding:4px 0;font-size:9px;color:var(--dim);letter-spacing:3px;}
 
+/* MAPAS */
+.mapas-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:12px;
+}
+.mapa-cat-title{
+  grid-column:1/-1;
+  font-size:9px;color:var(--dim);letter-spacing:3px;
+  text-transform:uppercase;padding:8px 0 4px;
+  border-top:0.5px solid var(--brown);margin-top:8px;
+}
+.mapa-thumb{
+  position:relative;border-radius:8px;overflow:hidden;
+  border:0.5px solid var(--brown);aspect-ratio:16/10;
+  background:var(--bg2);
+}
+.mapa-thumb img{width:100%;height:100%;object-fit:cover;opacity:0.7}
+.mapa-thumb-name{
+  position:absolute;bottom:0;left:0;right:0;
+  font-size:10px;font-weight:600;color:var(--text);
+  text-align:center;padding:7px;
+  background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+/* CRONOGRAMA */
+.cronograma-list{display:flex;flex-direction:column;gap:10px}
+.crono-item{
+  display:flex;align-items:center;gap:16px;
+  background:var(--bg2);border:0.5px solid var(--brown);
+  border-radius:8px;padding:14px 18px;
+}
+.crono-item.activo{border-color:var(--gold)}
+.crono-date{min-width:100px;font-family:'Cinzel',serif;font-size:12px;color:var(--gold2)}
+.crono-fase{font-size:13px;color:var(--text);flex:1}
+
 .loading{text-align:center;padding:40px;font-size:12px;color:var(--dim);letter-spacing:2px;}
+
+@media(max-width:768px){
+  header{padding:0 16px}
+  .hero{padding:50px 16px 40px}
+  .section{padding:0 16px 40px}
+  .grupos-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -215,12 +263,19 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
     <a href="#grupos">Grupos</a>
     <a href="#cruces">Cruces</a>
     <a href="#mapas">Mapas</a>
+    <a href="#cronograma">Cronograma</a>
   </nav>
 </header>
 
 <div class="hero">
+  <div style="font-size:10px;letter-spacing:5px;color:var(--celeste);text-transform:uppercase;margin-bottom:14px;">Asociación Uruguaya de Age of Empires II</div>
   <h1 class="hero-title">Copa <span>Uruguaya</span></h1>
-  <div class="hero-sub">Temporada 2026</div>
+  <div class="hero-sub">Temporada 2026 · 1v1</div>
+  <div class="hero-pills">
+    <div class="pill"><i class="fas fa-users"></i> 32 Jugadores</div>
+    <div class="pill"><i class="fas fa-trophy"></i> Bo3 / Bo5 Final</div>
+    <div class="pill"><i class="fas fa-calendar"></i> 2026</div>
+  </div>
 </div>
 
 <section class="section" id="grupos">
@@ -228,7 +283,6 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
     <div class="section-title">Grupos & Posiciones</div>
     <div class="section-line"></div>
   </div>
-  <div class="tabs" id="grupos-tabs"></div>
   <div id="grupos-content" class="grupos-grid">
     <div class="loading">Cargando pergaminos...</div>
   </div>
@@ -239,14 +293,41 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
     <div class="section-title">Fase Eliminatoria</div>
     <div class="section-line"></div>
   </div>
-  <div id="cruces-container">
+  <div id="cruces-container"></div>
+</section>
+
+<section class="section" id="mapas">
+  <div class="section-header">
+    <div class="section-title">Pool de Mapas</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="mapas-grid" id="mapas-content"></div>
+</section>
+
+<section class="section" id="cronograma">
+  <div class="section-header">
+    <div class="section-title">Cronograma</div>
+    <div class="section-line"></div>
+  </div>
+  <div class="cronograma-list">
+    <div class="crono-item">
+      <div class="crono-date">Marzo</div>
+      <div class="crono-fase">Inscripciones & Sorteo</div>
     </div>
+    <div class="crono-item activo">
+      <div class="crono-date">Abril</div>
+      <div class="crono-fase">Fase de Grupos (En curso)</div>
+    </div>
+    <div class="crono-item">
+      <div class="crono-date">Mayo</div>
+      <div class="crono-fase">Eliminatorias & Gran Final</div>
+    </div>
+  </div>
 </section>
 
 <script>
 const TORNEO_URL = 'torneos/1v1_copa_uruguaya_2026.json';
-let torneoDB = null;
-let vistaGrupos = 'tabla';
+const MAPAS_URL  = 'https://raw.githubusercontent.com/Alegenio2/aua/main/mapas.json';
 
 const cleanNick = n => (n||'').replace(/[|\[\]]/g,'').trim();
 
@@ -264,8 +345,8 @@ function calcularTabla(torneo, letraGrupo) {
   });
   const rg = torneo.rondas_grupos.find(r => r.grupo === letraGrupo);
   if (rg) {
-    rg.partidos.forEach(f => {
-      f.partidos.forEach(p => {
+    rg.partidos.forEach(ronda => {
+      ronda.partidos.forEach(p => {
         if (!p.resultado) return;
         const ids = Object.keys(p.resultado).filter(k => !['mapas','civs','recs_url','recs_local','evidencia','fecha_registro'].includes(k));
         const id1 = ids[0], id2 = ids[1];
@@ -287,45 +368,56 @@ function renderEliminatorias(eliminatorias) {
   if (!eliminatorias) return;
 
   const fases = [
-    { id: 'octavos', label: 'Octavos de Final' },
-    { id: 'cuartos', label: 'Cuartos de Final' },
-    { id: 'semis',   label: 'Semifinales' },
-    { id: 'final',   label: 'Gran Final' }
+    { key: 'octavos', title: 'Octavos de Final' },
+    { key: 'cuartos', title: 'Cuartos de Final' },
+    { key: 'semis',   title: 'Semifinales' },
+    { key: 'final',   title: 'Gran Final' }
   ];
 
   container.innerHTML = fases.map(fase => {
-    const lista = eliminatorias[fase.id];
-    if (!lista || lista.length === 0) return '';
-
-    const cards = lista.map(p => {
-      const n1 = p.jugador1Nick ? cleanNick(p.jugador1Nick) : 'Por definir';
-      const n2 = p.jugador2Nick ? cleanNick(p.jugador2Nick) : 'Por definir';
+    const partidos = eliminatorias[fase.key];
+    if (!partidos || partidos.length === 0) return '';
+    const cards = partidos.map(p => {
+      const n1 = p.jugador1Nick ? cleanNick(p.jugador1Nick) : 'TBD';
+      const n2 = p.jugador2Nick ? cleanNick(p.jugador2Nick) : 'TBD';
       const r1 = p.resultado ? p.resultado[p.jugador1Id] || 0 : '-';
       const r2 = p.resultado ? p.resultado[p.jugador2Id] || 0 : '-';
-
       return `
         <div class="cruce-card">
-          <div class="cruce-id">${p.partidoId}</div>
-          <div class="cruce-j">
-            <span class="cruce-nick ${!p.jugador1Nick ? 'tbd' : ''}">${n1}</span>
-            <span class="cruce-score">${r1}</span>
-          </div>
+          <div class="cruce-num">${p.partidoId}</div>
+          <div class="cruce-j"><span>${n1}</span><span class="cruce-score">${r1}</span></div>
           <div class="cruce-vs">VS</div>
-          <div class="cruce-j">
-            <span class="cruce-nick ${!p.jugador2Nick ? 'tbd' : ''}">${n2}</span>
-            <span class="cruce-score">${r2}</span>
-          </div>
+          <div class="cruce-j"><span>${n2}</span><span class="cruce-score">${r2}</span></div>
         </div>`;
     }).join('');
-
-    return `<div class="fase-divider">${fase.label}</div><div class="cruces-grid">${cards}</div>`;
+    return `<div class="fase-divider">${fase.title}</div><div class="cruces-grid">${cards}</div>`;
   }).join('');
+}
+
+async function renderMapas() {
+  const el = document.getElementById('mapas-content');
+  try {
+    const mapas = await fetchJSON(MAPAS_URL);
+    const cats = {};
+    Object.entries(mapas).forEach(([id, m]) => {
+      const cat = m.Categoria || 'Otros';
+      if (!cats[cat]) cats[cat] = [];
+      cats[cat].push(m);
+    });
+    el.innerHTML = Object.entries(cats).map(([cat, list]) => `
+      <div class="mapa-cat-title">${cat}</div>
+      ${list.map(m => `
+        <div class="mapa-thumb">
+          <img src="${m.url}" onerror="this.style.display='none'">
+          <div class="mapa-thumb-name">${m.name}</div>
+        </div>`).join('')}
+    `).join('');
+  } catch(e) {}
 }
 
 function renderGrupos(torneo) {
   const contentEl = document.getElementById('grupos-content');
   const letras = torneo.rondas_grupos.map(r => r.grupo);
-  
   contentEl.innerHTML = letras.map(l => {
     const tabla = calcularTabla(torneo, l);
     const rows = tabla.map((j, i) => `
@@ -334,7 +426,6 @@ function renderGrupos(torneo) {
         <td>${j.pj}</td>
         <td class="pts-cell">${j.pts}</td>
       </tr>`).join('');
-
     return `
       <div class="grupo-card">
         <div class="grupo-card-header">Grupo ${l}</div>
@@ -348,10 +439,11 @@ function renderGrupos(torneo) {
 
 async function init() {
   try {
-    torneoDB = await fetchJSON(TORNEO_URL);
-    renderGrupos(torneoDB);
-    renderEliminatorias(torneoDB.eliminatorias);
-  } catch(e) { console.error(e); }
+    const torneo = await fetchJSON(TORNEO_URL);
+    renderGrupos(torneo);
+    renderEliminatorias(torneo.eliminatorias);
+    renderMapas();
+  } catch(e) {}
 }
 
 init();
