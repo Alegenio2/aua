@@ -364,7 +364,7 @@ nav a.active{color:var(--gold);background:var(--gold-dim)}
   background:rgba(58,42,26,0.4);padding:1px 6px;border-radius:3px;
 }
 .cruce-nick{font-size:13px;color:var(--text)}
-.cruce-nick.tbd{color:var(--brown);font-style:italic}
+.cruce-nick.tbd{color:#d3802d;font-style:italic}
 .cruce-vs{
   display:flex;align-items:center;justify-content:center;
   padding:4px 0;font-size:9px;color:var(--dim);letter-spacing:3px;
@@ -589,9 +589,8 @@ footer{
   <div class="bracket-info">
     <div class="bracket-info-title">🛡 Formato de Eliminación</div>
     <div style="font-size:12px;color:var(--muted);line-height:1.8">
-      Los <strong style="color:var(--gold)">primeros de cada grupo</strong> avanzan a la fase eliminatoria.<br>
-      Los cruces se determinarán según la posición final en la tabla de grupos.<br>
-      El ganador de cada grupo evita al ganador del grupo de su misma "mitad" del cuadro.
+      Los dos <strong style="color:var(--gold)">primeros de cada grupo</strong> avanzan a la fase eliminatoria.<br>
+      El cruce se determina por sorteo, con la única restricción de que no pueden enfrentarse jugadores del mismo grupo en octavos.<br>
     </div>
   </div>
 
@@ -635,23 +634,23 @@ footer{
       </div>
       <span class="crono-status status-completado">Completado</span>
     </div>
-    <div class="crono-item activo">
+    <div class="crono-item">
       <div class="crono-date">Abr</div>
       <div class="crono-dot"></div>
       <div>
         <div class="crono-fase">Fase de Grupos</div>
         <div class="crono-desc">8 grupos · Robin Round · Bo3</div>
       </div>
-      <span class="crono-status status-activo">En curso</span>
+      <span class="crono-status status-completado">Completado</span>
     </div>
-    <div class="crono-item">
+    <div class="crono-item activo">
       <div class="crono-date">Abr - May</div>
       <div class="crono-dot"></div>
       <div>
         <div class="crono-fase">Octavos de Final</div>
         <div class="crono-desc">16 clasificados · Bo3</div>
       </div>
-      <span class="crono-status status-pendiente">Pendiente</span>
+      <span class="crono-status status-activo">En curso</span>
     </div>
     <div class="crono-item">
       <div class="crono-date">May 2026</div>
@@ -975,31 +974,96 @@ window.scrollToGrupo = function(l) {
 // ── Render cruces ─────────────────────────────────────────
 function renderCruces(torneo, letras, clasificados) {
   const el = document.getElementById('cruces-content');
+  const titleEl = document.querySelector('#cruces .section-title');
+  const subEl = document.querySelector('#cruces .section-sub');
 
-  // Calcular posibles cruces A vs B, C vs D, etc.
+  const eliminatorias = torneo.eliminatorias || {};
+  const allMatches = Object.values(eliminatorias).flat();
+  const hasBracket = eliminatorias.octavos?.length > 0;
+
+  const stageLabels = {
+    octavos: 'Octavos de Final',
+    cuartos: 'Cuartos de Final',
+    semis: 'Semifinales',
+    final: 'Final'
+  };
+
+  function getSourceLabels(targetMatchId, position) {
+    const sources = allMatches.filter(m => m.va_a === targetMatchId);
+    if (!sources.length) return ['Por definir'];
+
+    const byPos = sources.filter(m => m.posicion_en_siguiente === position);
+    if (byPos.length) return byPos.map(m => `Ganador ${m.partidoId}`);
+
+    const idx = position === 'jugador1' ? 0 : 1;
+    return sources[idx] ? [`Ganador ${sources[idx].partidoId}`] : ['Por definir'];
+  }
+
+  function getParticipantLabel(match, side) {
+    const nick = side === 'jugador1' ? match.jugador1Nick : match.jugador2Nick;
+    if (nick) return cleanNick(nick);
+    return getSourceLabels(match.partidoId, side).join(' / ');
+  }
+
+  function renderMatchCard(match, etapa, index) {
+    const pts1 = match.resultado ? match.resultado[match.jugador1Id] : null;
+    const pts2 = match.resultado ? match.resultado[match.jugador2Id] : null;
+    const scoreHtml = (pts1 !== null && pts2 !== null)
+      ? `<span class="cruce-score"><strong>${pts1}</strong> — <strong>${pts2}</strong></span>`
+      : `<span class="cruce-score pending">VS</span>`;
+
+    return `
+      <div class="cruce-card">
+        <div class="cruce-num">${match.partidoId || `Partido ${index + 1}`} · ${stageLabels[etapa] || etapa}</div>
+        <div class="cruce-j">
+          <span class="cruce-nick ${!match.jugador1Nick ? 'tbd' : ''}">${getParticipantLabel(match, 'jugador1')}</span>
+        </div>
+        <div class="cruce-vs">${scoreHtml}</div>
+        <div class="cruce-j">
+          <span class="cruce-nick ${!match.jugador2Nick ? 'tbd' : ''}">${getParticipantLabel(match, 'jugador2')}</span>
+        </div>
+      </div>
+    `;
+  }
+
+  if (hasBracket) {
+    titleEl.textContent = 'Eliminatorias';
+    subEl.textContent = 'Duelos definidos del torneo';
+
+    const etapas = ['octavos', 'cuartos', 'semis', 'final'];
+    el.innerHTML = etapas.filter(etapa => Array.isArray(eliminatorias[etapa]) && eliminatorias[etapa].length)
+      .map(etapa => {
+        const matches = eliminatorias[etapa].map((match, index) => renderMatchCard(match, etapa, index)).join('');
+        return `<div class="cruce-stage">${matches}</div>`;
+      }).join('');
+
+    return;
+  }
+
+  titleEl.textContent = 'Posibles Cruces';
+  subEl.textContent = 'Fase eliminatoria — se confirman al terminar la fase de grupos';
+
   const cruces = [];
   for (let i = 0; i < letras.length; i += 2) {
-    const l1 = letras[i], l2 = letras[i+1];
+    const l1 = letras[i], l2 = letras[i + 1];
     if (!l2) break;
     const t1 = calcularTabla(torneo, l1);
     const t2 = calcularTabla(torneo, l2);
     const j1 = t1[0];
     const j2 = t2[0];
-    cruces.push({ num: (i/2)+1, g1: l1, g2: l2, j1, j2 });
+    cruces.push({ num: (i / 2) + 1, g1: l1, g2: l2, j1, j2 });
   }
 
   el.innerHTML = cruces.map(c => `
     <div class="cruce-card">
       <div class="cruce-num">Cruce ${c.num} · 1°Grupo ${c.g1} vs 1°Grupo ${c.g2}</div>
       <div class="cruce-j">
-        <span class="cruce-pos">1° Grupo ${c.g1}</span>
         <span class="cruce-nick ${c.j1?.pj > 0 ? '' : 'tbd'}">
           ${c.j1?.pj > 0 ? cleanNick(c.j1.nick) : 'Por definir'}
         </span>
       </div>
       <div class="cruce-vs">VS</div>
       <div class="cruce-j">
-        <span class="cruce-pos">1° Grupo ${c.g2}</span>
         <span class="cruce-nick ${c.j2?.pj > 0 ? '' : 'tbd'}">
           ${c.j2?.pj > 0 ? cleanNick(c.j2.nick) : 'Por definir'}
         </span>
