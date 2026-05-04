@@ -1059,13 +1059,13 @@ function renderCruces(torneo, letras, clasificados) {
       <div class="cruce-num">Cruce ${c.num} · 1°Grupo ${c.g1} vs 1°Grupo ${c.g2}</div>
       <div class="cruce-j">
         <span class="cruce-nick ${c.j1?.pj > 0 ? '' : 'tbd'}">
-          ${c.j1?.pj > 0 ? cleanNick(c.j1.nick) : 'Por definir'}
+          ${c.j1?.pj > 0 ? cleanNick(c.j1) : 'Por definir'}
         </span>
       </div>
       <div class="cruce-vs">VS</div>
       <div class="cruce-j">
         <span class="cruce-nick ${c.j2?.pj > 0 ? '' : 'tbd'}">
-          ${c.j2?.pj > 0 ? cleanNick(c.j2.nick) : 'Por definir'}
+          ${c.j2?.pj > 0 ? cleanNick(c.j2) : 'Por definir'}
         </span>
       </div>
     </div>
