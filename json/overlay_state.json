@@ -1,26 +1,32 @@
 {
   "visible": true,
   "modo": "pre",
-  "grupo": "?",
+  "grupo": "Octavos",
   "ronda": "?",
-  "formato": "Bo5",
+  "formato": "Bo3",
   "j1": {
     "nick": "FMG | Rxon",
     "aoe2Id": "1780624",
     "global": {
-      "pj": 4,
-      "pg": 4,
-      "pp": 0,
-      "winrate": 100
+      "pj": 9,
+      "pg": 7,
+      "pp": 2,
+      "winrate": 77.8
     },
     "civs": {
       "Chinese": {
-        "pj": 1,
-        "pg": 1,
+        "pj": 2,
+        "pg": 2,
         "pp": 0,
         "winrate": 100,
         "por_mapa": {
           "Arabia": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          },
+          "Enclosed": {
             "pj": 1,
             "pg": 1,
             "pp": 0,
@@ -69,12 +75,60 @@
             "winrate": 100
           }
         }
+      },
+      "Japanese": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0,
+        "por_mapa": {
+          "CopaU_2026_Stranded v3 (Custom)": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          }
+        }
+      },
+      "Vietnamese": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "Arabia": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Portuguese": {
+        "pj": 2,
+        "pg": 1,
+        "pp": 1,
+        "winrate": 50,
+        "por_mapa": {
+          "Islands": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          },
+          "Arena": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
       }
     },
     "mapas": {
       "Arabia": {
-        "pj": 1,
-        "pg": 1,
+        "pj": 2,
+        "pg": 2,
         "pp": 0,
         "winrate": 100
       },
@@ -91,6 +145,24 @@
         "winrate": 100
       },
       "Islands": {
+        "pj": 2,
+        "pg": 1,
+        "pp": 1,
+        "winrate": 50
+      },
+      "CopaU_2026_Stranded v3 (Custom)": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0
+      },
+      "Arena": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Enclosed": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
@@ -100,22 +172,28 @@
     "discordId": "238414625417330688"
   },
   "j2": {
-    "nick": "DGHIR | Lionerrt",
-    "aoe2Id": "5204719",
+    "nick": "-FMG- Rodri",
+    "aoe2Id": "3147129",
     "global": {
-      "pj": 4,
-      "pg": 4,
-      "pp": 0,
-      "winrate": 100
+      "pj": 9,
+      "pg": 5,
+      "pp": 4,
+      "winrate": 55.6
     },
     "civs": {
-      "Koreans": {
-        "pj": 1,
+      "Bulgarians": {
+        "pj": 2,
         "pg": 1,
-        "pp": 0,
-        "winrate": 100,
+        "pp": 1,
+        "winrate": 50,
         "por_mapa": {
-          "CopaU_2026_High Tides v3 (Custom)": {
+          "CopaU_2026_Dry River (Custom)": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          },
+          "CopaU_2026_Shorelines (Custom)": {
             "pj": 1,
             "pg": 1,
             "pp": 0,
@@ -123,21 +201,21 @@
           }
         }
       },
-      "Chinese": {
+      "Magyars": {
         "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0,
         "por_mapa": {
-          "CopaU_2026_Stranded v3 (Custom)": {
+          "Enclosed": {
             "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
           }
         }
       },
-      "Hindustanis": {
+      "Vietnamese": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
@@ -151,42 +229,110 @@
           }
         }
       },
-      "Persians": {
+      "Japanese": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
         "winrate": 100,
         "por_mapa": {
-          "CopaU_2026_High Tides v3 (Custom)": {
+          "CopaU_2026_Dry River (Custom)": {
             "pj": 1,
             "pg": 1,
             "pp": 0,
             "winrate": 100
           }
         }
+      },
+      "Bengalis": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "Arena": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Koreans": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_Shorelines (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Bohemians": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0,
+        "por_mapa": {
+          "Arena": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          }
+        }
+      },
+      "Saracens": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0,
+        "por_mapa": {
+          "Enclosed": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          }
+        }
       }
     },
     "mapas": {
-      "CopaU_2026_High Tides v3 (Custom)": {
+      "CopaU_2026_Dry River (Custom)": {
+        "pj": 2,
+        "pg": 1,
+        "pp": 1,
+        "winrate": 50
+      },
+      "CopaU_2026_Shorelines (Custom)": {
         "pj": 2,
         "pg": 2,
         "pp": 0,
         "winrate": 100
       },
-      "CopaU_2026_Stranded v3 (Custom)": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100
+      "Enclosed": {
+        "pj": 2,
+        "pg": 0,
+        "pp": 2,
+        "winrate": 0
       },
       "Arabia": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
         "winrate": 100
+      },
+      "Arena": {
+        "pj": 2,
+        "pg": 1,
+        "pp": 1,
+        "winrate": 50
       }
     },
-    "discordId": "277256502023290881"
+    "discordId": "408054148110614529"
   },
-  "ts": 1776979151301
+  "ts": 1777858833754
 }
