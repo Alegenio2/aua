@@ -1,8 +1,8 @@
 {
   "visible": true,
-  "id": "8",
-  "name": "Hideout",
-  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/Hideout.png",
-  "categoria": "Cerrado",
-  "ts": 1778016137033
+  "id": "16",
+  "name": "Nomad",
+  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/nomad.png",
+  "categoria": "Nomada",
+  "ts": 1778018027559
 }
