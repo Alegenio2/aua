@@ -5,74 +5,193 @@
   "ronda": "?",
   "formato": "Bo5",
   "j1": {
-    "nick": "|FMG| doomjota",
-    "aoe2Id": "2251303",
+    "nick": "|FMG| Nadie",
+    "aoe2Id": "673060",
     "global": {
-      "pj": 9,
-      "pg": 4,
-      "pp": 5,
-      "winrate": 44.4
+      "pj": 8,
+      "pg": 8,
+      "pp": 0,
+      "winrate": 100
     },
     "civs": {
-      "Italians": {
-        "pj": 2,
-        "pg": 1,
-        "pp": 1,
-        "winrate": 50,
-        "por_mapa": {
-          "Nomad": {
-            "pj": 2,
-            "pg": 1,
-            "pp": 1,
-            "winrate": 50
-          }
-        }
-      },
-      "Saracens": {
+      "Japanese": {
         "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
         "por_mapa": {
-          "Arabia": {
+          "CopaU_2026_Valley (Custom)": {
             "pj": 1,
-            "pg": 0,
-            "pp": 1,
-            "winrate": 0
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
           }
         }
       },
-      "Spanish": {
-        "pj": 2,
+      "Dravidians": {
+        "pj": 1,
         "pg": 1,
-        "pp": 1,
-        "winrate": 50,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_Shorelines (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Persians": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_African River v3 (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Romans": {
+        "pj": 3,
+        "pg": 3,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_Dry River (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          },
+          "Enclosed": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          },
+          "Land Madness": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Berbers": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
         "por_mapa": {
           "Land Madness": {
             "pj": 1,
             "pg": 1,
             "pp": 0,
             "winrate": 100
-          },
-          "Nomad": {
-            "pj": 1,
-            "pg": 0,
-            "pp": 1,
-            "winrate": 0
           }
         }
       },
-      "Franks": {
+      "Bohemians": {
         "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
         "por_mapa": {
-          "CopaU_2026_Slopes v2 (Custom)": {
+          "Arena": {
             "pj": 1,
-            "pg": 0,
-            "pp": 1,
-            "winrate": 0
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      }
+    },
+    "mapas": {
+      "CopaU_2026_Valley (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "CopaU_2026_Shorelines (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "CopaU_2026_African River v3 (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "CopaU_2026_Dry River (Custom)": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Land Madness": {
+        "pj": 2,
+        "pg": 2,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Enclosed": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Arena": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      }
+    },
+    "discordId": "341001672786575360"
+  },
+  "j2": {
+    "nick": "DGHIR | Lionerrt",
+    "aoe2Id": "5204719",
+    "global": {
+      "pj": 12,
+      "pg": 10,
+      "pp": 2,
+      "winrate": 83.3
+    },
+    "civs": {
+      "Koreans": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_High Tides v3 (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Chinese": {
+        "pj": 2,
+        "pg": 2,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_Stranded v3 (Custom)": {
+            "pj": 2,
+            "pg": 2,
+            "pp": 0,
+            "winrate": 100
           }
         }
       },
@@ -82,7 +201,83 @@
         "pp": 0,
         "winrate": 100,
         "por_mapa": {
-          "CopaU_2026_Slopes v2 (Custom)": {
+          "Arabia": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Persians": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_High Tides v3 (Custom)": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Berbers": {
+        "pj": 2,
+        "pg": 0,
+        "pp": 2,
+        "winrate": 0,
+        "por_mapa": {
+          "Arabia": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          },
+          "Arena": {
+            "pj": 1,
+            "pg": 0,
+            "pp": 1,
+            "winrate": 0
+          }
+        }
+      },
+      "Vikings": {
+        "pj": 2,
+        "pg": 2,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "Islands": {
+            "pj": 2,
+            "pg": 2,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Italians": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "Arabia": {
+            "pj": 1,
+            "pg": 1,
+            "pp": 0,
+            "winrate": 100
+          }
+        }
+      },
+      "Dravidians": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100,
+        "por_mapa": {
+          "CopaU_2026_African River v3 (Custom)": {
             "pj": 1,
             "pg": 1,
             "pp": 0,
@@ -96,169 +291,8 @@
         "pp": 0,
         "winrate": 100,
         "por_mapa": {
-          "Enclosed": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          }
-        }
-      },
-      "Bohemians": {
-        "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0,
-        "por_mapa": {
-          "Hideout": {
-            "pj": 1,
-            "pg": 0,
-            "pp": 1,
-            "winrate": 0
-          }
-        }
-      }
-    },
-    "mapas": {
-      "Nomad": {
-        "pj": 3,
-        "pg": 1,
-        "pp": 2,
-        "winrate": 33.3
-      },
-      "Arabia": {
-        "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0
-      },
-      "Land Madness": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100
-      },
-      "CopaU_2026_Slopes v2 (Custom)": {
-        "pj": 2,
-        "pg": 1,
-        "pp": 1,
-        "winrate": 50
-      },
-      "Enclosed": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100
-      },
-      "Hideout": {
-        "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0
-      }
-    },
-    "discordId": "264781067506941962"
-  },
-  "j2": {
-    "nick": "Nacional",
-    "aoe2Id": "15442657",
-    "global": {
-      "pj": 9,
-      "pg": 7,
-      "pp": 2,
-      "winrate": 77.8
-    },
-    "civs": {
-      "Berbers": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100,
-        "por_mapa": {
-          "Nomad": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          }
-        }
-      },
-      "Japanese": {
-        "pj": 2,
-        "pg": 2,
-        "pp": 0,
-        "winrate": 100,
-        "por_mapa": {
-          "CopaU_2026_High Tides v3 (Custom)": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          },
-          "Arabia": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          }
-        }
-      },
-      "Dravidians": {
-        "pj": 2,
-        "pg": 2,
-        "pp": 0,
-        "winrate": 100,
-        "por_mapa": {
-          "CopaU_2026_Stranded v3 (Custom)": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          },
-          "Nomad": {
-            "pj": 1,
-            "pg": 1,
-            "pp": 0,
-            "winrate": 100
-          }
-        }
-      },
-      "Malians": {
-        "pj": 2,
-        "pg": 1,
-        "pp": 1,
-        "winrate": 50,
-        "por_mapa": {
-          "CopaU_2026_High Tides v3 (Custom)": {
-            "pj": 2,
-            "pg": 1,
-            "pp": 1,
-            "winrate": 50
-          }
-        }
-      },
-      "Romans": {
-        "pj": 1,
-        "pg": 0,
-        "pp": 1,
-        "winrate": 0,
-        "por_mapa": {
           "CopaU_2026_Dry River (Custom)": {
             "pj": 1,
-            "pg": 0,
-            "pp": 1,
-            "winrate": 0
-          }
-        }
-      },
-      "Maya": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100,
-        "por_mapa": {
-          "Hideout": {
-            "pj": 1,
             "pg": 1,
             "pp": 0,
             "winrate": 100
@@ -267,19 +301,31 @@
       }
     },
     "mapas": {
-      "Nomad": {
+      "CopaU_2026_High Tides v3 (Custom)": {
         "pj": 2,
         "pg": 2,
         "pp": 0,
         "winrate": 100
       },
-      "CopaU_2026_High Tides v3 (Custom)": {
+      "CopaU_2026_Stranded v3 (Custom)": {
+        "pj": 2,
+        "pg": 2,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Arabia": {
         "pj": 3,
         "pg": 2,
         "pp": 1,
         "winrate": 66.7
       },
-      "CopaU_2026_Stranded v3 (Custom)": {
+      "Islands": {
+        "pj": 2,
+        "pg": 2,
+        "pp": 0,
+        "winrate": 100
+      },
+      "CopaU_2026_African River v3 (Custom)": {
         "pj": 1,
         "pg": 1,
         "pp": 0,
@@ -287,24 +333,18 @@
       },
       "CopaU_2026_Dry River (Custom)": {
         "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Arena": {
+        "pj": 1,
         "pg": 0,
         "pp": 1,
         "winrate": 0
-      },
-      "Arabia": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100
-      },
-      "Hideout": {
-        "pj": 1,
-        "pg": 1,
-        "pp": 0,
-        "winrate": 100
       }
     },
-    "discordId": "733765577570779279"
+    "discordId": "277256502023290881"
   },
-  "ts": 1778018050957
+  "ts": 1778637935483
 }
