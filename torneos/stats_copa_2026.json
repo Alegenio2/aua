@@ -1,8 +1,8 @@
 {
   "meta": {
     "torneo": "copa_uruguaya_2026",
-    "ultima_actualizacion": "2026-05-13T18:32:30.304Z",
-    "total_partidas": 121
+    "ultima_actualizacion": "2026-05-10T02:02:21.607Z",
+    "total_partidas": 119
   },
   "jugadores": {
     "733765577570779279": {
@@ -839,10 +839,10 @@
       "nick": "DGHIR | Lionerrt",
       "aoe2Id": "5204719",
       "global": {
-        "pj": 14,
+        "pj": 12,
         "pg": 10,
-        "pp": 4,
-        "winrate": 71.4
+        "pp": 2,
+        "winrate": 83.3
       },
       "civs": {
         "Koreans": {
@@ -976,34 +976,6 @@
               "winrate": 100
             }
           }
-        },
-        "Japanese": {
-          "pj": 1,
-          "pg": 0,
-          "pp": 1,
-          "winrate": 0,
-          "por_mapa": {
-            "CopaU_2026_Dry River (Custom)": {
-              "pj": 1,
-              "pg": 0,
-              "pp": 1,
-              "winrate": 0
-            }
-          }
-        },
-        "Bengalis": {
-          "pj": 1,
-          "pg": 0,
-          "pp": 1,
-          "winrate": 0,
-          "por_mapa": {
-            "Hideout": {
-              "pj": 1,
-              "pg": 0,
-              "pp": 1,
-              "winrate": 0
-            }
-          }
         }
       },
       "mapas": {
@@ -1038,18 +1010,12 @@
           "winrate": 100
         },
         "CopaU_2026_Dry River (Custom)": {
-          "pj": 2,
+          "pj": 1,
           "pg": 1,
-          "pp": 1,
-          "winrate": 50
+          "pp": 0,
+          "winrate": 100
         },
         "Arena": {
-          "pj": 1,
-          "pg": 0,
-          "pp": 1,
-          "winrate": 0
-        },
-        "Hideout": {
           "pj": 1,
           "pg": 0,
           "pp": 1,
@@ -3247,8 +3213,8 @@
       "nick": "|FMG| Nadie",
       "aoe2Id": "673060",
       "global": {
-        "pj": 10,
-        "pg": 10,
+        "pj": 8,
+        "pg": 8,
         "pp": 0,
         "winrate": 100
       },
@@ -3348,34 +3314,6 @@
               "winrate": 100
             }
           }
-        },
-        "Malay": {
-          "pj": 1,
-          "pg": 1,
-          "pp": 0,
-          "winrate": 100,
-          "por_mapa": {
-            "CopaU_2026_Dry River (Custom)": {
-              "pj": 1,
-              "pg": 1,
-              "pp": 0,
-              "winrate": 100
-            }
-          }
-        },
-        "Vietnamese": {
-          "pj": 1,
-          "pg": 1,
-          "pp": 0,
-          "winrate": 100,
-          "por_mapa": {
-            "Hideout": {
-              "pj": 1,
-              "pg": 1,
-              "pp": 0,
-              "winrate": 100
-            }
-          }
         }
       },
       "mapas": {
@@ -3398,8 +3336,8 @@
           "winrate": 100
         },
         "CopaU_2026_Dry River (Custom)": {
-          "pj": 2,
-          "pg": 2,
+          "pj": 1,
+          "pg": 1,
           "pp": 0,
           "winrate": 100
         },
@@ -3416,12 +3354,6 @@
           "winrate": 100
         },
         "Arena": {
-          "pj": 1,
-          "pg": 1,
-          "pp": 0,
-          "winrate": 100
-        },
-        "Hideout": {
           "pj": 1,
           "pg": 1,
           "pp": 0,
@@ -4964,20 +4896,18 @@
       }
     },
     "Hideout": {
-      "total_partidas": 6,
+      "total_partidas": 5,
       "civs_ganadoras": {
         "Bohemians": 1,
         "Khitans": 1,
         "Wei": 2,
-        "Maya": 1,
-        "Vietnamese": 1
+        "Maya": 1
       },
       "civs_perdedoras": {
         "Italians": 2,
         "Saracens": 1,
         "Malians": 1,
-        "Bohemians": 1,
-        "Bengalis": 1
+        "Bohemians": 1
       },
       "enfrentamientos": {
         "Bohemians_vs_Italians": {
@@ -5009,12 +4939,6 @@
           "gano_primero": 0,
           "civ_a": "Bohemians",
           "civ_b": "Maya"
-        },
-        "Bengalis_vs_Vietnamese": {
-          "total": 1,
-          "gano_primero": 0,
-          "civ_a": "Bengalis",
-          "civ_b": "Vietnamese"
         }
       }
     },
@@ -5130,18 +5054,17 @@
       }
     },
     "CopaU_2026_Dry River (Custom)": {
-      "total_partidas": 10,
+      "total_partidas": 9,
       "civs_ganadoras": {
         "Japanese": 3,
         "Burmese": 1,
         "Romans": 3,
-        "Goths": 2,
-        "Malay": 1
+        "Goths": 2
       },
       "civs_perdedoras": {
         "Bulgarians": 1,
         "Britons": 1,
-        "Japanese": 3,
+        "Japanese": 2,
         "Magyars": 1,
         "Romans": 1,
         "Aztecs": 1,
@@ -5202,12 +5125,6 @@
           "gano_primero": 0,
           "civ_a": "Burgundians",
           "civ_b": "Goths"
-        },
-        "Japanese_vs_Malay": {
-          "total": 1,
-          "gano_primero": 0,
-          "civ_a": "Japanese",
-          "civ_b": "Malay"
         }
       }
     },
@@ -5755,9 +5672,9 @@
       }
     },
     "Japanese": {
-      "total_jugadas": 17,
+      "total_jugadas": 16,
       "total_ganadas": 9,
-      "winrate": 52.9,
+      "winrate": 56.3,
       "por_mapa": {
         "CopaU_2026_High Tides v3 (Custom)": {
           "jugadas": 1,
@@ -5770,9 +5687,9 @@
           "winrate": 100
         },
         "CopaU_2026_Dry River (Custom)": {
-          "jugadas": 6,
+          "jugadas": 5,
           "ganadas": 3,
-          "winrate": 50
+          "winrate": 60
         },
         "CopaU_2026_Valley (Custom)": {
           "jugadas": 1,
@@ -5817,9 +5734,9 @@
       },
       "vs_civs": {
         "Malay": {
-          "jugadas": 2,
+          "jugadas": 1,
           "ganadas": 1,
-          "winrate": 50
+          "winrate": 100
         },
         "Magyars": {
           "jugadas": 1,
@@ -5889,9 +5806,9 @@
       }
     },
     "Malay": {
-      "total_jugadas": 7,
-      "total_ganadas": 4,
-      "winrate": 57.1,
+      "total_jugadas": 6,
+      "total_ganadas": 3,
+      "winrate": 50,
       "por_mapa": {
         "CopaU_2026_High Tides v3 (Custom)": {
           "jugadas": 1,
@@ -5922,18 +5839,13 @@
           "jugadas": 1,
           "ganadas": 0,
           "winrate": 0
-        },
-        "CopaU_2026_Dry River (Custom)": {
-          "jugadas": 1,
-          "ganadas": 1,
-          "winrate": 100
         }
       },
       "vs_civs": {
         "Japanese": {
-          "jugadas": 2,
-          "ganadas": 1,
-          "winrate": 50
+          "jugadas": 1,
+          "ganadas": 0,
+          "winrate": 0
         },
         "Saracens": {
           "jugadas": 1,
@@ -6982,9 +6894,9 @@
       }
     },
     "Vietnamese": {
-      "total_jugadas": 7,
-      "total_ganadas": 5,
-      "winrate": 71.4,
+      "total_jugadas": 6,
+      "total_ganadas": 4,
+      "winrate": 66.7,
       "por_mapa": {
         "Enclosed": {
           "jugadas": 2,
@@ -7000,11 +6912,6 @@
           "jugadas": 1,
           "ganadas": 0,
           "winrate": 0
-        },
-        "Hideout": {
-          "jugadas": 1,
-          "ganadas": 1,
-          "winrate": 100
         }
       },
       "vs_civs": {
@@ -7032,11 +6939,6 @@
           "jugadas": 1,
           "ganadas": 0,
           "winrate": 0
-        },
-        "Bengalis": {
-          "jugadas": 1,
-          "ganadas": 1,
-          "winrate": 100
         }
       }
     },
@@ -7510,9 +7412,9 @@
       }
     },
     "Bengalis": {
-      "total_jugadas": 4,
+      "total_jugadas": 3,
       "total_ganadas": 3,
-      "winrate": 75,
+      "winrate": 100,
       "por_mapa": {
         "Arena": {
           "jugadas": 2,
@@ -7523,11 +7425,6 @@
           "jugadas": 1,
           "ganadas": 1,
           "winrate": 100
-        },
-        "Hideout": {
-          "jugadas": 1,
-          "ganadas": 0,
-          "winrate": 0
         }
       },
       "vs_civs": {
@@ -7545,11 +7442,6 @@
           "jugadas": 1,
           "ganadas": 1,
           "winrate": 100
-        },
-        "Vietnamese": {
-          "jugadas": 1,
-          "ganadas": 0,
-          "winrate": 0
         }
       }
     },
@@ -10344,46 +10236,6 @@
         "discordId": "833806737902534738",
         "nick": "ToNGa",
         "civ": "Muisca",
-        "gano": false
-      }
-    },
-    {
-      "matchId": 477397302,
-      "fecha": "2026-05-13T01:39:08.000Z",
-      "mapa": "CopaU_2026_Dry River (Custom)",
-      "duracion": 19,
-      "grupo": "SEMIS",
-      "ronda": "SF2",
-      "jugador1": {
-        "discordId": "341001672786575360",
-        "nick": "|FMG| Nadie",
-        "civ": "Malay",
-        "gano": true
-      },
-      "jugador2": {
-        "discordId": "277256502023290881",
-        "nick": "DGHIR | Lionerrt",
-        "civ": "Japanese",
-        "gano": false
-      }
-    },
-    {
-      "matchId": 477392842,
-      "fecha": "2026-05-13T01:12:54.000Z",
-      "mapa": "Hideout",
-      "duracion": 25,
-      "grupo": "SEMIS",
-      "ronda": "SF2",
-      "jugador1": {
-        "discordId": "341001672786575360",
-        "nick": "|FMG| Nadie",
-        "civ": "Vietnamese",
-        "gano": true
-      },
-      "jugador2": {
-        "discordId": "277256502023290881",
-        "nick": "DGHIR | Lionerrt",
-        "civ": "Bengalis",
         "gano": false
       }
     }
