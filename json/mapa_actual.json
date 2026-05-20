@@ -1,8 +1,8 @@
 {
-  "visible": false,
-  "id": "0",
-  "name": "",
-  "url": "",
-  "categoria": "",
-  "ts": 1779072701712
+  "visible": true,
+  "id": "1",
+  "name": "Land Madness",
+  "url": "https://raw.githubusercontent.com/Alegenio2/civs/refs/heads/main/Mapas_2025/land_madness.png",
+  "categoria": "Abierto",
+  "ts": 1779300376869
 }
