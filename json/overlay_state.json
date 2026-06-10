@@ -1,9 +1,10 @@
 {
   "visible": true,
   "modo": "pre",
-  "grupo": "?",
-  "ronda": "?",
-  "formato": "Bo5",
+  "torneo": "Campeonato Nomada",
+  "grupo": "4",
+  "ronda": "de Final",
+  "formato": "Bo3",
   "j1": {
     "nick": "Nacional",
     "global": {
@@ -110,5 +111,5 @@
     },
     "discordId": "1007049335315374242"
   },
-  "ts": 1781131032280
+  "ts": 1781131631622
 }
