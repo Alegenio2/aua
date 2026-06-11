@@ -1,4 +1,115 @@
 {
-  "visible": false,
-  "ts": 1781133412271
+  "visible": true,
+  "modo": "pre",
+  "torneo": "Campeonato Nomada",
+  "grupo": "1",
+  "ronda": "4 de Final",
+  "formato": "Bo3",
+  "j1": {
+    "nick": "Nacional",
+    "global": {
+      "pj": 17,
+      "pg": 15,
+      "pp": 2,
+      "winrate": 88
+    },
+    "civs": {
+      "Berbers": {
+        "pj": 5,
+        "pg": 5,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Malians": {
+        "pj": 3,
+        "pg": 3,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Bohemians": {
+        "pj": 3,
+        "pg": 3,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Japanese": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Franks": {
+        "pj": 2,
+        "pg": 2,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Maya": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Spanish": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0
+      },
+      "Malay": {
+        "pj": 1,
+        "pg": 0,
+        "pp": 1,
+        "winrate": 0
+      }
+    },
+    "mapas": {
+      "CCU - Nomada (Custom)": {
+        "pj": 10,
+        "pg": 8,
+        "pp": 2,
+        "winrate": 80
+      },
+      "CCU - KOTD Arabia (Custom)": {
+        "pj": 7,
+        "pg": 7,
+        "pp": 0,
+        "winrate": 100
+      }
+    },
+    "discordId": "733765577570779279"
+  },
+  "j2": {
+    "nick": "Watafaka",
+    "global": {
+      "pj": 2,
+      "pg": 2,
+      "pp": 0,
+      "winrate": 100
+    },
+    "civs": {
+      "Mongols": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      },
+      "Spanish": {
+        "pj": 1,
+        "pg": 1,
+        "pp": 0,
+        "winrate": 100
+      }
+    },
+    "mapas": {
+      "CCU - Nomada (Custom)": {
+        "pj": 2,
+        "pg": 2,
+        "pp": 0,
+        "winrate": 100
+      }
+    },
+    "discordId": "1007049335315374242"
+  },
+  "ts": 1781144342821
 }
